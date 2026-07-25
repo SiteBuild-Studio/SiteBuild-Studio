@@ -225,6 +225,113 @@
                 display: none;
             }
         }
+        /* What Can I Do Section */
+        .capability-section {
+            background-color: #ffffff;
+            padding: 90px 60px;
+        }
+
+        .capability-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .capability-left h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #111111;
+            margin-bottom: 24px;
+        }
+
+        .capability-left p {
+            font-size: 1.05rem;
+            color: #555555;
+            line-height: 1.6;
+            max-width: 460px;
+            margin-bottom: 34px;
+        }
+
+        .see-jobs-btn {
+            display: inline-block;
+            background-color: #d9534f;
+            color: #ffffff;
+            padding: 14px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .see-jobs-btn:hover {
+            background-color: #c2413d;
+            transform: translateY(-1px);
+        }
+
+        .capability-item {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .capability-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: #d9534f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .capability-icon svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .capability-item h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 10px;
+        }
+
+        .capability-item p {
+            font-size: 0.95rem;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .capability-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .capability-left {
+                text-align: center;
+            }
+
+            .capability-left p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .capability-section {
+                padding: 60px 24px;
+            }
+
+            .capability-left h2 {
+                font-size: 2.2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -274,6 +381,34 @@
         </div>
 
     </div>
+
+    <!-- What Can I Do Section -->
+    <section class="capability-section">
+        <div class="capability-wrapper">
+            <div class="capability-left">
+                <h2>What can I do?</h2>
+                <p>I build custom websites from the ground up, designed and coded specifically around your business, not a one-size-fits-all template.</p>
+                <a href="#work" class="see-jobs-btn">See my Jobs</a>
+            </div>
+
+            <div class="capability-item">
+                <div class="capability-icon">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="6" y="10" width="36" height="26" rx="4" stroke="#ffffff" stroke-width="2.6"/>
+                        <line x1="6" y1="17" x2="42" y2="17" stroke="#ffffff" stroke-width="2.6"/>
+                        <circle cx="11" cy="13.5" r="1.4" fill="#ffffff"/>
+                        <circle cx="15.5" cy="13.5" r="1.4" fill="#ffffff"/>
+                        <path d="M17 26 L21 30 L17 34" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M27 34 L31 30 L27 26" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3>Web Design</h3>
+                    <p>I design and build fast, modern, and reliable websites tailored specifically for your business, with clean code and no confusing templates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
