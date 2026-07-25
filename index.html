@@ -768,8 +768,9 @@
         }
         /* Footer Info Section */
         .footer-section {
-            background-color: #ffffff;
+            background-color: #f6cddc;
             padding: 90px 60px;
+            overflow: hidden;
         }
 
         .contacts-title {
@@ -795,6 +796,11 @@
             display: flex;
             align-items: center;
             gap: 22px;
+            min-width: 0;
+        }
+
+        .contact-card > div:last-child {
+            min-width: 0;
         }
 
         .contact-card-icon {
@@ -819,6 +825,8 @@
         .contact-card p {
             font-size: 0.95rem;
             color: #333333;
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
 
         .contact-card p.accent-text {
