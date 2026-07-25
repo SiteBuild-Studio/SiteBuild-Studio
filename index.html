@@ -493,6 +493,85 @@
                 font-size: 0.78rem;
             }
         }
+        /* Pricing Section */
+        .pricing-section {
+            background-color: #ffffff;
+            padding: 90px 60px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pricing-card {
+            background-color: #ffffff;
+            border: 1px solid #eeeeee;
+            border-radius: 16px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+            padding: 50px 46px 44px;
+            max-width: 340px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .pricing-card h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #111111;
+            margin-bottom: 22px;
+        }
+
+        .pricing-amount {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #d9534f;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .pricing-period {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 28px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 34px;
+        }
+
+        .pricing-features li {
+            font-size: 1rem;
+            color: #333333;
+            padding: 14px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .get-started-btn {
+            display: inline-block;
+            background-color: #d9534f;
+            color: #ffffff;
+            padding: 14px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .get-started-btn:hover {
+            background-color: #c2413d;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 600px) {
+            .pricing-section {
+                padding: 60px 24px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -602,6 +681,21 @@
                 <p>I am the developer behind SiteBuild Studio. I design and build fast, modern, and reliable websites tailored specifically for your business.</p>
                 <p>I believe a great website shouldn't be complicated or stressful—no confusing templates or DIY headaches—just a professional online presence that drives real results. When you work with me, you get a dedicated builder who works closely with you to bring your vision to life from the ground up.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="pricing-card">
+            <h2>Web Design</h2>
+            <div class="pricing-amount">$59</div>
+            <div class="pricing-period">Per project</div>
+            <ul class="pricing-features">
+                <li>Custom Design</li>
+                <li>Mobile Responsive</li>
+                <li>Fast Turnaround</li>
+            </ul>
+            <a href="#contact" class="get-started-btn">Get started</a>
         </div>
     </section>
 
