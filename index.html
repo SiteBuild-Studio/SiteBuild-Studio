@@ -133,6 +133,29 @@
             aspect-ratio: 4 / 5;
             border-radius: 14px;
             overflow: hidden;
+            position: relative;
+        }
+
+        .hero-image .bg-photo {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(2px) brightness(1.15);
+        }
+
+        .hero-image .bg-tint {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.55);
+        }
+
+        .hero-image .doodle-svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .hero-image img {
@@ -893,7 +916,101 @@
         <!-- Hero -->
         <div class="hero-content">
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1762242298589-582f5f6c3fb1?auto=format&fit=crop&w=800&q=80" alt="Web design code on screen">
+                <img class="bg-photo" src="https://images.unsplash.com/photo-1735639013995-086e648eaa38?auto=format&fit=crop&w=800&q=80" alt="Blurred office desk background">
+                <div class="bg-tint"></div>
+                <svg class="doodle-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img">
+                    <title>Web design concept illustration</title>
+                    <desc>Hand-drawn style doodle icons representing web design: gears for responsive design, a computer monitor reading Web Design, a rocket for start up, a lightbulb, a magnifying glass, a cursor, and a pie chart for analytics</desc>
+
+                    <!-- Gears: Responsive Design -->
+                    <g stroke="#3a3a3a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="230" cy="90" r="26"/>
+                        <circle cx="230" cy="90" r="9" fill="#3a3a3a"/>
+                        <g>
+                            <line x1="230" y1="58" x2="230" y2="50"/>
+                            <line x1="230" y1="122" x2="230" y2="130"/>
+                            <line x1="198" y1="90" x2="190" y2="90"/>
+                            <line x1="262" y1="90" x2="270" y2="90"/>
+                            <line x1="207" y1="67" x2="201" y2="61"/>
+                            <line x1="253" y1="113" x2="259" y2="119"/>
+                            <line x1="253" y1="67" x2="259" y2="61"/>
+                            <line x1="207" y1="113" x2="201" y2="119"/>
+                        </g>
+                        <circle cx="278" cy="128" r="17"/>
+                        <circle cx="278" cy="128" r="6" fill="#3a3a3a"/>
+                    </g>
+                    <text x="200" y="172" font-family="'Poppins', sans-serif" font-size="14" font-weight="700" fill="#111111" text-anchor="middle">RESPONSIVE</text>
+                    <text x="200" y="188" font-family="'Poppins', sans-serif" font-size="14" font-weight="700" fill="#111111" text-anchor="middle">DESIGN</text>
+
+                    <!-- Rocket: Start Up -->
+                    <g stroke="#3a6fd9" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M70 150 L110 135 L120 155 L85 175 Z"/>
+                        <path d="M110 135 Q125 120 132 128 Q140 135 125 150 Z" fill="#dce9ff"/>
+                        <path d="M78 168 L68 182" stroke="#d9534f"/>
+                        <path d="M90 178 L82 190" stroke="#d9534f"/>
+                    </g>
+                    <text x="60" y="215" font-family="'Poppins', sans-serif" font-size="13" font-weight="700" fill="#111111">START UP</text>
+
+                    <!-- Lightbulb -->
+                    <g stroke="#e0b400" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="88" cy="260" r="22"/>
+                        <path d="M80 280 L96 280 M82 288 L94 288"/>
+                        <path d="M88 238 L88 232 M70 246 L65 241 M106 246 L111 241"/>
+                    </g>
+
+                    <!-- @ symbol -->
+                    <text x="42" y="300" font-family="'Poppins', sans-serif" font-size="30" font-weight="700" fill="#d9534f">@</text>
+
+                    <!-- Computer Monitor: Web Design -->
+                    <g stroke="#111111" stroke-width="3" fill="#ffffff" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="120" y="220" width="170" height="115" rx="4"/>
+                        <line x1="120" y1="238" x2="290" y2="238" stroke-width="2"/>
+                        <rect x="190" y="335" width="30" height="18" fill="#3a3a3a" stroke="none"/>
+                        <rect x="165" y="353" width="80" height="8" rx="2" fill="#3a3a3a" stroke="none"/>
+                    </g>
+                    <circle cx="205" cy="285" r="15" fill="none" stroke="#3a9c6e" stroke-width="2"/>
+                    <path d="M195 285 h20 M205 275 v20" stroke="#3a9c6e" stroke-width="1.5"/>
+                    <text x="205" y="320" font-family="'Poppins', sans-serif" font-size="15" font-weight="800" fill="#111111" text-anchor="middle">WEB DESIGN</text>
+
+                    <!-- Keyboard -->
+                    <rect x="150" y="378" width="110" height="30" rx="4" fill="#ffffff" stroke="#111111" stroke-width="2.5"/>
+
+                    <!-- Mouse -->
+                    <g stroke="#3a3a3a" stroke-width="2" fill="#e8e8e8">
+                        <ellipse cx="260" cy="400" rx="15" ry="10"/>
+                    </g>
+
+                    <!-- Mobile phone -->
+                    <g stroke="#3a3a3a" stroke-width="2.2" fill="none">
+                        <rect x="280" y="360" width="34" height="55" rx="6"/>
+                        <line x1="288" y1="405" x2="306" y2="405"/>
+                    </g>
+
+                    <!-- Magnifying glass -->
+                    <g stroke="#3a9cd9" stroke-width="3" fill="none" stroke-linecap="round">
+                        <circle cx="300" cy="245" r="22"/>
+                        <line x1="316" y1="261" x2="335" y2="280"/>
+                    </g>
+
+                    <!-- Cursor arrow -->
+                    <path d="M320 300 L340 340 L328 336 L323 350 L315 346 L320 332 L308 335 Z" fill="#dddddd" stroke="#3a3a3a" stroke-width="2" stroke-linejoin="round"/>
+
+                    <!-- RSS icon -->
+                    <g stroke="#d9534f" stroke-width="2.5" fill="none" stroke-linecap="round">
+                        <circle cx="315" cy="150" r="4" fill="#d9534f" stroke="none"/>
+                        <path d="M304 150 A11 11 0 0 1 315 161"/>
+                        <path d="M304 139 A22 22 0 0 1 326 161"/>
+                    </g>
+
+                    <!-- Analytics pie chart -->
+                    <g>
+                        <path d="M340 195 L340 170 A25 25 0 0 1 362 208 Z" fill="#d9534f"/>
+                        <path d="M340 195 L362 208 A25 25 0 0 1 320 205 Z" fill="#3a9c6e"/>
+                        <path d="M340 195 L320 205 A25 25 0 0 1 340 170 Z" fill="#e0b400"/>
+                        <circle cx="340" cy="195" r="25" fill="none" stroke="#3a3a3a" stroke-width="1.5"/>
+                    </g>
+                    <text x="340" y="232" font-family="'Poppins', sans-serif" font-size="11" font-weight="700" fill="#111111" text-anchor="middle">ANALYTICS</text>
+                </svg>
             </div>
 
             <div class="hero-text">
