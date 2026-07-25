@@ -572,6 +572,90 @@
                 padding: 60px 24px;
             }
         }
+        /* FAQ Section */
+        .faq-section {
+            background-color: #f6cddc;
+            padding: 90px 60px;
+        }
+
+        .faq-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-title {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #d9534f;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(17, 17, 17, 0.15);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 22px 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #111111;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .faq-chevron {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-chevron svg {
+            width: 100%;
+            height: 100%;
+            stroke: #d9534f;
+        }
+
+        .faq-item.active .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .faq-answer p {
+            font-size: 0.95rem;
+            color: #3f3f3f;
+            line-height: 1.7;
+            padding-bottom: 24px;
+        }
+
+        @media (max-width: 600px) {
+            .faq-section {
+                padding: 60px 24px;
+            }
+
+            .faq-title {
+                font-size: 1.9rem;
+                margin-bottom: 34px;
+            }
+
+            .faq-question {
+                font-size: 0.95rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -698,6 +782,83 @@
             <a href="#contact" class="get-started-btn">Get started</a>
         </div>
     </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-wrapper">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    How long does it take to build a website?
+                    <span class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                    <p>Most projects take between one and three weeks, depending on how many pages and features you need. I'll give you a clear timeline before we start.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Do you code the site from scratch, or use templates?
+                    <span class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                    <p>Every site is built from the ground up with hand-written HTML, CSS, and JavaScript, tailored to your business. No drag-and-drop templates or page builders.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Will my website work well on mobile phones?
+                    <span class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes. Every site I build is fully responsive, meaning it's coded and tested to look and work great on phones, tablets, and desktops.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Can you help with hosting and domains too?
+                    <span class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolutely. I can help you choose and set up hosting and a domain name, or work with a provider you already have in place.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    What happens after my website goes live?
+                    <span class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </button>
+                <div class="faq-answer">
+                    <p>I stick around for support and small updates after launch, and I'm always available if you want to add new features or pages down the line.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var item = btn.closest('.faq-item');
+                var answer = item.querySelector('.faq-answer');
+                var isActive = item.classList.contains('active');
+
+                document.querySelectorAll('.faq-item').forEach(function (el) {
+                    el.classList.remove('active');
+                    el.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
