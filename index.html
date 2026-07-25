@@ -332,6 +332,167 @@
                 font-size: 2.2rem;
             }
         }
+        /* About Me Section */
+        .about-section {
+            background-color: #f6cddc;
+            padding: 90px 60px;
+        }
+
+        .about-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* Animated code editor mockup */
+        .code-mockup {
+            position: relative;
+            background: #14141c;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(20, 20, 28, 0.35);
+        }
+
+        .code-mockup::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle at 30% 30%, rgba(217, 83, 79, 0.35), transparent 60%),
+                        radial-gradient(circle at 80% 70%, rgba(102, 220, 190, 0.25), transparent 55%);
+            animation: glow-shift 8s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes glow-shift {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(6%, 4%) scale(1.1); }
+        }
+
+        .code-topbar {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 18px;
+            background: #1c1c26;
+            border-bottom: 1px solid #2a2a36;
+        }
+
+        .code-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .code-dot.red { background: #ff5f56; }
+        .code-dot.yellow { background: #ffbd2e; }
+        .code-dot.green { background: #27c93f; }
+
+        .code-filename {
+            margin-left: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.78rem;
+            color: #8a8a9a;
+        }
+
+        .code-body {
+            position: relative;
+            padding: 26px 24px 34px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.9;
+            min-height: 340px;
+        }
+
+        .code-line {
+            white-space: pre;
+        }
+
+        .code-indent { padding-left: 24px; }
+        .code-indent2 { padding-left: 48px; }
+
+        .code-tag { color: #ff8a80; }
+        .code-attr { color: #66dcbe; }
+        .code-string { color: #f0c674; }
+        .code-punct { color: #7a7a8c; }
+        .code-comment { color: #5f6072; font-style: italic; }
+
+        .code-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.1em;
+            background: #ffffff;
+            vertical-align: text-bottom;
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .pulse-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #66dcbe;
+            box-shadow: 0 0 12px 3px rgba(102, 220, 190, 0.7);
+            animation: pulse 2.4s ease-in-out infinite;
+        }
+
+        .pulse-dot.p1 { top: 60px; right: 30px; }
+        .pulse-dot.p2 { bottom: 40px; right: 60px; background: #ff8a80; box-shadow: 0 0 12px 3px rgba(255, 138, 128, 0.7); animation-delay: 1.2s; }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.6); opacity: 0.3; }
+        }
+
+        .about-right h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #111111;
+            margin-bottom: 26px;
+        }
+
+        .about-right p {
+            font-size: 1.02rem;
+            color: #3f3f3f;
+            line-height: 1.75;
+            margin-bottom: 22px;
+        }
+
+        @media (max-width: 900px) {
+            .about-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .about-right {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .about-section {
+                padding: 60px 24px;
+            }
+
+            .about-right h2 {
+                font-size: 2.2rem;
+            }
+
+            .code-body {
+                font-size: 0.78rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -406,6 +567,40 @@
                     <h3>Web Design</h3>
                     <p>I design and build fast, modern, and reliable websites tailored specifically for your business, with clean code and no confusing templates.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="about-section">
+        <div class="about-wrapper">
+            <div class="code-mockup">
+                <div class="code-topbar">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                    <span class="code-filename">sitebuild-studio.html</span>
+                </div>
+                <div class="code-body">
+                    <div class="pulse-dot p1"></div>
+                    <div class="pulse-dot p2"></div>
+                    <div class="code-line"><span class="code-punct">&lt;</span><span class="code-tag">section</span> <span class="code-attr">class</span><span class="code-punct">=</span><span class="code-string">"hero"</span><span class="code-punct">&gt;</span></div>
+                    <div class="code-line code-indent"><span class="code-punct">&lt;</span><span class="code-tag">h1</span><span class="code-punct">&gt;</span>Micaela Hosking<span class="code-punct">&lt;/</span><span class="code-tag">h1</span><span class="code-punct">&gt;</span></div>
+                    <div class="code-line code-indent"><span class="code-comment">// building something great</span></div>
+                    <div class="code-line code-indent2"><span class="code-punct">&lt;</span><span class="code-tag">p</span><span class="code-punct">&gt;</span>fast<span class="code-punct">.</span> modern<span class="code-punct">.</span> reliable<span class="code-punct">.</span><span class="code-punct">&lt;/</span><span class="code-tag">p</span><span class="code-punct">&gt;</span></div>
+                    <div class="code-line"><span class="code-punct">&lt;/</span><span class="code-tag">section</span><span class="code-punct">&gt;</span></div>
+                    <div class="code-line"></div>
+                    <div class="code-line"><span class="code-tag">function</span> <span class="code-attr">launchSite</span><span class="code-punct">() {</span></div>
+                    <div class="code-line code-indent"><span class="code-attr">deploy</span><span class="code-punct">(</span><span class="code-string">"production"</span><span class="code-punct">);</span></div>
+                    <div class="code-line code-indent"><span class="code-attr">status</span> <span class="code-punct">=</span> <span class="code-string">"live"</span><span class="code-cursor"></span></div>
+                    <div class="code-line"><span class="code-punct">}</span></div>
+                </div>
+            </div>
+
+            <div class="about-right">
+                <h2>About Me</h2>
+                <p>I am the developer behind SiteBuild Studio. I design and build fast, modern, and reliable websites tailored specifically for your business.</p>
+                <p>I believe a great website shouldn't be complicated or stressful—no confusing templates or DIY headaches—just a professional online presence that drives real results. When you work with me, you get a dedicated builder who works closely with you to bring your vision to life from the ground up.</p>
             </div>
         </div>
     </section>
