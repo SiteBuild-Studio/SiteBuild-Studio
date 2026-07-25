@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiteBuild Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fbe4ec; /* Soft pink background */
+            font-family: 'Poppins', sans-serif;
+            color: #111111;
+        }
+
+        .hero-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 60px 80px;
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo svg {
+            width: 46px;
+            height: 46px;
+        }
+
+        .logo-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            color: #111111;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #555555;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #111111;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #111111;
+            transition: width 0.25s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-btn {
+            background-color: #d9a870;
+            color: #ffffff;
+            padding: 12px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .contact-btn:hover {
+            background-color: #c99a5f;
+            transform: translateY(-1px);
+        }
+
+        /* Hero content */
+        .hero-content {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: #111111;
+            margin-bottom: 26px;
+        }
+
+        .hero-text p {
+            font-size: 1.05rem;
+            color: #444444;
+            line-height: 1.7;
+            max-width: 560px;
+            margin-bottom: 34px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: #111111;
+            color: #ffffff;
+            padding: 14px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #333333;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: #d9a870;
+            color: #ffffff;
+            padding: 14px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #c99a5f;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                max-width: 380px;
+                margin: 0 auto;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-btns {
+                justify-content: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-wrapper {
+                padding: 30px 24px 60px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6" y="10" width="36" height="26" rx="4" stroke="#111111" stroke-width="2.4"/>
+                    <line x1="6" y1="17" x2="42" y2="17" stroke="#111111" stroke-width="2.4"/>
+                    <circle cx="11" cy="13.5" r="1.4" fill="#111111"/>
+                    <circle cx="15.5" cy="13.5" r="1.4" fill="#111111"/>
+                    <path d="M17 26 L21 30 L17 34" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M27 34 L31 30 L27 26" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="logo-text">SiteBuild<span>Studio</span></div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#work">My Works</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+
+            <a href="#contact" class="contact-btn">Contact</a>
+        </nav>
+
+        <!-- Hero -->
+        <div class="hero-content">
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1762242298589-582f5f6c3fb1?auto=format&fit=crop&w=800&q=80" alt="Web design code on screen">
+            </div>
+
+            <div class="hero-text">
+                <h1>Hi, I'm Micaela Hosking and I'm a Designer</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque malesuada non magna eget mollis. Quisque vehicula, lorem quis sollicitudin mollis, elit enim aliquet lorem.
+                </p>
+                <div class="hero-btns">
+                    <a href="#work" class="btn-primary">My Jobs</a>
+                    <a href="#contact" class="btn-secondary">Contacts</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
