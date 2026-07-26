@@ -3,7 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SiteBuild Studio</title>
+    <title>SiteBuild Studio | Web Design &amp; Development in Cape Town</title>
+    <meta name="description" content="SiteBuild Studio designs and builds fast, custom, mobile-responsive websites for small businesses in Cape Town, South Africa — plus ongoing care plans to keep your site running smoothly.">
+    <meta name="keywords" content="web design Cape Town, website developer Cape Town, custom website design, small business websites South Africa, website maintenance retainer">
+    <meta name="author" content="Micaela Hosking">
+    <link rel="canonical" href="https://sitebuildstudio.co.za/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SiteBuild Studio | Web Design & Development in Cape Town">
+    <meta property="og:description" content="Custom, mobile-responsive websites built from scratch for Cape Town businesses — plus monthly care plans to keep your site fast, secure, and up to date.">
+    <meta property="og:url" content="https://sitebuildstudio.co.za/">
+    <meta property="og:locale" content="en_ZA">
+    <meta property="og:site_name" content="SiteBuild Studio">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SiteBuild Studio | Web Design & Development in Cape Town">
+    <meta name="twitter:description" content="Custom, mobile-responsive websites built from scratch for Cape Town businesses — plus monthly care plans to keep your site fast, secure, and up to date.">
+
+    <!-- Local SEO -->
+    <meta name="geo.region" content="ZA-WC">
+    <meta name="geo.placename" content="Cape Town">
+    <meta name="robots" content="index, follow">
+
+    <!-- Structured Data: Local Business -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "SiteBuild Studio",
+        "description": "Custom web design and development studio building fast, mobile-responsive websites for small businesses in Cape Town, South Africa.",
+        "url": "https://sitebuildstudio.co.za/",
+        "email": "sitebuilderstudios1@gmail.com",
+        "telephone": "+27845795239",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Cape Town",
+            "addressRegion": "Western Cape",
+            "addressCountry": "ZA"
+        },
+        "areaServed": {
+            "@type": "City",
+            "name": "Cape Town"
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+        },
+        "founder": {
+            "@type": "Person",
+            "name": "Micaela Hosking"
+        }
+    }
+    </script>
+
+    <!-- Structured Data: FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How long does it take to build a website?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most projects take between one and three weeks, depending on how many pages and features are needed, with a clear timeline agreed before work starts."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you code the site from scratch, or use templates?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Every site is hand-coded with HTML, CSS, and JavaScript and tailored to the business, rather than built from a drag-and-drop template or page builder."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Will my website work well on mobile phones?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, every site is fully responsive and tested to work well on phones, tablets, and desktops."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can you help with hosting and domains too?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, hosting and domain setup is available, whether starting fresh or working with an existing provider."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens after my website goes live?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Support and small updates continue after launch, with monthly care plans available for businesses that want ongoing maintenance."
+                }
+            }
+        ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,6 +126,11 @@
         html {
             overflow-x: hidden;
             width: 100%;
+            scroll-behavior: smooth;
+        }
+
+        section[id], #home, #contact {
+            scroll-margin-top: 20px;
         }
 
         body {
@@ -43,6 +155,7 @@
             margin-bottom: 60px;
             flex-wrap: wrap;
             gap: 20px;
+            position: relative;
         }
 
         .logo {
@@ -51,30 +164,48 @@
             gap: 10px;
         }
 
-        .logo img {
+        .logo-svg {
             height: 46px;
             width: auto;
-        }
-
-        .logo svg {
-            width: 46px;
-            height: 46px;
-        }
-
-        .logo-text {
-            font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            color: #111111;
-        }
-
-        .logo-text span {
             display: block;
-            font-size: 0.65rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            color: #555555;
-            text-transform: uppercase;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            border-radius: 3px;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .hamburger span:nth-child(1) { background-color: #e6427c; }
+        .hamburger span:nth-child(2) { background-color: #d9a870; }
+        .hamburger span:nth-child(3) { background-color: #e6427c; }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
         }
 
         .nav-links {
@@ -136,38 +267,15 @@
 
         .hero-image {
             width: 100%;
-            aspect-ratio: 4 / 5;
-            border-radius: 14px;
-            overflow: hidden;
+            aspect-ratio: 1205 / 1142;
             position: relative;
         }
 
-        .hero-image .bg-photo {
-            position: absolute;
-            inset: 0;
+        .hero-showcase-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            filter: blur(2px) brightness(1.15);
-        }
-
-        .hero-image .bg-tint {
-            position: absolute;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.55);
-        }
-
-        .hero-image .doodle-svg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            display: block;
         }
 
         .hero-text h1 {
@@ -252,13 +360,35 @@
             }
         }
 
-        @media (max-width: 600px) {
-            .hero-wrapper {
-                padding: 30px 24px 60px;
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
             }
 
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 66px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 22px;
+                background-color: #ffffff;
+                padding: 26px 24px;
+                border-radius: 0 0 16px 16px;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+                z-index: 40;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-wrapper {
+                padding: 30px 24px 60px;
             }
         }
         /* What Can I Do Section */
@@ -294,7 +424,7 @@
 
         .see-jobs-btn {
             display: inline-block;
-            background-color: #d9534f;
+            background-color: #e6427c;
             color: #ffffff;
             padding: 14px 30px;
             border-radius: 30px;
@@ -305,7 +435,7 @@
         }
 
         .see-jobs-btn:hover {
-            background-color: #c2413d;
+            background-color: #c22f66;
             transform: translateY(-1px);
         }
 
@@ -319,7 +449,7 @@
             width: 56px;
             height: 56px;
             border-radius: 50%;
-            background-color: #d9534f;
+            background-color: #e6427c;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -418,7 +548,7 @@
         }
 
         .screen-overlay-text .bracket {
-            color: #d9534f;
+            color: #e6427c;
         }
 
         @media (max-width: 900px) {
@@ -448,7 +578,7 @@
             left: -20%;
             width: 140%;
             height: 140%;
-            background: radial-gradient(circle at 30% 30%, rgba(217, 83, 79, 0.35), transparent 60%),
+            background: radial-gradient(circle at 30% 30%, rgba(230, 66, 124, 0.35), transparent 60%),
                         radial-gradient(circle at 80% 70%, rgba(102, 220, 190, 0.25), transparent 55%);
             animation: glow-shift 8s ease-in-out infinite alternate;
             pointer-events: none;
@@ -578,68 +708,163 @@
                 font-size: 0.78rem;
             }
         }
-        /* Pricing Section */
-        .pricing-section {
+        /* Website Build Packages Section */
+        .packages-section {
             background-color: #ffffff;
             padding: 90px 60px;
-            display: flex;
-            justify-content: center;
         }
 
-        .pricing-card {
+        .packages-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .packages-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 60px;
+        }
+
+        .packages-eyebrow {
+            display: inline-block;
+            background-color: #f6cddc;
+            color: #e6427c;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+
+        .packages-header h2 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #111111;
+            margin-bottom: 18px;
+        }
+
+        .packages-header p {
+            font-size: 1.02rem;
+            color: #555555;
+            line-height: 1.7;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+            align-items: stretch;
+        }
+
+        .package-card {
             background-color: #ffffff;
             border: 1px solid #eeeeee;
             border-radius: 16px;
             box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
-            padding: 50px 46px 44px;
-            max-width: 340px;
-            width: 100%;
-            text-align: center;
+            padding: 42px 34px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
 
-        .pricing-card h2 {
-            font-size: 1.6rem;
+        .package-card.featured {
+            border-color: #e6427c;
+            box-shadow: 0 30px 60px rgba(230, 66, 124, 0.18);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: -14px;
+            right: 34px;
+            background-color: #e6427c;
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 7px 16px;
+            border-radius: 30px;
+        }
+
+        .package-tier {
+            font-size: 1.3rem;
             font-weight: 800;
             color: #111111;
-            margin-bottom: 22px;
-        }
-
-        .pricing-amount {
-            font-size: 4rem;
-            font-weight: 800;
-            color: #d9534f;
-            line-height: 1;
             margin-bottom: 6px;
         }
 
-        .pricing-period {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #111111;
+        .package-tagline {
+            font-size: 0.9rem;
+            color: #777777;
+            margin-bottom: 26px;
+        }
+
+        .package-price {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .package-price .amount {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #e6427c;
+            line-height: 1;
+        }
+
+        .package-price .period {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #666666;
+        }
+
+        .package-note {
+            font-size: 0.85rem;
+            color: #999999;
             margin-bottom: 28px;
         }
 
-        .pricing-features {
+        .package-features {
             list-style: none;
-            margin-bottom: 34px;
+            margin-bottom: 32px;
+            flex-grow: 1;
         }
 
-        .pricing-features li {
-            font-size: 1rem;
+        .package-features li {
+            font-size: 0.92rem;
             color: #333333;
-            padding: 14px 0;
+            padding: 11px 0;
             border-bottom: 1px solid #eeeeee;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
         }
 
-        .pricing-features li:last-child {
+        .package-features li:last-child {
             border-bottom: none;
+        }
+
+        .package-features li svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            margin-top: 3px;
+            stroke: #e6427c;
+        }
+
+        .package-features li.seo-item svg {
+            stroke: #3a9c6e;
         }
 
         .get-started-btn {
             display: inline-block;
-            background-color: #d9534f;
+            text-align: center;
+            background-color: #111111;
             color: #ffffff;
-            padding: 14px 40px;
+            padding: 14px 0;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
@@ -648,13 +873,262 @@
         }
 
         .get-started-btn:hover {
-            background-color: #c2413d;
+            background-color: #333333;
             transform: translateY(-1px);
         }
 
+        .package-card.featured .get-started-btn {
+            background-color: #e6427c;
+        }
+
+        .package-card.featured .get-started-btn:hover {
+            background-color: #c22f66;
+        }
+
+        .packages-fineprint {
+            text-align: center;
+            font-size: 0.88rem;
+            color: #777777;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
         @media (max-width: 600px) {
-            .pricing-section {
+            .packages-section {
                 padding: 60px 24px;
+            }
+
+            .packages-header h2 {
+                font-size: 2rem;
+            }
+        }
+        /* Retainer / Care Plans Section */
+        .retainer-section {
+            background-color: #f6cddc;
+            padding: 90px 60px;
+        }
+
+        .retainer-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .retainer-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 60px;
+        }
+
+        .retainer-eyebrow {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #e6427c;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+
+        .retainer-header h2 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #111111;
+            margin-bottom: 18px;
+        }
+
+        .retainer-header p {
+            font-size: 1.02rem;
+            color: #444444;
+            line-height: 1.7;
+        }
+
+        .retainer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+            align-items: stretch;
+        }
+
+        .retainer-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 42px 34px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .retainer-card.featured {
+            background-color: #111111;
+            transform: translateY(-14px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.28);
+        }
+
+        .retainer-badge {
+            position: absolute;
+            top: -14px;
+            right: 34px;
+            background-color: #e6427c;
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 7px 16px;
+            border-radius: 30px;
+        }
+
+        .retainer-tier {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #111111;
+            margin-bottom: 6px;
+        }
+
+        .retainer-card.featured .retainer-tier {
+            color: #ffffff;
+        }
+
+        .retainer-tagline {
+            font-size: 0.9rem;
+            color: #777777;
+            margin-bottom: 26px;
+        }
+
+        .retainer-card.featured .retainer-tagline {
+            color: #b8b8b8;
+        }
+
+        .retainer-price {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .retainer-price .amount {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #e6427c;
+            line-height: 1;
+        }
+
+        .retainer-price .period {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #666666;
+        }
+
+        .retainer-card.featured .retainer-price .period {
+            color: #b8b8b8;
+        }
+
+        .retainer-note {
+            font-size: 0.85rem;
+            color: #999999;
+            margin-bottom: 28px;
+        }
+
+        .retainer-card.featured .retainer-note {
+            color: #8f8f8f;
+        }
+
+        .retainer-features {
+            list-style: none;
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+
+        .retainer-features li {
+            font-size: 0.92rem;
+            color: #333333;
+            padding: 11px 0;
+            border-bottom: 1px solid #eeeeee;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .retainer-features li:last-child {
+            border-bottom: none;
+        }
+
+        .retainer-card.featured .retainer-features li {
+            color: #eaeaea;
+            border-bottom: 1px solid #2b2b2b;
+        }
+
+        .retainer-features li svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            margin-top: 3px;
+            stroke: #e6427c;
+        }
+
+        .retainer-cta {
+            display: inline-block;
+            text-align: center;
+            background-color: #111111;
+            color: #ffffff;
+            padding: 14px 0;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .retainer-cta:hover {
+            background-color: #333333;
+            transform: translateY(-1px);
+        }
+
+        .retainer-card.featured .retainer-cta {
+            background-color: #e6427c;
+        }
+
+        .retainer-card.featured .retainer-cta:hover {
+            background-color: #c22f66;
+        }
+
+        .retainer-fineprint {
+            text-align: center;
+            font-size: 0.88rem;
+            color: #555555;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .retainer-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .retainer-card.featured {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .retainer-section {
+                padding: 60px 24px;
+            }
+
+            .retainer-header h2 {
+                font-size: 2rem;
             }
         }
         /* FAQ Section */
@@ -671,7 +1145,7 @@
         .faq-title {
             font-size: 2.6rem;
             font-weight: 800;
-            color: #d9534f;
+            color: #e6427c;
             text-align: center;
             margin-bottom: 50px;
         }
@@ -707,7 +1181,7 @@
         .faq-chevron svg {
             width: 100%;
             height: 100%;
-            stroke: #d9534f;
+            stroke: #e6427c;
         }
 
         .faq-item.active .faq-chevron {
@@ -764,57 +1238,82 @@
         .contact-left h2 {
             font-size: 2.6rem;
             font-weight: 800;
-            color: #d9534f;
+            color: #e6427c;
             margin-bottom: 30px;
         }
 
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+        .contact-left p.contact-intro {
+            font-size: 1rem;
+            color: #444444;
+            line-height: 1.7;
+            margin-bottom: 22px;
         }
 
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            border: 1px solid #e0e0e0;
-            background-color: #fafafa;
-            border-radius: 8px;
-            padding: 16px 18px;
-            font-family: 'Poppins', sans-serif;
+        .contact-checklist {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .contact-checklist li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
             font-size: 0.95rem;
             color: #333333;
-            outline: none;
-            resize: none;
+            padding: 8px 0;
         }
 
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            border-color: #d9534f;
-            background-color: #ffffff;
+        .contact-checklist li svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            stroke: #e6427c;
         }
 
-        .contact-form textarea {
-            min-height: 110px;
-        }
-
-        .send-btn {
-            margin-top: 8px;
-            background-color: #d9a870;
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #25D366;
             color: #ffffff;
             border: none;
             border-radius: 30px;
-            padding: 16px;
+            padding: 16px 30px;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
+            font-size: 0.98rem;
+            text-decoration: none;
             transition: background-color 0.2s ease, transform 0.2s ease;
+            width: fit-content;
         }
 
-        .send-btn:hover {
-            background-color: #c99a5f;
+        .whatsapp-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: #ffffff;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1ebe5b;
             transform: translateY(-1px);
+        }
+
+        .contact-fallback {
+            margin-top: 22px;
+            font-size: 0.9rem;
+            color: #666666;
+        }
+
+        .contact-fallback a {
+            color: #e6427c;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-fallback a:hover {
+            text-decoration: underline;
         }
 
         .contact-right {
@@ -856,7 +1355,7 @@
         .contacts-title {
             font-size: 2.6rem;
             font-weight: 800;
-            color: #d9534f;
+            color: #e6427c;
             text-align: center;
             margin-bottom: 50px;
         }
@@ -944,20 +1443,56 @@
 </head>
 <body>
 
-    <div class="hero-wrapper">
+    <div class="hero-wrapper" id="home">
 
         <!-- Navigation -->
         <nav class="navbar">
             <div class="logo">
-                <img src="assets/images/sitebuild-logo.png" alt="SiteBuild Studio logo">
+                <svg class="logo-svg" viewBox="0 0 725 227" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SiteBuild Studio">
+                    <title>SiteBuild Studio</title>
+                    <defs>
+                        <linearGradient id="pinkS" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ee7ea6"/>
+                            <stop offset="100%" stop-color="#c81760"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Icon: interlocking S / B monogram -->
+                    <text x="-8" y="178" font-family="'Poppins', sans-serif" font-weight="800" font-size="192" fill="url(#pinkS)">S</text>
+                    <text x="88" y="182" font-family="'Poppins', sans-serif" font-weight="800" font-size="166" fill="#111111">B</text>
+
+                    <!-- Gold pixel accent, stepped diagonally -->
+                    <rect x="184" y="14" width="15" height="15" fill="#d9a870"/>
+                    <rect x="201" y="32" width="10" height="10" fill="#d9a870"/>
+                    <rect x="190" y="47" width="6" height="6" fill="#d9a870"/>
+
+                    <!-- Gold accent flag echoing the diagonal split -->
+                    <polygon points="128,150 150,150 128,182 106,182" fill="#d9a870"/>
+
+                    <!-- Divider -->
+                    <line x1="250" y1="14" x2="250" y2="213" stroke="#d9a870" stroke-width="2"/>
+
+                    <!-- Wordmark -->
+                    <text x="270" y="97" font-family="'Poppins', sans-serif" font-weight="800" font-size="52" letter-spacing="2">
+                        <tspan fill="#e6427c">SITE</tspan><tspan fill="#111111">BUILD</tspan>
+                    </text>
+                    <text x="270" y="140" font-family="'Poppins', sans-serif" font-weight="600" font-size="26" letter-spacing="7" fill="#c99a5f">&#8212; STUDIO &#8212;</text>
+                    <text x="270" y="176" font-family="'Poppins', sans-serif" font-weight="600" font-size="15" letter-spacing="2.5" fill="#333333">DESIGN &#8226; DEVELOP &#8226; DEPLOY</text>
+                </svg>
             </div>
 
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#work">My Works</a></li>
                 <li><a href="#about">About Me</a></li>
                 <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#care-plans">Care Plans</a></li>
             </ul>
+
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
             <a href="#contact" class="contact-btn">Contact</a>
         </nav>
@@ -965,110 +1500,16 @@
         <!-- Hero -->
         <div class="hero-content">
             <div class="hero-image">
-                <img class="bg-photo" src="https://images.unsplash.com/photo-1735639013995-086e648eaa38?auto=format&fit=crop&w=800&q=80" alt="Blurred office desk background">
-                <div class="bg-tint"></div>
-                <svg class="doodle-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img">
-                    <title>Web design concept illustration</title>
-                    <desc>Hand-drawn style doodle icons representing web design: gears for responsive design, a computer monitor reading Web Design, a rocket for start up, a lightbulb, a magnifying glass, a cursor, and a pie chart for analytics</desc>
-
-                    <!-- Gears: Responsive Design -->
-                    <g stroke="#3a3a3a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="230" cy="90" r="26"/>
-                        <circle cx="230" cy="90" r="9" fill="#3a3a3a"/>
-                        <g>
-                            <line x1="230" y1="58" x2="230" y2="50"/>
-                            <line x1="230" y1="122" x2="230" y2="130"/>
-                            <line x1="198" y1="90" x2="190" y2="90"/>
-                            <line x1="262" y1="90" x2="270" y2="90"/>
-                            <line x1="207" y1="67" x2="201" y2="61"/>
-                            <line x1="253" y1="113" x2="259" y2="119"/>
-                            <line x1="253" y1="67" x2="259" y2="61"/>
-                            <line x1="207" y1="113" x2="201" y2="119"/>
-                        </g>
-                        <circle cx="278" cy="128" r="17"/>
-                        <circle cx="278" cy="128" r="6" fill="#3a3a3a"/>
-                    </g>
-                    <text x="200" y="172" font-family="'Poppins', sans-serif" font-size="14" font-weight="700" fill="#111111" text-anchor="middle">RESPONSIVE</text>
-                    <text x="200" y="188" font-family="'Poppins', sans-serif" font-size="14" font-weight="700" fill="#111111" text-anchor="middle">DESIGN</text>
-
-                    <!-- Rocket: Start Up -->
-                    <g stroke="#3a6fd9" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M70 150 L110 135 L120 155 L85 175 Z"/>
-                        <path d="M110 135 Q125 120 132 128 Q140 135 125 150 Z" fill="#dce9ff"/>
-                        <path d="M78 168 L68 182" stroke="#d9534f"/>
-                        <path d="M90 178 L82 190" stroke="#d9534f"/>
-                    </g>
-                    <text x="60" y="215" font-family="'Poppins', sans-serif" font-size="13" font-weight="700" fill="#111111">START UP</text>
-
-                    <!-- Lightbulb -->
-                    <g stroke="#e0b400" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="88" cy="260" r="22"/>
-                        <path d="M80 280 L96 280 M82 288 L94 288"/>
-                        <path d="M88 238 L88 232 M70 246 L65 241 M106 246 L111 241"/>
-                    </g>
-
-                    <!-- @ symbol -->
-                    <text x="42" y="300" font-family="'Poppins', sans-serif" font-size="30" font-weight="700" fill="#d9534f">@</text>
-
-                    <!-- Computer Monitor: Web Design -->
-                    <g stroke="#111111" stroke-width="3" fill="#ffffff" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="120" y="220" width="170" height="115" rx="4"/>
-                        <line x1="120" y1="238" x2="290" y2="238" stroke-width="2"/>
-                        <rect x="190" y="335" width="30" height="18" fill="#3a3a3a" stroke="none"/>
-                        <rect x="165" y="353" width="80" height="8" rx="2" fill="#3a3a3a" stroke="none"/>
-                    </g>
-                    <circle cx="205" cy="285" r="15" fill="none" stroke="#3a9c6e" stroke-width="2"/>
-                    <path d="M195 285 h20 M205 275 v20" stroke="#3a9c6e" stroke-width="1.5"/>
-                    <text x="205" y="320" font-family="'Poppins', sans-serif" font-size="15" font-weight="800" fill="#111111" text-anchor="middle">WEB DESIGN</text>
-
-                    <!-- Keyboard -->
-                    <rect x="150" y="378" width="110" height="30" rx="4" fill="#ffffff" stroke="#111111" stroke-width="2.5"/>
-
-                    <!-- Mouse -->
-                    <g stroke="#3a3a3a" stroke-width="2" fill="#e8e8e8">
-                        <ellipse cx="260" cy="400" rx="15" ry="10"/>
-                    </g>
-
-                    <!-- Mobile phone -->
-                    <g stroke="#3a3a3a" stroke-width="2.2" fill="none">
-                        <rect x="280" y="360" width="34" height="55" rx="6"/>
-                        <line x1="288" y1="405" x2="306" y2="405"/>
-                    </g>
-
-                    <!-- Magnifying glass -->
-                    <g stroke="#3a9cd9" stroke-width="3" fill="none" stroke-linecap="round">
-                        <circle cx="300" cy="245" r="22"/>
-                        <line x1="316" y1="261" x2="335" y2="280"/>
-                    </g>
-
-                    <!-- Cursor arrow -->
-                    <path d="M320 300 L340 340 L328 336 L323 350 L315 346 L320 332 L308 335 Z" fill="#dddddd" stroke="#3a3a3a" stroke-width="2" stroke-linejoin="round"/>
-
-                    <!-- RSS icon -->
-                    <g stroke="#d9534f" stroke-width="2.5" fill="none" stroke-linecap="round">
-                        <circle cx="315" cy="150" r="4" fill="#d9534f" stroke="none"/>
-                        <path d="M304 150 A11 11 0 0 1 315 161"/>
-                        <path d="M304 139 A22 22 0 0 1 326 161"/>
-                    </g>
-
-                    <!-- Analytics pie chart -->
-                    <g>
-                        <path d="M340 195 L340 170 A25 25 0 0 1 362 208 Z" fill="#d9534f"/>
-                        <path d="M340 195 L362 208 A25 25 0 0 1 320 205 Z" fill="#3a9c6e"/>
-                        <path d="M340 195 L320 205 A25 25 0 0 1 340 170 Z" fill="#e0b400"/>
-                        <circle cx="340" cy="195" r="25" fill="none" stroke="#3a3a3a" stroke-width="1.5"/>
-                    </g>
-                    <text x="340" y="232" font-family="'Poppins', sans-serif" font-size="11" font-weight="700" fill="#111111" text-anchor="middle">ANALYTICS</text>
-                </svg>
+                <img src="hero-showcase.jpg" alt="SiteBuild Studio mockup: We Design. We Develop. We Deploy. Modern websites that drive results." class="hero-showcase-img">
             </div>
 
             <div class="hero-text">
                 <h1>Hi, I'm Micaela Hosking and I'm a Designer</h1>
                 <p>
-                    I design and build fast, modern, and reliable websites tailored specifically for your business. No confusing templates or DIY headaches—just a professional online presence that drives real results.
+                    I design and build fast, modern, and reliable websites for businesses in Cape Town and beyond. No confusing templates or DIY headaches—just a professional online presence that drives real results.
                 </p>
                 <div class="hero-btns">
-                    <a href="#work" class="btn-primary">My Jobs</a>
+                    <a href="#pricing" class="btn-primary">See Pricing</a>
                     <a href="#contact" class="btn-secondary">Contacts</a>
                 </div>
             </div>
@@ -1082,7 +1523,7 @@
             <div class="capability-left">
                 <h2>What can I do?</h2>
                 <p>I build custom websites from the ground up, designed and coded specifically around your business, not a one-size-fits-all template.</p>
-                <a href="#work" class="see-jobs-btn">See my Jobs</a>
+                <a href="#pricing" class="see-jobs-btn">See Pricing</a>
             </div>
 
             <div class="capability-item">
@@ -1105,7 +1546,7 @@
     </section>
 
     <!-- About Me Section -->
-    <section class="about-section">
+    <section class="about-section" id="about">
         <div class="about-wrapper">
             <div class="about-photo">
                 <dotlottie-wc src="https://lottie.host/4ace51d3-358f-4841-9a63-8ee0a889bb60/T11FWFv1as.lottie" autoplay loop></dotlottie-wc>
@@ -1113,24 +1554,151 @@
 
             <div class="about-right">
                 <h2>About Me</h2>
-                <p>I am the developer behind SiteBuild Studio. I design and build fast, modern, and reliable websites tailored specifically for your business.</p>
+                <p>I am the developer behind SiteBuild Studio, based in Cape Town. I design and build fast, modern, and reliable websites tailored specifically for your business.</p>
                 <p>I believe a great website shouldn't be complicated or stressful—no confusing templates or DIY headaches—just a professional online presence that drives real results. When you work with me, you get a dedicated builder who works closely with you to bring your vision to life from the ground up.</p>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing-section">
-        <div class="pricing-card">
-            <h2>Web Design</h2>
-            <div class="pricing-amount">$59</div>
-            <div class="pricing-period">Per project</div>
-            <ul class="pricing-features">
-                <li>Custom Design</li>
-                <li>Mobile Responsive</li>
-                <li>Fast Turnaround</li>
-            </ul>
-            <a href="#contact" class="get-started-btn">Get started</a>
+    <!-- Website Build Packages Section -->
+    <section class="packages-section" id="pricing">
+        <div class="packages-wrapper">
+            <div class="packages-header">
+                <span class="packages-eyebrow">Website Build Packages</span>
+                <h2>Pick Your Starting Point</h2>
+                <p>Built especially for landscaping & garden services, pool maintenance, hair and beauty salons, and other local small businesses that need a site people can actually find. Every package ships with the SEO basics done right — a sitemap, robots.txt, and schema markup, so search engines understand your business from day one.</p>
+            </div>
+
+            <div class="packages-grid">
+                <!-- Tier 1 -->
+                <div class="package-card">
+                    <div class="package-tier">Landing Page</div>
+                    <div class="package-tagline">One focused page that gets you online fast</div>
+                    <div class="package-price">
+                        <span class="amount">R1,500</span>
+                    </div>
+                    <div class="package-note">Once-off, per project</div>
+                    <ul class="package-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Single custom-designed page</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Mobile responsive</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Contact form & map</li>
+                        <li class="seo-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Sitemap, robots.txt & schema markup</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Fast turnaround</li>
+                    </ul>
+                    <a href="#contact" class="get-started-btn">Get started</a>
+                </div>
+
+                <!-- Tier 2 (Featured) -->
+                <div class="package-card featured">
+                    <span class="package-badge">Most Popular</span>
+                    <div class="package-tier">Landing + 2 Pages</div>
+                    <div class="package-tagline">Room to tell your story and show your work</div>
+                    <div class="package-price">
+                        <span class="amount">R2,800</span>
+                    </div>
+                    <div class="package-note">Once-off, per project</div>
+                    <ul class="package-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Everything in Landing Page</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 2 extra pages (e.g. Services, Gallery)</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Google Business Profile setup</li>
+                        <li class="seo-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Sitemap, robots.txt & schema markup</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Listing in our website directory</li>
+                    </ul>
+                    <a href="#contact" class="get-started-btn">Get started</a>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="package-card">
+                    <div class="package-tier">Full Site</div>
+                    <div class="package-tagline">More than 3 pages, for a growing business</div>
+                    <div class="package-price">
+                        <span class="amount">R4,500+</span>
+                    </div>
+                    <div class="package-note">Once-off, quoted per project</div>
+                    <ul class="package-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Everything in Landing + 2 Pages</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 4+ pages, structured to your business</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Booking form or online quote request</li>
+                        <li class="seo-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Sitemap, robots.txt & schema markup</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Featured listing in our website directory</li>
+                    </ul>
+                    <a href="#contact" class="get-started-btn">Get started</a>
+                </div>
+            </div>
+
+            <p class="packages-fineprint">Not sure which fits? Get in touch and I'll help you pick the right starting point for your business.</p>
+        </div>
+    </section>
+
+    <!-- Retainer / Care Plans Section -->
+    <section class="retainer-section" id="care-plans">
+        <div class="retainer-wrapper">
+            <div class="retainer-header">
+                <span class="retainer-eyebrow">Ongoing Care</span>
+                <h2>Monthly Care Plans</h2>
+                <p>Your website launch is just the start. These plans keep your content fresh and your business easy to find online — with a real person you can reach when you need a hand.</p>
+            </div>
+
+            <div class="retainer-grid">
+                <!-- Tier 1 -->
+                <div class="retainer-card">
+                    <div class="retainer-tier">Maintain</div>
+                    <div class="retainer-tagline">For a site that just needs light upkeep</div>
+                    <div class="retainer-price">
+                        <span class="amount">R350</span>
+                        <span class="period">/ month</span>
+                    </div>
+                    <div class="retainer-note">Billed monthly, cancel anytime</div>
+                    <ul class="retainer-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 30 min of content or photo updates</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Software updates</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Listing in our website directory</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Email support</li>
+                    </ul>
+                    <a href="#contact" class="retainer-cta">Get started</a>
+                </div>
+
+                <!-- Tier 2 (Featured) -->
+                <div class="retainer-card featured">
+                    <span class="retainer-badge">Most Popular</span>
+                    <div class="retainer-tier">Grow</div>
+                    <div class="retainer-tagline">For a business that wants to be found</div>
+                    <div class="retainer-price">
+                        <span class="amount">R650</span>
+                        <span class="period">/ month</span>
+                    </div>
+                    <div class="retainer-note">Billed monthly, cancel anytime</div>
+                    <ul class="retainer-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Everything in Maintain</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Monthly SEO / discoverability check</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 1 hour of edits</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Featured listing in our website directory</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Priority email & WhatsApp support</li>
+                    </ul>
+                    <a href="#contact" class="retainer-cta">Get started</a>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="retainer-card">
+                    <div class="retainer-tier">Partner</div>
+                    <div class="retainer-tagline">For a business that keeps growing online</div>
+                    <div class="retainer-price">
+                        <span class="amount">R1200</span>
+                        <span class="period">/ month</span>
+                    </div>
+                    <div class="retainer-note">Billed monthly, cancel anytime</div>
+                    <ul class="retainer-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Everything in Grow</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 2.5 hours of edits</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Quarterly check-in call</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> New page or feature additions</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated support line</li>
+                    </ul>
+                    <a href="#contact" class="retainer-cta">Get started</a>
+                </div>
+            </div>
+
+            <p class="retainer-fineprint">Already a web design client? Care plans stack with any one-off project — ask about bundling when you get started.</p>
         </div>
     </section>
 
@@ -1209,19 +1777,49 @@
                 }
             });
         });
+
+        var hamburgerBtn = document.getElementById('hamburgerBtn');
+        var navLinks = document.getElementById('navLinks');
+
+        function closeMenu() {
+            navLinks.classList.remove('open');
+            hamburgerBtn.classList.remove('open');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        hamburgerBtn.addEventListener('click', function () {
+            var isOpen = navLinks.classList.toggle('open');
+            hamburgerBtn.classList.toggle('open', isOpen);
+            hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        navLinks.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                closeMenu();
+            }
+        });
     </script>
 
     <!-- Contact Me Section -->
-    <section class="contact-section">
+    <section class="contact-section" id="contact">
         <div class="contact-wrapper">
             <div class="contact-left">
                 <h2>Contact Me</h2>
-                <form class="contact-form">
-                    <input type="text" name="name" placeholder="Name">
-                    <input type="email" name="email" placeholder="Email">
-                    <textarea name="message" placeholder="Message"></textarea>
-                    <button type="submit" class="send-btn">Send Message</button>
-                </form>
+                <p class="contact-intro">The quickest way to reach me is on WhatsApp. To help me quote accurately, please include:</p>
+                <ul class="contact-checklist">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> What your business does</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Your preferred brand colors</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Any other details that'll help build your site</li>
+                </ul>
+                <a class="whatsapp-btn" href="https://wa.me/27845795239?text=Hi%20SiteBuild%20Studio%2C%20I%27d%20like%20a%20website.%20Here%27s%20a%20bit%20about%20my%20business%3A%20%5Bwhat%20you%20do%5D.%20Preferred%20brand%20colors%3A%20%5Bcolors%5D.%20Other%20details%3A%20%5Banything%20else%5D." target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.74.46 3.44 1.32 4.94L2.05 22l5.28-1.38a9.87 9.87 0 0 0 4.71 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.11h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.19 8.19 0 0 1 5.83 2.42 8.19 8.19 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.59.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.06-.11-.23-.17-.48-.29z"/></svg>
+                    Message me on WhatsApp
+                </a>
+                <p class="contact-fallback">Prefer email? Write to <a href="mailto:sitebuilderstudios1@gmail.com">sitebuilderstudios1@gmail.com</a>.</p>
             </div>
             <div class="contact-right">
                 <dotlottie-wc src="https://lottie.host/e2bd0518-aaa3-42fc-8473-b838ad5d4fd6/9MaAFO7zUa.lottie" autoplay loop></dotlottie-wc>
