@@ -139,12 +139,36 @@
             color: #111111;
             overflow-x: hidden;
             width: 100%;
+            padding-top: 92px;
+        }
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 22px 60px;
+            background-color: transparent;
+            transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .site-header.scrolled {
+            padding: 12px 60px;
+            background-color: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 12px 30px rgba(17, 17, 17, 0.08);
+        }
+
+        .site-header.scrolled .logo-svg {
+            height: 36px;
         }
 
         .hero-wrapper {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 40px 60px 80px;
+            padding: 20px 60px 80px;
         }
 
         /* Navigation */
@@ -152,10 +176,11 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 60px;
             flex-wrap: wrap;
             gap: 20px;
             position: relative;
+            max-width: 1300px;
+            margin: 0 auto;
         }
 
         .logo {
@@ -168,6 +193,7 @@
             height: 46px;
             width: auto;
             display: block;
+            transition: height 0.3s ease;
         }
 
         .hamburger {
@@ -361,6 +387,18 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-top: 78px;
+            }
+
+            .site-header {
+                padding: 16px 24px;
+            }
+
+            .site-header.scrolled {
+                padding: 10px 24px;
+            }
+
             .hamburger {
                 display: flex;
             }
@@ -395,9 +433,27 @@
         .capability-section {
             background-color: #ffffff;
             padding: 90px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .capability-section::before {
+            content: '';
+            position: absolute;
+            top: -140px;
+            right: -100px;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: #e6427c;
+            opacity: 0.07;
+            filter: blur(70px);
+            z-index: 0;
         }
 
         .capability-wrapper {
+            position: relative;
+            z-index: 1;
             max-width: 1300px;
             margin: 0 auto;
             display: grid;
@@ -443,6 +499,14 @@
             display: flex;
             gap: 24px;
             align-items: flex-start;
+            padding: 14px;
+            border-radius: 16px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .capability-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
         }
 
         .capability-icon {
@@ -454,6 +518,11 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+
+        .capability-item:hover .capability-icon {
+            transform: scale(1.08) rotate(-4deg);
         }
 
         .capability-icon svg {
@@ -712,9 +781,41 @@
         .packages-section {
             background-color: #ffffff;
             padding: 90px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .packages-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -120px;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            background: #d9a870;
+            opacity: 0.08;
+            filter: blur(70px);
+            z-index: 0;
+        }
+
+        .packages-section::after {
+            content: '';
+            position: absolute;
+            bottom: -140px;
+            right: -100px;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: #e6427c;
+            opacity: 0.06;
+            filter: blur(70px);
+            z-index: 0;
         }
 
         .packages-wrapper {
+            position: relative;
+            z-index: 1;
             max-width: 1300px;
             margin: 0 auto;
         }
@@ -1152,6 +1253,11 @@
 
         .faq-item {
             border-bottom: 1px solid rgba(17, 17, 17, 0.15);
+            transition: padding-left 0.25s ease;
+        }
+
+        .faq-item:hover {
+            padding-left: 8px;
         }
 
         .faq-question {
@@ -1169,6 +1275,11 @@
             color: #111111;
             text-align: left;
             cursor: pointer;
+            transition: color 0.25s ease;
+        }
+
+        .faq-item:hover .faq-question {
+            color: #e6427c;
         }
 
         .faq-chevron {
@@ -1218,9 +1329,27 @@
         /* Contact Me Section */
         .contact-section {
             background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: 10%;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: #25D366;
+            opacity: 0.05;
+            filter: blur(70px);
+            z-index: 0;
         }
 
         .contact-wrapper {
+            position: relative;
+            z-index: 1;
             max-width: 1300px;
             margin: 0 auto;
             display: grid;
@@ -1476,12 +1605,114 @@
             color: #ffffff;
             font-size: 0.9rem;
         }
+
+        .whatsapp-fab {
+            position: fixed;
+            bottom: 26px;
+            right: 26px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background-color: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+            z-index: 900;
+            opacity: 0;
+            transform: translateY(16px) scale(0.9);
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+        }
+
+        .whatsapp-fab.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .whatsapp-fab:hover {
+            background-color: #1ebe5b;
+        }
+
+        .whatsapp-fab svg {
+            width: 28px;
+            height: 28px;
+            fill: #ffffff;
+        }
+
+        .whatsapp-fab-pulse {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background-color: #25D366;
+            animation: fabPulse 2.6s ease-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes fabPulse {
+            0% { opacity: 0.55; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.8); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .whatsapp-fab-pulse {
+                animation: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .whatsapp-fab {
+                bottom: 18px;
+                right: 18px;
+                width: 52px;
+                height: 52px;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .capability-item.reveal { transition-delay: 0.1s; }
+
+        .package-card.reveal:nth-of-type(1) { transition-delay: 0s; }
+        .package-card.reveal:nth-of-type(2) { transition-delay: 0.12s; }
+        .package-card.reveal:nth-of-type(3) { transition-delay: 0.24s; }
+
+        .retainer-card.reveal:nth-of-type(1) { transition-delay: 0s; }
+        .retainer-card.reveal:nth-of-type(2) { transition-delay: 0.12s; }
+        .retainer-card.reveal:nth-of-type(3) { transition-delay: 0.24s; }
+
+        .faq-item.reveal:nth-of-type(1) { transition-delay: 0s; }
+        .faq-item.reveal:nth-of-type(2) { transition-delay: 0.06s; }
+        .faq-item.reveal:nth-of-type(3) { transition-delay: 0.12s; }
+        .faq-item.reveal:nth-of-type(4) { transition-delay: 0.18s; }
+        .faq-item.reveal:nth-of-type(5) { transition-delay: 0.24s; }
+
+        .contact-card.reveal:nth-of-type(1) { transition-delay: 0s; }
+        .contact-card.reveal:nth-of-type(2) { transition-delay: 0.1s; }
+        .contact-card.reveal:nth-of-type(3) { transition-delay: 0.2s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="hero-wrapper" id="home">
-
+    <header class="site-header" id="siteHeader">
         <!-- Navigation -->
         <nav class="navbar">
             <div class="logo">
@@ -1533,14 +1764,16 @@
 
             <a href="#contact" class="contact-btn">Contact</a>
         </nav>
+    </header>
 
+    <div class="hero-wrapper" id="home">
         <!-- Hero -->
         <div class="hero-content">
-            <div class="hero-image">
+            <div class="hero-image reveal">
                 <img src="assets/images/hero-showcase.png" alt="SiteBuild Studio mockup: We Design. We Develop. We Deploy. Modern websites that drive results." class="hero-showcase-img">
             </div>
 
-            <div class="hero-text">
+            <div class="hero-text reveal">
                 <h1>Hi, I'm Micaela Hosking and I'm a Designer</h1>
                 <p>
                     I design and build fast, modern, and reliable websites for businesses in Cape Town and beyond. No confusing templates or DIY headaches—just a professional online presence that drives real results.
@@ -1557,13 +1790,13 @@
     <!-- What Can I Do Section -->
     <section class="capability-section">
         <div class="capability-wrapper">
-            <div class="capability-left">
+            <div class="capability-left reveal">
                 <h2>What can I do?</h2>
                 <p>I build custom websites from the ground up, designed and coded specifically around your business, not a one-size-fits-all template.</p>
                 <a href="#pricing" class="see-jobs-btn">See Pricing</a>
             </div>
 
-            <div class="capability-item">
+            <div class="capability-item reveal">
                 <div class="capability-icon">
                     <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="6" y="10" width="36" height="26" rx="4" stroke="#ffffff" stroke-width="2.6"/>
@@ -1585,11 +1818,11 @@
     <!-- About Me Section -->
     <section class="about-section" id="about">
         <div class="about-wrapper">
-            <div class="about-photo">
+            <div class="about-photo reveal">
                 <dotlottie-wc src="https://lottie.host/4ace51d3-358f-4841-9a63-8ee0a889bb60/T11FWFv1as.lottie" autoplay loop></dotlottie-wc>
             </div>
 
-            <div class="about-right">
+            <div class="about-right reveal">
                 <h2>About Me</h2>
                 <p>I am the developer behind SiteBuild Studio, based in Cape Town. I design and build fast, modern, and reliable websites tailored specifically for your business.</p>
                 <p>I believe a great website shouldn't be complicated or stressful—no confusing templates or DIY headaches—just a professional online presence that drives real results. When you work with me, you get a dedicated builder who works closely with you to bring your vision to life from the ground up.</p>
@@ -1600,7 +1833,7 @@
     <!-- Website Build Packages Section -->
     <section class="packages-section" id="pricing">
         <div class="packages-wrapper">
-            <div class="packages-header">
+            <div class="packages-header reveal">
                 <span class="packages-eyebrow">Website Build Packages</span>
                 <h2>Pick Your Starting Point</h2>
                 <p>Built especially for landscaping & garden services, pool maintenance, hair and beauty salons, and other local small businesses that need a site people can actually find. Every package ships with the SEO basics done right — a sitemap, robots.txt, and schema markup, so search engines understand your business from day one.</p>
@@ -1608,7 +1841,7 @@
 
             <div class="packages-grid">
                 <!-- Tier 1 -->
-                <div class="package-card">
+                <div class="package-card reveal">
                     <div class="package-tier">Landing Page</div>
                     <div class="package-tagline">One focused page that gets you online fast</div>
                     <div class="package-price">
@@ -1626,7 +1859,7 @@
                 </div>
 
                 <!-- Tier 2 (Featured) -->
-                <div class="package-card featured">
+                <div class="package-card featured reveal">
                     <span class="package-badge">Most Popular</span>
                     <div class="package-tier">Landing + 2 Pages</div>
                     <div class="package-tagline">Room to tell your story and show your work</div>
@@ -1645,7 +1878,7 @@
                 </div>
 
                 <!-- Tier 3 -->
-                <div class="package-card">
+                <div class="package-card reveal">
                     <div class="package-tier">Full Site</div>
                     <div class="package-tagline">More than 3 pages, for a growing business</div>
                     <div class="package-price">
@@ -1670,7 +1903,7 @@
     <!-- Retainer / Care Plans Section -->
     <section class="retainer-section" id="care-plans">
         <div class="retainer-wrapper">
-            <div class="retainer-header">
+            <div class="retainer-header reveal">
                 <span class="retainer-eyebrow">Ongoing Care</span>
                 <h2>Monthly Care Plans</h2>
                 <p>Your website launch is just the start. These plans keep your content fresh and your business easy to find online — with a real person you can reach when you need a hand.</p>
@@ -1678,7 +1911,7 @@
 
             <div class="retainer-grid">
                 <!-- Tier 1 -->
-                <div class="retainer-card">
+                <div class="retainer-card reveal">
                     <div class="retainer-tier">Maintain</div>
                     <div class="retainer-tagline">For a site that just needs light upkeep</div>
                     <div class="retainer-price">
@@ -1696,7 +1929,7 @@
                 </div>
 
                 <!-- Tier 2 (Featured) -->
-                <div class="retainer-card featured">
+                <div class="retainer-card featured reveal">
                     <span class="retainer-badge">Most Popular</span>
                     <div class="retainer-tier">Grow</div>
                     <div class="retainer-tagline">For a business that wants to be found</div>
@@ -1716,7 +1949,7 @@
                 </div>
 
                 <!-- Tier 3 -->
-                <div class="retainer-card">
+                <div class="retainer-card reveal">
                     <div class="retainer-tier">Partner</div>
                     <div class="retainer-tagline">For a business that keeps growing online</div>
                     <div class="retainer-price">
@@ -1744,7 +1977,7 @@
         <div class="faq-wrapper">
             <h2 class="faq-title">Frequently Asked Questions</h2>
 
-            <div class="faq-item">
+            <div class="faq-item reveal">
                 <button class="faq-question">
                     How long does it take to build a website?
                     <span class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
@@ -1754,7 +1987,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item reveal">
                 <button class="faq-question">
                     Do you code the site from scratch, or use templates?
                     <span class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
@@ -1764,7 +1997,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item reveal">
                 <button class="faq-question">
                     Will my website work well on mobile phones?
                     <span class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
@@ -1774,7 +2007,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item reveal">
                 <button class="faq-question">
                     Can you help with hosting and domains too?
                     <span class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
@@ -1784,7 +2017,7 @@
                 </div>
             </div>
 
-            <div class="faq-item">
+            <div class="faq-item reveal">
                 <button class="faq-question">
                     What happens after my website goes live?
                     <span class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
@@ -1839,12 +2072,62 @@
                 closeMenu();
             }
         });
+
+        var siteHeader = document.getElementById('siteHeader');
+        function updateHeaderScroll() {
+            if (window.scrollY > 24) {
+                siteHeader.classList.add('scrolled');
+            } else {
+                siteHeader.classList.remove('scrolled');
+            }
+        }
+        window.addEventListener('scroll', updateHeaderScroll, { passive: true });
+        updateHeaderScroll();
+
+        var whatsappFab = document.getElementById('whatsappFab');
+        var contactSection = document.getElementById('contact');
+        var contactInView = false;
+
+        if ('IntersectionObserver' in window && contactSection) {
+            var contactObserver = new IntersectionObserver(function (entries) {
+                contactInView = entries[0].isIntersecting;
+                updateFabVisibility();
+            }, { threshold: 0.15 });
+            contactObserver.observe(contactSection);
+        }
+
+        function updateFabVisibility() {
+            var pastHero = window.scrollY > 500;
+            whatsappFab.classList.toggle('visible', pastHero && !contactInView);
+        }
+
+        window.addEventListener('scroll', updateFabVisibility, { passive: true });
+        updateFabVisibility();
+
+        if ('IntersectionObserver' in window) {
+            var revealObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.reveal').forEach(function (el) {
+                revealObserver.observe(el);
+            });
+        } else {
+            document.querySelectorAll('.reveal').forEach(function (el) {
+                el.classList.add('revealed');
+            });
+        }
     </script>
 
     <!-- Contact Me Section -->
     <section class="contact-section" id="contact">
         <div class="contact-wrapper">
-            <div class="contact-left">
+            <div class="contact-left reveal">
                 <h2>Contact Me</h2>
                 <p class="contact-intro">The quickest way to reach me is on WhatsApp. To help me quote accurately, please include:</p>
                 <ul class="contact-checklist">
@@ -1858,7 +2141,7 @@
                 </a>
                 <p class="contact-fallback">Prefer email? Write to <a href="mailto:sitebuilderstudios1@gmail.com">sitebuilderstudios1@gmail.com</a>.</p>
             </div>
-            <div class="contact-right">
+            <div class="contact-right reveal">
                 <dotlottie-wc src="https://lottie.host/e2bd0518-aaa3-42fc-8473-b838ad5d4fd6/9MaAFO7zUa.lottie" autoplay loop></dotlottie-wc>
             </div>
         </div>
@@ -1867,12 +2150,12 @@
     <!-- My Contacts Section -->
     <section class="footer-section">
         <div class="footer-wrapper">
-            <div class="footer-header">
+            <div class="footer-header reveal">
                 <span class="footer-eyebrow">Contact Details</span>
                 <h2 class="contacts-title">Other Ways to Reach Me</h2>
             </div>
             <div class="contacts-grid">
-                <a href="tel:+27845795239" class="contact-card">
+                <a href="tel:+27845795239" class="contact-card reveal">
                     <div class="contact-card-icon icon-pink">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.5 3.5c.6 0 1.15.35 1.4.9l1.2 2.7c.24.53.13 1.15-.28 1.57L8.9 9.6a.6.6 0 0 0-.1.7 12.3 12.3 0 0 0 5 5c.24.13.53.09.7-.1l.93-.92c.42-.41 1.04-.52 1.57-.28l2.7 1.2c.55.25.9.8.9 1.4v2.1c0 1.13-1.02 1.98-2.13 1.78-4.2-.76-7.5-2.6-9.9-5-2.4-2.4-4.24-5.7-5-9.9C2.47 4.52 3.32 3.5 4.45 3.5h3.05z" fill="#ffffff"/>
@@ -1884,7 +2167,7 @@
                     </div>
                 </a>
 
-                <a href="mailto:sitebuilderstudios1@gmail.com" class="contact-card">
+                <a href="mailto:sitebuilderstudios1@gmail.com" class="contact-card reveal">
                     <div class="contact-card-icon icon-black">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="3" y="5.5" width="18" height="13" rx="2.5" fill="#ffffff"/>
@@ -1897,7 +2180,7 @@
                     </div>
                 </a>
 
-                <div class="contact-card">
+                <div class="contact-card reveal">
                     <div class="contact-card-icon icon-gold">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="12" cy="12" r="9" fill="#ffffff"/>
@@ -1917,6 +2200,11 @@
     <div class="copyright-bar">
         <p>&copy; Copyright 2026 SiteBuild Studio - All Rights Reserved</p>
     </div>
+
+    <a class="whatsapp-fab" id="whatsappFab" href="https://wa.me/27845795239?text=Hi%20SiteBuild%20Studio%2C%20I%27d%20like%20a%20website.%20Here%27s%20a%20bit%20about%20my%20business%3A%20%5Bwhat%20you%20do%5D.%20Preferred%20brand%20colors%3A%20%5Bcolors%5D.%20Other%20details%3A%20%5Banything%20else%5D." target="_blank" rel="noopener" aria-label="Message SiteBuild Studio on WhatsApp">
+        <span class="whatsapp-fab-pulse"></span>
+        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.74.46 3.44 1.32 4.94L2.05 22l5.28-1.38a9.87 9.87 0 0 0 4.71 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.11h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.19 8.19 0 0 1 5.83 2.42 8.19 8.19 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.59.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.06-.11-.23-.17-.48-.29z"/></svg>
+    </a>
 
 </body>
 </html>
