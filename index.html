@@ -378,6 +378,52 @@
         }
 
         /* Animated code editor mockup */
+        .about-photo {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(20, 20, 28, 0.25);
+            position: relative;
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .screen-overlay-text {
+            position: absolute;
+            top: 46%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.9rem;
+            color: #111111;
+            letter-spacing: 1px;
+        }
+
+        .screen-overlay-text .bracket {
+            color: #d9534f;
+        }
+
+        @media (max-width: 900px) {
+            .screen-overlay-text {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .screen-overlay-text {
+                font-size: 1.1rem;
+            }
+        }
+
         .code-mockup {
             position: relative;
             background: #14141c;
@@ -1058,27 +1104,9 @@
     <!-- About Me Section -->
     <section class="about-section">
         <div class="about-wrapper">
-            <div class="code-mockup">
-                <div class="code-topbar">
-                    <span class="code-dot red"></span>
-                    <span class="code-dot yellow"></span>
-                    <span class="code-dot green"></span>
-                    <span class="code-filename">sitebuild-studio.html</span>
-                </div>
-                <div class="code-body">
-                    <div class="pulse-dot p1"></div>
-                    <div class="pulse-dot p2"></div>
-                    <div class="code-line"><span class="code-punct">&lt;</span><span class="code-tag">section</span> <span class="code-attr">class</span><span class="code-punct">=</span><span class="code-string">"hero"</span><span class="code-punct">&gt;</span></div>
-                    <div class="code-line code-indent"><span class="code-punct">&lt;</span><span class="code-tag">h1</span><span class="code-punct">&gt;</span>Micaela Hosking<span class="code-punct">&lt;/</span><span class="code-tag">h1</span><span class="code-punct">&gt;</span></div>
-                    <div class="code-line code-indent"><span class="code-comment">// building something great</span></div>
-                    <div class="code-line code-indent2"><span class="code-punct">&lt;</span><span class="code-tag">p</span><span class="code-punct">&gt;</span>fast<span class="code-punct">.</span> modern<span class="code-punct">.</span> reliable<span class="code-punct">.</span><span class="code-punct">&lt;/</span><span class="code-tag">p</span><span class="code-punct">&gt;</span></div>
-                    <div class="code-line"><span class="code-punct">&lt;/</span><span class="code-tag">section</span><span class="code-punct">&gt;</span></div>
-                    <div class="code-line"></div>
-                    <div class="code-line"><span class="code-tag">function</span> <span class="code-attr">launchSite</span><span class="code-punct">() {</span></div>
-                    <div class="code-line code-indent"><span class="code-attr">deploy</span><span class="code-punct">(</span><span class="code-string">"production"</span><span class="code-punct">);</span></div>
-                    <div class="code-line code-indent"><span class="code-attr">status</span> <span class="code-punct">=</span> <span class="code-string">"live"</span><span class="code-cursor"></span></div>
-                    <div class="code-line"><span class="code-punct">}</span></div>
-                </div>
+            <div class="about-photo">
+                <img src="https://images.unsplash.com/photo-1750056393331-82e69d28c9d9?auto=format&fit=crop&w=900&q=80" alt="Laptop with blank screen mockup, ready for web design overlay">
+                <div class="screen-overlay-text"><span class="bracket">&lt;</span>WEB DESIGN<span class="bracket">&gt;</span></div>
             </div>
 
             <div class="about-right">
