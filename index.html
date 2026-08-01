@@ -777,6 +777,195 @@
                 font-size: 0.78rem;
             }
         }
+        /* Portfolio Section */
+        .portfolio-section {
+            background-color: #f6cddc;
+            padding: 90px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .portfolio-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 56px;
+        }
+
+        .portfolio-eyebrow {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #e6427c;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-header h2 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #111111;
+            margin-bottom: 18px;
+        }
+
+        .portfolio-header p {
+            font-size: 1.02rem;
+            color: #444444;
+            line-height: 1.7;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+        }
+
+        .portfolio-card {
+            background-color: #ffffff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.16);
+        }
+
+        .portfolio-preview {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background-color: #eee7dd;
+            border-bottom: 1px solid #f0e9e0;
+        }
+
+        .portfolio-preview iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400%;
+            height: 400%;
+            transform: scale(0.25);
+            transform-origin: top left;
+            border: none;
+            pointer-events: none;
+        }
+
+        .portfolio-preview-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(17, 17, 17, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .portfolio-card:hover .portfolio-preview-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-preview-overlay span {
+            background: #ffffff;
+            color: #111111;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 12px 24px;
+            border-radius: 30px;
+        }
+
+        .portfolio-info {
+            padding: 26px 26px 28px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #c99a5f;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #111111;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-info p {
+            font-size: 0.9rem;
+            color: #555555;
+            line-height: 1.6;
+            margin-bottom: 22px;
+            flex-grow: 1;
+        }
+
+        .portfolio-visit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: #111111;
+            color: #ffffff;
+            padding: 13px 0;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .portfolio-visit-btn:hover {
+            background-color: #333333;
+            transform: translateY(-1px);
+        }
+
+        .portfolio-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6b5a62;
+            margin-top: 36px;
+        }
+
+        @media (max-width: 900px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .portfolio-section {
+                padding: 60px 24px;
+            }
+
+            .portfolio-header h2 {
+                font-size: 2rem;
+            }
+        }
         /* Website Build Packages Section */
         .packages-section {
             background-color: #ffffff;
@@ -1752,6 +1941,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About Me</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#care-plans">Care Plans</a></li>
             </ul>
@@ -1827,6 +2017,60 @@
                 <p>I am the developer behind SiteBuild Studio, based in Cape Town. I design and build fast, modern, and reliable websites tailored specifically for your business.</p>
                 <p>I believe a great website shouldn't be complicated or stressful—no confusing templates or DIY headaches—just a professional online presence that drives real results. When you work with me, you get a dedicated builder who works closely with you to bring your vision to life from the ground up.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="portfolio-wrapper">
+            <div class="portfolio-header reveal">
+                <span class="portfolio-eyebrow">Recent Work</span>
+                <h2>See the Quality For Yourself</h2>
+                <p>A few concept builds showing the range of what I design and develop — live previews below, or open each one in full.</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-card reveal">
+                    <div class="portfolio-preview">
+                        <iframe src="cosmetic-demo/index.html" loading="lazy" title="Lumora cosmetics demo site preview"></iframe>
+                        <div class="portfolio-preview-overlay"><span>Live Preview</span></div>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-tag">Beauty &amp; Retail</span>
+                        <h3>Lumora Cosmetics</h3>
+                        <p>A botanical beauty storefront with a shade-matching product experience, built to show off e-commerce-style product presentation.</p>
+                        <a href="cosmetic-demo/index.html" target="_blank" rel="noopener" class="portfolio-visit-btn">Visit Full Site &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card reveal">
+                    <div class="portfolio-preview">
+                        <iframe src="landscaping-demo/index.html" loading="lazy" title="Terra and Tide landscaping demo site preview"></iframe>
+                        <div class="portfolio-preview-overlay"><span>Live Preview</span></div>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-tag">Local Service Business</span>
+                        <h3>Terra &amp; Tide Outdoor Co.</h3>
+                        <p>A landscaping and pool maintenance site with an interactive quote widget, built for service businesses that need to convert visitors into bookings.</p>
+                        <a href="landscaping-demo/index.html" target="_blank" rel="noopener" class="portfolio-visit-btn">Visit Full Site &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card reveal">
+                    <div class="portfolio-preview">
+                        <iframe src="salon-demo/index.html" loading="lazy" title="Noire and Co salon demo site preview"></iframe>
+                        <div class="portfolio-preview-overlay"><span>Live Preview</span></div>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-tag">Hair &amp; Beauty Salon</span>
+                        <h3>Noire &amp; Co. Salon</h3>
+                        <p>An editorial salon site with a live service-and-price menu and booking widget, built for appointment-based businesses.</p>
+                        <a href="salon-demo/index.html" target="_blank" rel="noopener" class="portfolio-visit-btn">Visit Full Site &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <p class="portfolio-note">These are concept builds created to demonstrate design range — not real client businesses.</p>
         </div>
     </section>
 
