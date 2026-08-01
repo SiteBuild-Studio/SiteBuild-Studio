@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Havenmark Properties (Demo Site)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'DM Sans', sans-serif;
+        background-color: #EDE8E0;
+        color: #1B2A3D;
+        padding-top: 42px;
+        overflow-x: hidden;
+    }
+    h1, h2, h3, .display { font-family: 'Cormorant Garamond', serif; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* Demo banner - shared, standardized */
+    .demo-banner {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 2000;
+        background-color: #14141c; color: #d8d4cf;
+        display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+        padding: 10px 20px; font-size: 0.8rem;
+    }
+    .demo-banner-badge {
+        background-color: #d9a870; color: #14141c; font-weight: 800; letter-spacing: 1.5px;
+        padding: 3px 10px; border-radius: 20px; font-size: 0.7rem;
+    }
+    .demo-banner-text { color: #a8a29b; }
+    .demo-banner-back { color: #ffffff; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.4); white-space: nowrap; }
+    .demo-banner-back:hover { border-color: #ffffff; }
+
+    /* Nav */
+    .nav {
+        max-width: 1300px; margin: 0 auto;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 32px 50px 10px;
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 700; letter-spacing: 0.5px; }
+    .nav-logo span { color: #A8804F; }
+    .nav-links { display: flex; gap: 34px; list-style: none; font-size: 0.86rem; font-weight: 600; }
+    .nav-links a { position: relative; padding-bottom: 3px; }
+    .nav-links a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1.5px; background:#A8804F; transition:width .25s ease; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { background: #1B2A3D; color: #fff; padding: 12px 24px; border-radius: 4px; font-weight: 700; font-size: 0.82rem; }
+    @media (max-width: 850px) { .nav-links { display: none; } .nav { padding: 26px 24px 10px; } }
+
+    /* Hero */
+    .hero { max-width: 1300px; margin: 0 auto; padding: 30px 50px 0; }
+    .hero-inner { position: relative; border-radius: 6px; overflow: hidden; min-height: 560px; display: flex; align-items: flex-end; }
+    .hero-inner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-inner::before {
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(0deg, rgba(27,42,61,0.88) 0%, rgba(27,42,61,0.25) 55%, rgba(27,42,61,0.05) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; padding: 50px; max-width: 640px; }
+    .hero-eyebrow { color: #d9c19a; font-weight: 700; font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 18px; display: block; }
+    .hero-content h1 { color: #fff; font-size: 3rem; font-weight: 600; line-height: 1.12; margin-bottom: 20px; }
+    .hero-content p { color: #e4e0d8; font-size: 1rem; line-height: 1.65; margin-bottom: 30px; max-width: 480px; }
+
+    .hero-toggle { display: inline-flex; background: rgba(255,255,255,0.12); border-radius: 30px; padding: 5px; }
+    .hero-toggle button {
+        border: none; background: none; padding: 12px 26px; border-radius: 30px;
+        font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: #e4e0d8; cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .hero-toggle button.active { background: #A8804F; color: #fff; }
+
+    @media (max-width: 900px) {
+        .hero { padding: 24px 24px 0; }
+        .hero-content { padding: 34px 24px; }
+        .hero-content h1 { font-size: 2.2rem; }
+    }
+
+    /* Section shared */
+    .section-head { max-width: 1300px; margin: 0 auto; padding: 0 50px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+    .eyebrow { color: #A8804F; font-weight: 700; font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase; display: block; margin-bottom: 10px; }
+    .section-head h2 { font-size: 2.1rem; font-weight: 600; }
+    .section-head p { color: #5c6577; font-size: 0.92rem; max-width: 360px; }
+
+    /* Listings */
+    .listings { padding: 90px 0 80px; }
+    .listing-grid { max-width: 1300px; margin: 0 auto; padding: 0 50px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+    .listing-card { background: #fff; border-radius: 6px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; }
+    .listing-card:hover { transform: translateY(-6px); box-shadow: 0 24px 45px rgba(27,42,61,0.14); }
+    .listing-card.hidden-filter { display: none; }
+    .listing-photo { aspect-ratio: 4/3; overflow: hidden; position: relative; }
+    .listing-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .listing-card:hover .listing-photo img { transform: scale(1.06); }
+    .listing-tag {
+        position: absolute; top: 14px; left: 14px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.5px;
+        padding: 5px 12px; border-radius: 3px; text-transform: uppercase;
+    }
+    .listing-tag.buy { background: #1B2A3D; color: #fff; }
+    .listing-tag.rent { background: #A8804F; color: #fff; }
+    .listing-info { padding: 22px 22px 24px; }
+    .listing-price { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+    .listing-address { font-size: 0.85rem; color: #5c6577; margin-bottom: 14px; }
+    .listing-specs { display: flex; gap: 16px; font-size: 0.8rem; color: #1B2A3D; font-weight: 600; border-top: 1px solid #eee; padding-top: 14px; }
+
+    @media (max-width: 1000px) { .listing-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 650px) {
+        .listings { padding: 70px 0 50px; }
+        .listing-grid { grid-template-columns: 1fr; padding: 0 24px; }
+        .section-head { padding: 0 24px; }
+    }
+
+    /* Trust band */
+    .trust { background: #1B2A3D; color: #fff; padding: 90px 50px; }
+    .trust .eyebrow { color: #d9c19a; }
+    .trust .section-head h2 { color: #fff; }
+    .trust-grid { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .trust-tile { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 28px 24px; }
+    .trust-tile .icon { font-size: 1.4rem; margin-bottom: 14px; display: block; }
+    .trust-tile h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; font-family: 'DM Sans', sans-serif; }
+    .trust-tile p { font-size: 0.85rem; color: #b8c0cc; line-height: 1.55; }
+
+    @media (max-width: 1000px) { .trust-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .trust { padding: 60px 24px; } }
+
+    /* Neighborhoods */
+    .neighborhoods { padding: 80px 50px; text-align: center; }
+    .neighborhoods h2 { font-size: 2rem; font-weight: 600; margin-bottom: 14px; }
+    .neighborhoods p { color: #5c6577; margin-bottom: 30px; }
+    .area-tags { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; max-width: 760px; margin: 0 auto; }
+    .area-tag { background: #fff; border: 1px solid #dcd5c8; padding: 10px 22px; border-radius: 30px; font-size: 0.85rem; font-weight: 600; }
+
+    @media (max-width: 600px) { .neighborhoods { padding: 60px 24px; } }
+
+    /* Testimonials */
+    .testimonials { padding: 90px 50px; max-width: 900px; margin: 0 auto; text-align: center; }
+    .testimonials blockquote { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-style: italic; font-weight: 600; line-height: 1.4; margin-bottom: 18px; }
+    .testimonials cite { font-size: 0.8rem; color: #5c6577; font-style: normal; letter-spacing: 0.5px; text-transform: uppercase; }
+
+    @media (max-width: 600px) {
+        .testimonials { padding: 60px 24px; }
+        .testimonials blockquote { font-size: 1.3rem; }
+    }
+
+    /* Contact band */
+    .contact-band { background: #A8804F; color: #fff; padding: 80px 50px; text-align: center; }
+    .contact-band h2 { font-size: 2.2rem; font-weight: 600; margin-bottom: 16px; }
+    .contact-band p { margin-bottom: 28px; opacity: 0.95; }
+    .contact-band .details { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; font-size: 0.9rem; font-weight: 600; }
+
+    @media (max-width: 600px) { .contact-band { padding: 60px 24px; } }
+
+    /* Footer */
+    footer { background: #12181f; color: #9aa2ad; padding: 40px 50px 30px; }
+    .footer-demo-note {
+        background: rgba(217,168,112,0.1); border: 1px solid rgba(217,168,112,0.3); border-radius: 6px;
+        padding: 14px 18px; font-size: 0.78rem; color: #d3c8bb; max-width: 1300px; margin: 0 auto 24px;
+    }
+    .footer-bottom {
+        max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;
+        flex-wrap: wrap; gap: 14px; font-size: 0.78rem;
+    }
+    .footer-bottom a { color: #fff; font-weight: 700; }
+    @media (max-width: 600px) { footer { padding: 40px 24px 24px; } }
+</style>
+</head>
+<body>
+
+    <div class="demo-banner">
+        <span class="demo-banner-badge">Demo Site</span>
+        <span class="demo-banner-text">Concept build by SiteBuild Studio — fictional business, for portfolio purposes only.</span>
+        <a href="../" class="demo-banner-back">&larr; Back to SiteBuild Studio</a>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-logo">Haven<span>mark</span></div>
+        <ul class="nav-links">
+            <li><a href="#listings">Listings</a></li>
+            <li><a href="#neighborhoods">Neighborhoods</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Book a Viewing</a>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-inner">
+            <img src="https://images.unsplash.com/photo-1758448756207-54505680d130?auto=format&fit=crop&w=1400&q=80" alt="Modern house exterior">
+            <div class="hero-content">
+                <span class="hero-eyebrow">Cape Town Real Estate</span>
+                <h1>Find a home that fits how you actually live.</h1>
+                <p>Havenmark curates a small number of properties at a time — each one visited, verified, and priced fairly before it ever reaches this page.</p>
+                <div class="hero-toggle" id="heroToggle">
+                    <button class="active" data-filter="all">All Listings</button>
+                    <button data-filter="buy">Buy</button>
+                    <button data-filter="rent">Rent</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="listings" id="listings">
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">Current Listings</span>
+                <h2>Homes on the market right now</h2>
+            </div>
+            <p>A small, hand-picked selection — updated as properties move.</p>
+        </div>
+        <div class="listing-grid" id="listingGrid">
+            <div class="listing-card" data-type="buy">
+                <div class="listing-photo">
+                    <span class="listing-tag buy">For Sale</span>
+                    <img src="https://images.unsplash.com/photo-1758448756207-54505680d130?auto=format&fit=crop&w=600&q=80" alt="Modern house in Camps Bay">
+                </div>
+                <div class="listing-info">
+                    <div class="listing-price">R8,950,000</div>
+                    <div class="listing-address">Camps Bay, Cape Town</div>
+                    <div class="listing-specs"><span>4 Bed</span><span>3 Bath</span><span>320 m&sup2;</span></div>
+                </div>
+            </div>
+            <div class="listing-card" data-type="buy">
+                <div class="listing-photo">
+                    <span class="listing-tag buy">For Sale</span>
+                    <img src="https://images.unsplash.com/photo-1666157827458-4d6ad305458e?auto=format&fit=crop&w=600&q=80" alt="Beach house in Hout Bay">
+                </div>
+                <div class="listing-info">
+                    <div class="listing-price">R6,200,000</div>
+                    <div class="listing-address">Hout Bay, Cape Town</div>
+                    <div class="listing-specs"><span>3 Bed</span><span>2 Bath</span><span>210 m&sup2;</span></div>
+                </div>
+            </div>
+            <div class="listing-card" data-type="rent">
+                <div class="listing-photo">
+                    <span class="listing-tag rent">To Rent</span>
+                    <img src="https://images.unsplash.com/photo-1768195357124-820081421793?auto=format&fit=crop&w=600&q=80" alt="Apartment building in City Bowl">
+                </div>
+                <div class="listing-info">
+                    <div class="listing-price">R32,000 <span style="font-size:0.9rem;font-weight:500;">/ mo</span></div>
+                    <div class="listing-address">City Bowl, Cape Town</div>
+                    <div class="listing-specs"><span>2 Bed</span><span>2 Bath</span><span>95 m&sup2;</span></div>
+                </div>
+            </div>
+            <div class="listing-card" data-type="rent">
+                <div class="listing-photo">
+                    <span class="listing-tag rent">To Rent</span>
+                    <img src="https://images.unsplash.com/photo-1758448755856-01d3add0177b?auto=format&fit=crop&w=600&q=80" alt="Apartment interior in Sea Point">
+                </div>
+                <div class="listing-info">
+                    <div class="listing-price">R24,500 <span style="font-size:0.9rem;font-weight:500;">/ mo</span></div>
+                    <div class="listing-address">Sea Point, Cape Town</div>
+                    <div class="listing-specs"><span>2 Bed</span><span>1 Bath</span><span>78 m&sup2;</span></div>
+                </div>
+            </div>
+            <div class="listing-card" data-type="buy">
+                <div class="listing-photo">
+                    <span class="listing-tag buy">For Sale</span>
+                    <img src="https://images.unsplash.com/photo-1718579019220-98697dc2fd72?auto=format&fit=crop&w=600&q=80" alt="Townhouse in Woodstock">
+                </div>
+                <div class="listing-info">
+                    <div class="listing-price">R3,450,000</div>
+                    <div class="listing-address">Woodstock, Cape Town</div>
+                    <div class="listing-specs"><span>3 Bed</span><span>2 Bath</span><span>140 m&sup2;</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust">
+        <div class="section-head">
+            <div>
+                <span class="eyebrow">Why Havenmark</span>
+                <h2>Buying and renting, done properly</h2>
+            </div>
+        </div>
+        <div class="trust-grid">
+            <div class="trust-tile">
+                <span class="icon">&#9989;</span>
+                <h3>Verified Listings</h3>
+                <p>Every property is visited in person before it goes live.</p>
+            </div>
+            <div class="trust-tile">
+                <span class="icon">&#128181;</span>
+                <h3>No Hidden Fees</h3>
+                <p>The price you see is the price you're quoted.</p>
+            </div>
+            <div class="trust-tile">
+                <span class="icon">&#128205;</span>
+                <h3>Local Expertise</h3>
+                <p>Agents who actually live in the areas they sell.</p>
+            </div>
+            <div class="trust-tile">
+                <span class="icon">&#128197;</span>
+                <h3>Flexible Viewings</h3>
+                <p>Evenings and weekends, booked around your schedule.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="neighborhoods" id="neighborhoods">
+        <h2>Neighborhoods We Cover</h2>
+        <p>Based in Cape Town, focused on the areas we actually know well.</p>
+        <div class="area-tags">
+            <span class="area-tag">Camps Bay</span>
+            <span class="area-tag">Sea Point</span>
+            <span class="area-tag">City Bowl</span>
+            <span class="area-tag">Woodstock</span>
+            <span class="area-tag">Hout Bay</span>
+            <span class="area-tag">Green Point</span>
+            <span class="area-tag">Observatory</span>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <blockquote>&ldquo;They talked us out of a property we loved because the roof needed work they knew we didn't want to deal with. That's when we trusted them.&rdquo;</blockquote>
+        <cite>&mdash; Demo Review</cite>
+    </section>
+
+    <section class="contact-band" id="contact">
+        <h2>Ready to book a viewing?</h2>
+        <p>Tell us what you're looking for and we'll line up a few options.</p>
+        <div class="details">
+            <span>&#128222; 000 000 0000</span>
+            <span>&#9993; test@test.com</span>
+            <span>&#128205; Cape Town, South Africa</span>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-demo-note">
+            This is a fictional demo built by SiteBuild Studio to showcase web design and development work. No listings, agents, or transactions are real, and all contact details above are placeholders.
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Havenmark Properties &mdash; Fictional business, demo site only.</span>
+            <a href="../">&larr; Back to SiteBuild Studio</a>
+        </div>
+    </footer>
+
+    <script>
+        var toggleBtns = document.querySelectorAll('#heroToggle button');
+        var cards = document.querySelectorAll('.listing-card');
+        toggleBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                toggleBtns.forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                var filter = btn.getAttribute('data-filter');
+                cards.forEach(function (card) {
+                    if (filter === 'all' || card.getAttribute('data-type') === filter) {
+                        card.classList.remove('hidden-filter');
+                    } else {
+                        card.classList.add('hidden-filter');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
