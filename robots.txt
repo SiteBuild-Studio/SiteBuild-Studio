@@ -1,4 +1,59 @@
 User-agent: *
 Allow: /
 
+# OpenAI
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+
+# Google AI (separate from Googlebot -- does not affect normal Google Search ranking)
+User-agent: Google-Extended
+Allow: /
+
+# Apple
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta (Facebook / Instagram AI)
+User-agent: meta-externalagent
+Allow: /
+User-agent: FacebookBot
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# ByteDance / TikTok
+User-agent: Bytespider
+Allow: /
+
+# Common Crawl (open dataset used by many AI labs, including some not listed individually)
+User-agent: CCBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
 Sitemap: https://sitebuildstudio.co.za/sitemap.xml
+Sitemap: https://sitebuild-studio.github.io/SiteBuild-Studio/sitemap.xml
