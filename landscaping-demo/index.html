@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terra &amp; Tide Outdoor Co. (Demo Site)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Work Sans', sans-serif;
+        background-color: #FAF8F3;
+        color: #14524F;
+        padding-top: 42px;
+        overflow-x: hidden;
+    }
+    h1, h2, h3, .display { font-family: 'Sora', sans-serif; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* Demo banner - shared across all demo sites */
+    .demo-banner {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 2000;
+        background-color: #0d2f2d;
+        color: #eef2ee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+    .demo-banner-badge {
+        background-color: #C1673A;
+        color: #fff;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+    }
+    .demo-banner-text { color: #cfd8d1; }
+    .demo-banner-back {
+        color: #ffffff;
+        font-weight: 700;
+        border-bottom: 1px solid rgba(255,255,255,0.4);
+        white-space: nowrap;
+    }
+    .demo-banner-back:hover { border-color: #ffffff; }
+
+    /* Nav */
+    .nav {
+        max-width: 1300px; margin: 0 auto;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 26px 50px;
+        position: relative; z-index: 100;
+    }
+    .nav-logo { font-family: 'Sora', sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; letter-spacing: 0.2px; }
+    .nav-logo span { color: #7fd8d1; }
+    .nav-links { display: flex; gap: 32px; list-style: none; font-size: 0.88rem; font-weight: 600; }
+    .nav-links a { color: #eef2ee; opacity: 0.88; }
+    .nav-links a:hover { opacity: 1; }
+    .nav-cta {
+        background: #C1673A; color: #fff; padding: 12px 24px; border-radius: 8px;
+        font-weight: 700; font-size: 0.85rem; transition: background 0.2s ease;
+    }
+    .nav-cta:hover { background: #a95329; }
+    @media (max-width: 850px) {
+        .nav-links { display: none; }
+        .nav { padding: 22px 24px; }
+    }
+
+    /* Hero */
+    .hero {
+        position: relative;
+        min-height: 640px;
+        display: flex;
+        flex-direction: column;
+        background: #0d2f2d;
+    }
+    .hero-bg {
+        position: absolute; inset: 0;
+        background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80');
+        background-size: cover; background-position: center;
+    }
+    .hero-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(13,47,45,0.75) 0%, rgba(13,47,45,0.55) 45%, rgba(13,47,45,0.85) 100%);
+    }
+    .hero-content {
+        position: relative; z-index: 2;
+        max-width: 1300px; margin: 0 auto; padding: 70px 50px 110px;
+        flex-grow: 1; display: flex; flex-direction: column; justify-content: center;
+    }
+    .hero-eyebrow {
+        color: #7fd8d1; font-weight: 700; font-size: 0.8rem; letter-spacing: 3px;
+        text-transform: uppercase; margin-bottom: 20px;
+    }
+    .hero h1 {
+        color: #fff; font-size: 3.4rem; font-weight: 700; line-height: 1.1;
+        max-width: 720px; margin-bottom: 22px;
+    }
+    .hero p { color: #dbe6e2; font-size: 1.05rem; max-width: 500px; line-height: 1.7; margin-bottom: 40px; }
+
+    /* Signature: quote toggle card */
+    .quote-card {
+        position: relative; z-index: 3;
+        background: #fff; border-radius: 18px;
+        max-width: 1300px; margin: -60px auto 0;
+        padding: 30px 40px;
+        box-shadow: 0 30px 60px rgba(13,47,45,0.25);
+        display: flex; align-items: center; gap: 30px; flex-wrap: wrap;
+    }
+    .quote-toggle {
+        display: flex; background: #F1EEE4; border-radius: 40px; padding: 5px;
+    }
+    .quote-toggle button {
+        border: none; background: none; padding: 12px 24px; border-radius: 40px;
+        font-family: 'Work Sans', sans-serif; font-weight: 700; font-size: 0.88rem;
+        color: #5c6d68; cursor: pointer; transition: all 0.25s ease;
+    }
+    .quote-toggle button.active { background: #14524F; color: #fff; }
+    .quote-detail { flex: 1; min-width: 220px; }
+    .quote-detail h4 { font-size: 1.05rem; font-weight: 700; color: #14524F; margin-bottom: 4px; }
+    .quote-detail p { font-size: 0.85rem; color: #6b7d78; }
+    .quote-btn {
+        background: #C1673A; color: #fff; padding: 15px 30px; border-radius: 10px;
+        font-weight: 700; font-size: 0.9rem; white-space: nowrap; transition: background 0.2s ease;
+    }
+    .quote-btn:hover { background: #a95329; }
+
+    @media (max-width: 900px) {
+        .hero h1 { font-size: 2.3rem; }
+        .hero-content { padding: 50px 24px 90px; }
+        .quote-card { margin: -40px 20px 0; padding: 24px; flex-direction: column; align-items: stretch; }
+    }
+
+    /* Services */
+    .services { padding: 120px 50px 90px; max-width: 1300px; margin: 0 auto; }
+    .section-head { max-width: 560px; margin-bottom: 50px; }
+    .eyebrow { color: #C1673A; font-weight: 700; font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase; display: block; margin-bottom: 12px; }
+    .section-head h2 { font-size: 2.1rem; font-weight: 700; line-height: 1.2; }
+    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .service-card {
+        background: #fff; border: 1px solid #ece7d9; border-radius: 16px; padding: 30px 24px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(20,82,79,0.1); }
+    .service-icon {
+        width: 48px; height: 48px; border-radius: 12px; background: #EAF4F2;
+        display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 18px;
+    }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+    .service-card p { font-size: 0.88rem; color: #6b7d78; line-height: 1.55; }
+
+    @media (max-width: 1000px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) {
+        .services { padding: 80px 24px 60px; }
+        .services-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Process */
+    .process { background: #14524F; color: #fff; padding: 90px 50px; }
+    .process-wrapper { max-width: 1300px; margin: 0 auto; }
+    .process .section-head h2 { color: #fff; }
+    .process .eyebrow { color: #7fd8d1; }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 20px; }
+    .process-step { position: relative; padding-top: 44px; }
+    .process-step .num {
+        position: absolute; top: 0; left: 0;
+        font-family: 'Sora', sans-serif; font-size: 0.85rem; font-weight: 700;
+        color: #0d2f2d; background: #7fd8d1; width: 34px; height: 34px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+    }
+    .process-step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+    .process-step p { font-size: 0.85rem; color: #b9d0cb; line-height: 1.55; }
+
+    @media (max-width: 900px) {
+        .process { padding: 70px 24px; }
+        .process-steps { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 550px) { .process-steps { grid-template-columns: 1fr; } }
+
+    /* Gallery */
+    .gallery { padding: 100px 50px; max-width: 1300px; margin: 0 auto; }
+    .gallery-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px; height: 520px; }
+    .gallery-item { position: relative; border-radius: 16px; overflow: hidden; }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-caption {
+        position: absolute; bottom: 0; left: 0; right: 0;
+        background: linear-gradient(0deg, rgba(13,47,45,0.85), transparent);
+        color: #fff; padding: 20px 18px 16px; font-size: 0.85rem; font-weight: 600;
+    }
+    @media (max-width: 900px) {
+        .gallery { padding: 70px 24px; }
+        .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 200px); height: auto; }
+        .gallery-item:first-child { grid-row: span 1; grid-column: span 2; }
+    }
+
+    /* Service areas */
+    .areas { background: #F1EEE4; padding: 80px 50px; text-align: center; }
+    .areas h2 { font-size: 1.9rem; font-weight: 700; margin-bottom: 14px; }
+    .areas p { color: #6b7d78; margin-bottom: 30px; }
+    .area-tags { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; max-width: 700px; margin: 0 auto; }
+    .area-tag {
+        background: #fff; border: 1px solid #ddd6c3; padding: 10px 20px; border-radius: 30px;
+        font-size: 0.85rem; font-weight: 600; color: #14524F;
+    }
+
+    /* Testimonials */
+    .testimonials { padding: 90px 50px; max-width: 1300px; margin: 0 auto; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+    .testimonial-card { background: #fff; border: 1px solid #ece7d9; border-radius: 16px; padding: 28px; }
+    .testimonial-card .stars { color: #C1673A; margin-bottom: 14px; font-size: 0.9rem; }
+    .testimonial-card p { font-size: 0.92rem; color: #3d504b; line-height: 1.65; margin-bottom: 18px; }
+    .testimonial-card .who { font-size: 0.82rem; font-weight: 700; color: #14524F; }
+    .testimonial-card .who span { font-weight: 500; color: #8a9a95; }
+
+    @media (max-width: 900px) {
+        .testimonials { padding: 70px 24px; }
+        .testimonial-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Contact / quote form */
+    .contact { background: #0d2f2d; color: #fff; padding: 100px 50px; }
+    .contact-wrapper { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .contact h2 { font-size: 2.1rem; font-weight: 700; margin-bottom: 18px; }
+    .contact p { color: #b9d0cb; line-height: 1.7; margin-bottom: 26px; max-width: 420px; }
+    .contact-detail { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; font-size: 0.92rem; color: #dbe6e2; }
+    .contact-detail .ic { width: 34px; height: 34px; border-radius: 50%; background: rgba(127,216,209,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-form { background: #fff; border-radius: 16px; padding: 34px; }
+    .contact-form input, .contact-form select, .contact-form textarea {
+        width: 100%; border: 1px solid #e0dccf; background: #FAF8F3; border-radius: 8px;
+        padding: 14px 16px; font-family: 'Work Sans', sans-serif; font-size: 0.9rem; margin-bottom: 14px; color: #14524F;
+    }
+    .contact-form textarea { min-height: 90px; resize: none; }
+    .contact-form button {
+        width: 100%; background: #C1673A; color: #fff; border: none; padding: 15px; border-radius: 8px;
+        font-weight: 700; font-size: 0.92rem; cursor: pointer; font-family: 'Work Sans', sans-serif; transition: background 0.2s ease;
+    }
+    .contact-form button:hover { background: #a95329; }
+
+    @media (max-width: 900px) {
+        .contact { padding: 70px 24px; }
+        .contact-wrapper { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    /* Footer */
+    footer { background: #08211f; color: #93a9a4; padding: 40px 50px 30px; }
+    .footer-demo-note {
+        background: rgba(193,103,58,0.12); border: 1px solid rgba(193,103,58,0.3);
+        border-radius: 10px; padding: 14px 18px; font-size: 0.78rem; color: #d9c9bb;
+        max-width: 1300px; margin: 0 auto 24px;
+    }
+    .footer-bottom {
+        max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between;
+        align-items: center; flex-wrap: wrap; gap: 14px; font-size: 0.78rem;
+    }
+    .footer-bottom a { color: #fff; font-weight: 700; }
+
+    @media (max-width: 600px) { footer { padding: 40px 24px 24px; } }
+</style>
+</head>
+<body>
+
+    <div class="demo-banner">
+        <span class="demo-banner-badge">Demo Site</span>
+        <span class="demo-banner-text">Concept build by SiteBuild Studio — fictional business, for portfolio purposes only.</span>
+        <a href="../" class="demo-banner-back">&larr; Back to SiteBuild Studio</a>
+    </div>
+
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <nav class="nav">
+            <div class="nav-logo">Terra <span>&amp;</span> Tide</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Our Process</a></li>
+                <li><a href="#work">Recent Work</a></li>
+                <li><a href="#areas">Areas We Serve</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Get a Quote</a>
+        </nav>
+        <div class="hero-content">
+            <span class="hero-eyebrow">Landscaping &amp; Pool Care</span>
+            <h1>Gardens that grow. Pools that gleam.</h1>
+            <p>One team for the whole outdoor picture — from garden design and planting to weekly pool maintenance, so your outside space stays ready for anything.</p>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-toggle" id="quoteToggle">
+            <button class="active" data-service="garden">Garden Design</button>
+            <button data-service="pool">Pool Maintenance</button>
+        </div>
+        <div class="quote-detail" id="quoteDetail">
+            <h4>Free garden design consultation</h4>
+            <p>A site visit and concept plan, tailored to your space and your budget.</p>
+        </div>
+        <a href="#contact" class="quote-btn">Request Free Quote</a>
+    </div>
+
+    <section class="services" id="services">
+        <div class="section-head">
+            <span class="eyebrow">What We Do</span>
+            <h2>Everything outside, handled by one team</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">&#127793;</div>
+                <h3>Garden Design</h3>
+                <p>Full landscape concepts, planting plans, and hardscaping built around how you actually use your garden.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#127946;</div>
+                <h3>Pool Maintenance</h3>
+                <p>Weekly cleaning, chemical balancing, and equipment checks so your pool is always ready to jump in.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#128167;</div>
+                <h3>Irrigation Systems</h3>
+                <p>Water-wise irrigation design and installation that keeps your garden thriving without the guesswork.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#128161;</div>
+                <h3>Outdoor Lighting</h3>
+                <p>Low-voltage lighting design that makes your garden and poolside just as good after dark.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="process" id="process">
+        <div class="process-wrapper">
+            <div class="section-head">
+                <span class="eyebrow">How It Works</span>
+                <h2>From first visit to ongoing care</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <span class="num">1</span>
+                    <h3>Site Visit</h3>
+                    <p>We walk the space with you and talk through what's working and what isn't.</p>
+                </div>
+                <div class="process-step">
+                    <span class="num">2</span>
+                    <h3>Custom Quote</h3>
+                    <p>A clear, itemized plan and price — no vague estimates.</p>
+                </div>
+                <div class="process-step">
+                    <span class="num">3</span>
+                    <h3>Build &amp; Install</h3>
+                    <p>Our crew handles the work start to finish, on the timeline we agreed.</p>
+                </div>
+                <div class="process-step">
+                    <span class="num">4</span>
+                    <h3>Ongoing Care</h3>
+                    <p>Scheduled maintenance visits keep everything looking as good as day one.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="work">
+        <div class="section-head">
+            <span class="eyebrow">Recent Work</span>
+            <h2>A few projects we're proud of</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=900&q=80" alt="Garden landscaping project">
+                <div class="gallery-caption">Garden Refresh — Constantia</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=600&q=80" alt="Pool maintenance project">
+                <div class="gallery-caption">Pool Restoration — Bishopscourt</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1591825729269-caeb344f6df2?auto=format&fit=crop&w=600&q=80" alt="Outdoor lighting project">
+                <div class="gallery-caption">Evening Lighting — Tokai</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=80" alt="Irrigation system project">
+                <div class="gallery-caption">Irrigation Install — Newlands</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=600&q=80" alt="Poolside garden project">
+                <div class="gallery-caption">Poolside Planting — Hout Bay</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="areas" id="areas">
+        <h2>Areas We Serve</h2>
+        <p>Based in Cape Town, working across the southern suburbs and beyond.</p>
+        <div class="area-tags">
+            <span class="area-tag">Constantia</span>
+            <span class="area-tag">Bishopscourt</span>
+            <span class="area-tag">Tokai</span>
+            <span class="area-tag">Newlands</span>
+            <span class="area-tag">Hout Bay</span>
+            <span class="area-tag">Claremont</span>
+            <span class="area-tag">Kenilworth</span>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="section-head">
+            <span class="eyebrow">What Clients Say</span>
+            <h2>Trusted by homeowners across the city</h2>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Our pool used to be a chore. Now it's just... clean, every week, without me thinking about it." — Demo review</p>
+                <div class="who">Sample Client <span>&middot; Constantia</span></div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"They redesigned our front garden in a weekend and it still looks sharp eight months later." — Demo review</p>
+                <div class="who">Sample Client <span>&middot; Tokai</span></div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Quoted fairly, showed up on time, and the irrigation system has saved us so much water." — Demo review</p>
+                <div class="who">Sample Client <span>&middot; Newlands</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-wrapper">
+            <div>
+                <h2>Get a free, no-obligation quote</h2>
+                <p>Tell us a bit about your space and what you need, and we'll get back to you with a clear plan and price.</p>
+                <div class="contact-detail"><span class="ic">&#128222;</span> 000 000 0000</div>
+                <div class="contact-detail"><span class="ic">&#9993;</span> test@test.com</div>
+                <div class="contact-detail"><span class="ic">&#128205;</span> Cape Town, South Africa</div>
+            </div>
+            <form class="contact-form" onsubmit="return false;">
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="test@test.com">
+                <select>
+                    <option>Garden Design</option>
+                    <option>Pool Maintenance</option>
+                    <option>Irrigation</option>
+                    <option>Outdoor Lighting</option>
+                </select>
+                <textarea placeholder="Tell us about your space..."></textarea>
+                <button type="submit">Request Free Quote</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-demo-note">
+            This is a fictional demo built by SiteBuild Studio to showcase web design and development work. No services are real, and all contact details above are placeholders.
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Terra &amp; Tide Outdoor Co. — Fictional business, demo site only.</span>
+            <a href="../">&larr; Back to SiteBuild Studio</a>
+        </div>
+    </footer>
+
+    <script>
+        var toggleBtns = document.querySelectorAll('#quoteToggle button');
+        var detail = document.getElementById('quoteDetail');
+        var copy = {
+            garden: {
+                h: 'Free garden design consultation',
+                p: 'A site visit and concept plan, tailored to your space and your budget.'
+            },
+            pool: {
+                h: 'Free pool care assessment',
+                p: 'We check your equipment and water balance, then quote a weekly care plan.'
+            }
+        };
+        toggleBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                toggleBtns.forEach(function (b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                var service = btn.getAttribute('data-service');
+                detail.querySelector('h4').textContent = copy[service].h;
+                detail.querySelector('p').textContent = copy[service].p;
+            });
+        });
+    </script>
+
+</body>
+</html>
