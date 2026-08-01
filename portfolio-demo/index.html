@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nomi Vale — Brand &amp; Product Designer (Demo Site)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #F7F5F0;
+        color: #17181A;
+        padding-top: 42px;
+        overflow-x: hidden;
+    }
+    h1, h2, .display { font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; }
+    .mono { font-family: 'Space Mono', monospace; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* Demo banner - shared, standardized */
+    .demo-banner {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 2000;
+        background-color: #14141c; color: #d8d4cf;
+        display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+        padding: 10px 20px; font-size: 0.8rem;
+    }
+    .demo-banner-badge {
+        background-color: #d9a870; color: #14141c; font-weight: 800; letter-spacing: 1.5px;
+        padding: 3px 10px; border-radius: 20px; font-size: 0.7rem;
+    }
+    .demo-banner-text { color: #a8a29b; }
+    .demo-banner-back { color: #ffffff; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.4); white-space: nowrap; }
+    .demo-banner-back:hover { border-color: #ffffff; }
+
+    /* Nav */
+    .nav {
+        max-width: 1300px; margin: 0 auto;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 30px 50px 10px;
+    }
+    .nav-logo { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.05rem; }
+    .nav-links { display: flex; gap: 30px; list-style: none; font-family: 'Space Mono', monospace; font-size: 0.8rem; }
+    .nav-links a { position: relative; padding-bottom: 3px; }
+    .nav-links a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1.5px; background:#2B4EFF; transition:width .25s ease; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { border: 1.5px solid #17181A; padding: 10px 20px; font-family: 'Space Mono', monospace; font-size: 0.78rem; font-weight: 700; }
+    .nav-cta:hover { background: #17181A; color: #fff; }
+    @media (max-width: 850px) { .nav-links { display: none; } .nav { padding: 24px 24px 10px; } }
+
+    /* Hero */
+    .hero { max-width: 1300px; margin: 0 auto; padding: 60px 50px 90px; }
+    .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.82rem; color: #2B4EFF; margin-bottom: 22px; display: block; }
+    .hero h1 { font-size: 5.2rem; line-height: 0.95; letter-spacing: -1px; margin-bottom: 26px; text-transform: uppercase; }
+    .hero p { font-size: 1.1rem; color: #4a4a48; max-width: 560px; line-height: 1.65; margin-bottom: 6px; }
+    .hero-role { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: #8A8A85; }
+
+    @media (max-width: 900px) {
+        .hero { padding: 40px 24px 60px; }
+        .hero h1 { font-size: 3rem; }
+    }
+
+    /* Work index - signature element */
+    .work { padding: 0 0 100px; }
+    .work-head { max-width: 1300px; margin: 0 auto; padding: 0 50px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: baseline; }
+    .work-head span.mono { font-size: 0.8rem; color: #8A8A85; }
+    .work-layout { max-width: 1300px; margin: 0 auto; padding: 0 50px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 50px; align-items: start; }
+    .work-list { border-top: 1px solid #d8d5cc; }
+    .work-row {
+        display: flex; align-items: center; gap: 24px; padding: 26px 0;
+        border-bottom: 1px solid #d8d5cc; cursor: pointer; transition: padding-left 0.25s ease;
+    }
+    .work-row:hover { padding-left: 12px; }
+    .work-num { font-family: 'Space Mono', monospace; font-size: 0.85rem; color: #8A8A85; width: 30px; flex-shrink: 0; }
+    .work-title { font-family: 'Big Shoulders Display', sans-serif; font-weight: 700; font-size: 1.8rem; flex-grow: 1; text-transform: uppercase; }
+    .work-row:hover .work-title { color: #2B4EFF; }
+    .work-cat { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: #8A8A85; text-align: right; flex-shrink: 0; }
+
+    .work-preview {
+        position: sticky; top: 70px;
+        aspect-ratio: 4/3; border-radius: 4px; overflow: hidden;
+        display: flex; align-items: flex-end; padding: 30px;
+        transition: background-color 0.3s ease;
+    }
+    .work-preview h3 { color: #fff; font-size: 1.7rem; text-transform: uppercase; line-height: 1.05; }
+    .work-preview p.mono { color: rgba(255,255,255,0.75); font-size: 0.75rem; margin-top: 8px; }
+
+    @media (max-width: 900px) {
+        .work-layout { grid-template-columns: 1fr; }
+        .work-head { padding: 0 24px; }
+        .work-list { padding: 0 24px; }
+        .work-preview { display: none; }
+    }
+
+    /* Section shared */
+    .section-head { max-width: 1300px; margin: 0 auto; padding: 0 50px; margin-bottom: 40px; }
+    .eyebrow { font-family: 'Space Mono', monospace; color: #2B4EFF; font-size: 0.8rem; display: block; margin-bottom: 12px; }
+    .section-head h2 { font-size: 2.4rem; text-transform: uppercase; }
+
+    /* About */
+    .about { background: #17181A; color: #F7F5F0; padding: 90px 50px; }
+    .about .eyebrow { color: #7d90ff; }
+    .about-wrapper { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-photo { border-radius: 4px; overflow: hidden; aspect-ratio: 4/3; }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-text p { font-size: 1.05rem; line-height: 1.7; color: #d6d4cd; margin-bottom: 20px; }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .skill-tag { font-family: 'Space Mono', monospace; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.25); padding: 8px 14px; border-radius: 20px; }
+
+    @media (max-width: 900px) {
+        .about { padding: 60px 24px; }
+        .about-wrapper { grid-template-columns: 1fr; gap: 30px; }
+    }
+
+    /* Process */
+    .process { padding: 90px 50px; max-width: 1300px; margin: 0 auto; }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .process-step { border-top: 3px solid #2B4EFF; padding-top: 18px; }
+    .process-step .mono { font-size: 0.78rem; color: #8A8A85; display: block; margin-bottom: 10px; }
+    .process-step h3 { font-family: 'Big Shoulders Display', sans-serif; font-weight: 700; font-size: 1.4rem; text-transform: uppercase; margin-bottom: 8px; }
+    .process-step p { font-size: 0.9rem; color: #4a4a48; line-height: 1.5; }
+
+    @media (max-width: 900px) { .process { padding: 60px 24px; } .process-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 550px) { .process-grid { grid-template-columns: 1fr; } }
+
+    /* Clients */
+    .clients { background: #ece8df; padding: 60px 50px; text-align: center; }
+    .clients .mono { font-size: 0.78rem; color: #8A8A85; margin-bottom: 24px; display: block; }
+    .client-row { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; font-family: 'Big Shoulders Display', sans-serif; font-weight: 700; font-size: 1.3rem; color: #b5b0a3; text-transform: uppercase; }
+
+    @media (max-width: 600px) { .clients { padding: 40px 24px; } }
+
+    /* Contact */
+    .contact-band { padding: 100px 50px; text-align: center; }
+    .contact-band h2 { font-size: 3rem; text-transform: uppercase; margin-bottom: 20px; }
+    .contact-band p { color: #4a4a48; margin-bottom: 30px; }
+    .contact-band .details { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; font-family: 'Space Mono', monospace; font-size: 0.85rem; }
+
+    @media (max-width: 600px) { .contact-band { padding: 70px 24px; } .contact-band h2 { font-size: 2.2rem; } }
+
+    /* Footer */
+    footer { background: #17181A; color: #8A8A85; padding: 40px 50px 30px; }
+    .footer-demo-note {
+        background: rgba(217,168,112,0.1); border: 1px solid rgba(217,168,112,0.3); border-radius: 6px;
+        padding: 14px 18px; font-size: 0.78rem; color: #d3c8bb; max-width: 1300px; margin: 0 auto 24px;
+    }
+    .footer-bottom {
+        max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;
+        flex-wrap: wrap; gap: 14px; font-family: 'Space Mono', monospace; font-size: 0.75rem;
+    }
+    .footer-bottom a { color: #fff; font-weight: 700; }
+    @media (max-width: 600px) { footer { padding: 40px 24px 24px; } }
+</style>
+</head>
+<body>
+
+    <div class="demo-banner">
+        <span class="demo-banner-badge">Demo Site</span>
+        <span class="demo-banner-text">Concept build by SiteBuild Studio — fictional individual, for portfolio purposes only.</span>
+        <a href="../" class="demo-banner-back">&larr; Back to SiteBuild Studio</a>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-logo">NOMI VALE</div>
+        <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Get in Touch</a>
+    </nav>
+
+    <section class="hero">
+        <span class="hero-eyebrow mono">// BRAND &amp; PRODUCT DESIGN</span>
+        <h1>Design that<br>earns its<br>keep.</h1>
+        <p class="hero-role mono">Freelance designer working across brand identity, web, and product — five years, twenty-some clients, one point of view.</p>
+    </section>
+
+    <section class="work" id="work">
+        <div class="work-head">
+            <span class="eyebrow mono">// SELECTED WORK</span>
+            <span class="mono">05 PROJECTS</span>
+        </div>
+        <div class="work-layout">
+            <div class="work-list" id="workList">
+                <div class="work-row" data-color="#1B2A4A" data-title="Fernbank Financial" data-cat="Brand Identity &amp; Web — 2025">
+                    <span class="work-num mono">01</span>
+                    <span class="work-title">Fernbank Financial</span>
+                    <span class="work-cat mono">Brand &amp; Web<br>2025</span>
+                </div>
+                <div class="work-row" data-color="#B5573A" data-title="Loam Coffee Roasters" data-cat="Packaging &amp; Brand — 2024">
+                    <span class="work-num mono">02</span>
+                    <span class="work-title">Loam Roasters</span>
+                    <span class="work-cat mono">Packaging &amp; Brand<br>2024</span>
+                </div>
+                <div class="work-row" data-color="#2B4EFF" data-title="Northline Fitness" data-cat="Product UI/UX — 2024">
+                    <span class="work-num mono">03</span>
+                    <span class="work-title">Northline Fitness</span>
+                    <span class="work-cat mono">Product UI/UX<br>2024</span>
+                </div>
+                <div class="work-row" data-color="#C99A2E" data-title="Marigold Skincare" data-cat="E-commerce Design — 2023">
+                    <span class="work-num mono">04</span>
+                    <span class="work-title">Marigold Skincare</span>
+                    <span class="work-cat mono">E-commerce<br>2023</span>
+                </div>
+                <div class="work-row" data-color="#2F5233" data-title="Verve Studios" data-cat="Brand Refresh — 2023">
+                    <span class="work-num mono">05</span>
+                    <span class="work-title">Verve Studios</span>
+                    <span class="work-cat mono">Brand Refresh<br>2023</span>
+                </div>
+            </div>
+            <div class="work-preview" id="workPreview" style="background-color:#1B2A4A;">
+                <div>
+                    <h3 id="previewTitle">Fernbank Financial</h3>
+                    <p class="mono" id="previewCat">Brand Identity &amp; Web — 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-wrapper">
+            <div class="about-photo">
+                <img src="https://images.unsplash.com/photo-1752223638233-4c9545333f89?auto=format&fit=crop&w=700&q=80" alt="Nomi Vale's design desk setup">
+            </div>
+            <div class="about-text">
+                <span class="eyebrow mono">// ABOUT</span>
+                <p>I'm a freelance designer working at the intersection of brand and product — the kind of work where a logo and a checkout flow have to agree with each other.</p>
+                <p>Most projects start with a business that's outgrown its first identity, and end with something that can actually scale past this year.</p>
+                <div class="skills">
+                    <span class="skill-tag">Brand Identity</span>
+                    <span class="skill-tag">Web Design</span>
+                    <span class="skill-tag">UI/UX</span>
+                    <span class="skill-tag">Packaging</span>
+                    <span class="skill-tag">Design Systems</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process">
+        <div class="section-head" style="padding:0; margin-bottom:40px;">
+            <span class="eyebrow mono">// HOW IT WORKS</span>
+            <h2>Process</h2>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <span class="mono">01</span>
+                <h3>Discover</h3>
+                <p>Understanding the business before touching any design tool.</p>
+            </div>
+            <div class="process-step">
+                <span class="mono">02</span>
+                <h3>Design</h3>
+                <p>A handful of real directions, not fifty half-finished ones.</p>
+            </div>
+            <div class="process-step">
+                <span class="mono">03</span>
+                <h3>Refine</h3>
+                <p>Tightening the one direction that's actually working.</p>
+            </div>
+            <div class="process-step">
+                <span class="mono">04</span>
+                <h3>Deliver</h3>
+                <p>Files, guidelines, and a system you can hand to anyone.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="clients">
+        <span class="mono">// WORKED WITH</span>
+        <div class="client-row">
+            <span>Fernbank</span>
+            <span>Loam</span>
+            <span>Northline</span>
+            <span>Marigold</span>
+            <span>Verve</span>
+        </div>
+    </section>
+
+    <section class="contact-band" id="contact">
+        <h2>Let's Build<br>Something</h2>
+        <p>Currently booking new projects for next quarter.</p>
+        <div class="details">
+            <span>&#128222; 000 000 0000</span>
+            <span>&#9993; test@test.com</span>
+            <span>&#128205; Cape Town, South Africa</span>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-demo-note">
+            This is a fictional demo built by SiteBuild Studio to showcase web design and development work. The designer, projects, and clients shown are not real, and all contact details above are placeholders.
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Nomi Vale &mdash; Fictional individual, demo site only.</span>
+            <a href="../">&larr; Back to SiteBuild Studio</a>
+        </div>
+    </footer>
+
+    <script>
+        var rows = document.querySelectorAll('.work-row');
+        var preview = document.getElementById('workPreview');
+        var previewTitle = document.getElementById('previewTitle');
+        var previewCat = document.getElementById('previewCat');
+        rows.forEach(function (row) {
+            row.addEventListener('mouseenter', function () {
+                preview.style.backgroundColor = row.getAttribute('data-color');
+                previewTitle.textContent = row.getAttribute('data-title');
+                previewCat.innerHTML = row.getAttribute('data-cat');
+            });
+        });
+    </script>
+
+</body>
+</html>
