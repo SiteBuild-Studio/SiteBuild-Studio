@@ -2274,6 +2274,7 @@
     </section>
 
     <script>
+    document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.faq-question').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 var item = btn.closest('.faq-item');
@@ -2366,6 +2367,7 @@
                 el.classList.add('revealed');
             });
         }
+    });
     </script>
 
     <!-- Contact Me Section -->
