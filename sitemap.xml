@@ -25,6 +25,12 @@
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    <url>
+        <loc>https://sitebuildstudio.co.za/articles/website-cost.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
 
     <!-- Current live site on GitHub Pages, until the domain above is registered and pointed here -->
     <url>
@@ -47,6 +53,12 @@
     </url>
     <url>
         <loc>https://sitebuild-studio.github.io/SiteBuild-Studio/articles/found-on-google.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://sitebuild-studio.github.io/SiteBuild-Studio/articles/website-cost.html</loc>
         <lastmod>2026-08-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
