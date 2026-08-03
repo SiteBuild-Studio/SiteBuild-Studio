@@ -86,18 +86,21 @@
             overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .article-card.live:hover { transform: translateY(-6px); box-shadow: 0 30px 60px rgba(0,0,0,0.16); }
-        .article-card.upcoming { opacity: 0.6; }
+        .article-card.upcoming { opacity: 0.75; }
         .article-media {
-            aspect-ratio: 16/10; background: linear-gradient(135deg, #f6cddc, #eae0d5);
-            display: flex; align-items: center; justify-content: center; position: relative;
+            aspect-ratio: 16/10; position: relative; overflow: hidden; background-color: #eae0d5;
         }
+        .article-media img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;
+        }
+        .article-card.live:hover .article-media img { transform: scale(1.06); }
+        .article-media.upcoming-media img { filter: grayscale(60%); opacity: 0.7; }
         .article-media span.tag {
             position: absolute; top: 16px; left: 16px; background: #111111; color: #fff;
             font-size: 0.68rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
-            padding: 6px 12px; border-radius: 20px;
+            padding: 6px 12px; border-radius: 20px; z-index: 2;
         }
-        .article-media.upcoming-media span.tag { background: #8a7a82; }
-        .article-media .icon { font-size: 2.4rem; opacity: 0.5; }
+        .article-media.upcoming-media span.tag { background: #6b6066; }
         .article-info { padding: 26px; display: flex; flex-direction: column; flex-grow: 1; }
         .article-meta { font-size: 0.75rem; color: #999999; font-weight: 600; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
         .article-info h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; line-height: 1.3; }
@@ -191,7 +194,7 @@
     <section class="articles-section">
         <div class="articles-grid">
             <div class="article-card live">
-                <div class="article-media"><span class="tag">Getting Started</span><span class="icon">&#128187;</span></div>
+                <div class="article-media"><span class="tag">Getting Started</span><img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=700&q=80" alt="Laptop open to a website design"></div>
                 <div class="article-info">
                     <div class="article-meta">6 min read</div>
                     <h3>Do You Actually Need a Website for Your Small Business?</h3>
@@ -201,7 +204,7 @@
             </div>
 
             <div class="article-card upcoming">
-                <div class="article-media upcoming-media"><span class="tag">Coming Soon</span><span class="icon">&#128176;</span></div>
+                <div class="article-media upcoming-media"><span class="tag">Coming Soon</span><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=700&q=80" alt="Calculator and paperwork representing budgeting"></div>
                 <div class="article-info">
                     <div class="article-meta">Coming Soon</div>
                     <h3>What Should a Small Business Website Actually Cost?</h3>
@@ -211,7 +214,7 @@
             </div>
 
             <div class="article-card upcoming">
-                <div class="article-media upcoming-media"><span class="tag">Coming Soon</span><span class="icon">&#127959;</span></div>
+                <div class="article-media upcoming-media"><span class="tag">Coming Soon</span><img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=700&q=80" alt="Hand sketching a website wireframe"></div>
                 <div class="article-info">
                     <div class="article-meta">Coming Soon</div>
                     <h3>Template vs. Custom-Built: What's Actually Right for You?</h3>
