@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Get Your Small Business Found on Google (Without Paying for Ads) | SiteBuild Studio</title>
+    <meta name="description" content="A practical, researched guide to showing up in Google search and Maps for free — Google Business Profile, NAP consistency, schema markup, and reviews.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #111111;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* Nav */
+        .nav-wrapper { background-color: #f6cddc; }
+        .navbar {
+            max-width: 1300px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 26px 60px; gap: 20px; flex-wrap: wrap; position: relative;
+        }
+        .logo-svg { height: 44px; width: auto; display: block; }
+        .nav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
+        .nav-links a { font-size: 0.92rem; font-weight: 500; position: relative; padding-bottom: 4px; }
+        .nav-links a.active { color: #e6427c; font-weight: 700; }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
+            background-color: #111111; transition: width 0.25s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .contact-btn {
+            background-color: #d9a870; color: #ffffff; padding: 12px 26px; border-radius: 30px;
+            font-weight: 600; font-size: 0.9rem; white-space: nowrap; transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .contact-btn:hover { background-color: #c99a5f; transform: translateY(-1px); }
+        .hamburger {
+            display: none; flex-direction: column; justify-content: center; gap: 6px;
+            width: 40px; height: 40px; background: none; border: none; padding: 0; cursor: pointer;
+        }
+        .hamburger span { display: block; width: 100%; height: 3px; border-radius: 3px; }
+        .hamburger span:nth-child(1) { background-color: #e6427c; }
+        .hamburger span:nth-child(2) { background-color: #d9a870; }
+        .hamburger span:nth-child(3) { background-color: #e6427c; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 20px 24px; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none; position: absolute; top: 70px; left: 0; right: 0;
+                flex-direction: column; align-items: flex-start; gap: 20px;
+                background-color: #ffffff; padding: 24px; border-radius: 0 0 16px 16px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15); z-index: 40;
+            }
+            .nav-links.open { display: flex; }
+        }
+
+        /* Article header */
+        .article-header { background-color: #f6cddc; padding: 60px 60px 80px; text-align: center; }
+        .breadcrumb { font-size: 0.85rem; margin-bottom: 24px; color: #444444; }
+        .breadcrumb a { color: #e6427c; font-weight: 600; }
+        .article-tag {
+            display: inline-block; background-color: #ffffff; color: #e6427c; font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 18px; border-radius: 30px; margin-bottom: 22px;
+        }
+        .article-header h1 { font-size: 2.6rem; font-weight: 800; max-width: 780px; margin: 0 auto 18px; line-height: 1.25; }
+        .article-header .subtitle { font-size: 1.05rem; color: #444444; max-width: 620px; margin: 0 auto 20px; line-height: 1.65; }
+        .article-meta-bar { font-size: 0.85rem; color: #6b5a62; font-weight: 600; }
+
+        @media (max-width: 600px) {
+            .article-header { padding: 40px 24px 60px; }
+            .article-header h1 { font-size: 1.9rem; }
+        }
+
+        /* Article body */
+        .article-body { max-width: 720px; margin: 0 auto; padding: 70px 24px 40px; }
+        .article-body p { font-size: 1.05rem; line-height: 1.85; color: #333333; margin-bottom: 24px; }
+        .article-body h2 { font-size: 1.6rem; font-weight: 800; margin: 50px 0 20px; color: #111111; }
+        .article-body h2:first-of-type { margin-top: 0; }
+        .article-body ul { margin: 0 0 24px 22px; }
+        .article-body li { font-size: 1.02rem; line-height: 1.8; color: #333333; margin-bottom: 10px; }
+        .stat-callout {
+            background-color: #fdf3f7; border-left: 4px solid #e6427c; border-radius: 8px;
+            padding: 22px 26px; margin: 32px 0; font-size: 1.05rem; line-height: 1.6; color: #111111;
+        }
+        .stat-callout strong { color: #e6427c; }
+        .source-note { font-size: 0.8rem; color: #999999; margin-top: -14px; margin-bottom: 30px; }
+
+        /* Author / CTA */
+        .article-cta-band { background-color: #111111; color: #ffffff; padding: 70px 60px; text-align: center; margin-top: 30px; }
+        .article-cta-band h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 16px; }
+        .article-cta-band p { color: #cfcfcf; max-width: 480px; margin: 0 auto 30px; line-height: 1.6; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-pink {
+            background-color: #e6427c; color: #ffffff; padding: 14px 30px; border-radius: 30px;
+            font-weight: 700; font-size: 0.92rem; transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .btn-pink:hover { background-color: #c22f66; transform: translateY(-1px); }
+        .btn-white-outline {
+            border: 1.5px solid #ffffff; color: #ffffff; padding: 14px 30px; border-radius: 30px;
+            font-weight: 700; font-size: 0.92rem; transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .btn-white-outline:hover { background-color: #ffffff; color: #111111; transform: translateY(-1px); }
+
+        @media (max-width: 600px) { .article-cta-band { padding: 50px 24px; } }
+
+        /* Related */
+        .related-section { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+        .related-section h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 26px; text-align: center; }
+        .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; max-width: 800px; margin: 0 auto; }
+        .related-card {
+            background-color: #fdf7f0; border-radius: 14px; padding: 24px; opacity: 0.65;
+        }
+        .related-card .tag { font-size: 0.72rem; font-weight: 700; color: #999999; text-transform: uppercase; letter-spacing: 0.5px; }
+        .related-card h4 { font-size: 1.05rem; font-weight: 700; margin: 8px 0 0; }
+
+        @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+
+        /* Footer */
+        .copyright-bar { background-color: #1e1e24; padding: 20px; text-align: center; }
+        .copyright-bar p { color: #ffffff; font-size: 0.9rem; }
+        .copyright-bar a { color: #d9a870; font-weight: 600; }
+
+        /* WhatsApp FAB */
+        .whatsapp-fab {
+            position: fixed; bottom: 26px; right: 26px; height: 58px; min-width: 58px; border-radius: 30px;
+            background-color: #25D366; display: flex; align-items: center; justify-content: flex-start;
+            padding: 0 0 0 16px; box-shadow: 0 12px 28px rgba(17,17,17,0.25), 0 0 0 3px #ffffff, 0 0 0 5px #e6427c;
+            z-index: 900; overflow: hidden; transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .whatsapp-fab:hover { background-color: #1ebe5b; box-shadow: 0 16px 34px rgba(17,17,17,0.3), 0 0 0 3px #ffffff, 0 0 0 5px #d9a870; }
+        .whatsapp-fab svg { width: 26px; height: 26px; fill: #ffffff; }
+        .whatsapp-fab-label {
+            max-width: 0; opacity: 0; white-space: nowrap; overflow: hidden; color: #ffffff; font-weight: 700; font-size: 0.92rem;
+            transition: max-width 0.3s ease, opacity 0.25s ease, padding 0.3s ease;
+        }
+        .whatsapp-fab:hover .whatsapp-fab-label { max-width: 160px; opacity: 1; padding: 0 20px 0 12px; }
+        .whatsapp-fab:not(:hover) { padding-right: 16px; }
+        @media (max-width: 600px) { .whatsapp-fab { bottom: 18px; right: 18px; height: 52px; min-width: 52px; } }
+    </style>
+</head>
+<body>
+
+    <div class="nav-wrapper">
+        <nav class="navbar">
+            <a href="../index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 725 227" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SiteBuild Studio">
+                    <title>SiteBuild Studio</title>
+                    <defs>
+                        <linearGradient id="pinkS2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ee7ea6"/>
+                            <stop offset="100%" stop-color="#c81760"/>
+                        </linearGradient>
+                    </defs>
+                    <text x="-8" y="178" font-family="'Poppins', sans-serif" font-weight="800" font-size="192" fill="url(#pinkS2)">S</text>
+                    <text x="88" y="182" font-family="'Poppins', sans-serif" font-weight="800" font-size="166" fill="#111111">B</text>
+                    <rect x="184" y="14" width="15" height="15" fill="#d9a870"/>
+                    <rect x="201" y="32" width="10" height="10" fill="#d9a870"/>
+                    <rect x="190" y="47" width="6" height="6" fill="#d9a870"/>
+                    <polygon points="128,150 150,150 128,182 106,182" fill="#d9a870"/>
+                    <line x1="250" y1="14" x2="250" y2="213" stroke="#d9a870" stroke-width="2"/>
+                    <text x="270" y="97" font-family="'Poppins', sans-serif" font-weight="800" font-size="52" letter-spacing="2">
+                        <tspan fill="#e6427c">SITE</tspan><tspan fill="#111111">BUILD</tspan>
+                    </text>
+                    <text x="270" y="140" font-family="'Poppins', sans-serif" font-weight="600" font-size="26" letter-spacing="7" fill="#c99a5f">&#8212; STUDIO &#8212;</text>
+                    <text x="270" y="176" font-family="'Poppins', sans-serif" font-weight="600" font-size="15" letter-spacing="2.5" fill="#333333">DESIGN &#8226; DEVELOP &#8226; DEPLOY</text>
+                </svg>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About Me</a></li>
+                <li><a href="../index.html#portfolio">Portfolio</a></li>
+                <li><a href="articles.html" class="active">Articles</a></li>
+                <li><a href="../index.html#pricing">Pricing</a></li>
+                <li><a href="../index.html#care-plans">Care Plans</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+
+            <a href="../index.html#contact" class="contact-btn">Contact</a>
+        </nav>
+    </div>
+
+    <div class="article-header">
+        <p class="breadcrumb"><a href="articles.html">&larr; All Articles</a></p>
+        <span class="article-tag">Local SEO</span>
+        <h1>How to Get Your Small Business Found on Google (Without Paying for Ads)</h1>
+        <p class="subtitle">The unglamorous checklist that actually moves the needle — no ad budget required.</p>
+        <p class="article-meta-bar">7 min read &nbsp;&middot;&nbsp; SiteBuild Studio</p>
+    </div>
+
+    <article class="article-body">
+        <p>If you've ever searched your own business name and felt a small sting at what did — or didn't — show up, you're not alone. It's one of the most common things small business owners quietly do late at night, and it usually leads to the same question: how do the other guys show up and I don't, without anyone paying for ads?</p>
+        <p>The good news is that most of local search visibility has nothing to do with ad spend. Google is unusually direct about this in its own documentation, and the steps are learnable in an afternoon — even if the payoff builds over months, not days.</p>
+
+        <h2>How Google actually decides who shows up</h2>
+        <p>Google's own Business Profile help documentation states plainly that local results are ranked on three factors: relevance to what someone searched, distance from the searcher, and prominence — essentially, how well-known and well-documented your business is online. You can't do much about distance. The other two are entirely within your control, and prominence in particular rewards exactly the kind of unglamorous, consistent groundwork most small businesses never get around to.</p>
+        <p>Google's documentation adds one more sentence worth building a whole strategy around: businesses with complete and accurate information are simply more likely to show up in local search results. Not flashier. Not more expensive. More complete.</p>
+
+        <h2>Step 1: Claim and actually finish your Google Business Profile</h2>
+        <p>This is the free foundation almost everything else sits on top of. If you haven't claimed your listing yet, search your business name on Google, claim it, and verify it — usually by postcard, phone, or email. Then don't stop at "claimed." Go through every section:</p>
+        <ul>
+            <li>Your exact business name, address, and phone number — the same version you'll use everywhere else (more on why in a moment).</li>
+            <li>The most accurate primary category for what you do, plus relevant secondary categories.</li>
+            <li>A plain-language description of what you do and who you serve — written for people, not stuffed with keywords.</li>
+            <li>Real photos of your premises, team, and work — profiles with recent photos consistently get more attention than bare-bones ones.</li>
+            <li>Your actual services or products, with prices or ranges where that's realistic.</li>
+        </ul>
+        <p>An incomplete profile can still technically exist. It just quietly loses to every competitor nearby who bothered to finish theirs.</p>
+
+        <h2>Step 2: Make your name, address, and phone number match everywhere</h2>
+        <p>This one sounds trivial and isn't. NAP — Name, Address, Phone — needs to match, character for character, across your website, your Google profile, Facebook, and every directory you're listed in. "Suite 200" in one place and "Ste. 200" in another is a small inconsistency, but it's exactly the kind of thing search engines use as a signal of whether a business is real, stable, and locatable.</p>
+        <div class="stat-callout">
+            A useful gut-check: search your own business name plus your city in a private/incognito browser window. Whatever comes up — or doesn't — is your actual starting point, not your homepage.
+        </div>
+        <p>Worth doing once, properly: write down your exact, canonical NAP in one place, and make sure every listing you control matches it exactly.</p>
+
+        <h2>Step 3: Let your website do its share of the work</h2>
+        <p>Your Google Business Profile gets you a shot at the map pack. Your website is what backs that up and closes the loop — and it needs a bit of technical groundwork to actually help:</p>
+        <ul>
+            <li><strong>Location-relevant content.</strong> Naturally mentioning your city, suburb, or service area in your actual page copy — not just buried in a footer — genuinely helps.</li>
+            <li><strong>Structured data (schema markup).</strong> Adding LocalBusiness schema markup helps search engines read your hours, location, and reviews unambiguously, rather than guessing from page text. It's one of the highest-leverage technical steps a local site can take, and most small business sites skip it entirely — usually because it was never included in the build to begin with.</li>
+            <li><strong>Basic technical health.</strong> A site that loads quickly and works cleanly on a phone, since the majority of local searches happen on mobile.</li>
+        </ul>
+        <p>This is where a site built on a generic, unmodified template tends to fall short — it often ships without proper local pages, clean structure, or schema markup, and retrofitting all of that later is a lot more work than including it from the start.</p>
+
+        <h2>Step 4: Build a small, steady review habit</h2>
+        <p>Reviews feed directly into that "prominence" factor Google weighs, and they do double duty — they also influence whether a real person picks up the phone once they've found you. You don't need a review campaign. A simple habit of asking happy customers, right after a good outcome, tends to outperform a one-off push for a hundred reviews in a single week.</p>
+
+        <h2>What this doesn't require</h2>
+        <p>Notice what's absent from all four steps: an ad budget. Local SEO is genuinely one of the few marketing channels where the effort compounds instead of resetting to zero the moment you stop paying. A complete profile, consistent NAP, a website that actually supports it, and a steady trickle of reviews keep working quietly in the background, months after the work was done.</p>
+        <p>The honest catch is patience — this is a channel that builds over weeks and months, not a campaign that turns on overnight. But unlike ad spend, it doesn't switch back off the day you stop paying attention to it.</p>
+        <p class="source-note">Figures and guidance referenced above are drawn from Google's own Business Profile documentation, and published research and guidance from BrightLocal and other local SEO industry sources, current as of 2025&ndash;2026. Exact ranking behaviour varies by industry, location, and competition — treat this as a solid starting checklist, not a guarantee.</p>
+    </article>
+
+    <div class="article-cta-band">
+        <h2>Not sure where to start?</h2>
+        <p>Have a look at what a starter site actually costs, or send a message and we'll talk through what your business needs.</p>
+        <div class="cta-buttons">
+            <a href="../index.html#pricing" class="btn-pink">See Pricing</a>
+            <a href="../index.html#contact" class="btn-white-outline">Get in Touch</a>
+        </div>
+    </div>
+
+    <div class="related-section">
+        <h3>More From the Blog</h3>
+        <div class="related-grid">
+            <a href="website-value.html" class="related-card" style="opacity: 1; display: block; text-decoration: none;">
+                <span class="tag" style="color: #e6427c;">Getting Started</span>
+                <h4>Do You Actually Need a Website for Your Small Business?</h4>
+            </a>
+            <div class="related-card">
+                <span class="tag">Coming Soon</span>
+                <h4>What Should a Small Business Website Actually Cost?</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright-bar">
+        <p>&copy; Copyright 2026 SiteBuild Studio - All Rights Reserved &nbsp;|&nbsp; <a href="../index.html">Back to Home</a></p>
+    </div>
+
+    <a class="whatsapp-fab" id="whatsappFab" href="https://wa.me/27845795239?text=Hi%20SiteBuild%20Studio%2C%20I%27d%20like%20a%20website.%20Here%27s%20a%20bit%20about%20my%20business%3A%20%5Bwhat%20you%20do%5D.%20Preferred%20brand%20colors%3A%20%5Bcolors%5D.%20Other%20details%3A%20%5Banything%20else%5D." target="_blank" rel="noopener" aria-label="Message SiteBuild Studio on WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.74.46 3.44 1.32 4.94L2.05 22l5.28-1.38a9.87 9.87 0 0 0 4.71 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.11h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.19 8.19 0 0 1 5.83 2.42 8.19 8.19 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.59.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.06-.11-.23-.17-.48-.29z"/></svg>
+        <span class="whatsapp-fab-label">Chat with us</span>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var hamburgerBtn = document.getElementById('hamburgerBtn');
+            var navLinks = document.getElementById('navLinks');
+            hamburgerBtn.addEventListener('click', function () {
+                var isOpen = navLinks.classList.toggle('open');
+                hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+            document.addEventListener('click', function (e) {
+                if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                    navLinks.classList.remove('open');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
