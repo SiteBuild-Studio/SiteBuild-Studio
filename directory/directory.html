@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Business Directory | SiteBuild Studio</title>
+    <meta name="description" content="A directory of Cape Town small businesses, maintained by SiteBuild Studio — a free listing for clients and local businesses alike.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #111111;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* Nav */
+        .nav-wrapper { background-color: #f6cddc; }
+        .navbar {
+            max-width: 1300px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 26px 60px; gap: 20px; flex-wrap: wrap; position: relative;
+        }
+        .logo-svg { height: 44px; width: auto; display: block; }
+        .nav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
+        .nav-links a { font-size: 0.92rem; font-weight: 500; position: relative; padding-bottom: 4px; }
+        .nav-links a.active { color: #e6427c; font-weight: 700; }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
+            background-color: #111111; transition: width 0.25s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .contact-btn {
+            background-color: #d9a870; color: #ffffff; padding: 12px 26px; border-radius: 30px;
+            font-weight: 600; font-size: 0.9rem; white-space: nowrap; transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .contact-btn:hover { background-color: #c99a5f; transform: translateY(-1px); }
+        .hamburger {
+            display: none; flex-direction: column; justify-content: center; gap: 6px;
+            width: 40px; height: 40px; background: none; border: none; padding: 0; cursor: pointer;
+        }
+        .hamburger span { display: block; width: 100%; height: 3px; border-radius: 3px; }
+        .hamburger span:nth-child(1) { background-color: #e6427c; }
+        .hamburger span:nth-child(2) { background-color: #d9a870; }
+        .hamburger span:nth-child(3) { background-color: #e6427c; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 20px 24px; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none; position: absolute; top: 70px; left: 0; right: 0;
+                flex-direction: column; align-items: flex-start; gap: 20px;
+                background-color: #ffffff; padding: 24px; border-radius: 0 0 16px 16px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15); z-index: 40;
+            }
+            .nav-links.open { display: flex; }
+        }
+
+        /* Page header */
+        .page-header { background-color: #f6cddc; padding: 60px 60px 90px; text-align: center; }
+        .page-eyebrow {
+            display: inline-block; background-color: #ffffff; color: #e6427c; font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 18px; border-radius: 30px; margin-bottom: 20px;
+        }
+        .page-header h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 16px; }
+        .page-header p { font-size: 1.05rem; color: #444444; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+        @media (max-width: 600px) {
+            .page-header { padding: 40px 24px 60px; }
+            .page-header h1 { font-size: 2.1rem; }
+        }
+
+        /* Filters */
+        .directory-section { padding: 0 60px 100px; }
+        .filter-bar {
+            max-width: 1200px; margin: -50px auto 40px; background: #ffffff; border-radius: 18px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.1); padding: 22px 26px;
+            display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+        }
+        .filter-chip {
+            border: 1.5px solid #eee; background: #fafafa; padding: 9px 20px; border-radius: 30px;
+            font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.85rem; cursor: pointer;
+            transition: all 0.2s ease; color: #444444;
+        }
+        .filter-chip.active { background: #111111; border-color: #111111; color: #ffffff; }
+        .filter-chip:hover:not(.active) { border-color: #e6427c; color: #e6427c; }
+
+        /* Listings grid */
+        .listings-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+        }
+        .listing-card {
+            background-color: #ffffff; border: 1px solid #eee; border-radius: 16px; padding: 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.25s ease, box-shadow 0.25s ease;
+            display: flex; flex-direction: column;
+        }
+        .listing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .listing-category {
+            display: inline-block; background: #fdf3f7; color: #e6427c; font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 20px;
+            margin-bottom: 14px; width: fit-content;
+        }
+        .listing-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
+        .listing-location { font-size: 0.82rem; color: #999999; font-weight: 600; margin-bottom: 14px; }
+        .listing-location::before { content: "\1F4CD "; }
+        .listing-card p.desc { font-size: 0.9rem; color: #555555; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+        .listing-visit {
+            display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.85rem;
+            color: #ffffff; background: #111111; padding: 10px 20px; border-radius: 30px; width: fit-content;
+            transition: background-color 0.2s ease;
+        }
+        .listing-visit:hover { background-color: #333333; }
+        .listing-pending {
+            font-size: 0.82rem; color: #b3a3ab; font-style: italic;
+        }
+
+        .directory-empty, .directory-loading {
+            text-align: center; max-width: 1200px; margin: 0 auto; padding: 40px; color: #999999; font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .listings-grid { grid-template-columns: 1fr; max-width: 440px; }
+        }
+        @media (max-width: 600px) {
+            .directory-section { padding: 0 24px 70px; }
+            .filter-bar { margin: -40px 12px 30px; }
+        }
+
+        /* CTA band */
+        .directory-cta-band { background-color: #111111; color: #ffffff; padding: 70px 60px; text-align: center; }
+        .directory-cta-band h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 14px; }
+        .directory-cta-band p { color: #cfcfcf; max-width: 520px; margin: 0 auto 28px; line-height: 1.6; }
+        .btn-pink {
+            background-color: #e6427c; color: #ffffff; padding: 14px 30px; border-radius: 30px;
+            font-weight: 700; font-size: 0.92rem; display: inline-block; transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .btn-pink:hover { background-color: #c22f66; transform: translateY(-1px); }
+
+        @media (max-width: 600px) { .directory-cta-band { padding: 50px 24px; } }
+
+        /* Footer */
+        .copyright-bar { background-color: #1e1e24; padding: 20px; text-align: center; }
+        .copyright-bar p { color: #ffffff; font-size: 0.9rem; }
+        .copyright-bar a { color: #d9a870; font-weight: 600; }
+
+        /* WhatsApp FAB */
+        .whatsapp-fab {
+            position: fixed; bottom: 26px; right: 26px; height: 58px; min-width: 58px; border-radius: 30px;
+            background-color: #25D366; display: flex; align-items: center; justify-content: flex-start;
+            padding: 0 0 0 16px; box-shadow: 0 12px 28px rgba(17,17,17,0.25), 0 0 0 3px #ffffff, 0 0 0 5px #e6427c;
+            z-index: 900; overflow: hidden; transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .whatsapp-fab:hover { background-color: #1ebe5b; box-shadow: 0 16px 34px rgba(17,17,17,0.3), 0 0 0 3px #ffffff, 0 0 0 5px #d9a870; }
+        .whatsapp-fab svg { width: 26px; height: 26px; fill: #ffffff; }
+        .whatsapp-fab-label {
+            max-width: 0; opacity: 0; white-space: nowrap; overflow: hidden; color: #ffffff; font-weight: 700; font-size: 0.92rem;
+            transition: max-width 0.3s ease, opacity 0.25s ease, padding 0.3s ease;
+        }
+        .whatsapp-fab:hover .whatsapp-fab-label { max-width: 160px; opacity: 1; padding: 0 20px 0 12px; }
+        .whatsapp-fab:not(:hover) { padding-right: 16px; }
+        @media (max-width: 600px) { .whatsapp-fab { bottom: 18px; right: 18px; height: 52px; min-width: 52px; } }
+    </style>
+</head>
+<body>
+
+    <div class="nav-wrapper">
+        <nav class="navbar">
+            <a href="../index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 725 227" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SiteBuild Studio">
+                    <title>SiteBuild Studio</title>
+                    <defs>
+                        <linearGradient id="pinkS3" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ee7ea6"/>
+                            <stop offset="100%" stop-color="#c81760"/>
+                        </linearGradient>
+                    </defs>
+                    <text x="-8" y="178" font-family="'Poppins', sans-serif" font-weight="800" font-size="192" fill="url(#pinkS3)">S</text>
+                    <text x="88" y="182" font-family="'Poppins', sans-serif" font-weight="800" font-size="166" fill="#111111">B</text>
+                    <rect x="184" y="14" width="15" height="15" fill="#d9a870"/>
+                    <rect x="201" y="32" width="10" height="10" fill="#d9a870"/>
+                    <rect x="190" y="47" width="6" height="6" fill="#d9a870"/>
+                    <polygon points="128,150 150,150 128,182 106,182" fill="#d9a870"/>
+                    <line x1="250" y1="14" x2="250" y2="213" stroke="#d9a870" stroke-width="2"/>
+                    <text x="270" y="97" font-family="'Poppins', sans-serif" font-weight="800" font-size="52" letter-spacing="2">
+                        <tspan fill="#e6427c">SITE</tspan><tspan fill="#111111">BUILD</tspan>
+                    </text>
+                    <text x="270" y="140" font-family="'Poppins', sans-serif" font-weight="600" font-size="26" letter-spacing="7" fill="#c99a5f">&#8212; STUDIO &#8212;</text>
+                    <text x="270" y="176" font-family="'Poppins', sans-serif" font-weight="600" font-size="15" letter-spacing="2.5" fill="#333333">DESIGN &#8226; DEVELOP &#8226; DEPLOY</text>
+                </svg>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About Me</a></li>
+                <li><a href="../index.html#portfolio">Portfolio</a></li>
+                <li><a href="../articles/articles.html">Articles</a></li>
+                <li><a href="business-directory.html" class="active">Directory</a></li>
+                <li><a href="../index.html#pricing">Pricing</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+
+            <a href="../index.html#contact" class="contact-btn">Contact</a>
+        </nav>
+    </div>
+
+    <div class="page-header">
+        <span class="page-eyebrow">Community Directory</span>
+        <h1>Small Business Directory</h1>
+        <p>A free listing for Cape Town small businesses — clients and non-clients alike. If you don't have a website yet, that's fine — you're still welcome here.</p>
+    </div>
+
+    <section class="directory-section">
+        <div class="filter-bar" id="filterBar">
+            <button class="filter-chip active" data-category="all">All</button>
+        </div>
+
+        <div class="directory-loading" id="loadingState">Loading listings&hellip;</div>
+        <div class="listings-grid" id="listingsGrid" style="display: none;"></div>
+        <div class="directory-empty" id="emptyState" style="display: none;">No listings yet &mdash; check back soon.</div>
+    </section>
+
+    <div class="directory-cta-band">
+        <h2>Want your business listed here?</h2>
+        <p>Whether you're a SiteBuild Studio client or not, get in touch and I'll add your business to the directory.</p>
+        <a href="../index.html#contact" class="btn-pink">Get in Touch</a>
+    </div>
+
+    <div class="copyright-bar">
+        <p>&copy; Copyright 2026 SiteBuild Studio - All Rights Reserved &nbsp;|&nbsp; <a href="../index.html">Back to Home</a></p>
+    </div>
+
+    <a class="whatsapp-fab" id="whatsappFab" href="https://wa.me/27845795239?text=Hi%20SiteBuild%20Studio%2C%20I%27d%20like%20to%20be%20added%20to%20your%20small%20business%20directory.%20Here%27s%20my%20business%3A%20%5Bname%2C%20category%2C%20location%5D." target="_blank" rel="noopener" aria-label="Message SiteBuild Studio on WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.74.46 3.44 1.32 4.94L2.05 22l5.28-1.38a9.87 9.87 0 0 0 4.71 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.11h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.19 8.19 0 0 1 5.83 2.42 8.19 8.19 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.59.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.06-.11-.23-.17-.48-.29z"/></svg>
+        <span class="whatsapp-fab-label">Chat with us</span>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var hamburgerBtn = document.getElementById('hamburgerBtn');
+            var navLinks = document.getElementById('navLinks');
+            hamburgerBtn.addEventListener('click', function () {
+                var isOpen = navLinks.classList.toggle('open');
+                hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+            document.addEventListener('click', function (e) {
+                if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                    navLinks.classList.remove('open');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            var listingsGrid = document.getElementById('listingsGrid');
+            var loadingState = document.getElementById('loadingState');
+            var emptyState = document.getElementById('emptyState');
+            var filterBar = document.getElementById('filterBar');
+            var allBusinesses = [];
+            var activeCategory = 'all';
+
+            function escapeHtml(str) {
+                var div = document.createElement('div');
+                div.textContent = str || '';
+                return div.innerHTML;
+            }
+
+            function renderCards() {
+                var filtered = activeCategory === 'all'
+                    ? allBusinesses
+                    : allBusinesses.filter(function (b) { return b.category === activeCategory; });
+
+                if (filtered.length === 0) {
+                    listingsGrid.style.display = 'none';
+                    emptyState.style.display = 'block';
+                    return;
+                }
+
+                emptyState.style.display = 'none';
+                listingsGrid.style.display = 'grid';
+                listingsGrid.innerHTML = filtered.map(function (b) {
+                    var visitHtml = b.website
+                        ? '<a href="' + escapeHtml(b.website) + '" target="_blank" rel="noopener" class="listing-visit">Visit Website &rarr;</a>'
+                        : '<span class="listing-pending">Website coming soon</span>';
+                    return '' +
+                        '<div class="listing-card">' +
+                            '<span class="listing-category">' + escapeHtml(b.category) + '</span>' +
+                            '<h3>' + escapeHtml(b.name) + '</h3>' +
+                            '<div class="listing-location">' + escapeHtml(b.location) + '</div>' +
+                            '<p class="desc">' + escapeHtml(b.description) + '</p>' +
+                            visitHtml +
+                        '</div>';
+                }).join('');
+            }
+
+            function renderFilters() {
+                var categories = [];
+                allBusinesses.forEach(function (b) {
+                    if (b.category && categories.indexOf(b.category) === -1) categories.push(b.category);
+                });
+                categories.forEach(function (cat) {
+                    var btn = document.createElement('button');
+                    btn.className = 'filter-chip';
+                    btn.setAttribute('data-category', cat);
+                    btn.textContent = cat;
+                    filterBar.appendChild(btn);
+                });
+                filterBar.querySelectorAll('.filter-chip').forEach(function (chip) {
+                    chip.addEventListener('click', function () {
+                        filterBar.querySelectorAll('.filter-chip').forEach(function (c) { c.classList.remove('active'); });
+                        chip.classList.add('active');
+                        activeCategory = chip.getAttribute('data-category');
+                        renderCards();
+                    });
+                });
+            }
+
+            fetch('listings.json')
+                .then(function (res) { return res.json(); })
+                .then(function (data) {
+                    allBusinesses = (data && data.businesses) ? data.businesses : [];
+                    loadingState.style.display = 'none';
+                    if (allBusinesses.length === 0) {
+                        emptyState.style.display = 'block';
+                        return;
+                    }
+                    renderFilters();
+                    renderCards();
+                })
+                .catch(function () {
+                    loadingState.style.display = 'none';
+                    emptyState.textContent = 'Listings could not be loaded right now — please check back soon.';
+                    emptyState.style.display = 'block';
+                });
+        });
+    </script>
+
+</body>
+</html>
