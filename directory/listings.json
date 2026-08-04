@@ -1,14 +1,28 @@
 {
   "businesses": [
     {
-      "id": "example-business",
-      "name": "Example Business Name",
-      "category": "Category (e.g. Landscaping & Pool Care)",
-      "location": "Suburb, Cape Town",
+      "id": "tripspace-global",
+      "name": "TripSpace Global",
+      "category": "Travel & Accommodation",
+      "location": "Cape Town",
       "address": "",
-      "description": "A one or two sentence description of what this business does. Replace or delete this entire entry before publishing real listings.",
+      "phone": "",
+      "whatsapp": "",
+      "description": "A commission-free travel marketplace for accommodation, car rentals, safaris, and experiences. Hosts list for a flat monthly fee and keep 100% of every booking, with no commission ever charged.",
       "logo": "",
-      "website": ""
+      "website": "https://tripspaceglobal.com"
+    },
+    {
+      "id": "international-panel-shop",
+      "name": "International Panel Shop",
+      "category": "Autobody Shop",
+      "location": "Goodwood, Cape Town",
+      "address": "7 Bloem Street, Townsend Estate, Goodwood, Cape Town, 7460",
+      "phone": "021 801 8007",
+      "whatsapp": "071 687 1308",
+      "description": "Panel beating and auto body repairs for all vehicle makes, from minor scratches to major collision and insurance work \u2014 over 20 years of experience, with free vehicle collection on larger repairs.",
+      "logo": "",
+      "website": "https://www.intpanelshop.co.za"
     }
   ]
 }
