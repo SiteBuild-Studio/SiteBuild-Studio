@@ -59,6 +59,30 @@
       "description": "A public benefit organisation offering plumbing maintenance and entrepreneurial skills training, helping individuals build employable trade skills and start their own plumbing businesses.",
       "logo": "images/preferred-logo-256x74.png",
       "website": "https://www.seritipbo.org"
+    },
+    {
+      "id": "aurora",
+      "name": "AURORA",
+      "category": "AI Vehicle Damage Assessment",
+      "location": "Cape Town",
+      "address": "",
+      "phone": "",
+      "whatsapp": "",
+      "description": "An AI tool that turns photos of vehicle damage into an instant, itemised repair assessment ready to submit to your insurer or panel shop \u2014 built in partnership with International Panel Shop.",
+      "logo": "images/aurora.png",
+      "website": "https://www.aurora-repair.com"
+    },
+    {
+      "id": "eslboards",
+      "name": "ESLBoards Career Center",
+      "category": "ESL Job Board & Recruitment",
+      "location": "San Diego, USA",
+      "address": "2555 Camino Del Rio South, Suite 150, San Diego, CA 92108",
+      "phone": "+1 619-921-7774",
+      "whatsapp": "+1 619-921-7774",
+      "description": "A global job board connecting ESL teachers with schools and recruiters worldwide, covering teaching positions across Asia, the Middle East, Europe, and online.",
+      "logo": "images/esl-boards-career-center-1678670500-3.png",
+      "website": "https://www.eslboards.com"
     }
   ]
 }
