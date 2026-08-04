@@ -35,6 +35,30 @@
       "description": "A rope access company with 9 years of industry experience, delivering high-rise window cleaning, painting, waterproofing, signage, and anchor testing to international safety standards.",
       "logo": "images/skyroplogo.png",
       "website": "https://skyropespecialist.co.za"
+    },
+    {
+      "id": "auto-digital-solutions",
+      "name": "Auto Digital Solutions",
+      "category": "Auto Mechanic",
+      "location": "Cape Town",
+      "address": "",
+      "phone": "073 679 5182",
+      "whatsapp": "073 679 5182",
+      "description": "Mechanical car services and repairs in Cape Town, from oil changes and diagnostics to full engine overhauls, with honest, transparent pricing and no hidden fees.",
+      "logo": "images/autods.webp",
+      "website": "https://autods.co.za"
+    },
+    {
+      "id": "seriti-skills-development",
+      "name": "Seriti Skills Development PBO",
+      "category": "Nonprofit & Skills Development",
+      "location": "Milnerton, Cape Town",
+      "address": "34 Farnworth Street, Rugby, Milnerton, 7441",
+      "phone": "066 231 6778",
+      "whatsapp": "",
+      "description": "A public benefit organisation offering plumbing maintenance and entrepreneurial skills training, helping individuals build employable trade skills and start their own plumbing businesses.",
+      "logo": "images/preferred-logo-256x74.png",
+      "website": "https://www.seritipbo.org"
     }
   ]
 }
