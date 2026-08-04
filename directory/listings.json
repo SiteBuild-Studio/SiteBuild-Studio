@@ -9,7 +9,7 @@
       "phone": "",
       "whatsapp": "",
       "description": "A commission-free travel marketplace for accommodation, car rentals, safaris, and experiences. Hosts list for a flat monthly fee and keep 100% of every booking, with no commission ever charged.",
-      "logo": "",
+      "logo": "images/TRIPSPACEGLOBAL.webp",
       "website": "https://tripspaceglobal.com"
     },
     {
@@ -21,8 +21,20 @@
       "phone": "021 801 8007",
       "whatsapp": "071 687 1308",
       "description": "Panel beating and auto body repairs for all vehicle makes, from minor scratches to major collision and insurance work \u2014 over 20 years of experience, with free vehicle collection on larger repairs.",
-      "logo": "",
+      "logo": "images/IPS-LOGO.webp",
       "website": "https://www.intpanelshop.co.za"
+    },
+    {
+      "id": "sky-rope-specialist",
+      "name": "Sky Rope Specialist",
+      "category": "Rope Access & High-Rise Maintenance",
+      "location": "Maitland, Cape Town",
+      "address": "19 Ferndale Drive, Maitland, Cape Town",
+      "phone": "065 503 8871",
+      "whatsapp": "065 503 8871",
+      "description": "A rope access company with 9 years of industry experience, delivering high-rise window cleaning, painting, waterproofing, signage, and anchor testing to international safety standards.",
+      "logo": "images/skyroplogo.png",
+      "website": "https://skyropespecialist.co.za"
     }
   ]
 }
