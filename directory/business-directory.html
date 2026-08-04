@@ -78,17 +78,33 @@
         /* Filters */
         .directory-section { padding: 0 60px 100px; }
         .filter-bar {
-            max-width: 1200px; margin: -50px auto 40px; background: #ffffff; border-radius: 18px;
+            max-width: 900px; margin: -50px auto 40px; background: #ffffff; border-radius: 18px;
             box-shadow: 0 20px 45px rgba(0,0,0,0.1); padding: 22px 26px;
-            display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+            display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
         }
-        .filter-chip {
-            border: 1.5px solid #eee; background: #fafafa; padding: 9px 20px; border-radius: 30px;
-            font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.85rem; cursor: pointer;
-            transition: all 0.2s ease; color: #444444;
+        .search-wrap {
+            flex: 1 1 260px; position: relative; display: flex; align-items: center;
         }
-        .filter-chip.active { background: #111111; border-color: #111111; color: #ffffff; }
-        .filter-chip:hover:not(.active) { border-color: #e6427c; color: #e6427c; }
+        .search-wrap svg {
+            position: absolute; left: 16px; width: 18px; height: 18px; stroke: #999999; pointer-events: none;
+        }
+        .search-input {
+            width: 100%; border: 1.5px solid #eee; background: #fafafa; border-radius: 30px;
+            padding: 13px 18px 13px 44px; font-family: 'Poppins', sans-serif; font-size: 0.92rem;
+            color: #111111; outline: none; transition: border-color 0.2s ease;
+        }
+        .search-input:focus { border-color: #e6427c; background: #ffffff; }
+        .area-select {
+            flex: 0 1 220px; border: 1.5px solid #eee; background: #fafafa; border-radius: 30px;
+            padding: 13px 18px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.88rem;
+            color: #444444; outline: none; cursor: pointer; transition: border-color 0.2s ease;
+        }
+        .area-select:focus { border-color: #e6427c; }
+
+        @media (max-width: 600px) {
+            .filter-bar { flex-direction: column; align-items: stretch; }
+            .area-select { flex: 1 1 auto; }
+        }
 
         /* Listings grid */
         .listings-grid {
@@ -101,14 +117,26 @@
             display: flex; flex-direction: column;
         }
         .listing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .listing-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+        .listing-logo {
+            width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
+            border: 1px solid #f0f0f0;
+        }
+        .listing-logo-fallback {
+            width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+            background: linear-gradient(135deg, #e6427c, #d9a870);
+            color: #ffffff; font-weight: 800; font-size: 1.3rem;
+            display: flex; align-items: center; justify-content: center;
+        }
         .listing-category {
             display: inline-block; background: #fdf3f7; color: #e6427c; font-size: 0.7rem; font-weight: 700;
             letter-spacing: 0.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 20px;
-            margin-bottom: 14px; width: fit-content;
+            width: fit-content;
         }
         .listing-card h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
-        .listing-location { font-size: 0.82rem; color: #999999; font-weight: 600; margin-bottom: 14px; }
+        .listing-location { font-size: 0.82rem; color: #999999; font-weight: 600; margin-bottom: 2px; }
         .listing-location::before { content: "\1F4CD "; }
+        .listing-address { font-size: 0.78rem; color: #b3aab0; margin-bottom: 14px; padding-left: 20px; }
         .listing-card p.desc { font-size: 0.9rem; color: #555555; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
         .listing-visit {
             display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.85rem;
@@ -220,7 +248,13 @@
 
     <section class="directory-section">
         <div class="filter-bar" id="filterBar">
-            <button class="filter-chip active" data-category="all">All</button>
+            <div class="search-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search by business name, type, or service (e.g. &quot;pool&quot;)">
+            </div>
+            <select class="area-select" id="areaSelect">
+                <option value="all">All Areas</option>
+            </select>
         </div>
 
         <div class="directory-loading" id="loadingState">Loading listings&hellip;</div>
@@ -261,9 +295,9 @@
             var listingsGrid = document.getElementById('listingsGrid');
             var loadingState = document.getElementById('loadingState');
             var emptyState = document.getElementById('emptyState');
-            var filterBar = document.getElementById('filterBar');
+            var searchInput = document.getElementById('searchInput');
+            var areaSelect = document.getElementById('areaSelect');
             var allBusinesses = [];
-            var activeCategory = 'all';
 
             function escapeHtml(str) {
                 var div = document.createElement('div');
@@ -271,13 +305,30 @@
                 return div.innerHTML;
             }
 
+            function initials(name) {
+                if (!name) return '?';
+                var parts = name.trim().split(/\s+/);
+                var first = parts[0] ? parts[0][0] : '';
+                var second = parts.length > 1 ? parts[1][0] : '';
+                return (first + second).toUpperCase();
+            }
+
             function renderCards() {
-                var filtered = activeCategory === 'all'
-                    ? allBusinesses
-                    : allBusinesses.filter(function (b) { return b.category === activeCategory; });
+                var query = searchInput.value.trim().toLowerCase();
+                var area = areaSelect.value;
+
+                var filtered = allBusinesses.filter(function (b) {
+                    var matchesArea = area === 'all' || b.location === area;
+                    if (!matchesArea) return false;
+                    if (!query) return true;
+                    var haystack = [b.name, b.category, b.description, b.location]
+                        .filter(Boolean).join(' ').toLowerCase();
+                    return haystack.indexOf(query) !== -1;
+                });
 
                 if (filtered.length === 0) {
                     listingsGrid.style.display = 'none';
+                    emptyState.textContent = 'No businesses match that search — try a different word or area.';
                     emptyState.style.display = 'block';
                     return;
                 }
@@ -288,38 +339,43 @@
                     var visitHtml = b.website
                         ? '<a href="' + escapeHtml(b.website) + '" target="_blank" rel="noopener" class="listing-visit">Visit Website &rarr;</a>'
                         : '<span class="listing-pending">Website coming soon</span>';
+                    var logoHtml = b.logo
+                        ? '<img class="listing-logo" src="' + escapeHtml(b.logo) + '" alt="' + escapeHtml(b.name) + ' logo">'
+                        : '<div class="listing-logo-fallback">' + escapeHtml(initials(b.name)) + '</div>';
+                    var addressHtml = b.address
+                        ? '<div class="listing-address">' + escapeHtml(b.address) + '</div>'
+                        : '';
                     return '' +
                         '<div class="listing-card">' +
-                            '<span class="listing-category">' + escapeHtml(b.category) + '</span>' +
+                            '<div class="listing-top">' +
+                                logoHtml +
+                                '<div><span class="listing-category">' + escapeHtml(b.category) + '</span></div>' +
+                            '</div>' +
                             '<h3>' + escapeHtml(b.name) + '</h3>' +
                             '<div class="listing-location">' + escapeHtml(b.location) + '</div>' +
+                            addressHtml +
                             '<p class="desc">' + escapeHtml(b.description) + '</p>' +
                             visitHtml +
                         '</div>';
                 }).join('');
             }
 
-            function renderFilters() {
-                var categories = [];
+            function populateAreaSelect() {
+                var areas = [];
                 allBusinesses.forEach(function (b) {
-                    if (b.category && categories.indexOf(b.category) === -1) categories.push(b.category);
+                    if (b.location && areas.indexOf(b.location) === -1) areas.push(b.location);
                 });
-                categories.forEach(function (cat) {
-                    var btn = document.createElement('button');
-                    btn.className = 'filter-chip';
-                    btn.setAttribute('data-category', cat);
-                    btn.textContent = cat;
-                    filterBar.appendChild(btn);
-                });
-                filterBar.querySelectorAll('.filter-chip').forEach(function (chip) {
-                    chip.addEventListener('click', function () {
-                        filterBar.querySelectorAll('.filter-chip').forEach(function (c) { c.classList.remove('active'); });
-                        chip.classList.add('active');
-                        activeCategory = chip.getAttribute('data-category');
-                        renderCards();
-                    });
+                areas.sort();
+                areas.forEach(function (area) {
+                    var opt = document.createElement('option');
+                    opt.value = area;
+                    opt.textContent = area;
+                    areaSelect.appendChild(opt);
                 });
             }
+
+            searchInput.addEventListener('input', renderCards);
+            areaSelect.addEventListener('change', renderCards);
 
             fetch('listings.json')
                 .then(function (res) { return res.json(); })
@@ -327,10 +383,11 @@
                     allBusinesses = (data && data.businesses) ? data.businesses : [];
                     loadingState.style.display = 'none';
                     if (allBusinesses.length === 0) {
+                        emptyState.textContent = 'No listings yet — check back soon.';
                         emptyState.style.display = 'block';
                         return;
                     }
-                    renderFilters();
+                    populateAreaSelect();
                     renderCards();
                 })
                 .catch(function () {
