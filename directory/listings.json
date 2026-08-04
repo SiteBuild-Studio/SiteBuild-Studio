@@ -1,0 +1,12 @@
+{
+  "businesses": [
+    {
+      "id": "example-business",
+      "name": "Example Business Name",
+      "category": "Category (e.g. Landscaping & Pool Care)",
+      "location": "Suburb, Cape Town",
+      "description": "A one or two sentence description of what this business does. Replace or delete this entire entry before publishing real listings.",
+      "website": ""
+    }
+  ]
+}
