@@ -83,6 +83,18 @@
       "description": "A global job board connecting ESL teachers with schools and recruiters worldwide, covering teaching positions across Asia, the Middle East, Europe, and online.",
       "logo": "images/esl-boards-career-center-1678670500-3.png",
       "website": "https://www.eslboards.com"
+    },
+    {
+      "id": "scouts-for-kids",
+      "name": "Scouts for Kids",
+      "category": "Nonprofit & Youth Development",
+      "location": "Bonteheuwel, Cape Town",
+      "address": "",
+      "phone": "",
+      "whatsapp": "071 799 0196",
+      "description": "A Cape Town nonprofit working to keep youth off the streets and away from gangs and drugs, through hiking, mentorship, and educational support for children in Bonteheuwel.",
+      "logo": "images/scoutforkidslogo.png",
+      "website": "https://www.scoutsforkids.org"
     }
   ]
 }
