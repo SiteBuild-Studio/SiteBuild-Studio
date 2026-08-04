@@ -137,6 +137,12 @@
         .listing-location { font-size: 0.82rem; color: #999999; font-weight: 600; margin-bottom: 2px; }
         .listing-location::before { content: "\1F4CD "; }
         .listing-address { font-size: 0.78rem; color: #b3aab0; margin-bottom: 14px; padding-left: 20px; }
+        .listing-contacts { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+        .listing-contact { font-size: 0.82rem; color: #666666; display: flex; align-items: center; gap: 6px; }
+        .listing-contact svg { width: 13px; height: 13px; stroke: #999999; flex-shrink: 0; }
+        .listing-contact a { color: #666666; }
+        .listing-contact a:hover { color: #e6427c; }
+        .listing-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
         .listing-card p.desc { font-size: 0.9rem; color: #555555; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
         .listing-visit {
             display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.85rem;
@@ -144,6 +150,12 @@
             transition: background-color 0.2s ease;
         }
         .listing-visit:hover { background-color: #333333; }
+        .listing-whatsapp {
+            display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.85rem;
+            color: #ffffff; background: #25D366; padding: 10px 18px; border-radius: 30px; width: fit-content;
+            transition: background-color 0.2s ease;
+        }
+        .listing-whatsapp:hover { background-color: #1ebe5b; }
         .listing-pending {
             font-size: 0.82rem; color: #b3a3ab; font-style: italic;
         }
@@ -339,12 +351,24 @@
                     var visitHtml = b.website
                         ? '<a href="' + escapeHtml(b.website) + '" target="_blank" rel="noopener" class="listing-visit">Visit Website &rarr;</a>'
                         : '<span class="listing-pending">Website coming soon</span>';
+                    function toWhatsappNumber(raw) {
+                        var digits = raw.replace(/\D/g, '');
+                        if (digits.charAt(0) === '0') digits = '27' + digits.slice(1);
+                        return digits;
+                    }
+                    var whatsappHtml = b.whatsapp
+                        ? '<a href="https://wa.me/' + toWhatsappNumber(b.whatsapp) + '" target="_blank" rel="noopener" class="listing-whatsapp">WhatsApp</a>'
+                        : '';
                     var logoHtml = b.logo
                         ? '<img class="listing-logo" src="' + escapeHtml(b.logo) + '" alt="' + escapeHtml(b.name) + ' logo">'
                         : '<div class="listing-logo-fallback">' + escapeHtml(initials(b.name)) + '</div>';
                     var addressHtml = b.address
                         ? '<div class="listing-address">' + escapeHtml(b.address) + '</div>'
                         : '';
+                    var contactsHtml = '';
+                    if (b.phone) {
+                        contactsHtml += '<div class="listing-contact"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>' + escapeHtml(b.phone) + '</div>';
+                    }
                     return '' +
                         '<div class="listing-card">' +
                             '<div class="listing-top">' +
@@ -355,7 +379,8 @@
                             '<div class="listing-location">' + escapeHtml(b.location) + '</div>' +
                             addressHtml +
                             '<p class="desc">' + escapeHtml(b.description) + '</p>' +
-                            visitHtml +
+                            (contactsHtml ? '<div class="listing-contacts">' + contactsHtml + '</div>' : '') +
+                            '<div class="listing-actions">' + visitHtml + whatsappHtml + '</div>' +
                         '</div>';
                 }).join('');
             }
