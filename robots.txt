@@ -55,5 +55,4 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: https://sitebuildstudio.co.za/sitemap.xml
-Sitemap: https://sitebuild-studio.github.io/SiteBuild-Studio/sitemap.xml
+Sitemap: https://www.sitebuildstudio.co.za/sitemap.xml
