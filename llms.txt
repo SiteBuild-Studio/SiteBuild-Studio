@@ -1,0 +1,28 @@
+# SiteBuild Studio
+
+> SiteBuild Studio is a Cape Town-based web design and development studio, run by Micaela Hosking. It designs and builds fast, modern, mobile-responsive websites for small businesses, along with ongoing care plans, a portfolio of live demo builds, researched articles on web strategy, and a free small business directory.
+
+SiteBuild Studio focuses on small, local businesses — including but not limited to landscaping and pool maintenance, hair and beauty salons, cafes and restaurants, real estate, and personal/creative portfolios. Websites are built from scratch (not drag-and-drop templates), with basic SEO, schema markup, a sitemap, and robots.txt included as standard.
+
+## Services
+
+- [Website Build Packages](https://www.sitebuildstudio.co.za/#pricing): Once-off website builds across three tiers — a single landing page, a landing page with two extra pages, and a full multi-page site — each including a sitemap, robots.txt, and schema markup.
+- [Care Plans](https://www.sitebuildstudio.co.za/#care-plans): Monthly maintenance plans covering content updates, SEO health checks, and ongoing support after a site goes live.
+
+## Portfolio
+
+- [Portfolio](https://www.sitebuildstudio.co.za/#portfolio): Live concept demo sites showing design range across different small business types (beauty retail, landscaping/pool care, hair salon, real estate, a creative portfolio, and a cafe/restaurant). These demos are available to buy as a customized starting point, or as reference for a fully custom build.
+
+## Articles
+
+- [Do You Actually Need a Website for Your Small Business?](https://www.sitebuildstudio.co.za/articles/website-value.html): A researched look at how customers actually search for and choose local businesses, and what happens when a business has no website.
+- [How to Get Your Small Business Found on Google (Without Paying for Ads)](https://www.sitebuildstudio.co.za/articles/found-on-google.html): A practical guide to local SEO — Google Business Profile setup, NAP consistency, schema markup, and reviews.
+- [What Should a Small Business Website Actually Cost?](https://www.sitebuildstudio.co.za/articles/website-cost.html): A realistic South African pricing breakdown for website builds, including the domain and hosting costs many people forget to budget for.
+
+## Directory
+
+- [Small Business Directory](https://www.sitebuildstudio.co.za/directory/business-directory.html): A free, searchable directory of Cape Town small businesses, open to SiteBuild Studio clients and non-clients alike.
+
+## Contact
+
+- [Contact](https://www.sitebuildstudio.co.za/#contact): Reach SiteBuild Studio via WhatsApp or email for quotes and inquiries.
