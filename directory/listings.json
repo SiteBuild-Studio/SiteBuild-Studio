@@ -73,18 +73,6 @@
       "website": "https://www.aurora-repair.com"
     },
     {
-      "id": "eslboards",
-      "name": "ESLBoards Career Center",
-      "category": "ESL Job Board & Recruitment",
-      "location": "San Diego, USA",
-      "address": "2555 Camino Del Rio South, Suite 150, San Diego, CA 92108",
-      "phone": "+1 619-921-7774",
-      "whatsapp": "+1 619-921-7774",
-      "description": "A global job board connecting ESL teachers with schools and recruiters worldwide, covering teaching positions across Asia, the Middle East, Europe, and online.",
-      "logo": "images/esl-boards-career-center-1678670500-3.png",
-      "website": "https://www.eslboards.com"
-    },
-    {
       "id": "scouts-for-kids",
       "name": "Scouts for Kids",
       "category": "Nonprofit & Youth Development",
@@ -95,6 +83,18 @@
       "description": "A Cape Town nonprofit working to keep youth off the streets and away from gangs and drugs, through hiking, mentorship, and educational support for children in Bonteheuwel.",
       "logo": "images/scoutforkidslogo.png",
       "website": "https://www.scoutsforkids.org"
+    },
+    {
+      "id": "bookkeepers-cape-town",
+      "name": "Bookkeepers Cape Town",
+      "category": "Bookkeeping & Accounting",
+      "location": "Century City, Cape Town",
+      "address": "Unit 129, Millennium Business Park, Century City, 7441",
+      "phone": "021 525 9787",
+      "whatsapp": "072 779 1046",
+      "description": "A personalised accounting and tax consulting firm for small and medium businesses, offering bookkeeping, payroll, tax returns, and CIPC company secretarial services, built on long-term client relationships.",
+      "logo": "../assets/images/bookkeepers-logo-large-scaled.png",
+      "website": "https://bookkeepersincapetown.co.za"
     }
   ]
 }
