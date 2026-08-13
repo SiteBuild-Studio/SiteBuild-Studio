@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjUwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZmF2UGluayIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNlZTdlYTYiLz4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYzgxNzYwIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxyZWN0IHdpZHRoPSIyNTAiIGhlaWdodD0iMjAwIiByeD0iMzYiIGZpbGw9IiNmZmZmZmYiLz4KICAgIDx0ZXh0IHg9IjIiIHk9IjE2MCIgZm9udC1mYW1pbHk9IlBvcHBpbnMsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMTY4IiBmaWxsPSJ1cmwoI2ZhdlBpbmspIj5TPC90ZXh0PgogICAgPHRleHQgeD0iOTYiIHk9IjE2MyIgZm9udC1mYW1pbHk9IlBvcHBpbnMsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMTQ2IiBmaWxsPSIjMTExMTExIj5CPC90ZXh0Pgo8L3N2Zz4=">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Does My Website Need a Redesign? | SiteBuild Studio</title>
+    <meta name="description" content="How to tell if your website has genuinely gone out of date, what's actually changed since 2010, and a real side-by-side comparison of old vs modern design standards.">
+    <link rel="canonical" href="https://www.sitebuildstudio.co.za/articles/website-redesign.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Does My Website Need a Redesign?">
+    <meta property="og:description" content="How to tell if your website has genuinely gone out of date, what's actually changed since 2010, and a real side-by-side comparison of old vs modern design standards.">
+    <meta property="og:url" content="https://www.sitebuildstudio.co.za/articles/website-redesign.html">
+    <meta name="robots" content="index, follow">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Does My Website Need a Redesign?",
+        "description": "How to tell if your website has genuinely gone out of date, what's actually changed since 2010, and a real side-by-side comparison of old vs modern design standards.",
+        "author": { "@type": "Person", "name": "Micaela Hosking" },
+        "publisher": { "@type": "Organization", "name": "SiteBuild Studio", "url": "https://www.sitebuildstudio.co.za/" },
+        "url": "https://www.sitebuildstudio.co.za/articles/website-redesign.html",
+        "mainEntityOfPage": "https://www.sitebuildstudio.co.za/articles/website-redesign.html"
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #111111;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* Nav */
+        .nav-wrapper { background-color: #f6cddc; }
+        .navbar {
+            max-width: 1300px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 26px 60px; gap: 20px; flex-wrap: wrap; position: relative;
+        }
+        .logo-svg { height: 44px; width: auto; display: block; }
+        .nav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
+        .nav-links a { font-size: 0.92rem; font-weight: 500; position: relative; padding-bottom: 4px; }
+        .nav-links a.active { color: #e6427c; font-weight: 700; }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
+            background-color: #111111; transition: width 0.25s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .contact-btn {
+            background-color: #d9a870; color: #ffffff; padding: 12px 26px; border-radius: 30px;
+            font-weight: 600; font-size: 0.9rem; white-space: nowrap; transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .contact-btn:hover { background-color: #c99a5f; transform: translateY(-1px); }
+        .hamburger {
+            display: none; flex-direction: column; justify-content: center; gap: 6px;
+            width: 40px; height: 40px; background: none; border: none; padding: 0; cursor: pointer;
+        }
+        .hamburger span { display: block; width: 100%; height: 3px; border-radius: 3px; }
+        .hamburger span:nth-child(1) { background-color: #e6427c; }
+        .hamburger span:nth-child(2) { background-color: #d9a870; }
+        .hamburger span:nth-child(3) { background-color: #e6427c; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 20px 24px; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none; position: absolute; top: 70px; left: 0; right: 0;
+                flex-direction: column; align-items: flex-start; gap: 20px;
+                background-color: #ffffff; padding: 24px; border-radius: 0 0 16px 16px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15); z-index: 40;
+            }
+            .nav-links.open { display: flex; }
+        }
+
+        /* Article header */
+        .article-header { background-color: #f6cddc; padding: 60px 60px 80px; text-align: center; }
+        .breadcrumb { font-size: 0.85rem; margin-bottom: 24px; color: #444444; }
+        .breadcrumb a { color: #e6427c; font-weight: 600; }
+        .article-tag {
+            display: inline-block; background-color: #ffffff; color: #e6427c; font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 18px; border-radius: 30px; margin-bottom: 22px;
+        }
+        .article-header h1 { font-size: 2.6rem; font-weight: 800; max-width: 780px; margin: 0 auto 18px; line-height: 1.25; }
+        .article-header .subtitle { font-size: 1.05rem; color: #444444; max-width: 620px; margin: 0 auto 20px; line-height: 1.65; }
+        .article-meta-bar { font-size: 0.85rem; color: #6b5a62; font-weight: 600; }
+
+        @media (max-width: 600px) {
+            .article-header { padding: 40px 24px 60px; }
+            .article-header h1 { font-size: 1.9rem; }
+        }
+
+        /* Article body */
+        .article-body { max-width: 720px; margin: 0 auto; padding: 70px 24px 40px; }
+        .article-body p { font-size: 1.05rem; line-height: 1.85; color: #333333; margin-bottom: 24px; }
+        .article-body h2 { font-size: 1.6rem; font-weight: 800; margin: 50px 0 20px; color: #111111; }
+        .article-body h2:first-of-type { margin-top: 0; }
+        .article-body ul { margin: 0 0 24px 22px; }
+        .article-body li { font-size: 1.02rem; line-height: 1.8; color: #333333; margin-bottom: 10px; }
+        .stat-callout {
+            background-color: #fdf3f7; border-left: 4px solid #e6427c; border-radius: 8px;
+            padding: 22px 26px; margin: 32px 0; font-size: 1.05rem; line-height: 1.6; color: #111111;
+        }
+        .stat-callout strong { color: #e6427c; }
+        .source-note { font-size: 0.8rem; color: #999999; margin-top: -14px; margin-bottom: 30px; }
+
+        /* 2010 vs 2026 comparison mockup */
+        .comparison-wrap { max-width: 1000px; margin: 0 auto 50px; padding: 0 24px; }
+        .comparison-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; position: relative;
+        }
+        .comparison-vs {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 44px; height: 44px; border-radius: 50%; background: #111111; color: #fff;
+            display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.8rem;
+            z-index: 5; box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+        }
+        .comparison-col { display: flex; flex-direction: column; }
+        .comparison-label {
+            text-align: center; font-weight: 800; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .comparison-label.old { color: #999999; }
+        .comparison-label.new { color: #e6427c; }
+        .mock-browser {
+            border-radius: 8px; overflow: hidden; box-shadow: 0 14px 30px rgba(0,0,0,0.12); background: #fff;
+        }
+        .mock-browser-bar { display: flex; align-items: center; gap: 6px; padding: 8px 10px; background: #e5e5e5; }
+        .mock-browser-bar span { width: 9px; height: 9px; border-radius: 50%; background: #bbb; }
+        .mock-browser-body { aspect-ratio: 4/3; overflow: hidden; position: relative; }
+
+        /* Old (2010) site styling */
+        .mock-old .mock-browser-bar { background: #d4d0c8; }
+        .mock-old .mock-browser-body {
+            background: #ffffff; font-family: 'Times New Roman', Times, serif; font-size: 0.62rem; color: #000080;
+            padding: 8px; display: flex; flex-direction: column;
+        }
+        .mock-old-topbanner {
+            background: linear-gradient(180deg, #4a7fd6, #163a7a); color: #fff; text-align: center;
+            font-family: Arial, sans-serif; font-weight: 700; font-size: 0.72rem; padding: 8px 4px;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.4); border: 2px outset #7ea3e8; margin-bottom: 6px;
+        }
+        .mock-old-marquee {
+            background: #ffff00; color: #cc0000; font-family: Arial, sans-serif; font-weight: 700;
+            font-size: 0.58rem; padding: 3px 6px; margin-bottom: 6px; white-space: nowrap; overflow: hidden;
+        }
+        .mock-old-marquee span { display: inline-block; animation: mockMarquee 6s linear infinite; }
+        @keyframes mockMarquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .mock-old-body { display: flex; flex: 1; gap: 6px; min-height: 0; }
+        .mock-old-nav {
+            background: #d9d9d9; border: 1px solid #999; padding: 4px; width: 60px; flex-shrink: 0;
+            font-family: Arial, sans-serif; font-size: 0.55rem;
+        }
+        .mock-old-nav div { color: #0000ee; text-decoration: underline; padding: 2px 0; }
+        .mock-old-main { flex: 1; min-width: 0; }
+        .mock-old-main h4 { color: #cc0000; font-size: 0.68rem; margin: 0 0 4px; font-family: Arial, sans-serif; }
+        .mock-old-main p { font-size: 0.56rem; line-height: 1.35; margin: 0 0 5px; color: #000; }
+        .mock-old-btn {
+            display: inline-block; background: linear-gradient(180deg, #f0f0f0, #b8b8b8); border: 2px outset #ddd;
+            font-family: Arial, sans-serif; font-size: 0.55rem; padding: 3px 8px; color: #000;
+        }
+        .mock-old-footer {
+            font-family: Arial, sans-serif; font-size: 0.48rem; color: #666; text-align: center;
+            border-top: 1px solid #ccc; margin-top: 6px; padding-top: 4px;
+        }
+        .mock-old-counter {
+            font-family: 'Courier New', monospace; background: #000; color: #0f0; font-size: 0.5rem;
+            display: inline-block; padding: 1px 4px; margin-top: 2px;
+        }
+
+        /* New (2026) site styling */
+        .mock-new .mock-browser-bar { background: #f2f2f2; }
+        .mock-new .mock-browser-body {
+            background: #ffffff; font-family: 'Poppins', sans-serif; padding: 14px; display: flex; flex-direction: column;
+        }
+        .mock-new-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+        .mock-new-nav .brand { font-weight: 800; font-size: 0.7rem; color: #111111; }
+        .mock-new-nav .links { display: flex; gap: 8px; font-size: 0.5rem; color: #999999; }
+        .mock-new-hero { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+        .mock-new-hero h4 { font-size: 1rem; font-weight: 800; color: #111111; margin: 0 0 6px; line-height: 1.2; max-width: 80%; }
+        .mock-new-hero p { font-size: 0.55rem; color: #777777; margin: 0 0 12px; max-width: 85%; line-height: 1.5; }
+        .mock-new-btn {
+            background: #e6427c; color: #fff; font-size: 0.55rem; font-weight: 700; padding: 6px 14px;
+            border-radius: 20px; display: inline-block;
+        }
+
+        @media (max-width: 700px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+            .comparison-vs { position: static; transform: none; margin: 4px auto; }
+        }
+
+        /* Author / CTA */
+        .article-cta-band { background-color: #111111; color: #ffffff; padding: 70px 60px; text-align: center; margin-top: 30px; }
+        .article-cta-band h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 16px; }
+        .article-cta-band p { color: #cfcfcf; max-width: 480px; margin: 0 auto 30px; line-height: 1.6; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-pink {
+            background-color: #e6427c; color: #ffffff; padding: 14px 30px; border-radius: 30px;
+            font-weight: 700; font-size: 0.92rem; transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .btn-pink:hover { background-color: #c22f66; transform: translateY(-1px); }
+        .btn-white-outline {
+            border: 1.5px solid #ffffff; color: #ffffff; padding: 14px 30px; border-radius: 30px;
+            font-weight: 700; font-size: 0.92rem; transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .btn-white-outline:hover { background-color: #ffffff; color: #111111; transform: translateY(-1px); }
+
+        @media (max-width: 600px) { .article-cta-band { padding: 50px 24px; } }
+
+        /* Related */
+        .related-section { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+        .related-section h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 26px; text-align: center; }
+        .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; max-width: 800px; margin: 0 auto; }
+        .related-grid.cols-3 { grid-template-columns: repeat(3, 1fr); max-width: 1000px; }
+        .related-card {
+            background-color: #fdf7f0; border-radius: 14px; padding: 24px; opacity: 0.65;
+        }
+        .related-card .tag { font-size: 0.72rem; font-weight: 700; color: #999999; text-transform: uppercase; letter-spacing: 0.5px; }
+        .related-card h4 { font-size: 1.05rem; font-weight: 700; margin: 8px 0 0; }
+
+        @media (max-width: 700px) { .related-grid.cols-3 { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
+
+        /* Footer */
+        .copyright-bar { background-color: #1e1e24; padding: 20px; text-align: center; }
+        .copyright-bar p { color: #ffffff; font-size: 0.9rem; }
+        .copyright-bar a { color: #d9a870; font-weight: 600; }
+
+        /* WhatsApp FAB */
+        .whatsapp-fab {
+            position: fixed; bottom: 26px; right: 26px; height: 58px; min-width: 58px; border-radius: 30px;
+            background-color: #25D366; display: flex; align-items: center; justify-content: flex-start;
+            padding: 0 0 0 16px; box-shadow: 0 12px 28px rgba(17,17,17,0.25), 0 0 0 3px #ffffff, 0 0 0 5px #e6427c;
+            z-index: 900; overflow: hidden; transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .whatsapp-fab:hover { background-color: #1ebe5b; box-shadow: 0 16px 34px rgba(17,17,17,0.3), 0 0 0 3px #ffffff, 0 0 0 5px #d9a870; }
+        .whatsapp-fab svg { width: 26px; height: 26px; fill: #ffffff; }
+        .whatsapp-fab-label {
+            max-width: 0; opacity: 0; white-space: nowrap; overflow: hidden; color: #ffffff; font-weight: 700; font-size: 0.92rem;
+            transition: max-width 0.3s ease, opacity 0.25s ease, padding 0.3s ease;
+        }
+        .whatsapp-fab:hover .whatsapp-fab-label { max-width: 160px; opacity: 1; padding: 0 20px 0 12px; }
+        .whatsapp-fab:not(:hover) { padding-right: 16px; }
+        @media (max-width: 600px) { .whatsapp-fab { bottom: 18px; right: 18px; height: 52px; min-width: 52px; } }
+    </style>
+</head>
+<body>
+
+    <div class="nav-wrapper">
+        <nav class="navbar">
+            <a href="../index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 725 227" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SiteBuild Studio">
+                    <title>SiteBuild Studio</title>
+                    <defs>
+                        <linearGradient id="pinkS2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ee7ea6"/>
+                            <stop offset="100%" stop-color="#c81760"/>
+                        </linearGradient>
+                    </defs>
+                    <text x="-8" y="178" font-family="'Poppins', sans-serif" font-weight="800" font-size="192" fill="url(#pinkS2)">S</text>
+                    <text x="88" y="182" font-family="'Poppins', sans-serif" font-weight="800" font-size="166" fill="#111111">B</text>
+                    <rect x="184" y="14" width="15" height="15" fill="#d9a870"/>
+                    <rect x="201" y="32" width="10" height="10" fill="#d9a870"/>
+                    <rect x="190" y="47" width="6" height="6" fill="#d9a870"/>
+                    <polygon points="128,150 150,150 128,182 106,182" fill="#d9a870"/>
+                    <line x1="250" y1="14" x2="250" y2="213" stroke="#d9a870" stroke-width="2"/>
+                    <text x="270" y="97" font-family="'Poppins', sans-serif" font-weight="800" font-size="52" letter-spacing="2">
+                        <tspan fill="#e6427c">SITE</tspan><tspan fill="#111111">BUILD</tspan>
+                    </text>
+                    <text x="270" y="140" font-family="'Poppins', sans-serif" font-weight="600" font-size="26" letter-spacing="7" fill="#c99a5f">&#8212; STUDIO &#8212;</text>
+                    <text x="270" y="176" font-family="'Poppins', sans-serif" font-weight="600" font-size="15" letter-spacing="2.5" fill="#333333">DESIGN &#8226; DEVELOP &#8226; DEPLOY</text>
+                </svg>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About Me</a></li>
+                <li><a href="../index.html#portfolio">Portfolio</a></li>
+                <li><a href="articles.html" class="active">Articles</a></li>
+                <li><a href="../index.html#pricing">Pricing</a></li>
+                <li><a href="../index.html#care-plans">Care Plans</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+
+            <a href="../index.html#contact" class="contact-btn">Contact</a>
+        </nav>
+    </div>
+
+    <div class="article-header">
+        <p class="breadcrumb"><a href="articles.html">&larr; All Articles</a></p>
+        <span class="article-tag">Design</span>
+        <h1>Does My Website Need a Redesign?</h1>
+        <p class="subtitle">What's actually changed in web design since 2010, and a real side-by-side comparison to show it.</p>
+        <p class="article-meta-bar">7 min read &nbsp;&middot;&nbsp; SiteBuild Studio</p>
+    </div>
+
+    <article class="article-body">
+        <p>You know it when you land on one. Something about the layout feels cramped, the fonts look wrong, and you're squinting slightly even though you couldn't say exactly why. That instinct is more accurate than most people realize — and more expensive to ignore than most people expect.</p>
+    </article>
+
+    <div class="comparison-wrap">
+        <div class="comparison-grid">
+            <div class="comparison-col">
+                <div class="comparison-label old">Circa 2010</div>
+                <div class="mock-browser mock-old">
+                    <div class="mock-browser-bar"><span></span><span></span><span></span></div>
+                    <div class="mock-browser-body">
+                        <div class="mock-old-topbanner">&#9733; WELCOME TO ACME SERVICES &#9733;<br>Est. 2004</div>
+                        <div class="mock-old-marquee"><span>*** CALL NOW FOR A FREE QUOTE! *** SE HABLA ESPA&Ntilde;OL *** BEST VIEWED IN 1024x768 ***</span></div>
+                        <div class="mock-old-body">
+                            <div class="mock-old-nav">
+                                <div>Home</div>
+                                <div>About Us</div>
+                                <div>Services</div>
+                                <div>Gallery</div>
+                                <div>Guestbook</div>
+                                <div>Links</div>
+                                <div>Contact</div>
+                            </div>
+                            <div class="mock-old-main">
+                                <h4>Welcome!!</h4>
+                                <p>Thank you for visiting our website. We are a family owned bussiness serving the comunity for over 6 years. Please browse our site using the menu on the left.</p>
+                                <span class="mock-old-btn">Enter Site &raquo;</span>
+                                <div class="mock-old-counter">Visitors: 004821</div>
+                            </div>
+                        </div>
+                        <div class="mock-old-footer">&copy; 2010 Acme Services. All Rights Reserved.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison-vs">VS</div>
+
+            <div class="comparison-col">
+                <div class="comparison-label new">2026</div>
+                <div class="mock-browser mock-new">
+                    <div class="mock-browser-bar"><span></span><span></span><span></span></div>
+                    <div class="mock-browser-body">
+                        <div class="mock-new-nav">
+                            <div class="brand">Acme Services</div>
+                            <div class="links"><span>About</span><span>Services</span><span>Contact</span></div>
+                        </div>
+                        <div class="mock-new-hero">
+                            <h4>Reliable service, done right.</h4>
+                            <p>Family-run, serving Cape Town for over 15 years. Get a free, no-obligation quote today.</p>
+                            <span class="mock-new-btn">Get a Free Quote</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <article class="article-body">
+        <p style="text-align:center; color:#999999; font-size:0.85rem; margin-top:-20px;">Both mockups above were built for this comparison — not real client sites — but the contrast is exactly what shows up when a genuinely dated site gets compared to a current one.</p>
+
+        <h2>What actually reads as "outdated" in 2026</h2>
+        <p>Design trends shift, but a handful of specific signals are what actually date a site, rather than just vague old-fashioned styling:</p>
+        <ul>
+            <li><strong>A fixed, narrow layout.</strong> Sites built before mobile browsing took over were designed for one screen size. On a phone, that means pinching and scrolling sideways to read a sentence — and mobile now accounts for the majority of web traffic.</li>
+            <li><strong>Dense, small text and cluttered navigation.</strong> Long sidebar menus, tiny fonts, and walls of unbroken paragraph text were normal once. Modern sites lean on whitespace and a handful of clear choices instead.</li>
+            <li><strong>No single clear next step.</strong> Older sites often bury the "contact us" or "call now" instruction in a sidebar link. Current design puts one obvious action front and center.</li>
+            <li><strong>Visible relics.</strong> Visitor counters, "best viewed in" browser notices, guestbooks, and marquee scrolling text were all standard once — today they're the clearest possible signal that a site hasn't been touched in over a decade.</li>
+        </ul>
+
+        <h2>Why this actually costs money, not just looks</h2>
+        <p>This isn't just an aesthetic complaint. Research on web credibility consistently finds that visitors form an opinion about a site in a fraction of a second — long before they've read a word of the actual content.</p>
+        <div class="stat-callout">
+            Multiple industry studies converge on similar figures: roughly <strong>75% of people judge a business's credibility based on its website design alone</strong>, and the vast majority of that first impression is formed in well under a second. A visitor doesn't consciously decide your business looks outdated — they just feel less sure about you, and move on.
+        </div>
+        <p>The mobile gap compounds this further. Non-responsive sites — the ones that don't adapt to a phone screen — see meaningfully higher bounce rates and lower conversion than responsive sites built to current standards. If a meaningful share of your visitors are on mobile and your site was built before that was the default, you're very likely losing some of them before they ever read your services list.</p>
+
+        <h2>Redesign, or just fix what's there?</h2>
+        <p>Not every dated-feeling site needs to be torn down and rebuilt. A useful way to tell the difference:</p>
+        <ul>
+            <li><strong>Worth fixing incrementally</strong> if the underlying structure is sound — the site is mobile-friendly, loads reasonably fast, and the issue is really just stale content, an old color scheme, or a few broken links.</li>
+            <li><strong>Worth a full redesign</strong> if the site isn't mobile-responsive at all, was built on since-discontinued page-builder technology, hasn't been touched in 5+ years, or the honest answer to "would I be embarrassed to send a new customer this link" is yes.</li>
+        </ul>
+        <p>A quick, free gut-check: open your own site on your phone, in an incognito window, as if you were a stranger. If you find yourself making excuses for it — "it looks better on desktop," "the important info is further down" — that's usually the answer.</p>
+
+        <h2>The short version</h2>
+        <p>Nobody consciously decides a website looks like 2010. They just feel a flicker of doubt and click away, usually without knowing why. The good news is this is one of the more fixable problems a small business can have — unlike reputation or word of mouth, a redesign is a single, contained project with a clear before and after.</p>
+        <p class="source-note">Design-credibility and mobile-responsiveness figures referenced above reflect a convergence of published industry research (including Stanford Web Credibility Research and multiple 2025&ndash;2026 web design industry studies), current as of 2026. Exact figures vary across sources — treat them as consistent directional evidence, not a single precise statistic.</p>
+    </article>
+
+    <div class="article-cta-band">
+        <h2>Think your site might need a refresh?</h2>
+        <p>Send me your current site and I'll give you an honest read on whether it needs a redesign or just a few fixes.</p>
+        <div class="cta-buttons">
+            <a href="../index.html#portfolio" class="btn-pink">See the Portfolio</a>
+            <a href="../index.html#contact" class="btn-white-outline">Get in Touch</a>
+        </div>
+    </div>
+
+    <div class="related-section">
+        <h3>More From the Blog</h3>
+        <div class="related-grid cols-3">
+            <a href="website-value.html" class="related-card" style="opacity: 1; display: block; text-decoration: none;">
+                <span class="tag" style="color: #e6427c;">Getting Started</span>
+                <h4>Do You Actually Need a Website for Your Small Business?</h4>
+            </a>
+            <a href="found-on-google.html" class="related-card" style="opacity: 1; display: block; text-decoration: none;">
+                <span class="tag" style="color: #e6427c;">Local SEO</span>
+                <h4>How to Get Your Small Business Found on Google (Without Paying for Ads)</h4>
+            </a>
+            <a href="website-cost.html" class="related-card" style="opacity: 1; display: block; text-decoration: none;">
+                <span class="tag" style="color: #e6427c;">Pricing</span>
+                <h4>What Should a Small Business Website Actually Cost?</h4>
+            </a>
+        </div>
+    </div>
+
+    <div class="copyright-bar">
+        <p>&copy; Copyright 2026 SiteBuild Studio - All Rights Reserved &nbsp;|&nbsp; <a href="../index.html">Back to Home</a></p>
+    </div>
+
+    <a class="whatsapp-fab" id="whatsappFab" href="https://wa.me/27845795239?text=Hi%20SiteBuild%20Studio%2C%20I%27d%20like%20a%20website.%20Here%27s%20a%20bit%20about%20my%20business%3A%20%5Bwhat%20you%20do%5D.%20Preferred%20brand%20colors%3A%20%5Bcolors%5D.%20Other%20details%3A%20%5Banything%20else%5D." target="_blank" rel="noopener" aria-label="Message SiteBuild Studio on WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.74.46 3.44 1.32 4.94L2.05 22l5.28-1.38a9.87 9.87 0 0 0 4.71 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.11h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.19 8.19 0 0 1 5.83 2.42 8.19 8.19 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.59.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.06-.11-.23-.17-.48-.29z"/></svg>
+        <span class="whatsapp-fab-label">Chat with us</span>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var hamburgerBtn = document.getElementById('hamburgerBtn');
+            var navLinks = document.getElementById('navLinks');
+            hamburgerBtn.addEventListener('click', function () {
+                var isOpen = navLinks.classList.toggle('open');
+                hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+            document.addEventListener('click', function (e) {
+                if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                    navLinks.classList.remove('open');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
