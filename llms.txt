@@ -18,6 +18,7 @@ SiteBuild Studio focuses on small, local businesses — including but not limite
 - [Do You Actually Need a Website for Your Small Business?](https://www.sitebuildstudio.co.za/articles/website-value.html): A researched look at how customers actually search for and choose local businesses, and what happens when a business has no website.
 - [How to Get Your Small Business Found on Google (Without Paying for Ads)](https://www.sitebuildstudio.co.za/articles/found-on-google.html): A practical guide to local SEO — Google Business Profile setup, NAP consistency, schema markup, and reviews.
 - [What Should a Small Business Website Actually Cost?](https://www.sitebuildstudio.co.za/articles/website-cost.html): A realistic South African pricing breakdown for website builds, including the domain and hosting costs many people forget to budget for.
+- [Does My Website Need a Redesign?](https://www.sitebuildstudio.co.za/articles/website-redesign.html): What actually makes a website look outdated, why it costs businesses trust and conversions, and a side-by-side comparison of 2010-era vs current design standards.
 
 ## Directory
 
