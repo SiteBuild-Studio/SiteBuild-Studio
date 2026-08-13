@@ -133,12 +133,14 @@
         .related-section { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
         .related-section h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 26px; text-align: center; }
         .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; max-width: 800px; margin: 0 auto; }
+        .related-grid.cols-3 { grid-template-columns: repeat(3, 1fr); max-width: 1000px; }
         .related-card {
             background-color: #fdf7f0; border-radius: 14px; padding: 24px; opacity: 0.65;
         }
         .related-card .tag { font-size: 0.72rem; font-weight: 700; color: #999999; text-transform: uppercase; letter-spacing: 0.5px; }
         .related-card h4 { font-size: 1.05rem; font-weight: 700; margin: 8px 0 0; }
 
+        @media (max-width: 700px) { .related-grid.cols-3 { grid-template-columns: 1fr; } }
         @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
 
         /* Footer */
@@ -275,7 +277,7 @@
 
     <div class="related-section">
         <h3>More From the Blog</h3>
-        <div class="related-grid">
+        <div class="related-grid cols-3">
             <a href="found-on-google.html" class="related-card" style="opacity: 1; display: block; text-decoration: none;">
                 <span class="tag" style="color: #e6427c;">Local SEO</span>
                 <h4>How to Get Your Small Business Found on Google (Without Paying for Ads)</h4>
@@ -283,6 +285,10 @@
             <a href="website-cost.html" class="related-card" style="opacity: 1; display: block; text-decoration: none;">
                 <span class="tag" style="color: #e6427c;">Pricing</span>
                 <h4>What Should a Small Business Website Actually Cost?</h4>
+            </a>
+            <a href="website-redesign.html" class="related-card" style="opacity: 1; display: block; text-decoration: none;">
+                <span class="tag" style="color: #e6427c;">Design</span>
+                <h4>Does My Website Need a Redesign?</h4>
             </a>
         </div>
     </div>
