@@ -119,6 +119,30 @@
       "description": "Residential and commercial cleaning services in Cape Town.",
       "logo": "../assets/images/douglas-cleaning-services.jpg",
       "website": ""
+    },
+    {
+      "id": "martins-electricals",
+      "name": "Martins Electricals",
+      "category": "Electrician & Handyman",
+      "location": "Cape Town",
+      "address": "",
+      "phone": "067 280 0732",
+      "whatsapp": "067 280 0732",
+      "description": "Household electrical wiring, general electrical repairs, and handyman services in Cape Town.",
+      "logo": "../assets/images/martins-electricals.png",
+      "website": ""
+    },
+    {
+      "id": "one-days-plumbing-services",
+      "name": "One Day's Plumbing Services",
+      "category": "Plumber",
+      "location": "Cape Town",
+      "address": "",
+      "phone": "065 327 0980",
+      "whatsapp": "065 327 0980",
+      "description": "General plumbing services and repairs in Cape Town.",
+      "logo": "../assets/images/one-days-plumbing-services.jpg",
+      "website": ""
     }
   ]
 }
