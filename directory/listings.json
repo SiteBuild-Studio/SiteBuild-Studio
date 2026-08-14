@@ -95,6 +95,18 @@
       "description": "A personalised accounting and tax consulting firm for small and medium businesses, offering bookkeeping, payroll, tax returns, and CIPC company secretarial services, built on long-term client relationships.",
       "logo": "../assets/images/bookkeepers-logo-large-scaled.png",
       "website": "https://bookkeepersincapetown.co.za"
+    },
+    {
+      "id": "ao-locksmith",
+      "name": "AO Locksmith",
+      "category": "Automotive Locksmith",
+      "location": "Kraaifontein, Cape Town",
+      "address": "5th Avenue, Eikendal, Kraaifontein, Cape Town, 7570",
+      "phone": "083 329 3860",
+      "whatsapp": "081 209 9604",
+      "description": "24/7 mobile car locksmith serving Cape Town \u2014 car keys, lost keys, ignitions, and lockouts, with professional, certified, reliable service that comes to you.",
+      "logo": "",
+      "website": ""
     }
   ]
 }
