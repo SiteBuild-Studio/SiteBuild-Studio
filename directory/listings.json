@@ -105,7 +105,19 @@
       "phone": "083 329 3860",
       "whatsapp": "081 209 9604",
       "description": "24/7 mobile car locksmith serving Cape Town \u2014 car keys, lost keys, ignitions, and lockouts, with professional, certified, reliable service that comes to you.",
-      "logo": "",
+      "logo": "../assets/images/ao-locksmith.jpg",
+      "website": ""
+    },
+    {
+      "id": "douglas-cleaning-services",
+      "name": "Douglas Cleaning Services",
+      "category": "Cleaning Services",
+      "location": "Cape Town",
+      "address": "",
+      "phone": "074 374 1208",
+      "whatsapp": "074 374 1208",
+      "description": "Residential and commercial cleaning services in Cape Town.",
+      "logo": "../assets/images/douglas-cleaning-services.jpg",
       "website": ""
     }
   ]
