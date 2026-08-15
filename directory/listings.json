@@ -215,6 +215,18 @@
       "description": "South African web hosting provider offering shared hosting, reseller hosting, VPS and cloud hosting, domain registration, and cloud backup, hosted in a redundant local datacenter.",
       "logo": "../assets/images/webwaylogo.png",
       "website": "https://portal.webway.host/aff.php?aff=353"
+    },
+    {
+      "id": "suredrive",
+      "name": "SureDrive",
+      "category": "Automotive FinTech",
+      "location": "Cape Town",
+      "address": "",
+      "phone": "",
+      "whatsapp": "",
+      "description": "A prepaid repair wallet for your car \u2014 convert cash into SureBucks ahead of time so panel beating and mechanical bills never catch you off guard. Partnered exclusively with International Panel Shop, with a mandatory digital pre-inspection on every vehicle.",
+      "logo": "../assets/images/suredrive.png",
+      "website": "https://sure-drive-9a8c9.web.app/"
     }
   ]
 }
