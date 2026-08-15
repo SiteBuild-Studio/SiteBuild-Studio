@@ -177,6 +177,24 @@
             transition: background-color 0.2s ease;
         }
         .listing-whatsapp:hover { background-color: #1ebe5b; }
+        .listing-share {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 38px; height: 38px; border-radius: 50%;
+            background-color: #fdf3f7; border: 1px solid #f5e0e8;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            flex-shrink: 0; cursor: pointer;
+        }
+        .listing-share:hover { background-color: #e6427c; transform: translateY(-1px); }
+        .listing-share:hover svg { stroke: #ffffff; }
+        .listing-share svg { width: 16px; height: 16px; stroke: #e6427c; transition: stroke 0.2s ease; }
+
+        .share-toast {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(20px);
+            background-color: #111111; color: #ffffff; font-size: 0.88rem; font-weight: 600;
+            padding: 13px 24px; border-radius: 30px; box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+        .share-toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
         .listing-pending {
             font-size: 0.82rem; color: #b3a3ab; font-style: italic;
         }
@@ -305,6 +323,8 @@
         <p>&copy; Copyright 2026 SiteBuild Studio - All Rights Reserved &nbsp;|&nbsp; <a href="../index.html">Back to Home</a></p>
     </div>
 
+    <div class="share-toast" id="shareToast">Copied to clipboard</div>
+
     <a class="whatsapp-fab" id="whatsappFab" href="https://wa.me/27845795239?text=Hi%20SiteBuild%20Studio%2C%20I%27d%20like%20to%20be%20added%20to%20your%20small%20business%20directory.%20Here%27s%20my%20business%3A%20%5Bname%2C%20category%2C%20location%5D." target="_blank" rel="noopener" aria-label="Message SiteBuild Studio on WhatsApp">
         <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.74.46 3.44 1.32 4.94L2.05 22l5.28-1.38a9.87 9.87 0 0 0 4.71 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.11h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.19 8.19 0 0 1 5.83 2.42 8.19 8.19 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.59.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.06-.11-.23-.17-.48-.29z"/></svg>
         <span class="whatsapp-fab-label">Chat with us</span>
@@ -401,7 +421,7 @@
                             addressHtml +
                             '<p class="desc">' + escapeHtml(b.description) + '</p>' +
                             (contactsHtml ? '<div class="listing-contacts">' + contactsHtml + '</div>' : '') +
-                            '<div class="listing-actions">' + visitHtml + whatsappHtml + '</div>' +
+                            '<div class="listing-actions">' + visitHtml + whatsappHtml + '<button type="button" class="listing-share" data-id="' + escapeHtml(b.id) + '" aria-label="Share ' + escapeHtml(b.name) + '"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"></line></svg></button></div>' +
                         '</div>';
                 }).join('');
             }
@@ -422,6 +442,52 @@
 
             searchInput.addEventListener('input', renderCards);
             areaSelect.addEventListener('change', renderCards);
+
+            var shareToast = document.getElementById('shareToast');
+            var toastTimer = null;
+            function showToast(message) {
+                shareToast.textContent = message;
+                shareToast.classList.add('visible');
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(function () {
+                    shareToast.classList.remove('visible');
+                }, 2400);
+            }
+
+            function buildShareText(b) {
+                var lines = [b.name];
+                if (b.category) lines.push(b.category);
+                lines.push('');
+                if (b.description) lines.push(b.description);
+                lines.push('');
+                if (b.location) lines.push('📍 ' + b.location);
+                if (b.phone) lines.push('📞 ' + b.phone);
+                return lines.join('\n');
+            }
+
+            listingsGrid.addEventListener('click', function (e) {
+                var btn = e.target.closest('.listing-share');
+                if (!btn) return;
+                var business = allBusinesses.find(function (b) { return b.id === btn.getAttribute('data-id'); });
+                if (!business) return;
+
+                var shareUrl = business.website || window.location.href;
+                var shareText = buildShareText(business);
+
+                if (navigator.share) {
+                    navigator.share({ title: business.name, text: shareText, url: shareUrl }).catch(function () {
+                        // user cancelled the native share sheet — no action needed
+                    });
+                } else if (navigator.clipboard) {
+                    navigator.clipboard.writeText(shareText + '\n' + shareUrl).then(function () {
+                        showToast('Copied — paste it anywhere to share');
+                    }).catch(function () {
+                        showToast('Could not copy — try again');
+                    });
+                } else {
+                    showToast('Sharing is not supported in this browser');
+                }
+            });
 
             fetch('listings.json')
                 .then(function (res) { return res.json(); })
