@@ -85,6 +85,30 @@
       "website": "https://www.scoutsforkids.org"
     },
     {
+      "id": "b-glamerous-belhar",
+      "name": "B-Glamerous Hair & Beauty Salon \u2014 Belhar",
+      "category": "Hair & Beauty Salon",
+      "location": "Belhar, Cape Town",
+      "address": "31 Keurboom Street, Old Belhar",
+      "phone": "062 251 5237",
+      "whatsapp": "064 311 9618",
+      "description": "A hair and beauty salon in Old Belhar, offering the full range of hair and beauty treatments. Ask for Monray or Brichard.",
+      "logo": "../assets/images/bglamerous.jpeg",
+      "website": ""
+    },
+    {
+      "id": "b-glamerous-parow-valley",
+      "name": "B-Glamerous Hair & Beauty Salon \u2014 Parow Valley",
+      "category": "Hair & Beauty Salon",
+      "location": "Parow Valley, Cape Town",
+      "address": "42 Prinsloo Street, Parow Valley",
+      "phone": "062 251 5237",
+      "whatsapp": "064 311 9618",
+      "description": "The Parow Valley branch of B-Glamerous Hair & Beauty Salon.",
+      "logo": "../assets/images/bglamerous.jpeg",
+      "website": ""
+    },
+    {
       "id": "bookkeepers-cape-town",
       "name": "Bookkeepers Cape Town",
       "category": "Bookkeeping & Accounting",
