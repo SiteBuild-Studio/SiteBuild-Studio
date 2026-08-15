@@ -203,6 +203,18 @@
       "description": "Independent security research specialising in SDLC logic flaws, authentication bypasses, and business logic vulnerabilities across enterprise and SaaS infrastructure \u2014 PoC-backed findings only, active on HackerOne and YesWeHack.",
       "logo": "https://raw.githubusercontent.com/Forge-Vertical/forge-vertical.github.io/main/favicon.png",
       "website": "https://www.forgevertical.com/security-intelligence.html"
+    },
+    {
+      "id": "webway-host",
+      "name": "Webway Host",
+      "category": "Web Hosting & VPS",
+      "location": "South Africa",
+      "address": "",
+      "phone": "",
+      "whatsapp": "",
+      "description": "South African web hosting provider offering shared hosting, reseller hosting, VPS and cloud hosting, domain registration, and cloud backup, hosted in a redundant local datacenter.",
+      "logo": "../assets/images/webwaylogo.png",
+      "website": "https://portal.webway.host/aff.php?aff=353"
     }
   ]
 }
