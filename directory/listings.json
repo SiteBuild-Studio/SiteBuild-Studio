@@ -167,6 +167,18 @@
       "description": "A ladies' and gents' hair and beauty salon in Milnerton, offering a full range of hair and beauty treatments.",
       "logo": "../assets/images/cameo%20hair%20salon.svg",
       "website": ""
+    },
+    {
+      "id": "forge-vertical-security",
+      "name": "Forge Vertical \u2014 Security Intelligence",
+      "category": "Cybersecurity & Security Research",
+      "location": "Cape Town",
+      "address": "",
+      "phone": "",
+      "whatsapp": "",
+      "description": "Independent security research specialising in SDLC logic flaws, authentication bypasses, and business logic vulnerabilities across enterprise and SaaS infrastructure \u2014 PoC-backed findings only, active on HackerOne and YesWeHack.",
+      "logo": "https://raw.githubusercontent.com/Forge-Vertical/forge-vertical.github.io/main/favicon.png",
+      "website": "https://www.forgevertical.com/security-intelligence.html"
     }
   ]
 }
