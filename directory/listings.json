@@ -143,6 +143,30 @@
       "description": "General plumbing services and repairs in Cape Town.",
       "logo": "../assets/images/one-days-plumbing-services.jpg",
       "website": ""
+    },
+    {
+      "id": "pj-maintenance",
+      "name": "PJ Maintenance",
+      "category": "Home Maintenance & Renovations",
+      "location": "Cape Town",
+      "address": "",
+      "phone": "064 549 4296",
+      "whatsapp": "064 549 4296",
+      "description": "General home maintenance and renovations across the Western Cape \u2014 painting, plumbing, roofing, ceilings, kitchen cupboards, decking, paving, and tiling, with over 10 years of experience.",
+      "logo": "../assets/images/421e3dfb-81dd-4ab6-be37-5c61558094fd.jpg",
+      "website": "https://pj2maintainall.wixsite.com/pj-maintenance"
+    },
+    {
+      "id": "cameo-hair-and-beauty",
+      "name": "Cameo Hair and Beauty",
+      "category": "Hair & Beauty Salon",
+      "location": "Milnerton, Cape Town",
+      "address": "Shop 2, Ascot Centre, Yarrow Road, Milnerton",
+      "phone": "",
+      "whatsapp": "061 473 1681",
+      "description": "A ladies' and gents' hair and beauty salon in Milnerton, offering a full range of hair and beauty treatments.",
+      "logo": "../assets/images/cameo%20hair%20salon.svg",
+      "website": ""
     }
   ]
 }
