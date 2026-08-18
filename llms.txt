@@ -19,6 +19,7 @@ SiteBuild Studio focuses on small, local businesses — including but not limite
 - [How to Get Your Small Business Found on Google (Without Paying for Ads)](https://www.sitebuildstudio.co.za/articles/found-on-google.html): A practical guide to local SEO — Google Business Profile setup, NAP consistency, schema markup, and reviews.
 - [What Should a Small Business Website Actually Cost?](https://www.sitebuildstudio.co.za/articles/website-cost.html): A realistic South African pricing breakdown for website builds, including the domain and hosting costs many people forget to budget for.
 - [Does My Website Need a Redesign?](https://www.sitebuildstudio.co.za/articles/website-redesign.html): What actually makes a website look outdated, why it costs businesses trust and conversions, and a side-by-side comparison of 2010-era vs current design standards.
+- [What Takealot Can Teach a Small Business About Getting Found](https://www.sitebuildstudio.co.za/articles/getting-found-like-takealot.html): How South Africa's most-searched online store actually built its findability, and how the same underlying principles apply at small-business scale.
 
 ## Directory
 
