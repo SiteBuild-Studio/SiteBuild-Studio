@@ -227,6 +227,18 @@
       "description": "A prepaid repair wallet for your car \u2014 convert cash into SureBucks ahead of time so panel beating and mechanical bills never catch you off guard. Partnered exclusively with International Panel Shop, with a mandatory digital pre-inspection on every vehicle.",
       "logo": "../assets/images/suredrive.png",
       "website": "https://sure-drive-9a8c9.web.app/"
+    },
+    {
+      "id": "two-oceans-roadside-assistance",
+      "name": "Two Oceans Road Side Assistance",
+      "category": "Roadside Assistance & Towing",
+      "location": "Woodstock, Cape Town",
+      "address": "152 Victoria Rd, Woodstock, Cape Town, 7925",
+      "phone": "073 500 7911",
+      "whatsapp": "073 500 7911",
+      "description": "24-hour roadside assistance and towing serving Cape Town \u2014 available any time, day or night.",
+      "logo": "",
+      "website": ""
     }
   ]
 }
