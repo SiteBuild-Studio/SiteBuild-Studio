@@ -1740,16 +1740,165 @@
 
         .contact-right {
             width: 100%;
-            min-height: 460px;
+            padding: 40px;
             background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+        }
+
+        .brief-eyebrow {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #a855f7;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .brief-question {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #999999;
+            margin-bottom: 12px;
+        }
+
+        .brief-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 26px;
+        }
+
+        .brief-chip {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #d8d8dd;
+            padding: 9px 16px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .brief-chip:hover {
+            border-color: rgba(168, 85, 247, 0.5);
+        }
+
+        .brief-chip.active {
+            background-color: #7B2CBF;
+            border-color: #7B2CBF;
+            color: #ffffff;
+        }
+
+        .brief-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .brief-field label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #999999;
+            margin-bottom: 8px;
+        }
+
+        .brief-field input,
+        .brief-field textarea {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 12px 14px;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .brief-field input::placeholder,
+        .brief-field textarea::placeholder {
+            color: #6b6b70;
+        }
+
+        .brief-field input:focus,
+        .brief-field textarea:focus {
+            outline: none;
+            border-color: #a855f7;
+        }
+
+        .brief-field textarea {
+            resize: vertical;
+            min-height: 90px;
+            margin-bottom: 20px;
+        }
+
+        .brief-submit {
+            width: 100%;
+            border: none;
+            border-radius: 30px;
+            padding: 16px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: #ffffff;
+            background: linear-gradient(90deg, #7B2CBF, #a855f7);
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .brief-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .brief-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .brief-note {
+            font-size: 0.76rem;
+            color: #888888;
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        .brief-success {
+            text-align: center;
+            padding: 30px 10px;
+        }
+
+        .brief-success .icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background-color: rgba(168, 85, 247, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0 auto 18px;
         }
 
-        .contact-right dotlottie-wc {
-            width: 70%;
-            height: 70%;
+        .brief-success h3 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .brief-success p {
+            color: #a8a8ad;
+            font-size: 0.9rem;
         }
 
         @media (max-width: 900px) {
@@ -1757,8 +1906,15 @@
                 grid-template-columns: 1fr;
             }
 
+            .brief-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
             .contact-right {
-                min-height: 320px;
+                padding: 26px;
             }
         }
 
@@ -2558,6 +2714,61 @@
                 el.classList.add('revealed');
             });
         }
+
+        // Project brief form: chip multi-select + AJAX submit to Formspree
+        var briefChips = document.querySelectorAll('#briefChips .brief-chip');
+        var briefInterest = document.getElementById('briefInterest');
+        var selectedInterests = [];
+
+        briefChips.forEach(function (chip) {
+            chip.addEventListener('click', function () {
+                var value = chip.getAttribute('data-value');
+                var idx = selectedInterests.indexOf(value);
+                if (idx === -1) {
+                    selectedInterests.push(value);
+                    chip.classList.add('active');
+                } else {
+                    selectedInterests.splice(idx, 1);
+                    chip.classList.remove('active');
+                }
+                briefInterest.value = selectedInterests.join(', ');
+            });
+        });
+
+        var briefForm = document.getElementById('briefForm');
+        var briefSubmitBtn = document.getElementById('briefSubmitBtn');
+        var briefFormWrap = document.getElementById('briefFormWrap');
+
+        if (briefForm) {
+            briefForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                briefSubmitBtn.disabled = true;
+                briefSubmitBtn.textContent = 'Sending...';
+
+                fetch(briefForm.action, {
+                    method: 'POST',
+                    body: new FormData(briefForm),
+                    headers: { 'Accept': 'application/json' }
+                }).then(function (response) {
+                    if (response.ok) {
+                        briefFormWrap.innerHTML =
+                            '<div class="brief-success">' +
+                                '<div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>' +
+                                '<h3>Brief sent</h3>' +
+                                '<p>Thanks &mdash; I\'ll get back to you within 24 hours.</p>' +
+                            '</div>';
+                    } else {
+                        briefSubmitBtn.disabled = false;
+                        briefSubmitBtn.textContent = 'Send Brief \u2014 Get a Quote in 24 Hours \u2192';
+                        alert('Something went wrong sending your brief. Please try WhatsApp instead, or try again in a moment.');
+                    }
+                }).catch(function () {
+                    briefSubmitBtn.disabled = false;
+                    briefSubmitBtn.textContent = 'Send Brief \u2014 Get a Quote in 24 Hours \u2192';
+                    alert('Something went wrong sending your brief. Please try WhatsApp instead, or try again in a moment.');
+                });
+            });
+        }
     });
     </script>
 
@@ -2585,7 +2796,52 @@
                 <p class="contact-fallback">Prefer email? Write to <a href="mailto:sitebuilderstudios1@gmail.com">sitebuilderstudios1@gmail.com</a>.</p>
             </div>
             <div class="contact-right reveal">
-                <dotlottie-wc src="https://lottie.host/e2bd0518-aaa3-42fc-8473-b838ad5d4fd6/9MaAFO7zUa.lottie" autoplay loop></dotlottie-wc>
+                <div id="briefFormWrap">
+                    <p class="brief-eyebrow">// Tell Us What You Need</p>
+                    <form id="briefForm" action="https://formspree.io/f/mppandzl" method="POST">
+                        <p class="brief-question">What do you need?</p>
+                        <div class="brief-chips" id="briefChips">
+                            <button type="button" class="brief-chip" data-value="Website">Website</button>
+                            <button type="button" class="brief-chip" data-value="Web App">Web App</button>
+                            <button type="button" class="brief-chip" data-value="SEO / GEO / AEO">SEO / GEO / AEO</button>
+                            <button type="button" class="brief-chip" data-value="Not sure yet">Not sure yet</button>
+                        </div>
+                        <input type="hidden" name="Interested In" id="briefInterest" value="">
+
+                        <div class="brief-row">
+                            <div class="brief-field">
+                                <label for="briefName">Your Name *</label>
+                                <input type="text" id="briefName" name="Name" placeholder="Jane Smith" required>
+                            </div>
+                            <div class="brief-field">
+                                <label for="briefEmail">Email *</label>
+                                <input type="email" id="briefEmail" name="Email" placeholder="jane@business.com" required>
+                            </div>
+                        </div>
+
+                        <div class="brief-row">
+                            <div class="brief-field">
+                                <label for="briefWhatsapp">WhatsApp Number</label>
+                                <input type="tel" id="briefWhatsapp" name="WhatsApp Number" placeholder="+27 65 000 0000">
+                            </div>
+                            <div class="brief-field">
+                                <label for="briefBusiness">Business Name</label>
+                                <input type="text" id="briefBusiness" name="Business Name" placeholder="Your business">
+                            </div>
+                        </div>
+
+                        <div class="brief-field">
+                            <label for="briefMessage">Tell Us About Your Project *</label>
+                            <textarea id="briefMessage" name="Project Details" placeholder="What are you building? What problem does it solve? What does success look like for you?" required></textarea>
+                        </div>
+
+                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="hidden" name="_subject" value="New project brief from sitebuildstudio.co.za">
+
+                        <button type="submit" class="brief-submit" id="briefSubmitBtn">Send Brief &mdash; Get a Quote in 24 Hours &rarr;</button>
+                        <p class="brief-note">No spam, no sales calls &mdash; just a straight answer. Prefer to chat first? <a href="https://wa.me/27845795239" style="color:#a855f7;" target="_blank" rel="noopener">Message us on WhatsApp</a>.</p>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
