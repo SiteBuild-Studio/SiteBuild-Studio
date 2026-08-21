@@ -35,13 +35,13 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #ffffff;
-            color: #111111;
+            color: #050505;
             overflow-x: hidden;
         }
         a { text-decoration: none; color: inherit; }
 
         /* Nav */
-        .nav-wrapper { background-color: #f6cddc; }
+        .nav-wrapper { background-color: #F8F9FA; }
         .navbar {
             max-width: 1300px; margin: 0 auto;
             display: flex; align-items: center; justify-content: space-between;
@@ -50,25 +50,25 @@
         .logo-svg { height: 44px; width: auto; display: block; }
         .nav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
         .nav-links a { font-size: 0.92rem; font-weight: 500; position: relative; padding-bottom: 4px; }
-        .nav-links a.active { color: #e6427c; font-weight: 700; }
+        .nav-links a.active { color: #7B2CBF; font-weight: 700; }
         .nav-links a::after {
             content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
-            background-color: #111111; transition: width 0.25s ease;
+            background-color: #050505; transition: width 0.25s ease;
         }
         .nav-links a:hover::after { width: 100%; }
         .contact-btn {
-            background-color: #d9a870; color: #ffffff; padding: 12px 26px; border-radius: 30px;
+            background-color: #5a1f8f; color: #ffffff; padding: 12px 26px; border-radius: 30px;
             font-weight: 600; font-size: 0.9rem; white-space: nowrap; transition: background-color 0.2s ease, transform 0.2s ease;
         }
-        .contact-btn:hover { background-color: #c99a5f; transform: translateY(-1px); }
+        .contact-btn:hover { background-color: #5a1f8f; transform: translateY(-1px); }
         .hamburger {
             display: none; flex-direction: column; justify-content: center; gap: 6px;
             width: 40px; height: 40px; background: none; border: none; padding: 0; cursor: pointer;
         }
         .hamburger span { display: block; width: 100%; height: 3px; border-radius: 3px; }
-        .hamburger span:nth-child(1) { background-color: #e6427c; }
-        .hamburger span:nth-child(2) { background-color: #d9a870; }
-        .hamburger span:nth-child(3) { background-color: #e6427c; }
+        .hamburger span:nth-child(1) { background-color: #7B2CBF; }
+        .hamburger span:nth-child(2) { background-color: #6C757D; }
+        .hamburger span:nth-child(3) { background-color: #7B2CBF; }
 
         @media (max-width: 768px) {
             .navbar { padding: 20px 24px; }
@@ -83,9 +83,9 @@
         }
 
         /* Page header */
-        .page-header { background-color: #f6cddc; padding: 60px 60px 90px; text-align: center; }
+        .page-header { background-color: #F8F9FA; padding: 60px 60px 90px; text-align: center; }
         .page-eyebrow {
-            display: inline-block; background-color: #ffffff; color: #e6427c; font-size: 0.8rem; font-weight: 700;
+            display: inline-block; background-color: #ffffff; color: #7B2CBF; font-size: 0.8rem; font-weight: 700;
             letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 18px; border-radius: 30px; margin-bottom: 20px;
         }
         .page-header h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 16px; }
@@ -112,15 +112,15 @@
         .search-input {
             width: 100%; border: 1.5px solid #eee; background: #fafafa; border-radius: 30px;
             padding: 13px 18px 13px 44px; font-family: 'Poppins', sans-serif; font-size: 0.92rem;
-            color: #111111; outline: none; transition: border-color 0.2s ease;
+            color: #050505; outline: none; transition: border-color 0.2s ease;
         }
-        .search-input:focus { border-color: #e6427c; background: #ffffff; }
+        .search-input:focus { border-color: #7B2CBF; background: #ffffff; }
         .area-select {
             flex: 0 1 220px; border: 1.5px solid #eee; background: #fafafa; border-radius: 30px;
             padding: 13px 18px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.88rem;
             color: #444444; outline: none; cursor: pointer; transition: border-color 0.2s ease;
         }
-        .area-select:focus { border-color: #e6427c; }
+        .area-select:focus { border-color: #7B2CBF; }
 
         @media (max-width: 600px) {
             .filter-bar { flex-direction: column; align-items: stretch; }
@@ -145,12 +145,12 @@
         }
         .listing-logo-fallback {
             width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
-            background: linear-gradient(135deg, #e6427c, #d9a870);
+            background: linear-gradient(135deg, #7B2CBF, #5a1f8f);
             color: #ffffff; font-weight: 800; font-size: 1.3rem;
             display: flex; align-items: center; justify-content: center;
         }
         .listing-category {
-            display: inline-block; background: #fdf3f7; color: #e6427c; font-size: 0.7rem; font-weight: 700;
+            display: inline-block; background: #fdf3f7; color: #7B2CBF; font-size: 0.7rem; font-weight: 700;
             letter-spacing: 0.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 20px;
             width: fit-content;
         }
@@ -162,12 +162,12 @@
         .listing-contact { font-size: 0.82rem; color: #666666; display: flex; align-items: center; gap: 6px; }
         .listing-contact svg { width: 13px; height: 13px; stroke: #999999; flex-shrink: 0; }
         .listing-contact a { color: #666666; }
-        .listing-contact a:hover { color: #e6427c; }
+        .listing-contact a:hover { color: #7B2CBF; }
         .listing-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
         .listing-card p.desc { font-size: 0.9rem; color: #555555; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
         .listing-visit {
             display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.85rem;
-            color: #ffffff; background: #111111; padding: 10px 20px; border-radius: 30px; width: fit-content;
+            color: #ffffff; background: #050505; padding: 10px 20px; border-radius: 30px; width: fit-content;
             transition: background-color 0.2s ease;
         }
         .listing-visit:hover { background-color: #333333; }
@@ -184,13 +184,13 @@
             transition: background-color 0.2s ease, transform 0.2s ease;
             flex-shrink: 0; cursor: pointer;
         }
-        .listing-share:hover { background-color: #e6427c; transform: translateY(-1px); }
+        .listing-share:hover { background-color: #7B2CBF; transform: translateY(-1px); }
         .listing-share:hover svg { stroke: #ffffff; }
-        .listing-share svg { width: 16px; height: 16px; stroke: #e6427c; transition: stroke 0.2s ease; }
+        .listing-share svg { width: 16px; height: 16px; stroke: #7B2CBF; transition: stroke 0.2s ease; }
 
         .share-toast {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(20px);
-            background-color: #111111; color: #ffffff; font-size: 0.88rem; font-weight: 600;
+            background-color: #050505; color: #ffffff; font-size: 0.88rem; font-weight: 600;
             padding: 13px 24px; border-radius: 30px; box-shadow: 0 12px 28px rgba(0,0,0,0.25);
             z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease;
         }
@@ -212,30 +212,36 @@
         }
 
         /* CTA band */
-        .directory-cta-band { background-color: #111111; color: #ffffff; padding: 70px 60px; text-align: center; }
-        .directory-cta-band h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 14px; }
-        .directory-cta-band p { color: #cfcfcf; max-width: 520px; margin: 0 auto 28px; line-height: 1.6; }
-        .btn-pink {
-            background-color: #e6427c; color: #ffffff; padding: 14px 30px; border-radius: 30px;
-            font-weight: 700; font-size: 0.92rem; display: inline-block; transition: background-color 0.2s ease, transform 0.2s ease;
+        .directory-cta-band { background-color: #050505; color: #ffffff; padding: 90px 60px 70px; text-align: center; position: relative; overflow: hidden; }
+        .directory-cta-slant {
+            position: absolute; top: -1px; left: 0; width: 100%; line-height: 0; z-index: 2;
         }
-        .btn-pink:hover { background-color: #c22f66; transform: translateY(-1px); }
+        .directory-cta-slant svg { display: block; width: calc(100% + 1.3px); height: 60px; }
+        @media (min-width: 768px) { .directory-cta-slant svg { height: 100px; } }
+        .directory-cta-band h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 14px; position: relative; z-index: 1; }
+        .directory-cta-band p { color: #cfcfcf; max-width: 520px; margin: 0 auto 28px; line-height: 1.6; position: relative; z-index: 1; }
+        .btn-pink {
+            background-color: #7B2CBF; color: #ffffff; padding: 14px 30px; border-radius: 30px;
+            font-weight: 700; font-size: 0.92rem; display: inline-block; transition: background-color 0.2s ease, transform 0.2s ease;
+            position: relative; z-index: 1;
+        }
+        .btn-pink:hover { background-color: #5a1f8f; transform: translateY(-1px); }
 
-        @media (max-width: 600px) { .directory-cta-band { padding: 50px 24px; } }
+        @media (max-width: 600px) { .directory-cta-band { padding: 70px 24px 50px; } }
 
         /* Footer */
         .copyright-bar { background-color: #1e1e24; padding: 20px; text-align: center; }
         .copyright-bar p { color: #ffffff; font-size: 0.9rem; }
-        .copyright-bar a { color: #d9a870; font-weight: 600; }
+        .copyright-bar a { color: #5a1f8f; font-weight: 600; }
 
         /* WhatsApp FAB */
         .whatsapp-fab {
             position: fixed; bottom: 26px; right: 26px; height: 58px; min-width: 58px; border-radius: 30px;
             background-color: #25D366; display: flex; align-items: center; justify-content: flex-start;
-            padding: 0 0 0 16px; box-shadow: 0 12px 28px rgba(17,17,17,0.25), 0 0 0 3px #ffffff, 0 0 0 5px #e6427c;
+            padding: 0 0 0 16px; box-shadow: 0 12px 28px rgba(17,17,17,0.25), 0 0 0 3px #ffffff, 0 0 0 5px #7B2CBF;
             z-index: 900; overflow: hidden; transition: background-color 0.2s ease, box-shadow 0.2s ease;
         }
-        .whatsapp-fab:hover { background-color: #1ebe5b; box-shadow: 0 16px 34px rgba(17,17,17,0.3), 0 0 0 3px #ffffff, 0 0 0 5px #d9a870; }
+        .whatsapp-fab:hover { background-color: #1ebe5b; box-shadow: 0 16px 34px rgba(17,17,17,0.3), 0 0 0 3px #ffffff, 0 0 0 5px #5a1f8f; }
         .whatsapp-fab svg { width: 26px; height: 26px; fill: #ffffff; }
         .whatsapp-fab-label {
             max-width: 0; opacity: 0; white-space: nowrap; overflow: hidden; color: #ffffff; font-weight: 700; font-size: 0.92rem;
@@ -255,21 +261,21 @@
                     <title>SiteBuild Studio</title>
                     <defs>
                         <linearGradient id="pinkS3" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#ee7ea6"/>
-                            <stop offset="100%" stop-color="#c81760"/>
+                            <stop offset="0%" stop-color="#a855f7"/>
+                            <stop offset="100%" stop-color="#5a1f8f"/>
                         </linearGradient>
                     </defs>
                     <text x="-8" y="178" font-family="'Poppins', sans-serif" font-weight="800" font-size="192" fill="url(#pinkS3)">S</text>
-                    <text x="88" y="182" font-family="'Poppins', sans-serif" font-weight="800" font-size="166" fill="#111111">B</text>
-                    <rect x="184" y="14" width="15" height="15" fill="#d9a870"/>
-                    <rect x="201" y="32" width="10" height="10" fill="#d9a870"/>
-                    <rect x="190" y="47" width="6" height="6" fill="#d9a870"/>
-                    <polygon points="128,150 150,150 128,182 106,182" fill="#d9a870"/>
-                    <line x1="250" y1="14" x2="250" y2="213" stroke="#d9a870" stroke-width="2"/>
+                    <text x="88" y="182" font-family="'Poppins', sans-serif" font-weight="800" font-size="166" fill="#050505">B</text>
+                    <rect x="184" y="14" width="15" height="15" fill="#5a1f8f"/>
+                    <rect x="201" y="32" width="10" height="10" fill="#5a1f8f"/>
+                    <rect x="190" y="47" width="6" height="6" fill="#5a1f8f"/>
+                    <polygon points="128,150 150,150 128,182 106,182" fill="#5a1f8f"/>
+                    <line x1="250" y1="14" x2="250" y2="213" stroke="#5a1f8f" stroke-width="2"/>
                     <text x="270" y="97" font-family="'Poppins', sans-serif" font-weight="800" font-size="52" letter-spacing="2">
-                        <tspan fill="#e6427c">SITE</tspan><tspan fill="#111111">BUILD</tspan>
+                        <tspan fill="#7B2CBF">SITE</tspan><tspan fill="#050505">BUILD</tspan>
                     </text>
-                    <text x="270" y="140" font-family="'Poppins', sans-serif" font-weight="600" font-size="26" letter-spacing="7" fill="#c99a5f">&#8212; STUDIO &#8212;</text>
+                    <text x="270" y="140" font-family="'Poppins', sans-serif" font-weight="600" font-size="26" letter-spacing="7" fill="#5a1f8f">&#8212; STUDIO &#8212;</text>
                     <text x="270" y="176" font-family="'Poppins', sans-serif" font-weight="600" font-size="15" letter-spacing="2.5" fill="#333333">DESIGN &#8226; DEVELOP &#8226; DEPLOY</text>
                 </svg>
             </a>
@@ -314,6 +320,11 @@
     </section>
 
     <div class="directory-cta-band">
+        <div class="directory-cta-slant">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="#ffffff"></path>
+            </svg>
+        </div>
         <h2>Want your business listed here?</h2>
         <p>Whether you're a SiteBuild Studio client or not, get in touch and I'll add your business to the directory.</p>
         <a href="../index.html#contact" class="btn-pink">Get in Touch</a>
