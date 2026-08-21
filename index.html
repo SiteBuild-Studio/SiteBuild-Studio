@@ -135,9 +135,9 @@
         }
 
         body {
-            background-color: #f6cddc; /* Darker soft pink background */
+            background-color: #F8F9FA; /* Darker soft pink background */
             font-family: 'Poppins', sans-serif;
-            color: #111111;
+            color: #050505;
             overflow-x: hidden;
             width: 100%;
             padding-top: 92px;
@@ -166,10 +166,37 @@
             height: 36px;
         }
 
+        .hero-dark-section {
+            background-color: #050505;
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 70px;
+        }
+
         .hero-wrapper {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 20px 60px 80px;
+            padding: 20px 60px 40px;
+        }
+
+        .hero-slant-divider {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            line-height: 0;
+            transform: rotate(180deg);
+            z-index: 1;
+        }
+
+        .hero-slant-divider svg {
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 60px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-slant-divider svg { height: 100px; }
         }
 
         /* Navigation */
@@ -219,9 +246,9 @@
             transition: transform 0.25s ease, opacity 0.25s ease;
         }
 
-        .hamburger span:nth-child(1) { background-color: #e6427c; }
-        .hamburger span:nth-child(2) { background-color: #d9a870; }
-        .hamburger span:nth-child(3) { background-color: #e6427c; }
+        .hamburger span:nth-child(1) { background-color: #7B2CBF; }
+        .hamburger span:nth-child(2) { background-color: #6C757D; }
+        .hamburger span:nth-child(3) { background-color: #7B2CBF; }
 
         .hamburger.open span:nth-child(1) {
             transform: translateY(9px) rotate(45deg);
@@ -244,7 +271,7 @@
         }
 
         .nav-links a {
-            color: #111111;
+            color: #050505;
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
@@ -259,7 +286,7 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: #111111;
+            background-color: #050505;
             transition: width 0.25s ease;
         }
 
@@ -268,7 +295,7 @@
         }
 
         .contact-btn {
-            background-color: #d9a870;
+            background-color: #5a1f8f;
             color: #ffffff;
             padding: 12px 26px;
             border-radius: 30px;
@@ -280,7 +307,7 @@
         }
 
         .contact-btn:hover {
-            background-color: #c99a5f;
+            background-color: #5a1f8f;
             transform: translateY(-1px);
         }
 
@@ -303,19 +330,20 @@
             height: 100%;
             object-fit: contain;
             display: block;
+            filter: hue-rotate(-68deg) saturate(1.05);
         }
 
         .hero-text h1 {
             font-size: 3.2rem;
             font-weight: 800;
             line-height: 1.15;
-            color: #111111;
+            color: #ffffff;
             margin-bottom: 26px;
         }
 
         .hero-text p {
             font-size: 1.05rem;
-            color: #444444;
+            color: #b8b8bd;
             line-height: 1.7;
             max-width: 560px;
             margin-bottom: 34px;
@@ -328,7 +356,7 @@
         }
 
         .btn-primary {
-            background-color: #111111;
+            background-color: #7B2CBF;
             color: #ffffff;
             padding: 14px 30px;
             border-radius: 30px;
@@ -336,26 +364,29 @@
             font-weight: 600;
             font-size: 0.95rem;
             transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 0 20px rgba(123, 44, 191, 0.4);
         }
 
         .btn-primary:hover {
-            background-color: #333333;
+            background-color: #5a1f8f;
             transform: translateY(-1px);
+            box-shadow: 0 0 30px rgba(123, 44, 191, 0.6);
         }
 
         .btn-secondary {
-            background-color: #d9a870;
+            background-color: rgba(255, 255, 255, 0.1);
             color: #ffffff;
             padding: 14px 30px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             transition: background-color 0.2s ease, transform 0.2s ease;
         }
 
         .btn-secondary:hover {
-            background-color: #c99a5f;
+            background-color: rgba(255, 255, 255, 0.18);
             transform: translateY(-1px);
         }
 
@@ -446,7 +477,7 @@
             width: 380px;
             height: 380px;
             border-radius: 50%;
-            background: #e6427c;
+            background: #7B2CBF;
             opacity: 0.07;
             filter: blur(70px);
             z-index: 0;
@@ -467,7 +498,7 @@
             font-size: 3rem;
             font-weight: 800;
             line-height: 1.1;
-            color: #111111;
+            color: #050505;
             margin-bottom: 24px;
         }
 
@@ -481,7 +512,7 @@
 
         .see-jobs-btn {
             display: inline-block;
-            background-color: #e6427c;
+            background-color: #7B2CBF;
             color: #ffffff;
             padding: 14px 30px;
             border-radius: 30px;
@@ -492,7 +523,7 @@
         }
 
         .see-jobs-btn:hover {
-            background-color: #c22f66;
+            background-color: #5a1f8f;
             transform: translateY(-1px);
         }
 
@@ -514,7 +545,7 @@
             width: 56px;
             height: 56px;
             border-radius: 50%;
-            background-color: #e6427c;
+            background-color: #7B2CBF;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -534,7 +565,7 @@
         .capability-item h3 {
             font-size: 1.2rem;
             font-weight: 700;
-            color: #111111;
+            color: #050505;
             margin-bottom: 10px;
         }
 
@@ -582,7 +613,7 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #c99a5f;
+            color: #5a1f8f;
             margin-bottom: 26px;
         }
 
@@ -681,7 +712,7 @@
         }
         /* About Me Section */
         .about-section {
-            background-color: #f6cddc;
+            background-color: #F8F9FA;
             padding: 90px 60px;
         }
 
@@ -701,7 +732,7 @@
             overflow: hidden;
             box-shadow: 0 25px 60px rgba(20, 20, 28, 0.15);
             position: relative;
-            background-color: #f6cddc;
+            background-color: #F8F9FA;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -724,12 +755,12 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
             font-size: 1.9rem;
-            color: #111111;
+            color: #050505;
             letter-spacing: 1px;
         }
 
         .screen-overlay-text .bracket {
-            color: #e6427c;
+            color: #7B2CBF;
         }
 
         @media (max-width: 900px) {
@@ -759,7 +790,7 @@
             left: -20%;
             width: 140%;
             height: 140%;
-            background: radial-gradient(circle at 30% 30%, rgba(230, 66, 124, 0.35), transparent 60%),
+            background: radial-gradient(circle at 30% 30%, rgba(123, 44, 191, 0.35), transparent 60%),
                         radial-gradient(circle at 80% 70%, rgba(102, 220, 190, 0.25), transparent 55%);
             animation: glow-shift 8s ease-in-out infinite alternate;
             pointer-events: none;
@@ -855,7 +886,7 @@
         .about-right h2 {
             font-size: 3rem;
             font-weight: 800;
-            color: #111111;
+            color: #050505;
             margin-bottom: 26px;
         }
 
@@ -891,7 +922,7 @@
         }
         /* Portfolio Section */
         .portfolio-section {
-            background-color: #f6cddc;
+            background-color: #F8F9FA;
             padding: 90px 60px;
             position: relative;
             overflow: hidden;
@@ -913,7 +944,7 @@
         .portfolio-eyebrow {
             display: inline-block;
             background-color: #ffffff;
-            color: #e6427c;
+            color: #7B2CBF;
             font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 1.5px;
@@ -926,7 +957,7 @@
         .portfolio-header h2 {
             font-size: 2.6rem;
             font-weight: 800;
-            color: #111111;
+            color: #050505;
             margin-bottom: 18px;
         }
 
@@ -995,7 +1026,7 @@
 
         .portfolio-preview-overlay span {
             background: #ffffff;
-            color: #111111;
+            color: #050505;
             font-weight: 700;
             font-size: 0.85rem;
             padding: 12px 24px;
@@ -1015,14 +1046,14 @@
             font-weight: 700;
             letter-spacing: 0.8px;
             text-transform: uppercase;
-            color: #c99a5f;
+            color: #5a1f8f;
             margin-bottom: 8px;
         }
 
         .portfolio-info h3 {
             font-size: 1.2rem;
             font-weight: 800;
-            color: #111111;
+            color: #050505;
             margin-bottom: 10px;
         }
 
@@ -1039,7 +1070,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background-color: #111111;
+            background-color: #050505;
             color: #ffffff;
             padding: 13px 0;
             border-radius: 30px;
@@ -1094,7 +1125,7 @@
             width: 340px;
             height: 340px;
             border-radius: 50%;
-            background: #d9a870;
+            background: #5a1f8f;
             opacity: 0.08;
             filter: blur(70px);
             z-index: 0;
@@ -1108,7 +1139,7 @@
             width: 380px;
             height: 380px;
             border-radius: 50%;
-            background: #e6427c;
+            background: #7B2CBF;
             opacity: 0.06;
             filter: blur(70px);
             z-index: 0;
@@ -1129,8 +1160,8 @@
 
         .packages-eyebrow {
             display: inline-block;
-            background-color: #f6cddc;
-            color: #e6427c;
+            background-color: #F8F9FA;
+            color: #7B2CBF;
             font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 1.5px;
@@ -1143,7 +1174,7 @@
         .packages-header h2 {
             font-size: 2.6rem;
             font-weight: 800;
-            color: #111111;
+            color: #050505;
             margin-bottom: 18px;
         }
 
@@ -1172,15 +1203,15 @@
         }
 
         .package-card.featured {
-            border-color: #e6427c;
-            box-shadow: 0 30px 60px rgba(230, 66, 124, 0.18);
+            border-color: #7B2CBF;
+            box-shadow: 0 30px 60px rgba(123, 44, 191, 0.18);
         }
 
         .package-badge {
             position: absolute;
             top: -14px;
             right: 34px;
-            background-color: #e6427c;
+            background-color: #7B2CBF;
             color: #ffffff;
             font-size: 0.72rem;
             font-weight: 700;
@@ -1193,7 +1224,7 @@
         .package-tier {
             font-size: 1.3rem;
             font-weight: 800;
-            color: #111111;
+            color: #050505;
             margin-bottom: 6px;
         }
 
@@ -1213,7 +1244,7 @@
         .package-price .amount {
             font-size: 2.6rem;
             font-weight: 800;
-            color: #e6427c;
+            color: #7B2CBF;
             line-height: 1;
         }
 
@@ -1254,7 +1285,7 @@
             height: 16px;
             flex-shrink: 0;
             margin-top: 3px;
-            stroke: #e6427c;
+            stroke: #7B2CBF;
         }
 
         .package-features li.seo-item svg {
@@ -1264,7 +1295,7 @@
         .get-started-btn {
             display: inline-block;
             text-align: center;
-            background-color: #111111;
+            background-color: #050505;
             color: #ffffff;
             padding: 14px 0;
             border-radius: 30px;
@@ -1280,11 +1311,11 @@
         }
 
         .package-card.featured .get-started-btn {
-            background-color: #e6427c;
+            background-color: #7B2CBF;
         }
 
         .package-card.featured .get-started-btn:hover {
-            background-color: #c22f66;
+            background-color: #5a1f8f;
         }
 
         .packages-fineprint {
@@ -1313,7 +1344,7 @@
         }
         /* Retainer / Care Plans Section */
         .retainer-section {
-            background-color: #f6cddc;
+            background-color: #F8F9FA;
             padding: 90px 60px;
         }
 
@@ -1331,7 +1362,7 @@
         .retainer-eyebrow {
             display: inline-block;
             background-color: #ffffff;
-            color: #e6427c;
+            color: #7B2CBF;
             font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 1.5px;
@@ -1344,7 +1375,7 @@
         .retainer-header h2 {
             font-size: 2.6rem;
             font-weight: 800;
-            color: #111111;
+            color: #050505;
             margin-bottom: 18px;
         }
 
@@ -1372,7 +1403,7 @@
         }
 
         .retainer-card.featured {
-            background-color: #111111;
+            background-color: #050505;
             transform: translateY(-14px);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.28);
         }
@@ -1381,7 +1412,7 @@
             position: absolute;
             top: -14px;
             right: 34px;
-            background-color: #e6427c;
+            background-color: #7B2CBF;
             color: #ffffff;
             font-size: 0.72rem;
             font-weight: 700;
@@ -1394,7 +1425,7 @@
         .retainer-tier {
             font-size: 1.3rem;
             font-weight: 800;
-            color: #111111;
+            color: #050505;
             margin-bottom: 6px;
         }
 
@@ -1422,7 +1453,7 @@
         .retainer-price .amount {
             font-size: 2.6rem;
             font-weight: 800;
-            color: #e6427c;
+            color: #7B2CBF;
             line-height: 1;
         }
 
@@ -1476,13 +1507,13 @@
             height: 16px;
             flex-shrink: 0;
             margin-top: 3px;
-            stroke: #e6427c;
+            stroke: #7B2CBF;
         }
 
         .retainer-cta {
             display: inline-block;
             text-align: center;
-            background-color: #111111;
+            background-color: #050505;
             color: #ffffff;
             padding: 14px 0;
             border-radius: 30px;
@@ -1498,11 +1529,11 @@
         }
 
         .retainer-card.featured .retainer-cta {
-            background-color: #e6427c;
+            background-color: #7B2CBF;
         }
 
         .retainer-card.featured .retainer-cta:hover {
-            background-color: #c22f66;
+            background-color: #5a1f8f;
         }
 
         .retainer-fineprint {
@@ -1535,7 +1566,7 @@
         }
         /* FAQ Section */
         .faq-section {
-            background-color: #f6cddc;
+            background-color: #F8F9FA;
             padding: 90px 60px;
         }
 
@@ -1547,7 +1578,7 @@
         .faq-title {
             font-size: 2.6rem;
             font-weight: 800;
-            color: #e6427c;
+            color: #7B2CBF;
             text-align: center;
             margin-bottom: 50px;
         }
@@ -1573,14 +1604,14 @@
             font-family: 'Poppins', sans-serif;
             font-size: 1.05rem;
             font-weight: 700;
-            color: #111111;
+            color: #050505;
             text-align: left;
             cursor: pointer;
             transition: color 0.25s ease;
         }
 
         .faq-item:hover .faq-question {
-            color: #e6427c;
+            color: #7B2CBF;
         }
 
         .faq-chevron {
@@ -1593,7 +1624,7 @@
         .faq-chevron svg {
             width: 100%;
             height: 100%;
-            stroke: #e6427c;
+            stroke: #7B2CBF;
         }
 
         .faq-item.active .faq-chevron {
@@ -1629,9 +1660,29 @@
         }
         /* Contact Me Section */
         .contact-section {
-            background-color: #ffffff;
+            background-color: #050505;
             position: relative;
             overflow: hidden;
+            padding-top: 70px;
+        }
+
+        .contact-top-slant {
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 100%;
+            line-height: 0;
+            z-index: 2;
+        }
+
+        .contact-top-slant svg {
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 60px;
+        }
+
+        @media (min-width: 768px) {
+            .contact-top-slant svg { height: 100px; }
         }
 
         .contact-section::before {
@@ -1643,7 +1694,7 @@
             height: 320px;
             border-radius: 50%;
             background: #25D366;
-            opacity: 0.05;
+            opacity: 0.08;
             filter: blur(70px);
             z-index: 0;
         }
@@ -1668,13 +1719,13 @@
         .contact-left h2 {
             font-size: 2.6rem;
             font-weight: 800;
-            color: #e6427c;
+            color: #ffffff;
             margin-bottom: 30px;
         }
 
         .contact-left p.contact-intro {
             font-size: 1rem;
-            color: #444444;
+            color: #b8b8bd;
             line-height: 1.7;
             margin-bottom: 22px;
         }
@@ -1689,7 +1740,7 @@
             gap: 10px;
             align-items: flex-start;
             font-size: 0.95rem;
-            color: #333333;
+            color: #d8d8dd;
             padding: 8px 0;
         }
 
@@ -1698,7 +1749,7 @@
             height: 18px;
             flex-shrink: 0;
             margin-top: 2px;
-            stroke: #e6427c;
+            stroke: #7B2CBF;
         }
 
         .whatsapp-btn {
@@ -1733,11 +1784,11 @@
         .contact-fallback {
             margin-top: 22px;
             font-size: 0.9rem;
-            color: #666666;
+            color: #999999;
         }
 
         .contact-fallback a {
-            color: #e6427c;
+            color: #a855f7;
             font-weight: 600;
             text-decoration: none;
         }
@@ -1749,7 +1800,7 @@
         .contact-right {
             width: 100%;
             min-height: 460px;
-            background-color: #f6cddc;
+            background-color: rgba(255, 255, 255, 0.03);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1777,7 +1828,7 @@
         }
         /* Footer Info Section */
         .footer-section {
-            background-color: #f6cddc;
+            background-color: #050505;
             padding: 90px 60px;
             overflow: hidden;
         }
@@ -1796,7 +1847,7 @@
         .footer-eyebrow {
             display: inline-block;
             background-color: #ffffff;
-            color: #e6427c;
+            color: #7B2CBF;
             font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 1.5px;
@@ -1809,7 +1860,7 @@
         .contacts-title {
             font-size: 2.6rem;
             font-weight: 800;
-            color: #111111;
+            color: #ffffff;
         }
 
         .contacts-grid {
@@ -1850,9 +1901,9 @@
             justify-content: center;
         }
 
-        .contact-card-icon.icon-pink { background-color: #e6427c; }
-        .contact-card-icon.icon-black { background-color: #111111; }
-        .contact-card-icon.icon-gold { background-color: #d9a870; }
+        .contact-card-icon.icon-pink { background-color: #7B2CBF; }
+        .contact-card-icon.icon-black { background-color: #050505; }
+        .contact-card-icon.icon-gold { background-color: #6C757D; }
 
         .contact-card-icon svg {
             width: 26px;
@@ -1862,7 +1913,7 @@
         .contact-card h3 {
             font-size: 1.15rem;
             font-weight: 800;
-            color: #111111;
+            color: #050505;
             margin-bottom: 4px;
         }
 
@@ -1874,7 +1925,7 @@
         }
 
         .contact-card p.accent-text {
-            color: #e6427c;
+            color: #7B2CBF;
             font-weight: 600;
         }
 
@@ -1920,7 +1971,7 @@
             justify-content: flex-start;
             gap: 0;
             padding: 0 0 0 16px;
-            box-shadow: 0 12px 28px rgba(17, 17, 17, 0.25), 0 0 0 3px #ffffff, 0 0 0 5px #e6427c;
+            box-shadow: 0 12px 28px rgba(17, 17, 17, 0.25), 0 0 0 3px #ffffff, 0 0 0 5px #7B2CBF;
             z-index: 900;
             opacity: 0;
             transform: translateY(16px) scale(0.9);
@@ -1937,7 +1988,7 @@
 
         .whatsapp-fab:hover {
             background-color: #1ebe5b;
-            box-shadow: 0 16px 34px rgba(17, 17, 17, 0.3), 0 0 0 3px #ffffff, 0 0 0 5px #d9a870;
+            box-shadow: 0 16px 34px rgba(17, 17, 17, 0.3), 0 0 0 3px #ffffff, 0 0 0 5px #5a1f8f;
         }
 
         .whatsapp-fab-icon-wrap {
@@ -2057,31 +2108,31 @@
                     <title>SiteBuild Studio</title>
                     <defs>
                         <linearGradient id="pinkS" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#ee7ea6"/>
-                            <stop offset="100%" stop-color="#c81760"/>
+                            <stop offset="0%" stop-color="#a855f7"/>
+                            <stop offset="100%" stop-color="#5a1f8f"/>
                         </linearGradient>
                     </defs>
 
                     <!-- Icon: interlocking S / B monogram -->
                     <text x="-8" y="178" font-family="'Poppins', sans-serif" font-weight="800" font-size="192" fill="url(#pinkS)">S</text>
-                    <text x="88" y="182" font-family="'Poppins', sans-serif" font-weight="800" font-size="166" fill="#111111">B</text>
+                    <text x="88" y="182" font-family="'Poppins', sans-serif" font-weight="800" font-size="166" fill="#050505">B</text>
 
                     <!-- Gold pixel accent, stepped diagonally -->
-                    <rect x="184" y="14" width="15" height="15" fill="#d9a870"/>
-                    <rect x="201" y="32" width="10" height="10" fill="#d9a870"/>
-                    <rect x="190" y="47" width="6" height="6" fill="#d9a870"/>
+                    <rect x="184" y="14" width="15" height="15" fill="#5a1f8f"/>
+                    <rect x="201" y="32" width="10" height="10" fill="#5a1f8f"/>
+                    <rect x="190" y="47" width="6" height="6" fill="#5a1f8f"/>
 
                     <!-- Gold accent flag echoing the diagonal split -->
-                    <polygon points="128,150 150,150 128,182 106,182" fill="#d9a870"/>
+                    <polygon points="128,150 150,150 128,182 106,182" fill="#5a1f8f"/>
 
                     <!-- Divider -->
-                    <line x1="250" y1="14" x2="250" y2="213" stroke="#d9a870" stroke-width="2"/>
+                    <line x1="250" y1="14" x2="250" y2="213" stroke="#5a1f8f" stroke-width="2"/>
 
                     <!-- Wordmark -->
                     <text x="270" y="97" font-family="'Poppins', sans-serif" font-weight="800" font-size="52" letter-spacing="2">
-                        <tspan fill="#e6427c">SITE</tspan><tspan fill="#111111">BUILD</tspan>
+                        <tspan fill="#7B2CBF">SITE</tspan><tspan fill="#050505">BUILD</tspan>
                     </text>
-                    <text x="270" y="140" font-family="'Poppins', sans-serif" font-weight="600" font-size="26" letter-spacing="7" fill="#c99a5f">&#8212; STUDIO &#8212;</text>
+                    <text x="270" y="140" font-family="'Poppins', sans-serif" font-weight="600" font-size="26" letter-spacing="7" fill="#5a1f8f">&#8212; STUDIO &#8212;</text>
                     <text x="270" y="176" font-family="'Poppins', sans-serif" font-weight="600" font-size="15" letter-spacing="2.5" fill="#333333">DESIGN &#8226; DEVELOP &#8226; DEPLOY</text>
                 </svg>
             </div>
@@ -2106,6 +2157,7 @@
         </nav>
     </header>
 
+    <section class="hero-dark-section">
     <div class="hero-wrapper" id="home">
         <!-- Hero -->
         <div class="hero-content">
@@ -2126,6 +2178,13 @@
         </div>
 
     </div>
+
+    <div class="hero-slant-divider">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="#ffffff"></path>
+        </svg>
+    </div>
+    </section>
 
     <!-- What Can I Do Section -->
     <section class="capability-section">
@@ -2220,7 +2279,7 @@
                     <span class="tech-label">VS Code</span>
                 </div>
                 <div class="tech-chip">
-                    <div class="tech-icon" style="background:#F0DB4F; color:#111111;">JS</div>
+                    <div class="tech-icon" style="background:#F0DB4F; color:#050505;">JS</div>
                     <span class="tech-label">JavaScript</span>
                 </div>
 
@@ -2284,7 +2343,7 @@
                     <span class="tech-label">VS Code</span>
                 </div>
                 <div class="tech-chip" aria-hidden="true">
-                    <div class="tech-icon" style="background:#F0DB4F; color:#111111;">JS</div>
+                    <div class="tech-icon" style="background:#F0DB4F; color:#050505;">JS</div>
                     <span class="tech-label">JavaScript</span>
                 </div>
             </div>
@@ -2699,6 +2758,12 @@
 
     <!-- Contact Me Section -->
     <section class="contact-section" id="contact">
+        <div class="contact-top-slant">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="#F8F9FA"></path>
+            </svg>
+        </div>
+
         <div class="contact-wrapper">
             <div class="contact-left reveal">
                 <h2>Contact Me</h2>
@@ -2744,7 +2809,7 @@
                     <div class="contact-card-icon icon-black">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="3" y="5.5" width="18" height="13" rx="2.5" fill="#ffffff"/>
-                            <path d="M4 6.5l7.35 5.6a1 1 0 0 0 1.2 0L20 6.5" stroke="#111111" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            <path d="M4 6.5l7.35 5.6a1 1 0 0 0 1.2 0L20 6.5" stroke="#050505" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                         </svg>
                     </div>
                     <div>
@@ -2757,7 +2822,7 @@
                     <div class="contact-card-icon icon-gold">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="12" cy="12" r="9" fill="#ffffff"/>
-                            <path d="M12 7v5.3l3.5 2" stroke="#d9a870" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 7v5.3l3.5 2" stroke="#5a1f8f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <div>
