@@ -239,6 +239,18 @@
       "description": "24-hour roadside assistance and towing serving Cape Town \u2014 available any time, day or night.",
       "logo": "../assets/images/tow-service.webp",
       "website": ""
+    },
+    {
+      "id": "investorlist",
+      "name": "InvestorList",
+      "category": "Investor Database & Fundraising",
+      "location": "Global",
+      "address": "",
+      "phone": "",
+      "whatsapp": "",
+      "description": "A platform to discover and connect with a global network of investors \u2014 VCs, private equity firms, angel investors, and family offices \u2014 with curated, downloadable investor lists to help accelerate fundraising.",
+      "logo": "",
+      "website": "https://investorlist.com/"
     }
   ]
 }
