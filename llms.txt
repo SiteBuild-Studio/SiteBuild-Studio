@@ -20,6 +20,7 @@ SiteBuild Studio focuses on small, local businesses — including but not limite
 - [What Should a Small Business Website Actually Cost?](https://www.sitebuildstudio.co.za/articles/website-cost.html): A realistic South African pricing breakdown for website builds, including the domain and hosting costs many people forget to budget for.
 - [Does My Website Need a Redesign?](https://www.sitebuildstudio.co.za/articles/website-redesign.html): What actually makes a website look outdated, why it costs businesses trust and conversions, and a side-by-side comparison of 2010-era vs current design standards.
 - [What Takealot Can Teach a Small Business About Getting Found](https://www.sitebuildstudio.co.za/articles/getting-found-like-takealot.html): How South Africa's most-searched online store actually built its findability, and how the same underlying principles apply at small-business scale.
+- [Can a South African Startup Actually Compete With Airbnb?](https://www.sitebuildstudio.co.za/articles/tripspace-case-study.html): A case study on TripSpace Global's commission-free travel marketplace, the real fee gap it competes on, and what SEO, AEO, and GEO can realistically do for a small platform against giants.
 
 ## Directory
 
