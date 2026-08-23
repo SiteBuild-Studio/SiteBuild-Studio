@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjUwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZmF2VmlvbGV0IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2E4NTVmNyIvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM1YTFmOGYiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPC9kZWZzPgogICAgPHJlY3Qgd2lkdGg9IjI1MCIgaGVpZ2h0PSIyMDAiIHJ4PSIzNiIgZmlsbD0iI2ZmZmZmZiIvPgogICAgPHRleHQgeD0iMiIgeT0iMTYwIiBmb250LWZhbWlseT0iUG9wcGlucywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIxNjgiIGZpbGw9InVybCgjZmF2VmlvbGV0KSI+UzwvdGV4dD4KICAgIDx0ZXh0IHg9Ijk2IiB5PSIxNjMiIGZvbnQtZmFtaWx5PSJQb3BwaW5zLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE0NiIgZmlsbD0iIzA1MDUwNSI+QjwvdGV4dD4KPC9zdmc+">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why a Slow Website is Killing Your SEO in South Africa | SiteBuild Studio</title>
+    <meta name="description" content="How mobile connections and heavy pages drag down your Google ranking, and the quick fixes that actually speed things up.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background-color: #ffffff; color: #050505; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Nav */
+        .nav-wrapper { background-color: #F8F9FA; }
+        .navbar { max-width: 1300px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 26px 60px; gap: 20px; flex-wrap: wrap; position: relative; }
+        .logo-svg { height: 44px; width: auto; display: block; }
+        .nav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
+        .nav-links a { font-size: 0.92rem; font-weight: 500; position: relative; padding-bottom: 4px; }
+        .nav-links a.active { color: #7B2CBF; font-weight: 700; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: #050505; transition: width 0.25s ease; }
+        .nav-links a:hover::after { width: 100%; }
+        .contact-btn { background-color: #5a1f8f; color: #ffffff; padding: 12px 26px; border-radius: 30px; font-weight: 600; font-size: 0.9rem; white-space: nowrap; transition: background-color 0.2s ease, transform 0.2s ease; }
+        .contact-btn:hover { background-color: #5a1f8f; transform: translateY(-1px); }
+        .hamburger { display: none; flex-direction: column; justify-content: center; gap: 6px; width: 40px; height: 40px; background: none; border: none; padding: 0; cursor: pointer; }
+        .hamburger span { display: block; width: 100%; height: 3px; border-radius: 3px; background-color: #7B2CBF; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 20px 24px; }
+            .hamburger { display: flex; }
+            .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 20px; background-color: #ffffff; padding: 24px; border-radius: 0 0 16px 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); z-index: 40; }
+            .nav-links.open { display: flex; }
+        }
+
+        /* Article Layout */
+        .article-hero { background-color: #F8F9FA; padding: 60px 24px; text-align: center; }
+        .article-hero-content { max-width: 800px; margin: 0 auto; }
+        .article-tag { display: inline-block; background-color: #ffffff; color: #7B2CBF; font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 18px; border-radius: 30px; margin-bottom: 20px; }
+        .article-hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .article-meta { font-size: 0.9rem; color: #6C757D; font-weight: 500; }
+        
+        .featured-image-container { max-width: 1000px; margin: -40px auto 40px; padding: 0 24px; }
+        .featured-image { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); aspect-ratio: 16/9; object-fit: cover; }
+
+        .article-body { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; font-size: 1.1rem; line-height: 1.8; color: #444444; }
+        .article-body h2 { font-size: 1.8rem; font-weight: 700; color: #050505; margin: 40px 0 20px; }
+        .article-body p { margin-bottom: 24px; }
+        .article-body ul { margin-bottom: 24px; padding-left: 24px; }
+        .article-body li { margin-bottom: 12px; }
+        .article-body strong { color: #050505; }
+        
+        .cta-box { background-color: #F8F9FA; border-left: 4px solid #7B2CBF; padding: 30px; border-radius: 0 12px 12px 0; margin-top: 50px; }
+        .cta-box h3 { font-size: 1.4rem; color: #050505; margin-bottom: 12px; }
+        .cta-box p { margin-bottom: 0; font-size: 1rem; }
+        
+        @media (max-width: 600px) {
+            .article-hero h1 { font-size: 2rem; }
+            .article-body { font-size: 1.05rem; }
+        }
+
+        /* Footer & FAB */
+        .copyright-bar { background-color: #1e1e24; padding: 20px; text-align: center; }
+        .copyright-bar p { color: #ffffff; font-size: 0.9rem; }
+        .copyright-bar a { color: #5a1f8f; font-weight: 600; }
+
+        .whatsapp-fab { position: fixed; bottom: 26px; right: 26px; height: 58px; min-width: 58px; border-radius: 30px; background-color: #25D366; display: flex; align-items: center; justify-content: flex-start; padding: 0 0 0 16px; box-shadow: 0 12px 28px rgba(17,17,17,0.25), 0 0 0 3px #ffffff, 0 0 0 5px #7B2CBF; z-index: 900; overflow: hidden; transition: background-color 0.2s ease, box-shadow 0.2s ease; }
+        .whatsapp-fab:hover { background-color: #1ebe5b; box-shadow: 0 16px 34px rgba(17,17,17,0.3), 0 0 0 3px #ffffff, 0 0 0 5px #5a1f8f; }
+        .whatsapp-fab svg { width: 26px; height: 26px; fill: #ffffff; }
+        .whatsapp-fab-label { max-width: 0; opacity: 0; white-space: nowrap; overflow: hidden; color: #ffffff; font-weight: 700; font-size: 0.92rem; transition: max-width 0.3s ease, opacity 0.25s ease, padding 0.3s ease; }
+        .whatsapp-fab:hover .whatsapp-fab-label { max-width: 160px; opacity: 1; padding: 0 20px 0 12px; }
+        .whatsapp-fab:not(:hover) { padding-right: 16px; }
+    </style>
+</head>
+<body>
+
+    <div class="nav-wrapper">
+        <nav class="navbar">
+            <a href="../index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 725 227" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SiteBuild Studio">
+                    <title>SiteBuild Studio</title>
+                    <defs>
+                        <linearGradient id="pinkS" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#a855f7"/>
+                            <stop offset="100%" stop-color="#5a1f8f"/>
+                        </linearGradient>
+                    </defs>
+                    <text x="-8" y="178" font-family="'Poppins', sans-serif" font-weight="800" font-size="192" fill="url(#pinkS)">S</text>
+                    <text x="88" y="182" font-family="'Poppins', sans-serif" font-weight="800" font-size="166" fill="#050505">B</text>
+                    <rect x="184" y="14" width="15" height="15" fill="#5a1f8f"/>
+                    <rect x="201" y="32" width="10" height="10" fill="#5a1f8f"/>
+                    <rect x="190" y="47" width="6" height="6" fill="#5a1f8f"/>
+                    <polygon points="128,150 150,150 128,182 106,182" fill="#5a1f8f"/>
+                    <line x1="250" y1="14" x2="250" y2="213" stroke="#5a1f8f" stroke-width="2"/>
+                    <text x="270" y="97" font-family="'Poppins', sans-serif" font-weight="800" font-size="52" letter-spacing="2">
+                        <tspan fill="#7B2CBF">SITE</tspan><tspan fill="#050505">BUILD</tspan>
+                    </text>
+                    <text x="270" y="140" font-family="'Poppins', sans-serif" font-weight="600" font-size="26" letter-spacing="7" fill="#5a1f8f">&#8212; STUDIO &#8212;</text>
+                    <text x="270" y="176" font-family="'Poppins', sans-serif" font-weight="600" font-size="15" letter-spacing="2.5" fill="#333333">DESIGN &#8226; DEVELOP &#8226; DEPLOY</text>
+                </svg>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="articles.html" class="active">&larr; Back to Articles</a></li>
+            </ul>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+            <a href="../index.html#contact" class="contact-btn">Contact</a>
+        </nav>
+    </div>
+
+    <header class="article-hero">
+        <div class="article-hero-content">
+            <span class="article-tag">Performance</span>
+            <h1>Why a Slow Website is Killing Your SEO in South Africa</h1>
+            <div class="article-meta">5 min read &nbsp;|&nbsp; By SiteBuild Studio</div>
+        </div>
+    </header>
+
+    <div class="featured-image-container">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80" alt="Code on a screen representing fast load times" class="featured-image">
+    </div>
+
+    <article class="article-body">
+        <p>You have about three seconds. That is the average amount of time a user will wait for a webpage to load before they hit the "back" button and click on your competitor instead. </p>
+
+        <p>In South Africa, this problem is uniquely amplified. While fiber and 5G are becoming more common in major hubs like Cape Town and Johannesburg, a massive portion of your potential clients are browsing on mobile connections, struggling with 3G/4G networks, or dealing with network dips during load-shedding.</p>
+
+        <h2>Google's Core Web Vitals</h2>
+        <p>A few years ago, Google made a massive update to its search algorithm. They introduced <strong>Core Web Vitals</strong>. In plain English, this means Google actively measures how fast your website loads, how quickly it becomes interactive, and how visually stable it is while loading.</p>
+        <p>If your website is slow, Google assumes it provides a poor user experience. As a result, they will rank a faster competitor above you, even if your actual content or service is better.</p>
+
+        <h2>The Main Culprits Behind Slow Sites</h2>
+        <p>Most slow small business websites suffer from the same three preventable issues:</p>
+        <ul>
+            <li><strong>Massive, Unoptimized Images:</strong> Uploading a 5MB photo straight from your smartphone to your website header forces every single visitor to download that 5MB file before they can see your business name.</li>
+            <li><strong>Bloated WordPress Themes:</strong> Many "DIY" websites are built using heavy page builders (like Elementor or Divi) loaded with unnecessary code. They load hundreds of scripts for features you aren't even using.</li>
+            <li><strong>Cheap Shared Hosting:</strong> Paying R50 a month for hosting usually means your website is crammed onto a single server with thousands of other sites. If one site on that server gets a spike in traffic, your site slows to a crawl.</li>
+        </ul>
+
+        <h2>How to Fix It</h2>
+        <p>The fix is to prioritize lean, efficient development. This is why at SiteBuild Studio, we specialize in custom, hand-coded HTML, CSS, and JavaScript. We don't use bloated WordPress themes. We write the exact code needed for your site to function, and nothing more.</p>
+        <p>Additionally, ensuring every image is compressed (converted to modern formats like WebP) and hosting your site on high-performance infrastructure means your pages load in milliseconds, not seconds.</p>
+
+        <div class="cta-box">
+            <h3>Is your current website dragging you down?</h3>
+            <p>Don't let bad code cost you leads. <a href="../index.html#contact" style="color:#7B2CBF; font-weight:700; text-decoration:underline;">Contact SiteBuild Studio today</a> for a custom, lightning-fast website build that Google actually wants to rank.</p>
+        </div>
+    </article>
+
+    <div class="copyright-bar">
+        <p>&copy; Copyright 2026 SiteBuild Studio - All Rights Reserved &nbsp;|&nbsp; <a href="../index.html">Back to Home</a></p>
+    </div>
+
+    <a class="whatsapp-fab" id="whatsappFab" href="https://wa.me/27845795239?text=Hi%20SiteBuild%20Studio%2C%20I%20read%20your%20article%20on%20site%20speed%20and%20need%20help." target="_blank" rel="noopener" aria-label="Message SiteBuild Studio on WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.74.46 3.44 1.32 4.94L2.05 22l5.28-1.38a9.87 9.87 0 0 0 4.71 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.11h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.19 8.19 0 0 1 5.83 2.42 8.19 8.19 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.59.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.06-.11-.23-.17-.48-.29z"/></svg>
+        <span class="whatsapp-fab-label">Chat with us</span>
+    </a>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var hamburgerBtn = document.getElementById('hamburgerBtn');
+            var navLinks = document.getElementById('navLinks');
+            hamburgerBtn.addEventListener('click', function () { navLinks.classList.toggle('open'); });
+        });
+    </script>
+</body>
+</html>
