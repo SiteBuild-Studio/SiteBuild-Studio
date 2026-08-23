@@ -8,7 +8,7 @@
     </url>
     <url>
         <loc>https://www.sitebuildstudio.co.za/articles/articles.html</loc>
-        <lastmod>2026-08-22</lastmod>
+        <lastmod>2026-08-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -45,6 +45,24 @@
     <url>
         <loc>https://www.sitebuildstudio.co.za/articles/tripspace-case-study.html</loc>
         <lastmod>2026-08-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://www.sitebuildstudio.co.za/articles/investor-list.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://www.sitebuildstudio.co.za/articles/website-speed.html</loc>
+        <lastmod>2026-08-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://www.sitebuildstudio.co.za/articles/creator-websites.html</loc>
+        <lastmod>2026-08-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
