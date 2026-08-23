@@ -37,7 +37,9 @@
         /* Article Layout */
         .article-hero { background-color: #F8F9FA; padding: 60px 24px; text-align: center; }
         .article-hero-content { max-width: 800px; margin: 0 auto; }
-        .article-tag { display: inline-block; background-color: #ffffff; color: #7B2CBF; font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 18px; border-radius: 30px; margin-bottom: 20px; }
+        .breadcrumb { font-size: 0.85rem; margin-bottom: 24px; color: #444444; }
+        .breadcrumb a { color: #7B2CBF; font-weight: 600; }
+        .article-tag { display: inline-block; background-color: #ffffff; color: #7B2CBF; font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 18px; border-radius: 30px; margin-bottom: 22px; }
         .article-hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
         .article-meta { font-size: 0.9rem; color: #6C757D; font-weight: 500; }
         
@@ -46,19 +48,40 @@
 
         .article-body { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; font-size: 1.1rem; line-height: 1.8; color: #444444; }
         .article-body h2 { font-size: 1.8rem; font-weight: 700; color: #050505; margin: 40px 0 20px; }
-        .article-body p { margin-bottom: 24px; }
+        .article-body p { margin-bottom: 24px; font-size: 1.05rem; }
         .article-body ul { margin-bottom: 24px; padding-left: 24px; }
-        .article-body li { margin-bottom: 12px; }
+        .article-body li { margin-bottom: 12px; font-size: 1.02rem;}
         .article-body strong { color: #050505; }
-        
-        .cta-box { background-color: #F8F9FA; border-left: 4px solid #7B2CBF; padding: 30px; border-radius: 0 12px 12px 0; margin-top: 50px; }
-        .cta-box h3 { font-size: 1.4rem; color: #050505; margin-bottom: 12px; }
-        .cta-box p { margin-bottom: 0; font-size: 1rem; }
         
         @media (max-width: 600px) {
             .article-hero h1 { font-size: 2rem; }
             .article-body { font-size: 1.05rem; }
         }
+
+        /* Author / CTA */
+        .article-cta-band { background-color: #050505; color: #ffffff; padding: 70px 60px; text-align: center; margin-top: 30px; }
+        .article-cta-band h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 16px; }
+        .article-cta-band p { color: #cfcfcf; max-width: 480px; margin: 0 auto 30px; line-height: 1.6; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-pink { background-color: #7B2CBF; color: #ffffff; padding: 14px 30px; border-radius: 30px; font-weight: 700; font-size: 0.92rem; transition: background-color 0.2s ease, transform 0.2s ease; }
+        .btn-pink:hover { background-color: #5a1f8f; transform: translateY(-1px); }
+        .btn-white-outline { border: 1.5px solid #ffffff; color: #ffffff; padding: 14px 30px; border-radius: 30px; font-weight: 700; font-size: 0.92rem; transition: background-color 0.2s ease, transform 0.2s ease; }
+        .btn-white-outline:hover { background-color: #ffffff; color: #050505; transform: translateY(-1px); }
+
+        @media (max-width: 600px) { .article-cta-band { padding: 50px 24px; } }
+
+        /* Related */
+        .related-section { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+        .related-section h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 26px; text-align: center; }
+        .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; max-width: 800px; margin: 0 auto; }
+        .related-grid.cols-3 { grid-template-columns: repeat(3, 1fr); max-width: 1000px; }
+        .related-card { background-color: #fdf7f0; border-radius: 14px; padding: 24px; opacity: 0.65; transition: opacity 0.2s ease, transform 0.2s ease; }
+        .related-card:hover { opacity: 1; transform: translateY(-2px); }
+        .related-card .tag { font-size: 0.72rem; font-weight: 700; color: #999999; text-transform: uppercase; letter-spacing: 0.5px; }
+        .related-card h4 { font-size: 1.05rem; font-weight: 700; margin: 8px 0 0; }
+
+        @media (max-width: 700px) { .related-grid.cols-3 { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { .related-grid { grid-template-columns: 1fr; } }
 
         /* Footer & FAB */
         .copyright-bar { background-color: #1e1e24; padding: 20px; text-align: center; }
@@ -102,7 +125,11 @@
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="articles.html" class="active">&larr; Back to Articles</a></li>
+                <li><a href="../index.html#about">About Me</a></li>
+                <li><a href="../index.html#portfolio">Portfolio</a></li>
+                <li><a href="articles.html" class="active">Articles</a></li>
+                <li><a href="../index.html#pricing">Pricing</a></li>
+                <li><a href="../index.html#care-plans">Care Plans</a></li>
             </ul>
             <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
                 <span></span><span></span><span></span>
@@ -113,6 +140,7 @@
 
     <header class="article-hero">
         <div class="article-hero-content">
+            <p class="breadcrumb"><a href="articles.html">&larr; All Articles</a></p>
             <span class="article-tag">Performance</span>
             <h1>Why a Slow Website is Killing Your SEO in South Africa</h1>
             <div class="article-meta">5 min read &nbsp;|&nbsp; By SiteBuild Studio</div>
@@ -143,12 +171,38 @@
         <h2>How to Fix It</h2>
         <p>The fix is to prioritize lean, efficient development. This is why at SiteBuild Studio, we specialize in custom, hand-coded HTML, CSS, and JavaScript. We don't use bloated WordPress themes. We write the exact code needed for your site to function, and nothing more.</p>
         <p>Additionally, ensuring every image is compressed (converted to modern formats like WebP) and hosting your site on high-performance infrastructure means your pages load in milliseconds, not seconds.</p>
-
-        <div class="cta-box">
-            <h3>Is your current website dragging you down?</h3>
-            <p>Don't let bad code cost you leads. <a href="../index.html#contact" style="color:#7B2CBF; font-weight:700; text-decoration:underline;">Contact SiteBuild Studio today</a> for a custom, lightning-fast website build that Google actually wants to rank.</p>
-        </div>
     </article>
+
+    <div class="article-cta-band">
+        <h2>Not sure where to start?</h2>
+        <p>Have a look at what a starter site actually costs, or send a message and we'll talk through what your business needs.</p>
+        <div class="cta-buttons">
+            <a href="../index.html#pricing" class="btn-pink">See Pricing</a>
+            <a href="../index.html#contact" class="btn-white-outline">Get in Touch</a>
+        </div>
+    </div>
+
+    <div class="related-section">
+        <h3>More From the Blog</h3>
+        <div class="related-grid cols-3">
+            <a href="website-value.html" class="related-card" style="opacity: 1; display: block; text-decoration: none;">
+                <span class="tag" style="color: #7B2CBF;">Getting Started</span>
+                <h4>Do You Actually Need a Website for Your Small Business?</h4>
+            </a>
+            <a href="website-cost.html" class="related-card" style="opacity: 1; display: block; text-decoration: none;">
+                <span class="tag" style="color: #7B2CBF;">Pricing</span>
+                <h4>What Should a Small Business Website Actually Cost?</h4>
+            </a>
+            <a href="website-redesign.html" class="related-card" style="opacity: 1; display: block; text-decoration: none;">
+                <span class="tag" style="color: #7B2CBF;">Design</span>
+                <h4>Does My Website Need a Redesign?</h4>
+            </a>
+            <a href="getting-found-like-takealot.html" class="related-card" style="opacity: 1; display: block; text-decoration: none;">
+                <span class="tag" style="color: #7B2CBF;">Getting Found</span>
+                <h4>What Takealot Can Teach a Small Business About Getting Found</h4>
+            </a>
+        </div>
+    </div>
 
     <div class="copyright-bar">
         <p>&copy; Copyright 2026 SiteBuild Studio - All Rights Reserved &nbsp;|&nbsp; <a href="../index.html">Back to Home</a></p>
