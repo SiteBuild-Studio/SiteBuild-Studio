@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjUwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZmF2VmlvbGV0IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2E4NTVmNyIvPgogICAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM1YTFmOGYiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPC9kZWZzPgogICAgPHJlY3Qgd2lkdGg9IjI1MCIgaGVpZ2h0PSIyMDAiIHJ4PSIzNiIgZmlsbD0iI2ZmZmZmZiIvPgogICAgPHRleHQgeD0iMiIgeT0iMTYwIiBmb250LWZhbWlseT0iUG9wcGlucywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIxNjgiIGZpbGw9InVybCgjZmF2VmlvbGV0KSI+UzwvdGV4dD4KICAgIDx0ZXh0IHg9Ijk2IiB5PSIxNjMiIGZvbnQtZmFtaWx5PSJQb3BwaW5zLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE0NiIgZmlsbD0iIzA1MDUwNSI+QjwvdGV4dD4KPC9zdmc+">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask This Before You Build Anything | SiteBuild Studio</title>
+    <meta name="description" content="Before a website gets built, one question matters more than colors or pages: are you planning to stay where you are, or grow into more locations? Here's why that changes everything.">
+    <link rel="canonical" href="https://www.sitebuildstudio.co.za/articles/ask-this-before-you-build.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Ask This Before You Build Anything | SiteBuild Studio">
+    <meta property="og:description" content="The one question every small business should be asked before a website ever gets built — and why guessing costs more than asking.">
+    <meta property="og:url" content="https://www.sitebuildstudio.co.za/articles/ask-this-before-you-build.html">
+    <meta name="robots" content="index, follow">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Ask This Before You Build Anything",
+        "description": "Before a website gets built, one question matters more than colors or pages: are you planning to stay where you are, or grow into more locations?",
+        "url": "https://www.sitebuildstudio.co.za/articles/ask-this-before-you-build.html",
+        "author": { "@type": "Person", "name": "Micaela Hosking" },
+        "publisher": {
+            "@type": "Organization",
+            "name": "SiteBuild Studio",
+            "url": "https://www.sitebuildstudio.co.za/"
+        },
+        "mainEntityOfPage": "https://www.sitebuildstudio.co.za/articles/ask-this-before-you-build.html"
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #050505;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* Nav (matches articles.html) */
+        .nav-wrapper { background-color: #F8F9FA; }
+        .navbar {
+            max-width: 1300px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 26px 60px; gap: 20px; flex-wrap: wrap; position: relative;
+        }
+        .logo-svg { height: 44px; width: auto; display: block; }
+        .nav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
+        .nav-links a { font-size: 0.92rem; font-weight: 500; position: relative; padding-bottom: 4px; }
+        .nav-links a.active { color: #7B2CBF; font-weight: 700; }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
+            background-color: #050505; transition: width 0.25s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .contact-btn {
+            background-color: #5a1f8f; color: #ffffff; padding: 12px 26px; border-radius: 30px;
+            font-weight: 600; font-size: 0.9rem; white-space: nowrap; transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .contact-btn:hover { background-color: #5a1f8f; transform: translateY(-1px); }
+        .hamburger {
+            display: none; flex-direction: column; justify-content: center; gap: 6px;
+            width: 40px; height: 40px; background: none; border: none; padding: 0; cursor: pointer;
+        }
+        .hamburger span { display: block; width: 100%; height: 3px; border-radius: 3px; }
+        .hamburger span:nth-child(1) { background-color: #7B2CBF; }
+        .hamburger span:nth-child(2) { background-color: #6C757D; }
+        .hamburger span:nth-child(3) { background-color: #7B2CBF; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 20px 24px; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none; position: absolute; top: 70px; left: 0; right: 0;
+                flex-direction: column; align-items: flex-start; gap: 20px;
+                background-color: #ffffff; padding: 24px; border-radius: 0 0 16px 16px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15); z-index: 40;
+            }
+            .nav-links.open { display: flex; }
+        }
+
+        /* Article header */
+        .article-header { background-color: #F8F9FA; padding: 60px 60px 70px; text-align: center; }
+        .article-eyebrow {
+            display: inline-block; background-color: #ffffff; color: #7B2CBF; font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 18px; border-radius: 30px; margin-bottom: 20px;
+        }
+        .article-header h1 { font-size: 2.6rem; font-weight: 800; margin-bottom: 18px; max-width: 760px; margin-left: auto; margin-right: auto; line-height: 1.2; }
+        .article-header .subhead { font-size: 1.08rem; color: #444444; max-width: 640px; margin: 0 auto; line-height: 1.7; }
+        .article-meta-row { margin-top: 22px; font-size: 0.8rem; color: #999999; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        @media (max-width: 600px) {
+            .article-header { padding: 40px 24px 50px; }
+            .article-header h1 { font-size: 2rem; }
+        }
+
+        /* Article body */
+        .article-body { padding: 70px 60px 30px; }
+        .article-content { max-width: 720px; margin: 0 auto; }
+        .article-content h2 {
+            font-size: 1.7rem; font-weight: 800; color: #050505; margin: 46px 0 18px;
+        }
+        .article-content h2:first-child { margin-top: 0; }
+        .article-content p {
+            font-size: 1.02rem; color: #333333; line-height: 1.85; margin-bottom: 22px;
+        }
+        .article-content ul { margin: 0 0 26px; padding-left: 0; list-style: none; }
+        .article-content ul li {
+            font-size: 1.02rem; color: #333333; line-height: 1.75; padding: 10px 0 10px 30px; position: relative;
+        }
+        .article-content ul li::before {
+            content: ''; position: absolute; left: 0; top: 19px; width: 8px; height: 8px; border-radius: 50%;
+            background-color: #7B2CBF;
+        }
+        .callout-box {
+            background-color: #F8F9FA; border-left: 4px solid #7B2CBF; border-radius: 8px;
+            padding: 26px 30px; margin: 10px 0 34px;
+        }
+        .callout-box p { margin-bottom: 0; font-style: italic; color: #444444; }
+
+        /* Soft mid-article CTA */
+        .inline-cta {
+            background-color: #050505; border-radius: 16px; padding: 34px 36px; margin: 44px 0;
+            display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;
+        }
+        .inline-cta p { color: #ffffff; font-size: 1rem; font-weight: 600; margin: 0; max-width: 340px; }
+        .inline-cta-links { display: flex; gap: 14px; flex-wrap: wrap; }
+        .inline-cta-links a {
+            font-size: 0.88rem; font-weight: 600; padding: 12px 22px; border-radius: 30px; white-space: nowrap;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .inline-cta-links a.primary { background-color: #7B2CBF; color: #ffffff; }
+        .inline-cta-links a.primary:hover { background-color: #5a1f8f; transform: translateY(-1px); }
+        .inline-cta-links a.secondary { background-color: rgba(255,255,255,0.08); color: #ffffff; border: 1px solid rgba(255,255,255,0.18); }
+        .inline-cta-links a.secondary:hover { background-color: rgba(255,255,255,0.15); }
+
+        @media (max-width: 600px) {
+            .article-body { padding: 46px 24px 10px; }
+            .article-content h2 { font-size: 1.4rem; }
+            .inline-cta { flex-direction: column; align-items: flex-start; }
+        }
+
+        /* Final gated CTA */
+        .final-cta-section { background-color: #F8F9FA; padding: 80px 60px; margin-top: 40px; text-align: center; }
+        .final-cta-wrapper { max-width: 560px; margin: 0 auto; }
+        .final-cta-wrapper h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 16px; }
+        .final-cta-wrapper p { font-size: 1rem; color: #555555; line-height: 1.7; margin-bottom: 30px; }
+        .email-reveal-btn {
+            display: inline-flex; align-items: center; gap: 10px; background-color: #7B2CBF; color: #ffffff;
+            padding: 16px 34px; border-radius: 30px; font-weight: 700; font-size: 0.98rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .email-reveal-btn:hover { background-color: #5a1f8f; transform: translateY(-1px); }
+        .email-reveal-btn svg { width: 20px; height: 20px; fill: #ffffff; }
+        .final-cta-fineprint { margin-top: 18px; font-size: 0.85rem; color: #999999; }
+
+        @media (max-width: 600px) {
+            .final-cta-section { padding: 56px 24px; }
+        }
+
+        /* Cross-link / more articles */
+        .more-articles { padding: 70px 60px 90px; }
+        .more-articles-wrapper { max-width: 1000px; margin: 0 auto; }
+        .more-articles h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 26px; text-align: center; }
+        .more-articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .more-article-card {
+            background-color: #ffffff; border: 1px solid #eeeeee; border-radius: 14px; padding: 24px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .more-article-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .more-article-card .tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: #7B2CBF; margin-bottom: 10px; display: block; }
+        .more-article-card h4 { font-size: 1.02rem; font-weight: 700; line-height: 1.4; margin-bottom: 10px; }
+        .more-article-card span.cta { font-size: 0.82rem; font-weight: 700; color: #7B2CBF; }
+
+        @media (max-width: 900px) {
+            .more-articles-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+        }
+        @media (max-width: 600px) {
+            .more-articles { padding: 50px 24px 70px; }
+        }
+
+        /* Footer */
+        .copyright-bar { background-color: #1e1e24; padding: 20px; text-align: center; }
+        .copyright-bar p { color: #ffffff; font-size: 0.9rem; }
+        .copyright-bar a { color: #5a1f8f; font-weight: 600; }
+
+        /* WhatsApp FAB */
+        .whatsapp-fab {
+            position: fixed; bottom: 26px; right: 26px; height: 58px; min-width: 58px; border-radius: 30px;
+            background-color: #25D366; display: flex; align-items: center; justify-content: flex-start;
+            padding: 0 0 0 16px; box-shadow: 0 12px 28px rgba(17,17,17,0.25), 0 0 0 3px #ffffff, 0 0 0 5px #7B2CBF;
+            z-index: 900; overflow: hidden; transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .whatsapp-fab:hover { background-color: #1ebe5b; box-shadow: 0 16px 34px rgba(17,17,17,0.3), 0 0 0 3px #ffffff, 0 0 0 5px #5a1f8f; }
+        .whatsapp-fab svg { width: 26px; height: 26px; fill: #ffffff; }
+        .whatsapp-fab-label {
+            max-width: 0; opacity: 0; white-space: nowrap; overflow: hidden; color: #ffffff; font-weight: 700; font-size: 0.92rem;
+            transition: max-width 0.3s ease, opacity 0.25s ease, padding 0.3s ease;
+        }
+        .whatsapp-fab:hover .whatsapp-fab-label { max-width: 160px; opacity: 1; padding: 0 20px 0 12px; }
+        .whatsapp-fab:not(:hover) { padding-right: 16px; }
+        @media (max-width: 600px) { .whatsapp-fab { bottom: 18px; right: 18px; height: 52px; min-width: 52px; } }
+    </style>
+</head>
+<body>
+
+    <div class="nav-wrapper">
+        <nav class="navbar">
+            <a href="../index.html" class="logo">
+                <svg class="logo-svg" viewBox="0 0 725 227" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SiteBuild Studio">
+                    <title>SiteBuild Studio</title>
+                    <defs>
+                        <linearGradient id="pinkS" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#a855f7"/>
+                            <stop offset="100%" stop-color="#5a1f8f"/>
+                        </linearGradient>
+                    </defs>
+                    <text x="-8" y="178" font-family="'Poppins', sans-serif" font-weight="800" font-size="192" fill="url(#pinkS)">S</text>
+                    <text x="88" y="182" font-family="'Poppins', sans-serif" font-weight="800" font-size="166" fill="#050505">B</text>
+                    <rect x="184" y="14" width="15" height="15" fill="#5a1f8f"/>
+                    <rect x="201" y="32" width="10" height="10" fill="#5a1f8f"/>
+                    <rect x="190" y="47" width="6" height="6" fill="#5a1f8f"/>
+                    <polygon points="128,150 150,150 128,182 106,182" fill="#5a1f8f"/>
+                    <line x1="250" y1="14" x2="250" y2="213" stroke="#5a1f8f" stroke-width="2"/>
+                    <text x="270" y="97" font-family="'Poppins', sans-serif" font-weight="800" font-size="52" letter-spacing="2">
+                        <tspan fill="#7B2CBF">SITE</tspan><tspan fill="#050505">BUILD</tspan>
+                    </text>
+                    <text x="270" y="140" font-family="'Poppins', sans-serif" font-weight="600" font-size="26" letter-spacing="7" fill="#5a1f8f">&#8212; STUDIO &#8212;</text>
+                    <text x="270" y="176" font-family="'Poppins', sans-serif" font-weight="600" font-size="15" letter-spacing="2.5" fill="#333333">DESIGN &#8226; DEVELOP &#8226; DEPLOY</text>
+                </svg>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About Me</a></li>
+                <li><a href="../index.html#portfolio">Portfolio</a></li>
+                <li><a href="articles.html" class="active">Articles</a></li>
+                <li><a href="../index.html#pricing">Pricing</a></li>
+                <li><a href="../index.html#care-plans">Care Plans</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+
+            <a href="../index.html#contact" class="contact-btn">Contact</a>
+        </nav>
+    </div>
+
+    <div class="article-header">
+        <span class="article-eyebrow">Strategy</span>
+        <h1>Ask This Before You Build Anything</h1>
+        <p class="subhead">The one question every small business should be asked before a website ever gets built — and why guessing at the answer costs more than asking.</p>
+        <div class="article-meta-row">6 min read</div>
+    </div>
+
+    <section class="article-body">
+        <div class="article-content">
+            <p>Most web designers make the same mistake with small businesses. They either say no, because the project looks too small to bother with, or they say yes and hand over a template that could belong to any business in any city. Neither actually helps. What small businesses need isn't a bigger sales pitch — it's a few honest questions before anything gets built.</p>
+
+            <h2>The question that changes everything</h2>
+            <p>Before wireframes, before colors, before a single line of code, there's one question worth asking: are you planning to stay exactly where you are, or are you building toward more locations — more branches, maybe even franchising out one day?</p>
+            <p>It sounds like a small thing to ask. It isn't. A business that's staying put needs a site built entirely around one address — one Google Business listing, one set of local keywords, content written for one neighborhood's worth of customers. A business that's planning to grow into two, five, or twenty locations needs something structurally different from day one: a site that can add a "Locations" page without a rebuild, schema markup that can describe more than one address, and — if the growth ever crosses a border — a domain strategy that accounts for that early, rather than scrambling for it later.</p>
+
+            <div class="callout-box">
+                <p>Take a laundromat as an example. A single laundromat is a straightforward local business — the whole job is getting found by people within a few kilometers who need a machine free right now. But a laundromat that's grown into several branches across a city, with more planned, is a completely different business wearing the same name. It needs every branch findable in its own area, one consistent brand across all of them, and a site built so that adding branch six doesn't mean redoing branches one through five. Nobody builds that by accident. It only happens if someone asked the growth question first.</p>
+            </div>
+
+            <h2>A few more questions worth asking before assuming anything</h2>
+            <p>Growth intent is the big one, but it's not the only assumption worth checking before a build starts:</p>
+            <ul>
+                <li>Are you the face of this business, or are you building something that could one day be handed over or sold?</li>
+                <li>Are your customers walking past your door, or could they realistically be finding you from anywhere?</li>
+                <li>Do you want people coming to you, or are you doing most of the outreach yourself right now?</li>
+            </ul>
+            <p>Every one of those answers changes the build. A business built around its owner's personal reputation needs a site that puts a face and a story front and center. A business built to run without them needs the opposite — systems and content that don't depend on any one person being there to explain it. None of that is guesswork if someone just asks.</p>
+
+            <div class="inline-cta">
+                <p>Not sure yet which of these applies to your business?</p>
+                <div class="inline-cta-links">
+                    <a href="website-value.html" class="secondary">Read: Do you actually need a website?</a>
+                    <a href="../index.html#contact" class="primary">Tell us about your business</a>
+                </div>
+            </div>
+
+            <h2>Why being reachable actually matters</h2>
+            <p>Someone reached out to us directly not long ago — a startup that needed serious, ongoing SEO work and simply looked for a way to get in touch. That conversation only happened because there was a way to actually reach us. It's easy to underestimate how often the right opportunity starts with someone just being able to send a message.</p>
+            <p>But there's a balance to strike. Splashing a contact email across the top of every page invites noise along with the real enquiries — quick questions, wrong-fit requests, the occasional bit of spam. Putting the way to reach us at the very end of something like this article, after someone has actually read the whole thing, tends to filter for people who are genuinely serious about the conversation. It's not about being harder to reach. It's about making sure the people who do reach out mean it.</p>
+        </div>
+    </section>
+
+    <section class="final-cta-section">
+        <div class="final-cta-wrapper">
+            <h2>This is what being reachable gets you</h2>
+            <p>The startup mentioned above is <a href="https://www.investorlist.com" target="_blank" rel="noopener" style="color:#7B2CBF; font-weight:700;">InvestorList</a> &mdash; a global investor database and fundraising platform, and one of the businesses that reached out to us directly. If you're building something similar and want to talk, Ben's worth emailing.</p>
+            <a href="mailto:ben@investorlist.com?subject=Reaching%20out%20from%20the%20SiteBuild%20Studio%20blog" class="email-reveal-btn">
+                <svg viewBox="0 0 24 24"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3h13A2.5 2.5 0 0 1 21 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5v-13Zm2.2.7 6.8 5.18 6.8-5.18v-.2H5.2v.2Zm13.6 1.6-6.36 4.85a1 1 0 0 1-1.28 0L5.2 7.8v10.7c0 .17.13.3.3.3h13a.3.3 0 0 0 .3-.3V7.8Z"/></svg>
+                Email Ben Directly
+            </a>
+            <p class="final-cta-fineprint">ben@investorlist.com &nbsp;&middot;&nbsp; <a href="https://www.investorlist.com" target="_blank" rel="noopener" style="color:#7B2CBF; font-weight:600;">investorlist.com</a></p>
+        </div>
+    </section>
+
+    <section class="more-articles">
+        <div class="more-articles-wrapper">
+            <h3>More from the blog</h3>
+            <div class="more-articles-grid">
+                <a href="website-value.html" class="more-article-card">
+                    <span class="tag">Getting Started</span>
+                    <h4>Do You Actually Need a Website for Your Small Business?</h4>
+                    <span class="cta">Read the article &rarr;</span>
+                </a>
+                <a href="found-on-google.html" class="more-article-card">
+                    <span class="tag">Local SEO</span>
+                    <h4>How to Get Your Small Business Found on Google (Without Paying for Ads)</h4>
+                    <span class="cta">Read the article &rarr;</span>
+                </a>
+                <a href="tripspace-case-study.html" class="more-article-card">
+                    <span class="tag">Case Study</span>
+                    <h4>Can a South African Startup Actually Compete With Airbnb?</h4>
+                    <span class="cta">Read the article &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="copyright-bar">
+        <p>&copy; Copyright 2026 SiteBuild Studio - All Rights Reserved &nbsp;|&nbsp; <a href="../index.html">Back to Home</a></p>
+    </div>
+
+    <a class="whatsapp-fab" id="whatsappFab" href="https://wa.me/27845795239?text=Hi%20SiteBuild%20Studio%2C%20I%27d%20like%20a%20website.%20Here%27s%20a%20bit%20about%20my%20business%3A%20%5Bwhat%20you%20do%5D.%20Preferred%20brand%20colors%3A%20%5Bcolors%5D.%20Other%20details%3A%20%5Banything%20else%5D." target="_blank" rel="noopener" aria-label="Message SiteBuild Studio on WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.74.46 3.44 1.32 4.94L2.05 22l5.28-1.38a9.87 9.87 0 0 0 4.71 1.2h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm0 18.11h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.19 8.19 0 0 1 5.83 2.42 8.19 8.19 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.59.12.17 1.75 2.67 4.24 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.06-.11-.23-.17-.48-.29z"/></svg>
+        <span class="whatsapp-fab-label">Chat with us</span>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var hamburgerBtn = document.getElementById('hamburgerBtn');
+            var navLinks = document.getElementById('navLinks');
+            hamburgerBtn.addEventListener('click', function () {
+                var isOpen = navLinks.classList.toggle('open');
+                hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+            document.addEventListener('click', function (e) {
+                if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                    navLinks.classList.remove('open');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
