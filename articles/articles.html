@@ -83,7 +83,12 @@
         }
 
         /* Page header */
-        .page-header { background-color: #F8F9FA; padding: 60px 60px 90px; text-align: center; }
+        .page-header { 
+            background-color: #F8F9FA; 
+            padding: 60px 60px 120px; 
+            text-align: center; 
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 4vw));
+        }
         .page-eyebrow {
             display: inline-block; background-color: #ffffff; color: #7B2CBF; font-size: 0.8rem; font-weight: 700;
             letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 18px; border-radius: 30px; margin-bottom: 20px;
@@ -92,12 +97,12 @@
         .page-header p { font-size: 1.05rem; color: #444444; max-width: 560px; margin: 0 auto; line-height: 1.7; }
 
         @media (max-width: 600px) {
-            .page-header { padding: 40px 24px 60px; }
+            .page-header { padding: 40px 24px 90px; }
             .page-header h1 { font-size: 2.1rem; }
         }
 
         /* Articles grid */
-        .articles-section { padding: 80px 60px 100px; }
+        .articles-section { padding: 0 60px 100px; }
         .articles-grid {
             max-width: 1200px; margin: -50px auto 0;
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px;
@@ -135,8 +140,29 @@
             .articles-grid { grid-template-columns: 1fr; max-width: 440px; }
         }
         @media (max-width: 600px) {
-            .articles-section { padding: 60px 24px 70px; }
+            .articles-section { padding: 0 24px 70px; }
         }
+
+        /* CTA Band */
+        .article-cta-band {
+            background-color: #050505; color: #ffffff; padding: 100px 60px 70px; text-align: center;
+            clip-path: polygon(0 0, 100% 4vw, 100% 100%, 0 100%);
+        }
+        .article-cta-band h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 16px; }
+        .article-cta-band p { color: #cfcfcf; max-width: 480px; margin: 0 auto 30px; line-height: 1.6; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-pink {
+            background-color: #7B2CBF; color: #ffffff; padding: 14px 30px; border-radius: 30px;
+            font-weight: 700; font-size: 0.92rem; transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .btn-pink:hover { background-color: #5a1f8f; transform: translateY(-1px); }
+        .btn-white-outline {
+            border: 1.5px solid #ffffff; color: #ffffff; padding: 14px 30px; border-radius: 30px;
+            font-weight: 700; font-size: 0.92rem; transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .btn-white-outline:hover { background-color: #ffffff; color: #050505; transform: translateY(-1px); }
+
+        @media (max-width: 600px) { .article-cta-band { padding: 80px 24px 50px; } }
 
         /* Footer */
         .copyright-bar { background-color: #1e1e24; padding: 20px; text-align: center; }
@@ -303,9 +329,17 @@
                     <a href="creator-websites.html" class="article-cta">Read the article &rarr;</a>
                 </div>
             </div>
-
         </div>
     </section>
+
+    <div class="article-cta-band">
+        <h2>Not sure where to start?</h2>
+        <p>Have a look at what a starter site actually costs, or send a message and we'll talk through what your business needs.</p>
+        <div class="cta-buttons">
+            <a href="../index.html#pricing" class="btn-pink">See Pricing</a>
+            <a href="../index.html#contact" class="btn-white-outline">Get in Touch</a>
+        </div>
+    </div>
 
     <div class="copyright-bar">
         <p>&copy; Copyright 2026 SiteBuild Studio - All Rights Reserved &nbsp;|&nbsp; <a href="../index.html">Back to Home</a></p>
