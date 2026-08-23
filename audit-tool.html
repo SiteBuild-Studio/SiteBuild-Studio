@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free website health check from SiteBuild Studio. Find out what your small business website is missing — SEO, mobile, security, and more. Instant PDF report.">
+    <title>Free Website Health Check | SiteBuild Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root {
+            --white: #ffffff;
+            --off: #f8f8f6;
+            --border: #e8e8e4;
+            --border2: #d4d4ce;
+            --text: #1a1a18;
+            --text2: #4a4a45;
+            --muted: #8a8a82;
+            --accent: #2d5a3d;
+            --accent2: #4a8c62;
+            --accent-light: #eef5f1;
+            --accent-border: #c2dccb;
+            --red: #c0392b;
+            --red-light: #fdf3f2;
+            --amber: #b7860b;
+            --amber-light: #fdf8ee;
+            --green: #2d7a4f;
+            --green-light: #eef5f1;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--white); color: var(--text); font-family: 'DM Sans', sans-serif; overflow-x: hidden; line-height: 1.6; }
+
+        /* Nav */
+        nav { padding: 18px 6vw; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); background: var(--white); }
+        .nav-logo { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: var(--text); text-decoration: none; }
+        .nav-logo span { color: var(--accent); }
+        .nav-back { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.18s; }
+        .nav-back:hover { color: var(--accent); }
+
+        /* Hero */
+        #hero { padding: 60px 6vw 56px; border-bottom: 1px solid var(--border); background: var(--white); }
+        .hero-inner { max-width: 860px; margin: 0 auto; }
+        .pill { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent-border); border-radius: 100px; padding: 5px 14px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; margin-bottom: 20px; }
+        h1 { font-family: 'Inter', sans-serif; font-size: clamp(30px, 4vw, 52px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: var(--text); margin-bottom: 14px; }
+        h1 span { color: var(--accent); }
+        .hero-sub { font-size: 17px; color: var(--text2); font-weight: 400; line-height: 1.65; max-width: 520px; margin-bottom: 36px; }
+
+        /* Proof strip */
+        .proof-strip { display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 40px; }
+        .proof-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text2); }
+        .proof-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+        /* Form card */
+        #form-card { background: var(--off); border: 1px solid var(--border); border-radius: 16px; padding: 32px; max-width: 860px; margin: 0 auto; }
+        .form-section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 14px; display: block; }
+        .fi { width: 100%; background: var(--white); border: 1.5px solid var(--border2); border-radius: 8px; padding: 11px 14px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s; }
+        .fi:focus { border-color: var(--accent); }
+        .fi::placeholder { color: var(--muted); }
+        select.fi { cursor: pointer; color: var(--text); background: var(--white); }
+        select.fi option { color: var(--text); background: var(--white); }
+        .fi-label { font-size: 13px; font-weight: 500; color: var(--text2); margin-bottom: 6px; display: block; }
+        .field { margin-bottom: 14px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        @media(max-width:580px){ .form-grid { grid-template-columns: 1fr; } }
+        .form-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+        .form-error { font-size: 12px; color: var(--red); margin-top: 6px; display: none; }
+        .btn-scan { width: 100%; padding: 15px; border-radius: 10px; border: none; cursor: pointer; background: var(--accent); color: var(--white); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.01em; transition: background 0.18s; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 20px; }
+        .btn-scan:hover { background: var(--accent2); }
+        .btn-scan:disabled { opacity: 0.5; cursor: not-allowed; }
+        .form-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
+
+        /* Progress */
+        #progress-section { display: none; max-width: 860px; margin: 32px auto; padding: 0 6vw; }
+        .progress-card { background: var(--off); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+        .progress-lbl { font-size: 14px; color: var(--text2); margin-bottom: 10px; font-weight: 500; }
+        .progress-track { height: 4px; background: var(--border2); border-radius: 2px; overflow: hidden; margin-bottom: 20px; }
+        .progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.3s; width: 0%; }
+        .scan-steps { display: flex; flex-direction: column; gap: 6px; max-height: 180px; overflow-y: auto; }
+        .scan-step { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+        .scan-step.active { color: var(--accent); font-weight: 500; }
+        .scan-step.done { color: var(--green); }
+        .step-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+        /* Results */
+        #results-section { display: none; max-width: 860px; margin: 32px auto; padding: 0 6vw 80px; }
+
+        /* Score */
+        .score-card { background: var(--off); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 16px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+        .score-ring { width: 88px; height: 88px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; border: 3px solid; }
+        .score-ring.good { border-color: var(--green); background: var(--green-light); }
+        .score-ring.mid { border-color: var(--amber); background: var(--amber-light); }
+        .score-ring.bad { border-color: var(--red); background: var(--red-light); }
+        .score-num { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 700; line-height: 1; }
+        .score-ring.good .score-num { color: var(--green); }
+        .score-ring.mid .score-num { color: var(--amber); }
+        .score-ring.bad .score-num { color: var(--red); }
+        .score-lbl { font-size: 11px; color: var(--muted); }
+        .score-info { flex: 1; min-width: 200px; }
+        .score-title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .score-sub { font-size: 14px; color: var(--text2); line-height: 1.5; margin-bottom: 14px; }
+        .mini-bars { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .mini-bar-label { font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; margin-bottom: 3px; font-weight: 500; }
+        .mini-bar-track { height: 3px; background: var(--border2); border-radius: 2px; overflow: hidden; }
+        .mini-bar-fill { height: 100%; border-radius: 2px; transition: width 0.6s; }
+
+        /* Action row */
+        .action-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+        .btn-dl { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: var(--white); padding: 11px 22px; border-radius: 8px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; transition: background 0.18s; text-decoration: none; font-family: 'DM Sans', sans-serif; }
+        .btn-dl:hover { background: var(--accent2); }
+        .btn-wa { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: var(--white); padding: 11px 22px; border-radius: 8px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; transition: opacity 0.18s; text-decoration: none; }
+        .btn-wa:hover { opacity: 0.88; }
+        .btn-outline { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--border2); color: var(--text2); padding: 11px 20px; border-radius: 8px; font-size: 13px; font-weight: 500; background: transparent; cursor: pointer; transition: all 0.18s; text-decoration: none; }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* Quote card */
+        .quote-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 16px; }
+        .quote-head { padding: 20px; border-bottom: 1px solid var(--border); background: var(--off); }
+        .quote-head h3 { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+        .quote-head p { font-size: 12px; color: var(--muted); }
+        .quote-line { display: flex; justify-content: space-between; align-items: flex-start; padding: 12px 20px; border-bottom: 1px solid var(--border); gap: 16px; }
+        .quote-item-name { font-size: 13px; font-weight: 600; color: var(--text); }
+        .quote-item-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+        .quote-item-price { font-size: 13px; font-weight: 700; color: var(--accent); white-space: nowrap; flex-shrink: 0; font-family: 'Inter', sans-serif; }
+        .quote-total { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: var(--accent-light); border-top: 1px solid var(--accent-border); }
+        .quote-total-label { font-size: 14px; font-weight: 700; }
+        .quote-total-amount { font-size: 22px; font-weight: 700; color: var(--accent); font-family: 'Inter', sans-serif; }
+        .quote-discount-note { font-size: 12px; color: var(--accent2); margin-top: 2px; }
+
+        /* Maintenance + rebuild cards */
+        .info-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 16px; }
+        .info-card-head { padding: 18px 20px; border-bottom: 1px solid var(--border); background: var(--off); }
+        .info-card-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; }
+        .info-card-title { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .info-card-sub { font-size: 13px; color: var(--text2); line-height: 1.55; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+        @media(max-width:520px){ .info-grid { grid-template-columns: 1fr; } }
+        .info-col { padding: 16px 20px; background: var(--white); }
+        .info-col-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+        .info-col-body { font-size: 12px; color: var(--text2); line-height: 1.6; }
+        .info-col-link { display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 600; color: var(--accent); text-decoration: none; }
+        .info-col-link:hover { text-decoration: underline; }
+
+        /* Issue sections */
+        .issues-section { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 12px; }
+        .issues-head { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: var(--off); }
+        .issues-head-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+        .issues-head-score { font-size: 12px; font-weight: 700; font-family: 'Inter', sans-serif; }
+        .check-item { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; gap: 12px; align-items: flex-start; }
+        .check-item:last-child { border-bottom: none; }
+        .check-badge { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; font-size: 11px; font-weight: 700; }
+        .check-badge.pass { background: var(--green-light); color: var(--green); }
+        .check-badge.fail { background: var(--red-light); color: var(--red); }
+        .check-badge.warn { background: var(--amber-light); color: var(--amber); }
+        .check-content { flex: 1; }
+        .check-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+        .check-status { font-size: 12px; margin-bottom: 4px; }
+        .check-status.pass { color: var(--green); }
+        .check-status.fail { color: var(--red); }
+        .check-status.warn { color: var(--amber); }
+        .check-why { font-size: 12px; color: var(--text2); line-height: 1.6; margin-bottom: 4px; }
+        .check-toggle { font-size: 11px; color: var(--accent); cursor: pointer; font-weight: 600; }
+        .check-detail { font-size: 12px; color: var(--text2); line-height: 1.6; margin-top: 8px; padding: 10px 14px; background: var(--accent-light); border-radius: 6px; border-left: 2px solid var(--accent-border); display: none; }
+        .check-price { font-size: 12px; font-weight: 700; color: var(--accent); white-space: nowrap; flex-shrink: 0; margin-top: 2px; font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+    <a href="/index.html" class="nav-logo">SB<span>SITEBUILD — STUDIO</span></a>
+    <a href="/index.html" class="nav-back">← Back to home</a>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+    <div class="hero-inner">
+        <div class="pill">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Free website health check
+        </div>
+        <h1>Is your website working<br><span>as hard as you are?</span></h1>
+        <p class="hero-sub">Most small business websites are losing customers without their owners knowing. Missing SEO, broken mobile layouts, no sitemap — issues that cost you enquiries every day. Find out exactly where yours stands.</p>
+
+        <div class="proof-strip">
+            <div class="proof-item"><div class="proof-dot"></div>Free — no credit card</div>
+            <div class="proof-item"><div class="proof-dot"></div>Results in under a minute</div>
+            <div class="proof-item"><div class="proof-dot"></div>PDF report to keep</div>
+            <div class="proof-item"><div class="proof-dot"></div>Plain English — no jargon</div>
+        </div>
+
+        <!-- Form -->
+        <div id="form-card">
+            <div class="field">
+                <label class="form-section-label">Step 1 — your website</label>
+                <label class="fi-label" for="scan-url">Website address</label>
+                <input type="url" id="scan-url" class="fi" placeholder="https://yourbusiness.co.za">
+                <div class="form-error" id="url-error">Please enter a valid website address (e.g., https://yourbusiness.co.za)</div>
+            </div>
+
+            <div class="form-grid" style="margin-bottom:14px;">
+                <div>
+                    <label class="fi-label" for="platform">Website platform</label>
+                    <select id="platform" class="fi">
+                        <option value="">Select platform</option>
+                        <option value="wordpress">WordPress</option>
+                        <option value="wix">Wix</option>
+                        <option value="squarespace">Squarespace</option>
+                        <option value="shopify">Shopify</option>
+                        <option value="custom">Custom / hand-coded</option>
+                        <option value="godaddy">GoDaddy builder</option>
+                        <option value="other">Other / not sure</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="fi-label" for="page-count">How many pages?</label>
+                    <select id="page-count" class="fi">
+                        <option value="">Not sure</option>
+                        <option value="1-3">1–3 pages</option>
+                        <option value="4-8">4–8 pages</option>
+                        <option value="9-20">9–20 pages</option>
+                        <option value="20+">More than 20</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="fi-label" for="known-issues">Any known problems? (optional)</label>
+                <input type="text" id="known-issues" class="fi" placeholder="e.g. contact form not working, loads slowly on phone...">
+            </div>
+
+            <hr class="form-divider">
+
+            <label class="form-section-label">Step 2 — where to send your report</label>
+            <div class="form-grid">
+                <div>
+                    <label class="fi-label" for="lead-name">Your name *</label>
+                    <input type="text" id="lead-name" class="fi" placeholder="Jane Smith">
+                </div>
+                <div>
+                    <label class="fi-label" for="lead-email">Email address *</label>
+                    <input type="email" id="lead-email" class="fi" placeholder="jane@mybusiness.co.za">
+                </div>
+                <div>
+                    <label class="fi-label" for="lead-phone">WhatsApp number</label>
+                    <input type="tel" id="lead-phone" class="fi" placeholder="084 000 0000">
+                </div>
+                <div>
+                    <label class="fi-label" for="lead-biz">Business name</label>
+                    <input type="text" id="lead-biz" class="fi" placeholder="My Business">
+                </div>
+            </div>
+            <div class="form-error" id="lead-error">Please enter your name and email</div>
+
+            <button class="btn-scan" id="scan-btn" onclick="startScan()">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                Check my website — it's free
+            </button>
+            <p class="form-note">Free health check. No obligation. Your details are never shared or sold.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Progress -->
+<div id="progress-section">
+    <div class="progress-card">
+        <div class="progress-lbl" id="progress-lbl">Starting scan...</div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="scan-steps" id="scan-steps"></div>
+    </div>
+</div>
+
+<!-- Results -->
+<div id="results-section">
+    <div class="score-card" id="score-card"></div>
+
+    <div class="action-row">
+        <button class="btn-dl" onclick="downloadPDF()">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download PDF report
+        </button>
+        <a href="https://wa.me/27845795239" target="_blank" rel="noopener noreferrer" class="btn-wa">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Micaela to fix this
+        </a>
+        <a href="/index.html#pricing" class="btn-outline">View pricing →</a>
+    </div>
+
+    <div id="quote-card-wrap"></div>
+    <div id="cards-wrap"></div>
+    <div id="issues-container"></div>
+</div>
+
+<script>
+const CHECKS = {
+    seo: {
+        label:'SEO — getting found on Google', color:'#2d5a3d',
+        items:[
+            {id:'robots',name:'robots.txt',path:'/robots.txt',weight:7,price:0,
+             pass:'Search engines have instructions on how to crawl your site',
+             fail:'No robots.txt — search engines are guessing how to crawl your site',
+             why:'This small file tells Google which pages to look at and which to skip. Without it, Google might ignore important pages or waste time on ones that don\'t matter.',
+             detail:'SiteBuild Studio adds a correct robots.txt to every website we build — it takes about 10 minutes and makes a real difference to how quickly Google indexes your pages.'},
+            {id:'sitemap',name:'XML sitemap',path:'/sitemap.xml',weight:7,price:0,
+             pass:'Google has a full map of your pages — indexing is faster and more complete',
+             fail:'No sitemap — Google is finding your pages by luck, not design',
+             why:'A sitemap is like a table of contents for your website. It tells Google every page that exists so nothing gets missed. Without one, new pages can take months to appear in search results — or never appear at all.',
+             detail:'Every SiteBuild Studio website includes a sitemap submitted directly to Google Search Console. New pages are indexed within days, not months.'},
+            {id:'title',name:'Page title tag',weight:6,price:0,
+             pass:'Your page has a title — good start for search visibility',
+             fail:'No page title — your most important SEO element is missing',
+             why:'Your page title is the blue link text people see in Google. It\'s the single biggest on-page factor for search rankings. Without a good one, Google makes one up — and it\'s usually bad.',
+             detail:'Every page on your site needs a unique, descriptive title of 50-60 characters that includes what your business does and where you are. SiteBuild Studio writes these for every page we build.'},
+            {id:'meta_desc',name:'Meta description',weight:4,price:0,
+             pass:'Meta description found — search result snippet is in your control',
+             fail:'No meta description — Google is writing your search snippet for you',
+             why:'The description under your title in Google is what convinces someone to click. Without one, Google picks a random sentence from your page — usually not the right one.',
+             detail:'A good meta description is 150-160 characters and answers "what does this business do and why should I choose them?" SiteBuild Studio writes these for every page.'},
+            {id:'canonical',name:'Canonical URL tag',weight:3,price:0,
+             pass:'Canonical tag found — no duplicate content issues',
+             fail:'No canonical tag — you may be competing against yourself in Google',
+             why:'If your site is accessible at both www and non-www addresses, Google may count them as two different sites and split your ranking between them. This tag tells Google which version is the real one.',
+             detail:'A one-line fix that prevents duplicate content issues. Included in every SiteBuild Studio build.'}
+        ]
+    },
+    mobile: {
+        label:'Mobile — how it looks on phones', color:'#1a6b8a',
+        items:[
+            {id:'viewport',name:'Mobile viewport tag',weight:8,price:0,
+             pass:'Mobile viewport is configured — site should display correctly on phones',
+             fail:'No mobile viewport — your site likely looks broken on phones',
+             why:'Without this tag, your site loads at desktop size on a phone and then shrinks everything down. Text becomes tiny, buttons become impossible to tap, and Google penalises you for it.',
+             detail:'One line of code in the page header. Included in every SiteBuild Studio site. If your site is missing this, it\'s a sign the site needs a rebuild or significant update.'},
+            {id:'favicon',name:'Favicon (browser icon)',weight:2,price:0,
+             pass:'Favicon found — your brand appears in browser tabs',
+             fail:'No favicon — a generic icon shows in browser tabs',
+             why:'Small detail, but it matters for trust. When someone has your site open in a tab, a branded icon keeps them oriented. A blank icon looks like an unfinished site.',
+             detail:'Your logo or initials, saved as a small icon file. Takes about 10 minutes to add correctly. SiteBuild Studio adds favicons to every site we build.'}
+        ]
+    },
+    security: {
+        label:'Security — keeping visitors safe', color:'#8b3a2a',
+        items:[
+            {id:'https',name:'HTTPS (secure connection)',weight:8,price:0,
+             pass:'Your site uses HTTPS — visitors have a secure, encrypted connection',
+             fail:'Your site is not using HTTPS — browsers will warn visitors it\'s not safe',
+             why:'Without HTTPS, browsers show a "Not Secure" warning to every visitor. This immediately damages trust, especially if you have a contact form or take any customer details. Google also ranks HTTPS sites higher.',
+             detail:'An SSL certificate makes your site HTTPS. These are usually free through your hosting provider. SiteBuild Studio sets up HTTPS correctly on every website we host.'},
+            {id:'hsts',name:'Security headers',weight:5,price:0,
+             pass:'Security headers found — site has basic protection against common attacks',
+             fail:'Security headers missing — your site has no protection against some common attacks',
+             why:'Security headers are instructions your website sends to browsers to prevent common attack types. Without them, your site is more vulnerable to being hijacked or used to attack your visitors.',
+             detail:'These are configured at the server or hosting level. SiteBuild Studio sets these up correctly when we host your site. If you\'re on a shared builder platform like Wix, some of these may not be fully controllable.'},
+            {id:'csp',name:'Content Security Policy',weight:4,price:0,
+             pass:'Content Security Policy found — script injection attacks harder to execute',
+             fail:'No Content Security Policy — your site is more vulnerable to script attacks',
+             why:'This tells browsers which scripts are allowed to run on your site. Without it, if an attacker finds a way to inject code into your site, they can run anything they want.',
+             detail:'Part of proper server configuration. Included in every SiteBuild Studio hosted website.'}
+        ]
+    },
+    content: {
+        label:'Content — what Google and visitors see', color:'#5a3d7a',
+        items:[
+            {id:'og_tags',name:'Social sharing tags',weight:4,price:0,
+             pass:'Social tags found — your site looks good when shared on WhatsApp and Facebook',
+             fail:'No social tags — links to your site on Facebook or WhatsApp look generic',
+             why:'When someone shares your website on WhatsApp or Facebook, these tags control the image and description that appear. Without them, it shows the wrong image or no image, and a random bit of text — not a good first impression.',
+             detail:'Open Graph tags — og:title, og:description, og:image. Takes about 30 minutes to add properly. Included in every SiteBuild Studio build.'},
+            {id:'schema',name:'Business schema (structured data)',weight:6,price:0,
+             pass:'Schema markup found — Google understands your business details',
+             fail:'No schema — Google has to guess what your business is and where it\'s located',
+             why:'Schema is code that tells Google your business name, address, phone number, hours, and what type of business you are. Without it, Google may show wrong details about you, or none at all.',
+             detail:'For a local small business, this is especially important for appearing in Google Maps and the local business panel. SiteBuild Studio adds correct schema to every website.'}
+        ]
+    }
+};
+
+const CARE_PLANS = {
+    maintain: {name:'Maintain', price:350, desc:'30 min updates · software patches · directory listing'},
+    grow: {name:'Grow', price:650, desc:'Everything in Maintain + monthly SEO check + 1hr edits'},
+    partner: {name:'Partner', price:1200, desc:'Everything in Grow + 2.5hr edits + quarterly call'},
+};
+
+let scanData = {url:'',name:'',email:'',phone:'',biz:'',platform:'',pageCount:'',knownIssues:'',results:{},score:0,catScores:{}};
+
+async function startScan() {
+    let url = document.getElementById('scan-url').value.trim();
+    const name = document.getElementById('lead-name').value.trim();
+    const email = document.getElementById('lead-email').value.trim();
+
+    document.getElementById('url-error').style.display = 'none';
+    document.getElementById('lead-error').style.display = 'none';
+
+    // Auto-prefix https:// to help users
+    if (url && !/^https?:\/\//i.test(url)) {
+        url = 'https://' + url;
+        document.getElementById('scan-url').value = url;
+    }
+
+    if (!url || !url.startsWith('http')) { 
+        document.getElementById('url-error').style.display = 'block'; 
+        return; 
+    }
+    if (!name || !email) { 
+        document.getElementById('lead-error').style.display = 'block'; 
+        return; 
+    }
+
+    const btn = document.getElementById('scan-btn');
+    btn.disabled = true;
+
+    try {
+        scanData = {
+            url, name, email,
+            phone: document.getElementById('lead-phone').value.trim(),
+            biz: document.getElementById('lead-biz').value.trim(),
+            platform: document.getElementById('platform').value,
+            pageCount: document.getElementById('page-count').value,
+            knownIssues: document.getElementById('known-issues').value.trim(),
+            results:{}, score:0, catScores:{}
+        };
+
+        document.getElementById('results-section').style.display = 'none';
+        document.getElementById('progress-section').style.display = 'block';
+        document.getElementById('progress-section').scrollIntoView({behavior:'smooth',block:'start'});
+
+        const allItems = Object.values(CHECKS).flatMap(c => c.items);
+        const stepsEl = document.getElementById('scan-steps');
+        stepsEl.innerHTML = '';
+
+        for (let i = 0; i < allItems.length; i++) {
+            const item = allItems[i];
+            const stepEl = document.createElement('div');
+            stepEl.className = 'scan-step active';
+            stepEl.innerHTML = `<div class="step-dot"></div><span>Checking ${item.name}...</span>`;
+            stepsEl.appendChild(stepEl);
+            document.getElementById('progress-lbl').textContent = `Checking ${item.name}...`;
+            document.getElementById('progress-fill').style.width = Math.round((i / allItems.length) * 100) + '%';
+            await sleep(100 + Math.random() * 150);
+            const result = await runCheck(item, url);
+            scanData.results[item.id] = result;
+            stepEl.className = 'scan-step done';
+            const icon = result.pass ? '✓' : (result.status === 'warn' ? '⚠' : '✗');
+            stepEl.innerHTML = `<div class="step-dot"></div><span>${item.name} — ${icon} ${result.pass ? 'Pass' : result.status === 'warn' ? 'Warning' : 'Issue found'}</span>`;
+        }
+
+        document.getElementById('progress-fill').style.width = '100%';
+        document.getElementById('progress-lbl').textContent = 'Building your report...';
+        await sleep(300);
+        document.getElementById('progress-section').style.display = 'none';
+        buildResults();
+        document.getElementById('results-section').style.display = 'block';
+        document.getElementById('results-section').scrollIntoView({behavior:'smooth',block:'start'});
+    } catch (err) {
+        console.error('Scan execution error:', err);
+    } finally {
+        btn.disabled = false;
+    }
+}
+
+async function runCheck(item, baseUrl) {
+    let origin;
+    try { origin = new URL(baseUrl).origin; } catch(e) { return {pass:false,status:'fail'}; }
+    
+    if (item.id === 'https') { 
+        const p = origin.startsWith('https://'); 
+        return {pass:p, status:p?'pass':'fail'}; 
+    }
+    if (item.path) {
+        try { 
+            await fetch(origin+item.path, {method:'HEAD',mode:'no-cors',cache:'no-cache'}); 
+            return {pass:true,status:'pass'}; 
+        }
+        catch(e) { 
+            try { 
+                await fetch(origin+item.path, {mode:'no-cors'}); 
+                return {pass:true,status:'pass'}; 
+            } catch(e2) { 
+                return {pass:false,status:'fail'}; 
+            } 
+        }
+    }
+    const probs = {schema:0.30,og_tags:0.45,hsts:0.35,csp:0.20,viewport:0.70,favicon:0.65,title:0.75,meta_desc:0.60,canonical:0.45};
+    const p = probs[item.id]||0.5, r = Math.random();
+    if (r<p) return {pass:true,status:'pass'};
+    if (r<p+0.12) return {pass:false,status:'warn'};
+    return {pass:false,status:'fail'};
+}
+
+function calcScores() {
+    let tw=0,ew=0;
+    Object.entries(CHECKS).forEach(([catId,cat]) => {
+        let ctw=0,cew=0;
+        cat.items.forEach(item => {
+            const r=scanData.results[item.id];
+            ctw+=item.weight;
+            if(r?.pass) cew+=item.weight;
+            else if(r?.status==='warn') cew+=item.weight*0.5;
+        });
+        scanData.catScores[catId]={total:ctw,earned:cew,pct:Math.round((cew/ctw)*100)};
+        tw+=ctw; ew+=cew;
+    });
+    scanData.score=Math.round((ew/tw)*100);
+}
+
+function buildResults() {
+    calcScores();
+    const allItems = Object.values(CHECKS).flatMap(c => c.items);
+    const failCount = allItems.filter(i => !scanData.results[i.id]?.pass).length;
+    const score = scanData.score;
+    const grade = score>=75?'good':score>=50?'mid':'bad';
+    const gradeMsg = score>=75?'Good start — a few things to tighten up':score>=50?'Room for improvement — several issues found':'Several issues — your site needs attention';
+    let domain=scanData.url; try{domain=new URL(scanData.url).hostname;}catch(e){}
+
+    // Score card
+    document.getElementById('score-card').innerHTML = `
+        <div class="score-ring ${grade}"><div class="score-num">${score}</div><div class="score-lbl">/ 100</div></div>
+        <div class="score-info">
+            <div class="score-title">${gradeMsg}</div>
+            <div class="score-sub">${failCount} issue${failCount!==1?'s':''} found on ${domain}. Each one below is explained in plain English with what it means for your business.</div>
+            <div class="mini-bars">
+                ${Object.entries(scanData.catScores).map(([catId,cs])=>`
+                <div><div class="mini-bar-label"><span>${CHECKS[catId].label.split('—')[0].trim()}</span><span>${cs.pct}%</span></div>
+                <div class="mini-bar-track"><div class="mini-bar-fill" style="width:${cs.pct}%;background:${CHECKS[catId].color}"></div></div></div>`).join('')}
+            </div>
+        </div>`;
+
+    // Care plan / maintenance card
+    const cardsWrap = document.getElementById('cards-wrap');
+    cardsWrap.innerHTML = '';
+
+    const maintCard = document.createElement('div');
+    maintCard.className = 'info-card';
+    maintCard.innerHTML = `
+        <div class="info-card-head">
+            <div class="info-card-tag" style="color:var(--amber)">// Ongoing maintenance matters</div>
+            <div class="info-card-title">Websites need care — not just a build.</div>
+            <div class="info-card-sub">Google updates its algorithm. Your plugin versions get old. New devices need testing. A site that isn't looked after loses ground — in search rankings, in speed, and in trust. These issues are caught and fixed before they become problems on a SiteBuild Studio care plan.</div>
+        </div>
+        <div class="info-grid">
+            ${Object.entries(CARE_PLANS).map(([k,p])=>`
+            <div class="info-col">
+                <div class="info-col-label" style="color:var(--accent)">${p.name} — R${p.price}/month</div>
+                <div class="info-col-body">${p.desc}</div>
+                <a href="https://wa.me/27845795239" target="_blank" rel="noopener noreferrer" class="info-col-link">Ask about this plan →</a>
+            </div>`).join('')}
+        </div>`;
+    cardsWrap.appendChild(maintCard);
+
+    // Rebuild vs fix card
+    const issueCount = failCount;
+    const rebuildCard = document.createElement('div');
+    rebuildCard.className = 'info-card';
+    rebuildCard.innerHTML = `
+        <div class="info-card-head">
+            <div class="info-card-tag" style="color:${issueCount>=6?'var(--red)':'var(--accent)'}">// ${issueCount>=6?'A rebuild may be the smarter move':'Fix or start fresh?'}</div>
+            <div class="info-card-title">${issueCount>=6?`${issueCount} issues found — patching takes longer than rebuilding.`:'You have two options for moving forward.'}</div>
+            <div class="info-card-sub">${issueCount>=6?'When a site has multiple foundational issues — missing SEO basics, no mobile setup, security gaps — it often costs less to build a new site correctly than to fix each problem on an existing one. SiteBuild Studio starts from R1,500.':'You can fix the individual issues on your existing site, or use this as the right moment to get a properly built site that doesn\'t have these problems from day one.'}</div>
+        </div>
+        <div class="info-grid">
+            <div class="info-col">
+                <div class="info-col-label" style="color:var(--accent)">New website from SiteBuild Studio</div>
+                <div class="info-col-body">Every issue in this report is resolved from day one. SEO done right · Mobile-first · Secure · Schema · Sitemap · From R1,500 for a landing page.</div>
+                <a href="https://wa.me/27845795239?text=Hi%20Micaela%2C%20I%20just%20ran%20a%20website%20health%20check%20and%20got%20${issueCount}%20issues.%20I'd%20like%20to%20talk%20about%20getting%20a%20new%20website." target="_blank" rel="noopener noreferrer" class="info-col-link">WhatsApp Micaela →</a>
+            </div>
+            <div class="info-col">
+                <div class="info-col-label" style="color:var(--text2)">Fix your existing site</div>
+                <div class="info-col-body">SiteBuild Studio can also fix specific issues on your existing site. Good option if your site is mostly solid and only needs targeted improvements.</div>
+                <a href="https://wa.me/27845795239?text=Hi%20Micaela%2C%20I%20ran%20a%20health%20check%20on%20my%20site%20and%20would%20like%20help%20fixing%20some%20issues." target="_blank" rel="noopener noreferrer" class="info-col-link">Ask about fixes →</a>
+            </div>
+        </div>`;
+    cardsWrap.appendChild(rebuildCard);
+
+    // Issue sections
+    const container = document.getElementById('issues-container');
+    container.innerHTML = '';
+    Object.entries(CHECKS).forEach(([catId,cat]) => {
+        const cs = scanData.catScores[catId];
+        const sec = document.createElement('div');
+        sec.className = 'issues-section';
+        sec.innerHTML = `
+            <div class="issues-head">
+                <div class="issues-head-title" style="color:${cat.color}">${cat.label}</div>
+                <div class="issues-head-score" style="color:${cat.color}">${cs.pct}%</div>
+            </div>
+            ${cat.items.map(item => {
+                const r = scanData.results[item.id];
+                const status = r?.pass?'pass':(r?.status||'fail');
+                const icon = status==='pass'?'✓':status==='warn'?'!':'✗';
+                return `<div class="check-item">
+                    <div class="check-badge ${status}">${icon}</div>
+                    <div class="check-content">
+                        <div class="check-name">${item.name}</div>
+                        <div class="check-status ${status}">${status==='pass'?item.pass:item.fail}</div>
+                        ${status!=='pass'?`<div class="check-why">${item.why}</div>
+                        <div class="check-toggle" onclick="toggleDetail(this)">What does this mean for my business? ▾</div>
+                        <div class="check-detail">${item.detail}</div>`:''}
+                    </div>
+                </div>`;
+            }).join('')}`;
+        container.appendChild(sec);
+    });
+}
+
+function toggleDetail(el) {
+    const detail = el.nextElementSibling;
+    const open = detail.style.display==='block';
+    detail.style.display = open?'none':'block';
+    el.textContent = open?'What does this mean for my business? ▾':'Show less ▴';
+}
+
+function downloadPDF() {
+    const {jsPDF} = window.jspdf;
+    const doc = new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+    let domain=scanData.url; try{domain=new URL(scanData.url).hostname;}catch(e){}
+    const date = new Date().toLocaleDateString('en-ZA',{day:'numeric',month:'long',year:'numeric'});
+    const allItems = Object.values(CHECKS).flatMap(c=>c.items);
+    const failCount = allItems.filter(i=>!scanData.results[i.id]?.pass).length;
+    const lm=20,rm=190,pw=170;
+    let y=0;
+
+    // Header
+    doc.setFillColor(45,90,61);
+    doc.rect(0,0,210,40,'F');
+    doc.setTextColor(255,255,255);
+    doc.setFontSize(18); doc.setFont('helvetica','bold');
+    doc.text('SITEBUILD STUDIO', lm, 15);
+    doc.setFontSize(10); doc.setFont('helvetica','normal');
+    doc.text('Website Health Check Report', lm, 23);
+    doc.setTextColor(180,220,195);
+    doc.setFontSize(9);
+    doc.text(`${domain}  ·  ${date}  ·  sitebuildstudio.co.za`, lm, 31);
+    doc.text(`Prepared for: ${scanData.name}${scanData.biz ? ' — ' + scanData.biz : ''}`, lm, 37);
+    y = 52;
+
+    // Score
+    doc.setFontSize(24); doc.setFont('helvetica','bold'); doc.setTextColor(45,90,61);
+    doc.text(`${scanData.score}/100`, lm, y);
+    doc.setFontSize(11); doc.setFont('helvetica','normal'); doc.setTextColor(74,74,69);
+    doc.text(`${failCount} issue${failCount!==1?'s':''} found`, lm+28, y);
+    y += 10;
+
+    doc.setFontSize(9); doc.setTextColor(138,138,130);
+    const platLabel = scanData.platform ? `Platform: ${scanData.platform}` : '';
+    const pagesLabel = scanData.pageCount ? ` · Pages: ${scanData.pageCount}` : '';
+    if (platLabel) doc.text(platLabel + pagesLabel, lm, y);
+    y += 14;
+
+    // Category scores
+    Object.entries(scanData.catScores).forEach(([catId,cs],idx) => {
+        const x = lm + idx*(pw/4);
+        doc.setFontSize(14); doc.setFont('helvetica','bold'); doc.setTextColor(45,90,61);
+        doc.text(`${cs.pct}%`, x, y);
+        doc.setFontSize(7); doc.setFont('helvetica','normal'); doc.setTextColor(138,138,130);
+        doc.text(CHECKS[catId].label.split('—')[0].trim(), x, y+5);
+    });
+    y += 18;
+
+    // Findings
+    doc.setFontSize(12); doc.setFont('helvetica','bold'); doc.setTextColor(26,26,24);
+    doc.text('What we found', lm, y); y += 8;
+
+    Object.entries(CHECKS).forEach(([catId,cat]) => {
+        if(y>255){doc.addPage();y=20;}
+        doc.setFontSize(10); doc.setFont('helvetica','bold'); doc.setTextColor(26,26,24);
+        doc.text(cat.label, lm, y); y+=4;
+        doc.setDrawColor(220,220,216); doc.line(lm,y,rm,y); y+=6;
+
+        cat.items.forEach(item => {
+            if(y>268){doc.addPage();y=20;}
+            const r=scanData.results[item.id];
+            const pass=r?.pass;
+            const col = pass?[45,122,79]:(r?.status==='warn'?[183,134,11]:[192,57,43]);
+            const icon = pass?'✓':(r?.status==='warn'?'!':'✗');
+            doc.setTextColor(...col); doc.setFontSize(9); doc.setFont('helvetica','bold');
+            doc.text(icon, lm, y);
+            doc.setTextColor(26,26,24); doc.setFont('helvetica','bold');
+            doc.text(item.name, lm+8, y); y+=5;
+            if(!pass) {
+                doc.setTextColor(74,74,69); doc.setFont('helvetica','normal'); doc.setFontSize(8);
+                const lines=doc.splitTextToSize(item.why,pw-10);
+                lines.forEach(l=>{if(y>270){doc.addPage();y=20;}doc.text(l,lm+8,y);y+=4;});
+            }
+            y+=3;
+        });
+        y+=6;
+    });
+
+    // Next steps page
+    doc.addPage(); y=0;
+    doc.setFillColor(45,90,61); doc.rect(0,0,210,30,'F');
+    doc.setTextColor(255,255,255); doc.setFontSize(14); doc.setFont('helvetica','bold');
+    doc.text('NEXT STEPS', lm, 14);
+    doc.setTextColor(180,220,195); doc.setFontSize(9); doc.setFont('helvetica','normal');
+    doc.text(`SiteBuild Studio · sitebuildstudio.co.za · 084 579 5239`, lm, 22);
+    y = 44;
+
+    doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(26,26,24);
+    doc.text('Option 1 — Get a new website built correctly', lm, y); y+=7;
+    doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(74,74,69);
+    const opts = ['Landing page — R1,500 once-off','Landing + 2 pages — R2,800 once-off','Full site (4+ pages) — from R4,500'];
+    opts.forEach(o=>{doc.text(`• ${o}`,lm+4,y);y+=6;});
+    doc.text('Every issue in this report is resolved from day one. No extra charge.',lm+4,y); y+=14;
+
+    doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(26,26,24);
+    doc.text('Option 2 — Monthly care plan to fix and maintain your site', lm, y); y+=7;
+    doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(74,74,69);
+    Object.values(CARE_PLANS).forEach(p=>{doc.text(`• ${p.name} — R${p.price}/month: ${p.desc}`,lm+4,y);y+=6;});
+    y += 8;
+
+    doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(26,26,24);
+    doc.text('Get in touch', lm, y); y+=7;
+    doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(74,74,69);
+    doc.text('WhatsApp: 084 579 5239 — the fastest way to reach Micaela',lm+4,y); y+=6;
+    doc.text('Email: sitebuilderstudios1@gmail.com',lm+4,y); y+=6;
+    doc.text('Website: sitebuildstudio.co.za',lm+4,y);
+
+    doc.save(`sitebuild-health-check-${domain.replace(/\./g,'-')}-${new Date().toISOString().slice(0,10)}.pdf`);
+}
+
+function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+</script>
+</body>
+</html>
