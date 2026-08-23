@@ -459,27 +459,27 @@ const CHECKS = {
     seo: {
         label:'SEO — getting found on Google', color:'#7B2CBF',
         items:[
-            {id:'robots',name:'robots.txt',path:'/robots.txt',weight:7,price:0,
+            {id:'robots',name:'robots.txt',path:'/robots.txt',weight:7,price:350,
              pass:'Search engines have instructions on how to crawl your site',
              fail:'No robots.txt — search engines are guessing how to crawl your site',
              why:'This small file tells Google which pages to look at and which to skip. Without it, Google might ignore important pages or waste time on ones that don\'t matter.',
              detail:'SiteBuild Studio adds a correct robots.txt to every website we build — it takes about 10 minutes and makes a real difference to how quickly Google indexes your pages.'},
-            {id:'sitemap',name:'XML sitemap',path:'/sitemap.xml',weight:7,price:0,
+            {id:'sitemap',name:'XML sitemap',path:'/sitemap.xml',weight:7,price:450,
              pass:'Google has a full map of your pages — indexing is faster and more complete',
              fail:'No sitemap — Google is finding your pages by luck, not design',
              why:'A sitemap is like a table of contents for your website. It tells Google every page that exists so nothing gets missed. Without one, new pages can take months to appear in search results — or never appear at all.',
              detail:'Every SiteBuild Studio website includes a sitemap submitted directly to Google Search Console. New pages are indexed within days, not months.'},
-            {id:'title',name:'Page title tag',weight:6,price:0,
+            {id:'title',name:'Page title tag',weight:6,price:350,
              pass:'Your page has a title — good start for search visibility',
              fail:'No page title — your most important SEO element is missing',
              why:'Your page title is the blue link text people see in Google. It\'s the single biggest on-page factor for search rankings. Without a good one, Google makes one up — and it\'s usually bad.',
              detail:'Every page on your site needs a unique, descriptive title of 50-60 characters that includes what your business does and where you are. SiteBuild Studio writes these for every page we build.'},
-            {id:'meta_desc',name:'Meta description',weight:4,price:0,
+            {id:'meta_desc',name:'Meta description',weight:4,price:350,
              pass:'Meta description found — search result snippet is in your control',
              fail:'No meta description — Google is writing your search snippet for you',
              why:'The description under your title in Google is what convinces someone to click. Without one, Google picks a random sentence from your page — usually not the right one.',
              detail:'A good meta description is 150-160 characters and answers "what does this business do and why should I choose them?" SiteBuild Studio writes these for every page.'},
-            {id:'canonical',name:'Canonical URL tag',weight:3,price:0,
+            {id:'canonical',name:'Canonical URL tag',weight:3,price:250,
              pass:'Canonical tag found — no duplicate content issues',
              fail:'No canonical tag — you may be competing against yourself in Google',
              why:'If your site is accessible at both www and non-www addresses, Google may count them as two different sites and split your ranking between them. This tag tells Google which version is the real one.',
@@ -489,12 +489,12 @@ const CHECKS = {
     mobile: {
         label:'Mobile — how it looks on phones', color:'#050505',
         items:[
-            {id:'viewport',name:'Mobile viewport tag',weight:8,price:0,
+            {id:'viewport',name:'Mobile viewport tag',weight:8,price:250,
              pass:'Mobile viewport is configured — site should display correctly on phones',
              fail:'No mobile viewport — your site likely looks broken on phones',
              why:'Without this tag, your site loads at desktop size on a phone and then shrinks everything down. Text becomes tiny, buttons become impossible to tap, and Google penalises you for it.',
              detail:'One line of code in the page header. Included in every SiteBuild Studio site. If your site is missing this, it\'s a sign the site needs a rebuild or significant update.'},
-            {id:'favicon',name:'Favicon (browser icon)',weight:2,price:0,
+            {id:'favicon',name:'Favicon (browser icon)',weight:2,price:150,
              pass:'Favicon found — your brand appears in browser tabs',
              fail:'No favicon — a generic icon shows in browser tabs',
              why:'Small detail, but it matters for trust. When someone has your site open in a tab, a branded icon keeps them oriented. A blank icon looks like an unfinished site.',
@@ -504,17 +504,17 @@ const CHECKS = {
     security: {
         label:'Security — keeping visitors safe', color:'#ff5f56',
         items:[
-            {id:'https',name:'HTTPS (secure connection)',weight:8,price:0,
+            {id:'https',name:'HTTPS (secure connection)',weight:8,price:450,
              pass:'Your site uses HTTPS — visitors have a secure, encrypted connection',
              fail:'Your site is not using HTTPS — browsers will warn visitors it\'s not safe',
              why:'Without HTTPS, browsers show a "Not Secure" warning to every visitor. This immediately damages trust, especially if you have a contact form or take any customer details. Google also ranks HTTPS sites higher.',
              detail:'An SSL certificate makes your site HTTPS. These are usually free through your hosting provider. SiteBuild Studio sets up HTTPS correctly on every website we host.'},
-            {id:'hsts',name:'Security headers',weight:5,price:0,
+            {id:'hsts',name:'Security headers',weight:5,price:450,
              pass:'Security headers found — site has basic protection against common attacks',
              fail:'Security headers missing — your site has no protection against some common attacks',
              why:'Security headers are instructions your website sends to browsers to prevent common attack types. Without them, your site is more vulnerable to being hijacked or used to attack your visitors.',
              detail:'These are configured at the server or hosting level. SiteBuild Studio sets these up correctly when we host your site. If you\'re on a shared builder platform like Wix, some of these may not be fully controllable.'},
-            {id:'csp',name:'Content Security Policy',weight:4,price:0,
+            {id:'csp',name:'Content Security Policy',weight:4,price:550,
              pass:'Content Security Policy found — script injection attacks harder to execute',
              fail:'No Content Security Policy — your site is more vulnerable to script attacks',
              why:'This tells browsers which scripts are allowed to run on your site. Without it, if an attacker finds a way to inject code into your site, they can run anything they want.',
@@ -524,12 +524,12 @@ const CHECKS = {
     content: {
         label:'Content — what Google and visitors see', color:'#ffbd2e',
         items:[
-            {id:'og_tags',name:'Social sharing tags',weight:4,price:0,
+            {id:'og_tags',name:'Social sharing tags',weight:4,price:450,
              pass:'Social tags found — your site looks good when shared on WhatsApp and Facebook',
              fail:'No social tags — links to your site on Facebook or WhatsApp look generic',
              why:'When someone shares your website on WhatsApp or Facebook, these tags control the image and description that appear. Without them, it shows the wrong image or no image, and a random bit of text — not a good first impression.',
              detail:'Open Graph tags — og:title, og:description, og:image. Takes about 30 minutes to add properly. Included in every SiteBuild Studio build.'},
-            {id:'schema',name:'Business schema (structured data)',weight:6,price:0,
+            {id:'schema',name:'Business schema (structured data)',weight:6,price:650,
              pass:'Schema markup found — Google understands your business details',
              fail:'No schema — Google has to guess what your business is and where it\'s located',
              why:'Schema is code that tells Google your business name, address, phone number, hours, and what type of business you are. Without it, Google may show wrong details about you, or none at all.',
@@ -669,7 +669,11 @@ function calcScores() {
 function buildResults() {
     calcScores();
     const allItems = Object.values(CHECKS).flatMap(c => c.items);
-    const failCount = allItems.filter(i => !scanData.results[i.id]?.pass).length;
+    const failedItems = allItems.filter(i => !scanData.results[i.id]?.pass && i.price > 0);
+    const failCount = failedItems.length;
+    const fixTotal = failedItems.reduce((sum, item) => sum + item.price, 0);
+    const hasFixes = failCount > 0;
+    
     const score = scanData.score;
     const grade = score>=75?'good':score>=50?'mid':'bad';
     const gradeMsg = score>=75?'Good start — a few things to tighten up':score>=50?'Room for improvement — several issues found':'Several issues — your site needs attention';
@@ -694,21 +698,21 @@ function buildResults() {
         <div style="text-align: center; margin: 60px 0 30px;">
             <span class="packages-eyebrow" style="background: rgba(123, 44, 191, 0.08); border: none;">Next Steps</span>
             <h2 style="font-size: 2.2rem; font-weight: 800;">${failCount >= 6 ? 'A rebuild might be the smartest move' : 'Fixing the gaps'}</h2>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 10px auto 0;">${failCount >= 6 ? 'With multiple foundational issues found, it often costs less to build a new site correctly than to patch an old one.' : 'You can fix these issues yourself, or let us handle it with a care plan or fresh build.'}</p>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 10px auto 0;">${failCount >= 6 ? 'With multiple foundational issues found, it often costs less to build a new site correctly than to patch an old one.' : 'You can fix these issues yourself, let us patch them up, or start fresh.'}</p>
         </div>
         <div class="packages-grid" style="margin-bottom: 50px;">
             <div class="package-card">
-                <div class="package-tier">Monthly Care</div>
-                <div class="package-tagline">We fix these issues and maintain the site</div>
+                <div class="package-tier">Patch Existing Site</div>
+                <div class="package-tagline">We fix exactly what's broken in this report</div>
                 <div class="package-price">
-                    <span class="amount">R650</span><span class="period">/ mo</span>
+                    <span class="amount">${hasFixes ? 'R' + fixTotal.toLocaleString() : 'All good!'}</span><span class="period">${hasFixes ? 'total' : ''}</span>
                 </div>
                 <ul class="package-features">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Monthly SEO & security checks</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Software updates applied safely</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Up to 1 hour of edits</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> ${failCount} specific issue${failCount !== 1 ? 's' : ''} resolved</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Applied directly to your current site</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Transparent per-item pricing</li>
                 </ul>
-                <a href="https://wa.me/27845795239" target="_blank" class="get-started-btn" style="background: transparent; color: var(--text); border: 1.5px solid var(--border);">Ask about care plans</a>
+                <a href="https://wa.me/27845795239?text=Hi%20Micaela,%20I'd%20like%20to%20fix%20the%20${failCount}%20issues%20found%20on%20my%20site." target="_blank" class="get-started-btn" style="background: transparent; color: var(--text); border: 1.5px solid var(--border);">Request fixes</a>
             </div>
 
             <div class="package-card featured">
@@ -716,14 +720,14 @@ function buildResults() {
                 <div class="package-tier">New Website</div>
                 <div class="package-tagline">Built perfectly from day one, zero issues</div>
                 <div class="package-price">
-                    <span class="amount">R1,500</span><span class="period">once-off</span>
+                    <span class="amount" style="font-size: 2rem;">Build Plans</span>
                 </div>
                 <ul class="package-features">
                     <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Every issue resolved by default</li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom designed & mobile responsive</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Full SEO foundation included</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Sized and priced to fit your business</li>
                 </ul>
-                <a href="https://wa.me/27845795239" target="_blank" class="get-started-btn">Message Micaela to start</a>
+                <a href="/#pricing" class="get-started-btn">View Build Plans</a>
             </div>
         </div>
     `;
@@ -751,6 +755,7 @@ function buildResults() {
                         <div class="check-name">${item.name}</div>
                         <div class="check-status ${status}">${status==='pass'?item.pass:item.fail}</div>
                         ${status!=='pass'?`<div class="check-why">${item.why}</div>
+                        <div class="check-price" style="font-size: 0.85rem; font-weight: 700; color: var(--primary); margin-bottom: 12px;">Fix price: R${item.price}</div>
                         <div class="check-toggle" onclick="toggleDetail(this)">What this means + how to fix ▾</div>
                         <div class="check-detail">${item.detail}</div>`:''}
                     </div>
@@ -773,7 +778,9 @@ function downloadPDF() {
     let domain=scanData.url; try{domain=new URL(scanData.url).hostname;}catch(e){}
     const date = new Date().toLocaleDateString('en-ZA',{day:'numeric',month:'long',year:'numeric'});
     const allItems = Object.values(CHECKS).flatMap(c=>c.items);
-    const failCount = allItems.filter(i=>!scanData.results[i.id]?.pass).length;
+    const failedItems = allItems.filter(i=>!scanData.results[i.id]?.pass && i.price > 0);
+    const failCount = failedItems.length;
+    const fixTotal = failedItems.reduce((sum, item) => sum + item.price, 0);
     const lm=20,rm=190,pw=170;
     let y=0;
 
@@ -848,30 +855,54 @@ function downloadPDF() {
     doc.addPage(); y=0;
     doc.setFillColor(123, 44, 191); doc.rect(0,0,210,30,'F');
     doc.setTextColor(255,255,255); doc.setFontSize(14); doc.setFont('helvetica','bold');
-    doc.text('NEXT STEPS', lm, 14);
+    doc.text('NEXT STEPS & QUOTE', lm, 14);
     doc.setTextColor(220,180,250); doc.setFontSize(9); doc.setFont('helvetica','normal');
     doc.text(`SiteBuild Studio · sitebuildstudio.co.za · 084 579 5239`, lm, 22);
     y = 44;
 
-    doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(5,5,5);
-    doc.text('Option 1 — Get a new website built correctly', lm, y); y+=7;
-    doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(85,85,85);
-    const opts = ['Landing page — R1,500 once-off','Landing + 2 pages — R2,800 once-off','Full site (4+ pages) — from R4,500'];
-    opts.forEach(o=>{doc.text(`• ${o}`,lm+4,y);y+=6;});
-    doc.text('Every issue in this report is resolved from day one. No extra charge.',lm+4,y); y+=14;
+    doc.setFontSize(14); doc.setFont('helvetica','bold'); doc.setTextColor(5,5,5);
+    doc.text('Option 1 — Itemised Fixes', lm, y); y+=8;
 
-    doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(5,5,5);
-    doc.text('Option 2 — Monthly care plan to fix and maintain your site', lm, y); y+=7;
-    doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(85,85,85);
-    Object.values(CARE_PLANS).forEach(p=>{doc.text(`• ${p.name} — R${p.price}/month: ${p.desc}`,lm+4,y);y+=6;});
-    y += 8;
+    if (failedItems.length > 0) {
+        failedItems.forEach(item => {
+            doc.setFontSize(10); doc.setFont('helvetica','bold'); doc.setTextColor(5,5,5);
+            doc.text(item.name, lm, y);
+            const priceStr = `R${item.price.toLocaleString()}`;
+            doc.text(priceStr, rm - doc.getTextWidth(priceStr), y);
+            y+=5;
+            doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(85,85,85);
+            const whyLines = doc.splitTextToSize(item.why, pw - 30);
+            whyLines.forEach(l => { doc.text(l, lm+4, y); y+=4; });
+            y+=2;
+        });
 
-    doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.setTextColor(5,5,5);
+        y+=4;
+        doc.setDrawColor(200,200,200); doc.line(lm, y, rm, y); y+=8;
+        doc.setFontSize(12); doc.setFont('helvetica','bold'); doc.setTextColor(5,5,5);
+        doc.text('Total Fix Estimate', lm, y);
+        const totStr = `R${fixTotal.toLocaleString()}`;
+        doc.setTextColor(123, 44, 191);
+        doc.text(totStr, rm - doc.getTextWidth(totStr), y);
+        y+=16;
+    } else {
+        doc.setFontSize(10); doc.setFont('helvetica','normal'); doc.setTextColor(85,85,85);
+        doc.text('No critical issues found! Your site is looking great.', lm, y); y+=16;
+    }
+
+    doc.setFontSize(14); doc.setFont('helvetica','bold'); doc.setTextColor(5,5,5);
+    doc.text('Option 2 — Start Fresh (New Website)', lm, y); y+=8;
+    doc.setFontSize(10); doc.setFont('helvetica','normal'); doc.setTextColor(85,85,85);
+    doc.text('If your site requires extensive fixes, it is often more cost-effective to rebuild.', lm, y); y+=5;
+    doc.text('View our build packages online to find the right fit for your page count:', lm, y); y+=8;
+
+    doc.setFontSize(10); doc.setFont('helvetica','bold'); doc.setTextColor(123, 44, 191);
+    doc.text('sitebuildstudio.co.za/#pricing', lm+4, y); y+=16;
+
+    doc.setFontSize(12); doc.setFont('helvetica','bold'); doc.setTextColor(5,5,5);
     doc.text('Get in touch', lm, y); y+=7;
     doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(85,85,85);
     doc.text('WhatsApp: 084 579 5239 — the fastest way to reach Micaela',lm+4,y); y+=6;
-    doc.text('Email: sitebuilderstudios1@gmail.com',lm+4,y); y+=6;
-    doc.text('Website: sitebuildstudio.co.za',lm+4,y);
+    doc.text('Email: sitebuilderstudios1@gmail.com',lm+4,y);
 
     doc.save(`sitebuild-health-check-${domain.replace(/\./g,'-')}-${new Date().toISOString().slice(0,10)}.pdf`);
 }
