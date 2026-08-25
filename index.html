@@ -1283,6 +1283,71 @@
                 font-size: 2rem;
             }
         }
+        /* Audit tool promo strip */
+        .audit-promo-section {
+            background-color: #050505;
+            padding: 60px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .audit-promo-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+            background-color: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 36px 40px;
+        }
+        .audit-promo-text .audit-eyebrow {
+            display: inline-block;
+            background-color: rgba(123,44,191,0.15);
+            color: #a855f7;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 30px;
+            margin-bottom: 12px;
+        }
+        .audit-promo-text h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+        .audit-promo-text p {
+            font-size: 0.95rem;
+            color: #b8b8bd;
+            max-width: 480px;
+        }
+        .audit-promo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #7B2CBF;
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .audit-promo-btn:hover {
+            background-color: #5a1f8f;
+            transform: translateY(-1px);
+        }
+        @media (max-width: 600px) {
+            .audit-promo-section { padding: 50px 24px; }
+            .audit-promo-wrapper { padding: 28px 24px; }
+        }
         /* Retainer / Care Plans Section */
         .retainer-section {
             background-color: #F8F9FA;
@@ -2242,6 +2307,7 @@
                 <li><a href="#care-plans">Care Plans</a></li>
                 <li><a href="directory/business-directory.html">Directory</a></li>
                 <li><a href="articles/articles.html">Articles</a></li>
+                <li><a href="audit-tool.html">Website Check</a></li>
             </ul>
 
             <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
@@ -2488,6 +2554,17 @@
             </div>
 
             <p class="packages-fineprint">Not sure which fits? Get in touch and I'll help you pick the right starting point for your business. Domain registration and hosting are billed separately and aren't included in the prices above.</p>
+        </div>
+    </section>
+
+    <section class="audit-promo-section">
+        <div class="audit-promo-wrapper">
+            <div class="audit-promo-text">
+                <span class="audit-eyebrow">Free Tool</span>
+                <h3>Not sure where your site stands?</h3>
+                <p>Run a free health check — SEO, mobile, security, and content — and get a plain-English PDF report in under a minute.</p>
+            </div>
+            <a href="audit-tool.html" class="audit-promo-btn">Run Free Health Check &rarr;</a>
         </div>
     </section>
 
