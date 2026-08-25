@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Website Health Check | SiteBuild Studio</title>
     <meta name="description" content="Free website health check from SiteBuild Studio. Find out what your small business website is missing — SEO, mobile, security, and more. Instant PDF report.">
-    <link rel="canonical" href="https://www.sitebuildstudio.co.za/">
+    <link rel="canonical" href="https://www.sitebuildstudio.co.za/audit-tool.html">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,8 +49,12 @@
         .logo-svg { height: 46px; width: auto; display: block; transition: height 0.3s ease; }
         .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; flex-wrap: wrap; }
         .nav-links a { color: var(--text); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 4px; }
+        .nav-links a.active { color: var(--primary); font-weight: 700; }
         .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: var(--text); transition: width 0.25s ease; }
         .nav-links a:hover::after { width: 100%; }
+
+        .contact-btn { background-color: var(--primary-dark); color: #ffffff; padding: 12px 26px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.9rem; white-space: nowrap; transition: background-color 0.2s ease, transform 0.2s ease; display: inline-flex; align-items: center; }
+        .contact-btn:hover { transform: translateY(-1px); }
 
         .hamburger { display: none; flex-direction: column; justify-content: center; gap: 6px; width: 40px; height: 40px; background: none; border: none; padding: 0; cursor: pointer; flex-shrink: 0; }
         .hamburger span { display: block; width: 100%; height: 3px; border-radius: 3px; transition: all 0.25s ease; background-color: var(--primary); }
@@ -229,7 +233,7 @@
 
     <header class="site-header" id="siteHeader">
         <nav class="navbar">
-            <a href="/" class="logo">
+            <a href="index.html" class="logo">
                 <svg class="logo-svg" viewBox="0 0 725 227" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SiteBuild Studio">
                     <title>SiteBuild Studio</title>
                     <defs>
@@ -253,14 +257,19 @@
                 </svg>
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="/">Home</a></li>
-                <li><a href="/#about">About Me</a></li>
-                <li><a href="/#portfolio">Portfolio</a></li>
-                <li><a href="/#pricing">Pricing</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About Me</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#care-plans">Care Plans</a></li>
+                <li><a href="directory/business-directory.html">Directory</a></li>
+                <li><a href="articles/articles.html">Articles</a></li>
+                <li><a href="audit-tool.html" class="active">Website Check</a></li>
             </ul>
-            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
                 <span></span><span></span><span></span>
             </button>
+            <a href="index.html#contact" class="contact-btn">Contact</a>
         </nav>
     </header>
 
@@ -381,7 +390,7 @@
                 <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 Chat with Micaela
             </a>
-            <a href="/#pricing" class="btn-outline">View Build Pricing &rarr;</a>
+            <a href="index.html#pricing" class="btn-outline">View Build Pricing &rarr;</a>
         </div>
 
         <div id="cards-wrap"></div>
@@ -453,6 +462,14 @@ var navLinks = document.getElementById('navLinks');
 hamburgerBtn.addEventListener('click', function() {
     var isOpen = navLinks.classList.toggle('open');
     hamburgerBtn.classList.toggle('open', isOpen);
+    hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+});
+document.addEventListener('click', function (e) {
+    if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        navLinks.classList.remove('open');
+        hamburgerBtn.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
 });
 
 const CHECKS = {
@@ -543,6 +560,9 @@ const CARE_PLANS = {
     grow: {name:'Grow', price:650, desc:'For a business that wants to be found', feat:['Everything in Maintain','Monthly SEO check','Up to 1 hour of edits','Priority WhatsApp support']},
     partner: {name:'Partner', price:1200, desc:'For a business that keeps growing online', feat:['Everything in Grow','Up to 2.5 hours of edits','Quarterly check-in call','Dedicated support line']},
 };
+
+const DISCOUNT_RATE = 0.10;
+const DISCOUNT_WINDOW_HOURS = 48;
 
 let scanData = {url:'',name:'',email:'',phone:'',biz:'',platform:'',pageCount:'',knownIssues:'',results:{},score:0,catScores:{}};
 
@@ -666,6 +686,10 @@ function calcScores() {
     scanData.score=Math.round((ew/tw)*100);
 }
 
+function formatDeadline(d) {
+    return d.toLocaleString('en-ZA', { weekday:'short', day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' });
+}
+
 function buildResults() {
     calcScores();
     const allItems = Object.values(CHECKS).flatMap(c => c.items);
@@ -673,7 +697,19 @@ function buildResults() {
     const failCount = failedItems.length;
     const fixTotal = failedItems.reduce((sum, item) => sum + item.price, 0);
     const hasFixes = failCount > 0;
-    
+    const discountedTotal = hasFixes ? Math.round(fixTotal * (1 - DISCOUNT_RATE)) : 0;
+
+    // Lock the scan time and quote deadline once, at scan completion —
+    // re-used by the PDF so both always show the same date and deadline.
+    const scanDate = new Date();
+    const quoteDeadline = new Date(scanDate.getTime() + DISCOUNT_WINDOW_HOURS * 60 * 60 * 1000);
+    scanData.scanDate = scanDate;
+    scanData.quoteDeadline = quoteDeadline;
+    scanData.deadlineStr = formatDeadline(quoteDeadline);
+    scanData.fixTotal = fixTotal;
+    scanData.discountedTotal = discountedTotal;
+    scanData.failCount = failCount;
+
     const score = scanData.score;
     const grade = score>=75?'good':score>=50?'mid':'bad';
     const gradeMsg = score>=75?'Good start — a few things to tighten up':score>=50?'Room for improvement — several issues found':'Several issues — your site needs attention';
@@ -684,7 +720,7 @@ function buildResults() {
         <div class="score-ring ${grade}"><div class="score-num">${score}</div><div class="score-lbl">/ 100</div></div>
         <div class="score-info">
             <div class="score-title">${gradeMsg}</div>
-            <div class="score-sub">${failCount} issue${failCount!==1?'s':''} found on <strong>${domain}</strong>. Each one below is explained in plain English.</div>
+            <div class="score-sub">${failCount} issue${failCount!==1?'s':''} found on <strong>${domain}</strong>. Each one below is explained in plain English. Scanned ${formatDeadline(scanDate)}.</div>
             <div class="mini-bars">
                 ${Object.entries(scanData.catScores).map(([catId,cs])=>`
                 <div><div class="mini-bar-label"><span>${CHECKS[catId].label.split('—')[0].trim()}</span><span>${cs.pct}%</span></div>
@@ -702,17 +738,25 @@ function buildResults() {
         </div>
         <div class="packages-grid" style="margin-bottom: 50px;">
             <div class="package-card">
+                ${hasFixes ? `<span class="package-badge" style="background-color:#b7860b;">10% off — ${DISCOUNT_WINDOW_HOURS}hrs only</span>` : ''}
                 <div class="package-tier">Patch Existing Site</div>
                 <div class="package-tagline">We fix exactly what's broken in this report</div>
-                <div class="package-price">
-                    <span class="amount">${hasFixes ? 'R' + fixTotal.toLocaleString() : 'All good!'}</span><span class="period">${hasFixes ? 'total' : ''}</span>
+                ${hasFixes ? `
+                <div class="package-price" style="align-items: flex-end; gap: 12px;">
+                    <span class="amount" style="font-size: 1.5rem; text-decoration: line-through; color: #bbbbbb;">R${fixTotal.toLocaleString()}</span>
+                    <span class="amount">R${discountedTotal.toLocaleString()}</span><span class="period">total</span>
                 </div>
+                <div style="font-size: 0.85rem; color: #b7860b; font-weight: 700; margin-bottom: 22px;">Accept by ${scanData.deadlineStr} to lock in this price</div>
+                ` : `
+                <div class="package-price"><span class="amount">All good!</span></div>
+                <div style="margin-bottom: 22px;"></div>
+                `}
                 <ul class="package-features">
                     <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> ${failCount} specific issue${failCount !== 1 ? 's' : ''} resolved</li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Applied directly to your current site</li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Transparent per-item pricing</li>
                 </ul>
-                <a href="https://wa.me/27845795239?text=Hi%20Micaela,%20I'd%20like%20to%20fix%20the%20${failCount}%20issues%20found%20on%20my%20site." target="_blank" class="get-started-btn" style="background: transparent; color: var(--text); border: 1.5px solid var(--border);">Request fixes</a>
+                <a href="https://wa.me/27845795239?text=Hi%20Micaela,%20I'd%20like%20to%20accept%20the%2010%25%20off%20quote%20(R${discountedTotal.toLocaleString()})%20to%20fix%20the%20${failCount}%20issues%20found%20on%20my%20site%20before%20${encodeURIComponent(scanData.deadlineStr)}." target="_blank" class="get-started-btn" style="background: transparent; color: var(--text); border: 1.5px solid var(--border);">${hasFixes ? 'Accept this quote' : 'Request fixes'}</a>
             </div>
 
             <div class="package-card featured">
@@ -727,7 +771,7 @@ function buildResults() {
                     <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom designed & mobile responsive</li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Sized and priced to fit your business</li>
                 </ul>
-                <a href="/#pricing" class="get-started-btn">View Build Plans</a>
+                <a href="index.html#pricing" class="get-started-btn">View Build Plans</a>
             </div>
         </div>
     `;
@@ -776,11 +820,17 @@ function downloadPDF() {
     const {jsPDF} = window.jspdf;
     const doc = new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
     let domain=scanData.url; try{domain=new URL(scanData.url).hostname;}catch(e){}
-    const date = new Date().toLocaleDateString('en-ZA',{day:'numeric',month:'long',year:'numeric'});
+    // Use the date the scan actually ran, not the moment the PDF is clicked —
+    // keeps the report and the 48-hour offer consistent no matter when it's downloaded.
+    const scanDate = scanData.scanDate || new Date();
+    const date = scanDate.toLocaleDateString('en-ZA',{day:'numeric',month:'long',year:'numeric'});
+    const time = scanDate.toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit'});
+    const deadlineStr = scanData.deadlineStr || formatDeadline(new Date(scanDate.getTime() + DISCOUNT_WINDOW_HOURS*60*60*1000));
     const allItems = Object.values(CHECKS).flatMap(c=>c.items);
     const failedItems = allItems.filter(i=>!scanData.results[i.id]?.pass && i.price > 0);
     const failCount = failedItems.length;
-    const fixTotal = failedItems.reduce((sum, item) => sum + item.price, 0);
+    const fixTotal = scanData.fixTotal ?? failedItems.reduce((sum, item) => sum + item.price, 0);
+    const discountedTotal = scanData.discountedTotal ?? Math.round(fixTotal * (1 - DISCOUNT_RATE));
     const lm=20,rm=190,pw=170;
     let y=0;
 
@@ -794,7 +844,7 @@ function downloadPDF() {
     doc.text('Website Health Check Report', lm, 23);
     doc.setTextColor(220,180,250);
     doc.setFontSize(9);
-    doc.text(`${domain}  ·  ${date}  ·  sitebuildstudio.co.za`, lm, 31);
+    doc.text(`${domain}  ·  Scanned ${date} at ${time}  ·  sitebuildstudio.co.za`, lm, 31);
     doc.text(`Prepared for: ${scanData.name}${scanData.biz ? ' — ' + scanData.biz : ''}`, lm, 37);
     y = 52;
 
@@ -857,7 +907,7 @@ function downloadPDF() {
     doc.setTextColor(255,255,255); doc.setFontSize(14); doc.setFont('helvetica','bold');
     doc.text('NEXT STEPS & QUOTE', lm, 14);
     doc.setTextColor(220,180,250); doc.setFontSize(9); doc.setFont('helvetica','normal');
-    doc.text(`SiteBuild Studio · sitebuildstudio.co.za · 084 579 5239`, lm, 22);
+    doc.text(`SiteBuild Studio · sitebuildstudio.co.za · 084 579 5239  ·  Quoted ${date} at ${time}`, lm, 22);
     y = 44;
 
     doc.setFontSize(14); doc.setFont('helvetica','bold'); doc.setTextColor(5,5,5);
@@ -878,12 +928,21 @@ function downloadPDF() {
 
         y+=4;
         doc.setDrawColor(200,200,200); doc.line(lm, y, rm, y); y+=8;
-        doc.setFontSize(12); doc.setFont('helvetica','bold'); doc.setTextColor(5,5,5);
-        doc.text('Total Fix Estimate', lm, y);
+
+        doc.setFontSize(11); doc.setFont('helvetica','normal'); doc.setTextColor(150,150,150);
+        doc.text('Standard Total', lm, y);
         const totStr = `R${fixTotal.toLocaleString()}`;
-        doc.setTextColor(123, 44, 191);
         doc.text(totStr, rm - doc.getTextWidth(totStr), y);
-        y+=16;
+        y+=8;
+
+        // 48-hour discount callout
+        doc.setFillColor(253, 248, 238);
+        doc.rect(lm, y-5, pw, 22, 'F');
+        doc.setFontSize(13); doc.setFont('helvetica','bold'); doc.setTextColor(123,44,191);
+        doc.text(`10% Off Price: R${discountedTotal.toLocaleString()}`, lm+4, y+3);
+        doc.setFontSize(9); doc.setFont('helvetica','bold'); doc.setTextColor(183,134,11);
+        doc.text(`Valid if accepted by ${deadlineStr}`, lm+4, y+11);
+        y+=26;
     } else {
         doc.setFontSize(10); doc.setFont('helvetica','normal'); doc.setTextColor(85,85,85);
         doc.text('No critical issues found! Your site is looking great.', lm, y); y+=16;
@@ -904,7 +963,7 @@ function downloadPDF() {
     doc.text('WhatsApp: 084 579 5239 — the fastest way to reach Micaela',lm+4,y); y+=6;
     doc.text('Email: sitebuilderstudios1@gmail.com',lm+4,y);
 
-    doc.save(`sitebuild-health-check-${domain.replace(/\./g,'-')}-${new Date().toISOString().slice(0,10)}.pdf`);
+    doc.save(`sitebuild-health-check-${domain.replace(/\./g,'-')}-${scanDate.toISOString().slice(0,10)}.pdf`);
 }
 
 function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
