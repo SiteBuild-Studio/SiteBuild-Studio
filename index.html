@@ -364,68 +364,31 @@
             .hero-pixel-grid { display: none !important; }
         }
 
-        .hero-corner-flap {
+        .hero-cyber-net {
             position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 15%;
-            height: 15%;
-            clip-path: polygon(100% 100%, 100% 38%, 38% 100%);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(123, 44, 191, 0.3) 55%, rgba(0, 0, 0, 0.3));
-            transform-origin: 100% 100%;
-            opacity: 1;
-            pointer-events: none;
+            inset: 0;
             z-index: 4;
-        }
-
-        @keyframes heroFlapEscape {
-            0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
-            20%  { transform: translate(24px, -16px) rotate(-16deg) scale(0.92); }
-            40%  { transform: translate(58px, 8px) rotate(14deg) scale(0.85); }
-            60%  { transform: translate(88px, -12px) rotate(-11deg) scale(0.8); }
-            80%  { transform: translate(112px, 10px) rotate(9deg) scale(0.75); }
-            100% { transform: translate(128px, 20px) rotate(-6deg) scale(0.72); }
-        }
-
-        .hero-corner-flap.escape {
-            animation: heroFlapEscape 0.75s cubic-bezier(0.33, 0, 0.2, 1) forwards;
-        }
-
-        @keyframes heroFlapZapOut {
-            0%   { transform: translate(128px, 20px) rotate(-6deg) scale(0.72); filter: brightness(1) drop-shadow(0 0 0 rgba(168, 85, 247, 0)); opacity: 1; }
-            50%  { transform: translate(128px, 20px) rotate(-6deg) scale(1); filter: brightness(2.6) drop-shadow(0 0 16px rgba(168, 85, 247, 0.9)); opacity: 1; }
-            100% { transform: translate(128px, 20px) rotate(-6deg) scale(0.5); filter: brightness(3.2) drop-shadow(0 0 24px rgba(255, 255, 255, 0.95)); opacity: 0; }
-        }
-
-        .hero-corner-flap.zap-out {
-            animation: heroFlapZapOut 0.22s ease-in forwards;
-        }
-
-        @keyframes heroFlapZapIn {
-            0%   { transform: translate(0, 0) rotate(0deg) scale(0.4); filter: brightness(3.2) drop-shadow(0 0 24px rgba(255, 255, 255, 0.95)); opacity: 0; }
-            45%  { transform: translate(0, 0) rotate(7deg) scale(1.14); filter: brightness(2) drop-shadow(0 0 14px rgba(168, 85, 247, 0.8)); opacity: 1; }
-            100% { transform: translate(0, 0) rotate(0deg) scale(1); filter: brightness(1) drop-shadow(0 0 0 rgba(0, 0, 0, 0)); opacity: 1; }
-        }
-
-        .hero-corner-flap.zap-in {
-            animation: heroFlapZapIn 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
-        .hero-corner-flap.fade-out {
-            transition: opacity 0.2s ease;
+            pointer-events: none;
+            background-image:
+                repeating-linear-gradient(0deg, rgba(168, 85, 247, 0.65) 0 1px, transparent 1px 32px),
+                repeating-linear-gradient(90deg, rgba(168, 85, 247, 0.65) 0 1px, transparent 1px 32px);
+            mix-blend-mode: screen;
             opacity: 0;
         }
 
-        .hero-image.pull-snap {
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        @keyframes heroNetPulse {
+            0%   { opacity: 0; filter: drop-shadow(0 0 2px rgba(168, 85, 247, 0.25)); }
+            18%  { opacity: 0.9; filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.95)); }
+            55%  { opacity: 0.7; filter: drop-shadow(0 0 16px rgba(168, 85, 247, 1)); }
+            100% { opacity: 0; filter: drop-shadow(0 0 2px rgba(168, 85, 247, 0)); }
         }
 
-        .hero-image.pull-tug {
-            transform: translate(5px, 5px);
+        .hero-cyber-net.show {
+            animation: heroNetPulse 1.3s ease-in-out forwards;
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .hero-corner-flap { display: none !important; }
+            .hero-cyber-net { display: none !important; }
         }
 
         .hero-text h1 {
@@ -2908,47 +2871,23 @@
                     grid.style.transition = 'opacity 0.4s ease';
                     grid.style.opacity = '0';
                     setTimeout(function () { grid.style.display = 'none'; }, 450);
-                    setTimeout(cornerFlourish, 500);
+                    setTimeout(netFlourish, 400);
                 }, totalTime);
             }
 
-            function cornerFlourish() {
+            function netFlourish() {
                 var wrap = document.querySelector('.hero-image');
                 if (!wrap) return;
 
-                var flap = document.createElement('div');
-                flap.className = 'hero-corner-flap';
-                wrap.appendChild(flap);
+                var net = document.createElement('div');
+                net.className = 'hero-cyber-net';
+                wrap.appendChild(net);
 
                 requestAnimationFrame(function () {
-                    requestAnimationFrame(function () { flap.classList.add('escape'); });
+                    requestAnimationFrame(function () { net.classList.add('show'); });
                 });
 
-                setTimeout(function () {
-                    // it's made a run for it — zap it out of existence where it stands
-                    flap.classList.remove('escape');
-                    flap.classList.add('zap-out');
-
-                    setTimeout(function () {
-                        // and zap it back into place at home, with a little landing impact
-                        flap.classList.remove('zap-out');
-                        flap.classList.add('zap-in');
-
-                        wrap.classList.add('pull-snap');
-                        requestAnimationFrame(function () {
-                            requestAnimationFrame(function () { wrap.classList.add('pull-tug'); });
-                        });
-                        setTimeout(function () { wrap.classList.remove('pull-tug'); }, 90);
-
-                        setTimeout(function () {
-                            flap.classList.add('fade-out');
-                            setTimeout(function () {
-                                flap.remove();
-                                wrap.classList.remove('pull-snap');
-                            }, 220);
-                        }, 420);
-                    }, 220);
-                }, 750);
+                setTimeout(function () { net.remove(); }, 1350);
             }
 
             if (img.complete && img.naturalWidth) {
