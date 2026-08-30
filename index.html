@@ -1944,6 +1944,8 @@
             background: linear-gradient(90deg, #7B2CBF, #a855f7);
             cursor: pointer;
             transition: opacity 0.2s ease, transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .brief-submit:hover {
@@ -2109,8 +2111,16 @@
             font-size: 1.02rem;
             font-weight: 600;
             color: #ffffff;
-            overflow-wrap: break-word;
-            word-break: break-word;
+            white-space: nowrap;
+        }
+
+        .contact-item.contact-item-email {
+            flex: 1.6;
+            min-width: 300px;
+        }
+
+        .contact-item.contact-item-email .contact-item-value {
+            font-size: 0.94rem;
         }
 
         a.contact-item .contact-item-value {
@@ -2132,6 +2142,12 @@
                 border-right: none;
                 border-top: 1px solid rgba(255, 255, 255, 0.08);
                 justify-content: flex-start;
+                min-width: 0;
+            }
+
+            .contact-item-value {
+                white-space: normal;
+                overflow-wrap: break-word;
             }
         }
 
@@ -2856,13 +2872,14 @@
 
         var briefForm = document.getElementById('briefForm');
         var briefSubmitBtn = document.getElementById('briefSubmitBtn');
+        var briefSubmitLabel = document.getElementById('briefSubmitLabel');
         var briefFormWrap = document.getElementById('briefFormWrap');
 
         if (briefForm) {
             briefForm.addEventListener('submit', function (e) {
                 e.preventDefault();
                 briefSubmitBtn.disabled = true;
-                briefSubmitBtn.textContent = 'Sending...';
+                briefSubmitLabel.textContent = 'Sending...';
 
                 fetch(briefForm.action, {
                     method: 'POST',
@@ -2878,12 +2895,12 @@
                             '</div>';
                     } else {
                         briefSubmitBtn.disabled = false;
-                        briefSubmitBtn.textContent = 'Send Brief \u2014 Get a Quote in 24 Hours \u2192';
+                        briefSubmitLabel.textContent = 'Send Brief \u2014 Get a Quote in 24 Hours \u2192';
                         alert('Something went wrong sending your brief. Please try WhatsApp instead, or try again in a moment.');
                     }
                 }).catch(function () {
                     briefSubmitBtn.disabled = false;
-                    briefSubmitBtn.textContent = 'Send Brief \u2014 Get a Quote in 24 Hours \u2192';
+                    briefSubmitLabel.textContent = 'Send Brief \u2014 Get a Quote in 24 Hours \u2192';
                     alert('Something went wrong sending your brief. Please try WhatsApp instead, or try again in a moment.');
                 });
             });
@@ -2968,7 +2985,7 @@
                         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
                         <input type="hidden" name="_subject" value="New project brief from sitebuildstudio.co.za">
 
-                        <button type="submit" class="brief-submit" id="briefSubmitBtn">Send Brief &mdash; Get a Quote in 24 Hours &rarr;</button>
+                        <button type="submit" class="brief-submit" id="briefSubmitBtn"><span class="btn-bubbles"><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span><span class="bubble"></span></span><span class="btn-label" id="briefSubmitLabel">Send Brief &mdash; Get a Quote in 24 Hours &rarr;</span></button>
                         <p class="brief-note">No spam, no sales calls &mdash; just a straight answer. Prefer to chat first? <a href="https://wa.me/27845795239" style="color:#a855f7;" target="_blank" rel="noopener">Message us on WhatsApp</a>.</p>
                     </form>
                 </div>
@@ -2996,7 +3013,7 @@
                     </div>
                 </a>
 
-                <a href="mailto:sitebuilderstudios1@gmail.com" class="contact-item reveal">
+                <a href="mailto:sitebuilderstudios1@gmail.com" class="contact-item contact-item-email reveal">
                     <div class="contact-item-icon">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="3" y="5.5" width="18" height="13" rx="2.5" stroke="#a855f7" stroke-width="1.4" fill="none"/>
