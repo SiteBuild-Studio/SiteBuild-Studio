@@ -146,14 +146,14 @@
     },
     {
       "id": "martins-electricals",
-      "name": "Martins Electricals",
+      "name": "Matt's Home Improvements",
       "category": "Electrician & Handyman",
       "location": "Cape Town",
       "address": "",
       "phone": "067 280 0732",
       "whatsapp": "067 280 0732",
       "description": "Household electrical wiring, general electrical repairs, and handyman services in Cape Town.",
-      "logo": "../assets/images/martins-electricals.png",
+      "logo": "images/matts-home-improvements.jpeg",
       "website": ""
     },
     {
