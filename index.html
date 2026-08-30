@@ -373,45 +373,60 @@
             clip-path: polygon(100% 100%, 100% 38%, 38% 100%);
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(123, 44, 191, 0.3) 55%, rgba(0, 0, 0, 0.3));
             transform-origin: 100% 100%;
-            opacity: 0;
+            opacity: 1;
             pointer-events: none;
             z-index: 4;
-            transition: transform 0.46s cubic-bezier(0.55, 0, 0.85, 0.35), opacity 0.46s ease;
         }
 
-        .hero-corner-flap.show { opacity: 1; }
+        @keyframes heroFlapEscape {
+            0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+            18%  { transform: translate(9px, -7px) rotate(-14deg) scale(0.94); }
+            36%  { transform: translate(20px, 3px) rotate(12deg) scale(0.88); }
+            54%  { transform: translate(32px, -5px) rotate(-10deg) scale(0.84); }
+            72%  { transform: translate(43px, 4px) rotate(8deg) scale(0.8); }
+            100% { transform: translate(52px, 8px) rotate(-5deg) scale(0.78); }
+        }
 
-        .hero-corner-flap.roll {
-            transform: rotate(30deg) scale(0.35) translate(16px, 16px);
-            opacity: 0;
+        @keyframes heroFlapReturn {
+            0%   { transform: translate(52px, 8px) rotate(-5deg) scale(0.78); opacity: 1; }
+            35%  { transform: translate(26px, -6px) rotate(10deg) scale(0.9); opacity: 1; }
+            70%  { transform: translate(8px, 3px) rotate(-4deg) scale(0.97); opacity: 1; }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0; }
+        }
+
+        .hero-corner-flap.escape {
+            animation: heroFlapEscape 0.6s cubic-bezier(0.33, 0, 0.2, 1) forwards;
+        }
+
+        .hero-corner-flap.return {
+            animation: heroFlapReturn 0.38s cubic-bezier(0.55, 0, 0.85, 0.35) forwards;
         }
 
         .hero-pull-line {
             position: absolute;
             right: 8%;
             bottom: 8%;
-            width: 90px;
+            width: 70px;
             height: 2px;
             background: linear-gradient(90deg, transparent, #a855f7 40%, #ffffff);
             border-radius: 2px;
-            transform: rotate(-38deg) scaleX(0);
+            transform: rotate(12deg) scaleX(0);
             transform-origin: right center;
             opacity: 0;
             pointer-events: none;
             z-index: 4;
-            transition: transform 0.22s cubic-bezier(0.16, 0.84, 0.44, 1), opacity 0.15s ease;
+            transition: transform 0.18s cubic-bezier(0.16, 0.84, 0.44, 1), opacity 0.15s ease;
         }
 
         .hero-pull-line.shoot {
             opacity: 1;
-            transform: rotate(-38deg) scaleX(1);
+            transform: rotate(12deg) scaleX(1);
         }
 
         .hero-pull-line.retract {
             opacity: 0;
-            transform-origin: left center;
-            transform: rotate(-38deg) scaleX(0);
-            transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+            transform: rotate(12deg) scaleX(0);
+            transition: transform 0.36s cubic-bezier(0.55, 0, 0.85, 0.35), opacity 0.36s ease 0.15s;
         }
 
         .hero-image.pull-snap {
@@ -2915,38 +2930,43 @@
                 if (!wrap) return;
 
                 var flap = document.createElement('div');
-                flap.className = 'hero-corner-flap show';
+                flap.className = 'hero-corner-flap';
                 wrap.appendChild(flap);
 
                 requestAnimationFrame(function () {
-                    requestAnimationFrame(function () { flap.classList.add('roll'); });
+                    requestAnimationFrame(function () { flap.classList.add('escape'); });
                 });
 
                 setTimeout(function () {
+                    // flap has scurried away — shoot the line out to catch it
                     var line = document.createElement('div');
                     line.className = 'hero-pull-line';
                     wrap.appendChild(line);
 
-                    wrap.classList.add('pull-snap');
                     requestAnimationFrame(function () {
-                        requestAnimationFrame(function () {
-                            line.classList.add('shoot');
-                            wrap.classList.add('pull-tug');
-                        });
+                        requestAnimationFrame(function () { line.classList.add('shoot'); });
                     });
 
                     setTimeout(function () {
-                        wrap.classList.remove('pull-tug');
+                        // caught it — reel the flap back in, retract the line, snap the whole image
+                        flap.classList.remove('escape');
+                        flap.classList.add('return');
                         line.classList.remove('shoot');
                         line.classList.add('retract');
-                    }, 150);
 
-                    setTimeout(function () {
-                        line.remove();
-                        flap.remove();
-                        wrap.classList.remove('pull-snap');
-                    }, 700);
-                }, 420);
+                        wrap.classList.add('pull-snap');
+                        requestAnimationFrame(function () {
+                            requestAnimationFrame(function () { wrap.classList.add('pull-tug'); });
+                        });
+                        setTimeout(function () { wrap.classList.remove('pull-tug'); }, 90);
+
+                        setTimeout(function () {
+                            flap.remove();
+                            line.remove();
+                            wrap.classList.remove('pull-snap');
+                        }, 620);
+                    }, 180);
+                }, 600);
             }
 
             if (img.complete && img.naturalWidth) {
