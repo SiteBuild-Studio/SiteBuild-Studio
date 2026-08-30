@@ -337,6 +337,33 @@
             filter: hue-rotate(-68deg) saturate(1.05);
         }
 
+        .hero-pixel-grid {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            filter: hue-rotate(-68deg) saturate(1.05);
+            opacity: 0;
+        }
+
+        .hero-pixel-tile {
+            position: absolute;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transform: translateY(8px) scale(0.92);
+            transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 0.84, 0.44, 1);
+            will-change: opacity, transform;
+        }
+
+        .hero-pixel-tile.in {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-pixel-grid { display: none !important; }
+        }
+
         .hero-text h1 {
             font-size: 3.2rem;
             font-weight: 800;
@@ -2383,7 +2410,8 @@
         <!-- Hero -->
         <div class="hero-content">
             <div class="hero-image reveal">
-                <img src="assets/images/hero-showcase.png" alt="SiteBuild Studio mockup: We Design. We Develop. We Deploy. Modern websites that drive results." class="hero-showcase-img">
+                <img src="assets/images/hero-showcase.png" alt="SiteBuild Studio mockup: We Design. We Develop. We Deploy. Modern websites that drive results." class="hero-showcase-img" id="heroShowcaseImg">
+                <div class="hero-pixel-grid" id="heroPixelGrid" aria-hidden="true"></div>
             </div>
 
             <div class="hero-text reveal">
@@ -2757,6 +2785,72 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
+        // Hero image: pixel-mosaic reveal
+        (function initHeroPixelReveal() {
+            var img = document.getElementById('heroShowcaseImg');
+            var grid = document.getElementById('heroPixelGrid');
+            if (!img || !grid) return;
+
+            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduceMotion) return;
+
+            function build() {
+                var cols = 12, rows = 12;
+                var tileW = 100 / cols, tileH = 100 / rows;
+                var src = img.getAttribute('src');
+                var frag = document.createDocumentFragment();
+                var tiles = [];
+
+                for (var r = 0; r < rows; r++) {
+                    for (var c = 0; c < cols; c++) {
+                        var tile = document.createElement('div');
+                        tile.className = 'hero-pixel-tile';
+                        tile.style.left = (c * tileW) + '%';
+                        tile.style.top = (r * tileH) + '%';
+                        tile.style.width = 'calc(' + tileW + '% + 1px)';
+                        tile.style.height = 'calc(' + tileH + '% + 1px)';
+                        tile.style.backgroundImage = 'url(' + src + ')';
+                        tile.style.backgroundSize = (cols * 100) + '% ' + (rows * 100) + '%';
+                        tile.style.backgroundPosition = (c * (100 / (cols - 1))) + '% ' + (r * (100 / (rows - 1))) + '%';
+                        frag.appendChild(tile);
+                        tiles.push({ el: tile, r: r, c: c });
+                    }
+                }
+
+                grid.appendChild(frag);
+                img.style.opacity = '0';
+                grid.style.opacity = '1';
+
+                var maxStep = (cols - 1) + (rows - 1);
+                tiles.forEach(function (t) {
+                    var base = (t.r + t.c) / maxStep;
+                    var jitter = Math.random() * 0.08;
+                    t.el.style.transitionDelay = (base * 0.55 + jitter).toFixed(3) + 's';
+                });
+
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        tiles.forEach(function (t) { t.el.classList.add('in'); });
+                    });
+                });
+
+                var totalTime = 0.63 * 1000 + 500 + 150;
+                setTimeout(function () {
+                    img.style.transition = 'opacity 0.4s ease';
+                    img.style.opacity = '1';
+                    grid.style.transition = 'opacity 0.4s ease';
+                    grid.style.opacity = '0';
+                    setTimeout(function () { grid.style.display = 'none'; }, 450);
+                }, totalTime);
+            }
+
+            if (img.complete && img.naturalWidth) {
+                build();
+            } else {
+                img.addEventListener('load', build, { once: true });
+            }
+        })();
+
         document.querySelectorAll('.faq-question').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 var item = btn.closest('.faq-item');
