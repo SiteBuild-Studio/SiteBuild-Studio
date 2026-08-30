@@ -1878,7 +1878,8 @@
         }
 
         .brief-field input,
-        .brief-field textarea {
+        .brief-field textarea,
+        .brief-field select {
             width: 100%;
             background-color: rgba(0, 0, 0, 0.35);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -1890,13 +1891,29 @@
             transition: border-color 0.2s ease;
         }
 
+        .brief-field select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a855f7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 1em;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .brief-field select option {
+            background-color: #14141c;
+            color: #ffffff;
+        }
+
         .brief-field input::placeholder,
         .brief-field textarea::placeholder {
             color: #6b6b70;
         }
 
         .brief-field input:focus,
-        .brief-field textarea:focus {
+        .brief-field textarea:focus,
+        .brief-field select:focus {
             outline: none;
             border-color: #a855f7;
         }
@@ -2880,9 +2897,7 @@
                         <div class="brief-chips" id="briefChips">
                             <button type="button" class="brief-chip" data-value="Website">Website</button>
                             <button type="button" class="brief-chip" data-value="SaaS / Web App">SaaS / Web App</button>
-                            <button type="button" class="brief-chip" data-value="AI Integration">AI Integration</button>
                             <button type="button" class="brief-chip" data-value="SEO / GEO / AEO">SEO / GEO / AEO</button>
-                            <button type="button" class="brief-chip" data-value="Security Audit">Security Audit</button>
                             <button type="button" class="brief-chip" data-value="Not sure yet">Not sure yet</button>
                         </div>
                         <input type="hidden" name="Interested In" id="briefInterest" value="">
@@ -2907,6 +2922,17 @@
                                 <label for="briefBusiness">Business Name</label>
                                 <input type="text" id="briefBusiness" name="Business Name" placeholder="Your business">
                             </div>
+                        </div>
+
+                        <div class="brief-field">
+                            <label for="briefCarePlan">Want a Care Plan included?</label>
+                            <select id="briefCarePlan" name="Care Plan Interest">
+                                <option value="Not needed right now">Not needed right now</option>
+                                <option value="Maintain - R350/month">Maintain &mdash; R350/month</option>
+                                <option value="Grow - R650/month">Grow &mdash; R650/month</option>
+                                <option value="Partner - R1200/month">Partner &mdash; R1200/month</option>
+                                <option value="Not sure - help me choose">Not sure &mdash; help me choose</option>
+                            </select>
                         </div>
 
                         <div class="brief-field">
