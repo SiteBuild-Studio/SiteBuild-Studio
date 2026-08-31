@@ -241,6 +241,18 @@
       "website": ""
     },
     {
+      "id": "allpro-handyman-services",
+      "name": "Allpro Handyman Services",
+      "category": "Handyman & Renovations",
+      "location": "Wynberg, Cape Town",
+      "address": "",
+      "phone": "068 164 1883",
+      "whatsapp": "068 164 1883",
+      "description": "Tiling, painting, fire-rated and non fire-rated drywall, and general handyman services across Cape Town, with a strong focus on quality workmanship and on-site health and safety.",
+      "logo": "../assets/images/logo_handyman.png",
+      "website": "https://www.allprohandymancapetown.co.za"
+    },
+    {
       "id": "investorlist",
       "name": "InvestorList",
       "category": "Investor Database & Fundraising",
